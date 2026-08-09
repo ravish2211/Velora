@@ -1766,13 +1766,15 @@ const contactLimiter = rateLimit({
 
 // Nodemailer Transport (Initialized once on startup)
 const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT || 587,
+    host: '://gmail.com',
+    port: 465,            // Secure port for SMTP
+    secure: true,         // Use SSL/TLS
     auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_APP_PASS
     }
 });
+
 
 app.post('/api/contact', contactLimiter, async (req, res) => {
     try {
