@@ -6,10 +6,10 @@ const express = require('express');
 const helmet = require('helmet');
 const compression = require('compression');
 const rateLimit = require('express-rate-limit');
-const { Resend } = require('resend'); // Swapped Nodemailer for Resend HTTP SDK
+const { Resend } = require('resend'); // Ensure Resend SDK is imported
 
 const app = express();
-app.set('trust proxy', 1)
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 3000;
 
 
@@ -1765,6 +1765,9 @@ const contactLimiter = rateLimit({
     legacyHeaders: false,
 });
 
+// Initialize the Resend Client
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 app.post('/api/contact', contactLimiter, async (req, res) => {
     try {
         const { name, business, phone, email, industry, budget, message } = req.body;
@@ -1869,4 +1872,4 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => { 
     console.log(`Velora Digital SSR running at http://localhost:${PORT}`); 
-}); 
+});
