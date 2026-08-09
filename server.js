@@ -1766,14 +1766,18 @@ const contactLimiter = rateLimit({
 
 // Nodemailer Transport (Initialized once on startup)
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',  // ❌ Make sure this does NOT say '://gmail.com' or 'https://gmail.com'
-    port: 465,            
-    secure: true,         
+    host: '://gmail.com',
+    port: 587,             // ✨ Switch from 465 to 587
+    secure: false,         // ✨ Switch from true to false (587 handles encryption automatically via STARTTLS)
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_APP_PASS
+    },
+    tls: {
+        rejectUnauthorized: false // 🔒 Prevents cloud firewalls from blocking self-signed handshakes
     }
 });
+
 
 
 
