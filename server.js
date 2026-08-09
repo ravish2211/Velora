@@ -40,7 +40,8 @@ const CONFIG = {
     baseUrl: process.env.BASE_URL || 'https://veloradigital.in',
     phone: process.env.CONTACT_PHONE || '+91 73037 33735',
     whatsapp: process.env.CONTACT_WHATSAPP || '917303733735',
-    email: process.env.CONTACT_EMAIL || 'ravishnoob123@gmail.com',
+    email: process.env.CONTACT_EMAIL || 'ravishnoob123@gmail.com', // Displayed on the frontend
+    systemEmail: process.env.SYSTEM_EMAIL || 'jyotimalhotraf9@gmail.com', // Verified email for Resend routing
     currencySymbol: '₹',
     pricing: {
         essential: 14999,
@@ -1764,9 +1765,6 @@ const contactLimiter = rateLimit({
     legacyHeaders: false,
 });
 
-// Initialize the Resend Client
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 app.post('/api/contact', contactLimiter, async (req, res) => {
     try {
         const { name, business, phone, email, industry, budget, message } = req.body;
@@ -1789,7 +1787,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
         if (process.env.RESEND_API_KEY) {
             const { data, error } = await resend.emails.send({
                 from: process.env.EMAIL_FROM || 'Velora Studio <onboarding@resend.dev>',
-                to: CONFIG.email,
+                to: CONFIG.systemEmail,
                 reply_to: sanitizedData.email !== 'Not provided' ? sanitizedData.email : undefined,
                 subject: `New Assessment Request: ${sanitizedData.business}`,
                 html: `
@@ -1871,4 +1869,4 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => { 
     console.log(`Velora Digital SSR running at http://localhost:${PORT}`); 
-});
+}); 
