@@ -6,7 +6,7 @@ const express = require('express');
 const helmet = require('helmet');
 const compression = require('compression');
 const rateLimit = require('express-rate-limit');
-const { Resend } = require('resend'); // Ensure Resend SDK is imported
+const { Resend } = require('resend');
 
 const app = express();
 app.set('trust proxy', 1);
@@ -179,7 +179,7 @@ const BLOG = [
 // 4. UI COMPONENT FUNCTIONS                                                    //
 // ============================================================================ //
 
-// XSS Escape Helper
+// Global XSS Escape Helper
 const escapeHTML = (str) => {
     if (!str) return '';
     return str.replace(/[&<>'"]/g, tag => ({
@@ -242,7 +242,7 @@ function Header(currentPath) {
                         VELORA
                     </span>
                 </a>
-                <nav class="hidden lg:flex items-center gap-1">
+                <nav class="hidden xl:flex items-center gap-1">
                     ${navItem('/services', 'Services')}
                     ${navItem('/industries', 'Industries')}
                     ${navItem('/portfolio', 'Portfolio')}
@@ -252,7 +252,7 @@ function Header(currentPath) {
                     ${navItem('/blog', 'Journal')}
                     ${navItem('/locations', 'Markets')}
                 </nav>
-                <div class="hidden lg:flex items-center gap-4">
+                <div class="hidden xl:flex items-center gap-4">
                     <button id="theme-toggle-btn" class="p-2 ml-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-md text-velora-muted hover:text-velora-text focus:outline-none focus:ring-2 focus:ring-velora-gold transition-colors" aria-label="Toggle Theme" aria-pressed="false">
                         <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                         <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
@@ -261,7 +261,7 @@ function Header(currentPath) {
                         <span class="relative z-10">Commission a Project</span>
                     </a>
                 </div>
-                <div class="flex items-center lg:hidden">
+                <div class="flex items-center xl:hidden">
                     <button id="theme-toggle-mobile-btn" class="p-2 mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-md text-velora-muted hover:text-velora-text focus:outline-none focus:ring-2 focus:ring-velora-gold transition-colors" aria-label="Toggle Theme" aria-pressed="false">
                         <svg id="theme-toggle-light-icon-mob" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                         <svg id="theme-toggle-dark-icon-mob" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
@@ -272,7 +272,7 @@ function Header(currentPath) {
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden bg-velora-surface border-b border-velora-border px-4 pt-2 pb-6 space-y-1 shadow-2xl">
+        <div id="mobile-menu" class="hidden xl:hidden bg-velora-surface border-b border-velora-border px-4 pt-2 pb-6 space-y-1 shadow-2xl">
             <a href="/services" class="block px-4 py-3 min-h-[44px] rounded-lg text-sm font-medium text-velora-muted hover:text-velora-text hover:bg-velora-faint transition-colors">Services</a>
             <a href="/industries" class="block px-4 py-3 min-h-[44px] rounded-lg text-sm font-medium text-velora-muted hover:text-velora-text hover:bg-velora-faint transition-colors">Industries</a>
             <a href="/portfolio" class="block px-4 py-3 min-h-[44px] rounded-lg text-sm font-medium text-velora-muted hover:text-velora-text hover:bg-velora-faint transition-colors">Portfolio</a>
@@ -486,7 +486,8 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
             transition: background-color 0.5s ease, color 0.5s ease;
         }
         
-        /* Prevent Concierge Bar Overlap */
+        /* Mobile Nav & Concierge Bar Fixes */
+        .pb-safe { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
         @media (max-width: 639px) { body { padding-bottom: 80px; } }
         
         /* Custom High-End Scrollbar */
@@ -565,17 +566,6 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
     <script type="application/ld+json">
     ${JSON.stringify(schemas, null, 2)}
     </script>
-    
-    <!-- Google Analytics 4 (GA4) Placeholder -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
-    -->
 </head>
 <body class="min-h-screen flex flex-col overflow-x-hidden bg-velora-bg text-velora-text transition-colors duration-500">
     ${FloatingContact()}
@@ -838,7 +828,7 @@ app.get('/', (req, res) => {
                         </div>
                     </div>
 
-                    <div id="slider-handle" class="absolute top-0 bottom-0 w-1 bg-velora-gold cursor-ew-resize flex items-center justify-center z-20" style="left: 50%; touch-action: none;">
+                    <div id="slider-handle" tabindex="0" role="slider" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="Before and after comparison slider" class="absolute top-0 bottom-0 w-1 bg-velora-gold cursor-ew-resize flex items-center justify-center z-20 focus:outline-none focus:ring-2 focus:ring-velora-gold" style="left: 50%; touch-action: none;">
                         <div class="w-10 h-10 rounded-full bg-velora-faint backdrop-blur-md border border-velora-gold text-velora-gold flex items-center justify-center shadow-2xl" aria-hidden="true">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l-4 4 4 4m8-8l4 4-4 4"/></svg>
                         </div>
@@ -904,6 +894,7 @@ app.get('/', (req, res) => {
                     const percentage = (position / rect.width) * 100;
                     overlay.style.width = percentage + '%';
                     handle.style.left = percentage + '%';
+                    handle.setAttribute('aria-valuenow', Math.round(percentage));
                 });
             };
             container.addEventListener('mousedown', (e) => { isDragging = true; updateSlider(e.clientX); e.preventDefault(); });
@@ -913,6 +904,19 @@ app.get('/', (req, res) => {
             container.addEventListener('touchstart', (e) => { isDragging = true; updateSlider(e.touches[0].clientX); });
             window.addEventListener('touchend', () => { isDragging = false; });
             window.addEventListener('touchmove', (e) => { if (isDragging) { e.preventDefault(); updateSlider(e.touches[0].clientX); } });
+
+            handle.addEventListener('keydown', (e) => {
+                const rect = container.getBoundingClientRect();
+                let currentPos = (parseFloat(handle.style.left || '50') / 100) * rect.width;
+                const step = rect.width * 0.05;
+                if (e.key === 'ArrowLeft') {
+                    updateSlider(rect.left + currentPos - step);
+                    e.preventDefault();
+                } else if (e.key === 'ArrowRight') {
+                    updateSlider(rect.left + currentPos + step);
+                    e.preventDefault();
+                }
+            });
         }
     `;
 
@@ -1354,7 +1358,12 @@ app.get('/pricing', (req, res) => {
         </section>`;
         
     const script = `
-        const PRICING = ${JSON.stringify(CONFIG.pricing)};
+        const calcPricing = {
+            base: ${CONFIG.pricing.baseCalculator},
+            perPage: ${CONFIG.pricing.perPage},
+            seo: ${CONFIG.pricing.seoAddon},
+            maint: ${CONFIG.pricing.maintenanceAddon}
+        };
         const SYM = '${CONFIG.currencySymbol}';
         const pagesInput = document.getElementById('calc-pages');
         const pageVal = document.getElementById('calc-page-val');
@@ -1367,9 +1376,9 @@ app.get('/pricing', (req, res) => {
             const calculate = () => {
                 const pages = parseInt(pagesInput.value, 10);
                 pageVal.innerText = pages + ' Pages';
-                let base = PRICING.baseCalculator + (pages * PRICING.perPage);
-                if (seoInput.checked) base += PRICING.seoAddon;
-                if (maintInput.checked) base += PRICING.maintenanceAddon;
+                let base = calcPricing.base + (pages * calcPricing.perPage);
+                if (seoInput.checked) base += calcPricing.seo;
+                if (maintInput.checked) base += calcPricing.maint;
                 totalVal.innerText = SYM + base.toLocaleString('en-IN');
                 
                 if (calcCta) {
@@ -1659,7 +1668,7 @@ app.get('/contact', (req, res) => {
                 if (pages) summary += \`\${pages} pages\`;
                 if (seo === 'true') summary += ', SEO included';
                 if (maint === 'true') summary += ', Maintenance included';
-                if (est) summary += \`, ~₹Number(est).toLocaleString('en-IN')\`;
+                if (est) summary += ', ~₹' + Number(est).toLocaleString('en-IN');
                 messageTextarea.value = summary;
             }
         }
@@ -1689,7 +1698,8 @@ app.get('/contact', (req, res) => {
                     throw new Error(result.error || 'Submission failed');
                 }
             } catch (err) {
-                errorDiv.innerText = err.message || 'An error occurred during secure transit. Please try again.';
+                const safeError = err instanceof Error ? err.message : String(err);
+                errorDiv.innerText = safeError || 'An error occurred during secure transit. Please try again.';
                 errorDiv.classList.remove('hidden');
             } finally {
                 submitBtn.disabled = false;
@@ -1810,17 +1820,22 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
             });
 
             if (error) {
-                throw new Error(error.message);
+                throw new Error(error.message || 'Resend API Error');
             }
 
-            console.log('[API/Contact] Email successfully sent for:', sanitizedData.business);
+            if (process.env.NODE_ENV !== 'production') {
+                console.log('[API/Contact] Email successfully sent for project from:', sanitizedData.business);
+            }
         } else {
-            console.warn('[API/Contact] RESEND_API_KEY config missing! Simulating success for:', sanitizedData);
+            if (process.env.NODE_ENV !== 'production') {
+                console.warn('[API/Contact] RESEND_API_KEY config missing! Simulating success for:', sanitizedData.business);
+            }
         }
 
         return res.status(200).json({ success: true, message: 'Inquiry processed successfully.' });
     } catch (error) {
-        console.error('[API/Contact] Error processing inquiry:', error);
+        const errorMsg = error instanceof Error ? error.message : String(error);
+        console.error('[API/Contact] Error processing inquiry:', errorMsg);
         return res.status(500).json({ error: 'An internal server error occurred while sending the request. Please try again later.' });
     }
 });
@@ -1851,7 +1866,8 @@ app.use((req, res) => {
 
 // 500 Global Error Handler
 app.use((err, req, res, next) => {
-    console.error('[Server Error]:', err);
+    const errorMsg = err instanceof Error ? err.message : String(err);
+    console.error('[Server Error]:', errorMsg);
     const meta = { title: '500 - Server Exception | Velora Digital', description: 'Internal server exception encountered.' };
     const content = `
         <section class="py-32 max-w-3xl mx-auto px-4 text-center">
