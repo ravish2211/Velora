@@ -1,0 +1,21 @@
+{
+  "name": "velora-digital",
+  "version": "1.0.0",
+  "description": "Velora Digital Agency Website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build:css": "npx tailwindcss@3 -i ./input.css -o ./public/styles.css --minify"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "dotenv": "^17.4.2",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "helmet": "^7.1.0",
+    "nodemailer": "^6.9.14"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.3.3"
+  }
+}
