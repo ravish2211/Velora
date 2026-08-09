@@ -6,7 +6,7 @@ const express = require('express');
 const helmet = require('helmet');
 const compression = require('compression');
 const rateLimit = require('express-rate-limit');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend'); // Swapped Nodemailer for Resend HTTP SDK
 
 const app = express();
 app.set('trust proxy', 1)
@@ -1764,24 +1764,6 @@ const contactLimiter = rateLimit({
     legacyHeaders: false,
 });
 
-// Nodemailer Transport (Initialized once on startup)
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',  // 👈 Hardcoding this directly eliminates environment variable typos!
-    port: 587,             
-    secure: false,         
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_APP_PASS
-    },
-    tls: {
-        rejectUnauthorized: false 
-    }
-});
-
-
-
-
-
 app.post('/api/contact', contactLimiter, async (req, res) => {
     try {
         const { name, business, phone, email, industry, budget, message } = req.body;
@@ -1801,32 +1783,35 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
             timestamp: new Date().toISOString()
         };
 
-        const htmlTemplate = `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #111; line-height: 1.6; border: 1px solid #eee; padding: 20px; border-radius: 8px;">
-                <h2 style="color: #d4af37; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 0;">New Project Commission Request</h2>
-                <p><strong>Name:</strong> ${escapeHTML(sanitizedData.name)}</p>
-                <p><strong>Brand / Business:</strong> ${escapeHTML(sanitizedData.business)}</p>
-                <p><strong>Phone:</strong> ${escapeHTML(sanitizedData.phone)}</p>
-                <p><strong>Email:</strong> ${escapeHTML(sanitizedData.email)}</p>
-                <p><strong>Elite Sector:</strong> ${escapeHTML(sanitizedData.industry)}</p>
-                <p><strong>Investment Scope:</strong> ${escapeHTML(sanitizedData.budget)}</p>
-                <h3 style="margin-top: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">Assessment Details</h3>
-                <p style="background: #f9f9f9; padding: 15px; border-radius: 5px; white-space: pre-wrap;">${escapeHTML(sanitizedData.message)}</p>
-                <p style="font-size: 12px; color: #888; margin-top: 30px;">Received at: ${sanitizedData.timestamp}</p>
-            </div>
-        `;
-
-        if (process.env.SMTP_HOST && process.env.SMTP_USER) {
-            await transporter.sendMail({
-                from: `"Velora Digital Studio" <${process.env.SMTP_USER}>`,
+        if (process.env.RESEND_API_KEY) {
+            const { data, error } = await resend.emails.send({
+                from: process.env.EMAIL_FROM || 'Velora Studio <onboarding@resend.dev>',
                 to: CONFIG.email,
-                replyTo: sanitizedData.email !== 'Not provided' ? sanitizedData.email : undefined,
+                reply_to: sanitizedData.email !== 'Not provided' ? sanitizedData.email : undefined,
                 subject: `New Assessment Request: ${sanitizedData.business}`,
-                html: htmlTemplate
+                html: `
+                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #111; line-height: 1.6; border: 1px solid #eee; padding: 20px; border-radius: 8px;">
+                        <h2 style="color: #d4af37; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-top: 0;">New Project Commission Request</h2>
+                        <p><strong>Name:</strong> ${escapeHTML(sanitizedData.name)}</p>
+                        <p><strong>Brand / Business:</strong> ${escapeHTML(sanitizedData.business)}</p>
+                        <p><strong>Phone:</strong> ${escapeHTML(sanitizedData.phone)}</p>
+                        <p><strong>Email:</strong> ${escapeHTML(sanitizedData.email)}</p>
+                        <p><strong>Elite Sector:</strong> ${escapeHTML(sanitizedData.industry)}</p>
+                        <p><strong>Investment Scope:</strong> ${escapeHTML(sanitizedData.budget)}</p>
+                        <h3 style="margin-top: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">Assessment Details</h3>
+                        <p style="background: #f9f9f9; padding: 15px; border-radius: 5px; white-space: pre-wrap;">${escapeHTML(sanitizedData.message)}</p>
+                        <p style="font-size: 12px; color: #888; margin-top: 30px;">Received at: ${sanitizedData.timestamp}</p>
+                    </div>
+                `
             });
+
+            if (error) {
+                throw new Error(error.message);
+            }
+
             console.log('[API/Contact] Email successfully sent for:', sanitizedData.business);
         } else {
-            console.warn('[API/Contact] SMTP config missing! Simulating success for:', sanitizedData);
+            console.warn('[API/Contact] RESEND_API_KEY config missing! Simulating success for:', sanitizedData);
         }
 
         return res.status(200).json({ success: true, message: 'Inquiry processed successfully.' });
