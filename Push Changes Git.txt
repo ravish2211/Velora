@@ -1,0 +1,3 @@
+git add .
+git commit -m "Switch form submission routing to web3forms api"
+git push
