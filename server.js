@@ -38,9 +38,9 @@ app.use(express.urlencoded({ extended: true }));
 // ============================================================================ //
 const CONFIG = {
     baseUrl: process.env.BASE_URL || 'https://veloradigital.in',
-    phone: process.env.CONTACT_PHONE || '+91 73037 33735',
-    whatsapp: process.env.CONTACT_WHATSAPP || '917303733735',
-    email: process.env.CONTACT_EMAIL || 'ravishnoob123@gmail.com',
+    phone: process.env.CONTACT_PHONE || '+91 79865 14596',
+    whatsapp: process.env.CONTACT_WHATSAPP || '919999733735',
+    email: process.env.CONTACT_EMAIL || 'jyotimalhotraf9@gmail.com',
     currencySymbol: '₹',
     pricing: {
         essential: 14999,
@@ -1763,6 +1763,9 @@ const contactLimiter = rateLimit({
     standardHeaders: true,
     legacyHeaders: false,
 });
+
+// Initialize the Resend Client
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 app.post('/api/contact', contactLimiter, async (req, res) => {
     try {
