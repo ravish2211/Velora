@@ -6,7 +6,7 @@ const express = require('express');
 const helmet = require('helmet');
 const compression = require('compression');
 const rateLimit = require('express-rate-limit');
-const { Resend } = require('resend');
+const { Resend } = require('resend'); // Nodemailer dependency completely removed
 
 const app = express();
 app.set('trust proxy', 1);
@@ -901,9 +901,9 @@ app.get('/', (req, res) => {
             window.addEventListener('mouseup', () => { isDragging = false; });
             window.addEventListener('mousemove', (e) => { if (isDragging) updateSlider(e.clientX); });
             
-            container.addEventListener('touchstart', (e) => { isDragging = true; updateSlider(e.touches[0].clientX); });
+            container.addEventListener('touchstart', (e) => { isDragging = true; updateSlider(e.touches[0].clientX); }, { passive: false });
             window.addEventListener('touchend', () => { isDragging = false; });
-            window.addEventListener('touchmove', (e) => { if (isDragging) { e.preventDefault(); updateSlider(e.touches[0].clientX); } });
+            window.addEventListener('touchmove', (e) => { if (isDragging) { e.preventDefault(); updateSlider(e.touches[0].clientX); } }, { passive: false });
 
             handle.addEventListener('keydown', (e) => {
                 const rect = container.getBoundingClientRect();
@@ -1382,7 +1382,7 @@ app.get('/pricing', (req, res) => {
                 totalVal.innerText = SYM + base.toLocaleString('en-IN');
                 
                 if (calcCta) {
-                    calcCta.href = \`/contact?tier=custom&pages=\${pages}&seo=\${seoInput.checked}&maint=\${maintInput.checked}&est=\${base}\`;
+                    calcCta.href = '/contact?tier=custom&pages=' + pages + '&seo=' + seoInput.checked + '&maint=' + maintInput.checked + '&est=' + base;
                 }
             };
             pagesInput.addEventListener('input', calculate);
@@ -1827,9 +1827,8 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
                 console.log('[API/Contact] Email successfully sent for project from:', sanitizedData.business);
             }
         } else {
-            if (process.env.NODE_ENV !== 'production') {
-                console.warn('[API/Contact] RESEND_API_KEY config missing! Simulating success for:', sanitizedData.business);
-            }
+            // Hard fail if missing configuration
+            throw new Error('Email provider configuration missing.');
         }
 
         return res.status(200).json({ success: true, message: 'Inquiry processed successfully.' });
