@@ -6,7 +6,7 @@ const express = require('express');
 const helmet = require('helmet');
 const compression = require('compression');
 const rateLimit = require('express-rate-limit');
-const { Resend } = require('resend'); // Nodemailer dependency completely removed
+const { Resend } = require('resend');
 
 const app = express();
 app.set('trust proxy', 1);
@@ -128,6 +128,18 @@ const LOCATIONS = [
 
 const PORTFOLIO = [
     {
+        id: 'aurora-aesthetics',
+        title: 'AURORA AESTHETICS',
+        industry: 'Healthcare & Clinics',
+        type: 'Concept Project',
+        summary: 'A highly secure, elegant clinical environment designed to build absolute patient trust and streamline discreet consultations.',
+        deliverables: ['Patient Trust Architecture', 'Discreet Booking Flow', 'Practitioner Profiles'],
+        challenge: 'Generic medical templates look clinical but lack the luxury feel required for high-end aesthetic patients.',
+        solution: 'Engineered a soothing, editorial layout emphasizing credentials and seamless, private consultation requests.',
+        ui: { hero: 'bg-stone-800', accent: 'bg-emerald-600', layout: 'grid-cols-2' },
+        imageBg: 'from-stone-900/40 to-black'
+    },
+    {
         id: 'aarav-estates',
         title: 'AARAV ESTATES',
         industry: 'Real Estate Consultancy',
@@ -153,6 +165,7 @@ const PORTFOLIO = [
     }
 ];
 
+// TODO: [PRE-LAUNCH] Add 2-3 more real posts to the BLOG array below so the "Journal" section doesn't appear abandoned.
 const BLOG = [
     {
         slug: 'why-local-websites-fail',
@@ -222,6 +235,20 @@ function generateSchema(type, data = {}) {
     }
     if (type === 'BreadcrumbList') {
         return { ...base, "@type": "BreadcrumbList", "itemListElement": data.items.map((item, index) => ({ "@type": "ListItem", "position": index + 1, "name": item.title, "item": `${CONFIG.baseUrl}${item.link}` })) };
+    }
+    if (type === 'FAQPage') {
+        return {
+            ...base,
+            "@type": "FAQPage",
+            "mainEntity": data.faqs.map(faq => ({
+                "@type": "Question",
+                "name": faq.q,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": faq.a
+                }
+            }))
+        };
     }
     return base;
 }
@@ -345,7 +372,13 @@ function Footer() {
     </footer>`;
 }
 
-function FloatingContact() {
+function FloatingContact(currentPath = '') {
+    let defaultMsg = 'Hello Velora Digital, I would like to request a consultation.';
+    if (currentPath === '/pricing') defaultMsg = 'Hello Velora Digital, I am reviewing the investment portfolio and would like to discuss a project.';
+    else if (currentPath.startsWith('/services')) defaultMsg = 'Hello Velora Digital, I would like to learn more about your digital architecture services.';
+    else if (currentPath.startsWith('/industries')) defaultMsg = 'Hello Velora Digital, I am interested in a bespoke digital strategy for my sector.';
+    else if (currentPath.startsWith('/portfolio')) defaultMsg = 'Hello Velora Digital, I saw your concept portfolio and would like to start a conversation.';
+
     return `
     <!-- Desktop Floating Concierge -->
     <div class="fixed bottom-6 right-6 z-40 hidden sm:block">
@@ -357,7 +390,7 @@ function FloatingContact() {
     <!-- Sleek Mobile Concierge Bar -->
     <div class="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-velora-bg/80 backdrop-blur-xl border-t border-velora-border pb-safe">
         <div class="flex items-center justify-between px-4 py-3 gap-3">
-            <a href="https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent('Hello Velora Digital, I would like to request a consultation.')}" class="flex-1 flex items-center justify-center gap-2 bg-velora-faint hover:bg-velora-faintHover border border-velora-borderStrong text-velora-text py-3 min-h-[44px] rounded-full text-[10px] uppercase tracking-[0.2em] font-bold transition-colors">
+            <a href="https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(defaultMsg)}" class="flex-1 flex items-center justify-center gap-2 bg-velora-faint hover:bg-velora-faintHover border border-velora-borderStrong text-velora-text py-3 min-h-[44px] rounded-full text-[10px] uppercase tracking-[0.2em] font-bold transition-colors">
                 <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 2c-5.514 0-9.998 4.484-9.998 9.998 0 1.983.58 3.829 1.58 5.385l-1.613 5.888 6.042-1.583c1.492.81 3.208 1.282 5.011 1.282 5.514 0 10.027-4.484 10.027-9.998 0-5.514-4.513-9.998-10.049-9.998zm5.958 14.158c-.247.693-1.229 1.299-1.999 1.464-.528.113-1.218.204-3.535-.758-2.962-1.229-4.869-4.249-5.018-4.448-.148-.198-1.213-1.613-1.213-3.076 0-1.463.766-2.183 1.038-2.48.272-.297.593-.371.791-.371.198 0 .396.002.569.01.183.008.43-.069.673.515.247.585.841 2.052.915 2.201.074.148.124.321.025.519-.099.198-.148.321-.297.495-.148.173-.313.387-.446.52-.148.148-.303.309-.13.606.173.297.771 1.272 1.657 2.062 1.139 1.015 2.1 1.328 2.397 1.476.297.148.47.124.643-.074.173-.198.742-.866.94-1.163.198-.297.396-.247.668-.148.272.099 1.73.816 2.027.965.297.148.495.223.569.346.074.124.074.718-.173 1.411z"/></svg>
                 Private Chat
             </a>
@@ -568,7 +601,7 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
     </script>
 </head>
 <body class="min-h-screen flex flex-col overflow-x-hidden bg-velora-bg text-velora-text transition-colors duration-500">
-    ${FloatingContact()}
+    ${FloatingContact(req.path)}
     ${Header(req.path)}
     ${meta.breadcrumbs ? Breadcrumbs(meta.breadcrumbs) : ''}
     
@@ -684,13 +717,18 @@ app.get('/', (req, res) => {
                     <p class="text-lg sm:text-xl text-velora-muted leading-relaxed max-w-2xl mx-auto text-pretty">
                         We engineer bespoke, high-performance digital experiences designed to build absolute credibility and turn passive searches into elite clientele.
                     </p>
-                    <div class="pt-6 flex flex-col sm:flex-row items-center justify-center gap-5">
-                        <a href="/contact" class="btn-luxury w-full sm:w-auto px-8 py-4 min-h-[44px] flex items-center justify-center rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText shadow-[0_0_40px_rgba(212,175,55,0.1)] focus:outline-none focus:ring-2 focus:ring-velora-gold">
-                            Commission a Project
-                        </a>
-                        <a href="/portfolio" class="btn-luxury btn-luxury-dark w-full sm:w-auto px-8 py-4 min-h-[44px] flex items-center justify-center rounded-full text-xs uppercase tracking-[0.2em] font-bold border border-velora-borderStrong text-velora-text hover:bg-velora-faint transition-colors focus:outline-none focus:ring-2 focus:ring-velora-text">
-                            Explore Bespoke Concepts
-                        </a>
+                    <div class="pt-6 flex flex-col items-center justify-center gap-5">
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-5 w-full">
+                            <a href="/contact" class="btn-luxury w-full sm:w-auto px-8 py-4 min-h-[44px] flex items-center justify-center rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText shadow-[0_0_40px_rgba(212,175,55,0.1)] focus:outline-none focus:ring-2 focus:ring-velora-gold">
+                                Start a Conversation
+                            </a>
+                            <a href="/portfolio" class="btn-luxury btn-luxury-dark w-full sm:w-auto px-8 py-4 min-h-[44px] flex items-center justify-center rounded-full text-xs uppercase tracking-[0.2em] font-bold border border-velora-borderStrong text-velora-text hover:bg-velora-faint transition-colors focus:outline-none focus:ring-2 focus:ring-velora-text">
+                                Explore Bespoke Concepts
+                            </a>
+                        </div>
+                        <p class="text-[10px] text-velora-muted uppercase tracking-[0.2em] font-medium mt-2">
+                            Digital Architectures Starting at ${CONFIG.currencySymbol}${CONFIG.pricing.essential.toLocaleString('en-IN')}
+                        </p>
                     </div>
                 </div>
 
@@ -949,7 +987,7 @@ app.get('/services', (req, res) => {
                         </div>
                         <div class="w-full lg:w-auto flex-shrink-0">
                             <a href="/services/${s.slug}" class="btn-luxury btn-luxury-dark flex items-center justify-center w-full px-8 py-4 min-h-[44px] rounded-full text-[10px] uppercase tracking-[0.2em] font-bold border border-velora-borderStrong text-velora-text text-center focus:outline-none focus:ring-2 focus:ring-velora-gold">
-                                Review Capability
+                                Get a Formal Quote
                             </a>
                         </div>
                     </div>
@@ -1006,7 +1044,7 @@ app.get('/services/:slug', (req, res) => {
             
             <div class="mt-20 text-center reveal">
                 <a href="/contact" class="btn-luxury inline-flex items-center justify-center px-10 py-5 min-h-[44px] rounded-full text-[10px] uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText shadow-lg focus:outline-none focus:ring-2 focus:ring-velora-gold">
-                    Commission This Strategy
+                    Get a Formal Quote
                 </a>
             </div>
         </article>`;
@@ -1028,14 +1066,16 @@ app.get('/industries', (req, res) => {
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 ${INDUSTRIES.map((i, idx) => `
-                    <a href="/industries/${i.slug}" class="premium-border bg-velora-surface p-10 rounded-3xl group reveal focus:outline-none focus:ring-2 focus:ring-velora-gold" style="transition-delay: ${idx * 100}ms;">
-                        <div class="text-4xl mb-6" aria-hidden="true">${i.icon}</div>
-                        <h2 class="font-display text-2xl font-bold text-velora-text group-hover:text-velora-gold transition-colors mb-4 tracking-tight">${i.name}</h2>
-                        <p class="text-base text-velora-muted leading-relaxed mb-8 text-pretty">${i.desc}</p>
-                        <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-velora-text group-hover:text-velora-gold transition-colors flex items-center gap-2 min-h-[44px]">
-                            Explore Sector Strategy <span aria-hidden="true">&rarr;</span>
+                    <div class="premium-border bg-velora-surface p-10 rounded-3xl flex flex-col justify-between group reveal" style="transition-delay: ${idx * 100}ms;">
+                        <div>
+                            <div class="text-4xl mb-6" aria-hidden="true">${i.icon}</div>
+                            <h2 class="font-display text-2xl font-bold text-velora-text group-hover:text-velora-gold transition-colors mb-4 tracking-tight">${i.name}</h2>
+                            <p class="text-base text-velora-muted leading-relaxed mb-8 text-pretty">${i.desc}</p>
                         </div>
-                    </a>
+                        <a href="/industries/${i.slug}" class="text-[10px] font-bold uppercase tracking-[0.2em] text-velora-text group-hover:text-velora-gold transition-colors flex items-center gap-2 min-h-[44px] focus:outline-none focus:text-velora-gold w-max">
+                            Explore Sector Strategy <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </div>
                 `).join('')}
             </div>
         </section>`;
@@ -1073,7 +1113,7 @@ app.get('/industries/:slug', (req, res) => {
             
             <div class="mt-20 text-center reveal">
                 <a href="/contact" class="btn-luxury inline-flex items-center justify-center px-10 py-5 min-h-[44px] rounded-full text-[10px] uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText shadow-lg focus:outline-none focus:ring-2 focus:ring-velora-gold">
-                    Request a Sector Assessment
+                    Get a Formal Quote
                 </a>
             </div>
         </article>`;
@@ -1095,14 +1135,16 @@ app.get('/locations', (req, res) => {
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 ${LOCATIONS.map((l, idx) => `
-                    <a href="/locations/${l.slug}" class="premium-border bg-velora-surface p-10 rounded-3xl group reveal focus:outline-none focus:ring-2 focus:ring-velora-gold" style="transition-delay: ${idx * 100}ms;">
-                        <div class="text-[10px] font-mono text-velora-gold mb-4 uppercase tracking-[0.2em]">${l.region}</div>
-                        <h2 class="font-display text-2xl font-bold text-velora-text group-hover:text-velora-gold transition-colors mb-4 tracking-tight">${l.name}</h2>
-                        <p class="text-base text-velora-muted leading-relaxed mb-8 text-pretty">${l.desc}</p>
-                        <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-velora-text group-hover:text-velora-gold transition-colors flex items-center gap-2 min-h-[44px]">
-                            Explore Market Approach <span aria-hidden="true">&rarr;</span>
+                    <div class="premium-border bg-velora-surface p-10 rounded-3xl flex flex-col justify-between group reveal" style="transition-delay: ${idx * 100}ms;">
+                        <div>
+                            <div class="text-[10px] font-mono text-velora-gold mb-4 uppercase tracking-[0.2em]">${l.region}</div>
+                            <h2 class="font-display text-2xl font-bold text-velora-text group-hover:text-velora-gold transition-colors mb-4 tracking-tight">${l.name}</h2>
+                            <p class="text-base text-velora-muted leading-relaxed mb-8 text-pretty">${l.desc}</p>
                         </div>
-                    </a>
+                        <a href="/locations/${l.slug}" class="text-[10px] font-bold uppercase tracking-[0.2em] text-velora-text group-hover:text-velora-gold transition-colors flex items-center gap-2 min-h-[44px] focus:outline-none focus:text-velora-gold w-max">
+                            Explore Market Approach <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </div>
                 `).join('')}
             </div>
         </section>`;
@@ -1148,7 +1190,7 @@ app.get('/locations/:slug', (req, res) => {
             
             <div class="mt-20 text-center reveal">
                 <a href="/contact" class="btn-luxury inline-flex items-center justify-center px-10 py-5 min-h-[44px] rounded-full text-[10px] uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText shadow-lg focus:outline-none focus:ring-2 focus:ring-velora-gold">
-                    Commission a Project
+                    Get a Formal Quote
                 </a>
             </div>
         </article>`;
@@ -1209,12 +1251,18 @@ app.get('/portfolio', (req, res) => {
                             </div>
                             <div class="mt-auto pt-8 border-t border-velora-border">
                                 <a href="/contact" class="text-[10px] uppercase tracking-[0.2em] font-bold text-velora-text hover:text-velora-gold transition-colors inline-flex items-center gap-2 focus:outline-none focus:text-velora-gold rounded px-2 py-1 min-h-[44px]">
-                                    Commission a Similar Asset <span aria-hidden="true">&rarr;</span>
+                                    Start a Conversation <span aria-hidden="true">&rarr;</span>
                                 </a>
                             </div>
                         </div>
                     </article>
                 `).join('')}
+            </div>
+            
+            <div class="mt-20 text-center reveal">
+                <a href="/contact" class="btn-luxury inline-flex items-center justify-center px-10 py-5 min-h-[44px] rounded-full text-[10px] uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText shadow-[0_0_30px_rgba(212,175,55,0.15)] focus:outline-none focus:ring-2 focus:ring-velora-gold">
+                    Start a Conversation
+                </a>
             </div>
         </section>`;
     res.send(BaseLayout(req, meta, content));
@@ -1257,7 +1305,7 @@ app.get('/process', (req, res) => {
             </div>
             <div class="mt-16 reveal">
                 <a href="/contact" class="btn-luxury inline-flex items-center justify-center px-10 py-5 min-h-[44px] rounded-full text-[10px] uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText shadow-lg focus:outline-none focus:ring-2 focus:ring-velora-gold">
-                    Initiate Discovery
+                    Get a Formal Quote
                 </a>
             </div>
         </section>`;
@@ -1265,10 +1313,18 @@ app.get('/process', (req, res) => {
 });
 
 app.get('/pricing', (req, res) => {
+    const FAQS = [
+        { q: "What is the typical timeline for a bespoke digital architecture project?", a: "Most essential and professional portfolios are engineered and deployed within 4 to 6 weeks. Bespoke requirements vary based on complexity." },
+        { q: "Do you use pre-built templates?", a: "No. Every digital environment we create is custom-architected from the ground up to ensure flawless performance, absolute security, and a bespoke brand presence." },
+        { q: "Is hosting and domain management included?", a: "Our Studio Maintenance care packages include high-performance cloud hosting, proactive security patching, and ongoing technical management. Initial build investments do not cover ongoing hosting." },
+        { q: "What do you need from us to begin?", a: "We start with a strategic discovery phase where we analyze your brand positioning. We typically require your core brand assets, high-resolution imagery, and access to any existing domain infrastructure." }
+    ];
+
     const meta = {
         title: 'Investment Portfolio | Velora Digital',
         description: 'Transparent, premium digital architecture investment plans. Essential, Professional, and Bespoke options.',
-        breadcrumbs: [{title: 'Home', link: '/'}, {title: 'Investment', link: '/pricing'}]
+        breadcrumbs: [{title: 'Home', link: '/'}, {title: 'Investment', link: '/pricing'}],
+        schema: generateSchema('FAQPage', { faqs: FAQS })
     };
     
     const f = (val) => `${CONFIG.currencySymbol}${val.toLocaleString('en-IN')}`;
@@ -1325,7 +1381,7 @@ app.get('/pricing', (req, res) => {
                 <p class="text-sm text-velora-muted leading-relaxed text-pretty">Every line of code and pixel of design is meticulously crafted to global standards. We believe in absolute transparency, unwavering performance, and delivering digital assets that genuinely elevate your brand's equity.</p>
             </div>
             
-            <div class="border border-velora-borderStrong shadow-2xl bg-velora-bg p-10 md:p-16 max-w-3xl mx-auto reveal">
+            <div class="border border-velora-borderStrong shadow-2xl bg-velora-bg p-10 md:p-16 max-w-3xl mx-auto reveal mb-32">
                 <h3 class="font-display text-3xl font-bold text-velora-text mb-4 text-center tracking-tight">Formal Assessment Calculator</h3>
                 <p class="text-sm text-velora-muted text-center mb-10 text-pretty">Adjust parameters to calculate an estimated baseline investment.</p>
                 <div class="space-y-10">
@@ -1355,36 +1411,60 @@ app.get('/pricing', (req, res) => {
                     </div>
                 </div>
             </div>
+            
+            <div class="max-w-3xl mx-auto border-t border-velora-border pt-24 reveal">
+                <h2 class="font-display text-3xl font-bold text-velora-text mb-12 text-center tracking-tight">Frequently Asked Questions</h2>
+                <div class="space-y-6">
+                    ${FAQS.map((faq, i) => `
+                        <details class="group premium-border bg-velora-surface rounded-2xl [&_summary::-webkit-details-marker]:hidden">
+                            <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-velora-text font-medium focus:outline-none focus:ring-2 focus:ring-velora-gold rounded-2xl">
+                                ${faq.q}
+                                <span class="relative h-5 w-5 shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-100 group-open:opacity-0 transition-opacity text-velora-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 h-5 w-5 opacity-0 group-open:opacity-100 transition-opacity text-velora-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" /></svg>
+                                </span>
+                            </summary>
+                            <p class="px-6 pb-6 pt-0 text-sm text-velora-muted leading-relaxed text-pretty border-t border-velora-borderStrong pt-4 mt-2">
+                                ${faq.a}
+                            </p>
+                        </details>
+                    `).join('')}
+                </div>
+            </div>
         </section>`;
         
     const script = `
-        const calcPricing = {
-            base: ${CONFIG.pricing.baseCalculator},
-            perPage: ${CONFIG.pricing.perPage},
-            seo: ${CONFIG.pricing.seoAddon},
-            maint: ${CONFIG.pricing.maintenanceAddon}
-        };
-        const SYM = '${CONFIG.currencySymbol}';
         const pagesInput = document.getElementById('calc-pages');
         const pageVal = document.getElementById('calc-page-val');
         const seoInput = document.getElementById('calc-seo');
         const maintInput = document.getElementById('calc-maint');
         const totalVal = document.getElementById('calc-total');
         const calcCta = document.getElementById('calc-cta');
+        
+        let debounceTimer;
 
         if (pagesInput) {
             const calculate = () => {
                 const pages = parseInt(pagesInput.value, 10);
                 pageVal.innerText = pages + ' Pages';
-                let base = calcPricing.base + (pages * calcPricing.perPage);
-                if (seoInput.checked) base += calcPricing.seo;
-                if (maintInput.checked) base += calcPricing.maint;
-                totalVal.innerText = SYM + base.toLocaleString('en-IN');
                 
-                if (calcCta) {
-                    calcCta.href = '/contact?tier=custom&pages=' + pages + '&seo=' + seoInput.checked + '&maint=' + maintInput.checked + '&est=' + base;
-                }
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(async () => {
+                    try {
+                        const res = await fetch('/api/estimate?pages=' + pages + '&seo=' + seoInput.checked + '&maint=' + maintInput.checked);
+                        if (!res.ok) return;
+                        const data = await res.json();
+                        
+                        totalVal.innerText = data.formatted;
+                        if (calcCta) {
+                            calcCta.href = '/contact?tier=custom&pages=' + pages + '&seo=' + seoInput.checked + '&maint=' + maintInput.checked + '&est=' + data.estimate;
+                        }
+                    } catch (err) {
+                        // Silently fail on network errors during sliding, retaining previous visible state
+                    }
+                }, 100);
             };
+            
             pagesInput.addEventListener('input', calculate);
             seoInput.addEventListener('change', calculate);
             maintInput.addEventListener('change', calculate);
@@ -1420,7 +1500,7 @@ app.get('/about', (req, res) => {
                     <ul class="space-y-8 text-base text-velora-muted">
                         <li class="pb-8 border-b border-velora-border"><strong class="text-velora-text block mb-2 font-display text-xl tracking-tight">Absolute Honesty</strong> <span class="text-pretty">Transparent execution. We do not invent metrics, fabricate traffic numbers, or exaggerate client histories.</span></li>
                         <li class="pb-8 border-b border-velora-border"><strong class="text-velora-text block mb-2 font-display text-xl tracking-tight">Conversion Centric</strong> <span class="text-pretty">Aesthetic beauty is merely the baseline. A digital asset must intuitively guide the user toward high-value action.</span></li>
-                        <li><strong class="text-velora-text block mb-2 font-display text-xl tracking-tight">Flawless Engineering</strong> <span class="text-pretty">We engineer our architecture to load flawlessly on real-world networks, rejecting all unnecessary code bloat.</span></li>
+                        <li><strong class="text-velora-text block mb-2 font-display text-xl tracking-tight">Flawless Engineering</strong> <span class="text-pretty">We engineer our architecture to load flawlessly on real-world networks, rejecting all unnecessary code bloat. Don't just take our word for it—we invite you to run this very domain through Google PageSpeed Insights. We believe a studio's own website should be the ultimate proof of their technical competence.</span></li>
                     </ul>
                 </div>
                 
@@ -1773,6 +1853,22 @@ const contactLimiter = rateLimit({
     message: { error: 'Too many inquiries sent from this IP. Please wait an hour or contact us directly via WhatsApp/Phone.' },
     standardHeaders: true,
     legacyHeaders: false,
+});
+
+// API Route for dynamic pricing estimation
+app.get('/api/estimate', (req, res) => {
+    const pages = parseInt(req.query.pages, 10) || 5;
+    const seo = req.query.seo === 'true';
+    const maint = req.query.maint === 'true';
+
+    let base = CONFIG.pricing.baseCalculator + (pages * CONFIG.pricing.perPage);
+    if (seo) base += CONFIG.pricing.seoAddon;
+    if (maint) base += CONFIG.pricing.maintenanceAddon;
+
+    res.json({ 
+        estimate: base, 
+        formatted: `${CONFIG.currencySymbol}${base.toLocaleString('en-IN')}` 
+    });
 });
 
 // Initialize the Resend Client
