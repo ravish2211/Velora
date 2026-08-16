@@ -5,7 +5,6 @@ require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
 const compression = require('compression');
-const rateLimit = require('express-rate-limit');
 
 const app = express();
 app.set('trust proxy', 1);
@@ -16,6 +15,7 @@ const PORT = process.env.PORT || 3000;
 // ============================================================================ //
 
 // Strict security headers with functional CSP
+// Note: connectSrc now strictly allows the Web3Forms API
 app.use(helmet({
     contentSecurityPolicy: {
         directives: {
@@ -24,7 +24,7 @@ app.use(helmet({
             styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
             fontSrc: ["'self'", "https://fonts.gstatic.com"],
             imgSrc: ["'self'", "data:", "https:"],
-            connectSrc: ["'self'"],
+            connectSrc: ["'self'", "https://api.web3forms.com"],
             frameAncestors: ["'none'"],
             formAction: ["'self'"],
         },
@@ -913,7 +913,7 @@ app.get('/services', (req, res) => {
     const meta = {
         title: 'Web Design & Local SEO Services | Velora Digital',
         description: 'Professional web design, local SEO, and maintenance services for local businesses.',
-        breadcrumbs: [{title: 'Home', link: '/services'}, {title: 'Services', link: '/services'}]
+        breadcrumbs: [{title: 'Home', link: '/'}, {title: 'Services', link: '/services'}]
     };
 
     const content = `
@@ -1703,27 +1703,48 @@ app.get('/contact', (req, res) => {
             errorDiv.classList.add('hidden');
 
             const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
+            const rawData = Object.fromEntries(formData.entries());
+            
+            // Web3Forms configuration injected securely
+            const submissionData = {
+                access_key: '${process.env.WEB3FORMS_ACCESS_KEY || ''}',
+                subject: 'New Website Quote Request from ' + rawData.business,
+                from_name: 'Velora Digital System',
+                replyto: rawData.email,
+                name: rawData.name,
+                email: rawData.email,
+                message: \`Name: \${rawData.name}\\nBusiness: \${rawData.business}\\nPhone: \${rawData.phone}\\nEmail: \${rawData.email}\\nIndustry: \${rawData.industry}\\nBudget: \${rawData.budget}\\n\\nProject Details:\\n\${rawData.message}\`
+            };
+
+            if (!submissionData.access_key) {
+                errorDiv.innerText = 'Form configuration is missing. Please contact us via phone or email directly.';
+                errorDiv.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Send Message';
+                return;
+            }
 
             try {
-                const response = await fetch('/api/contact', {
+                const response = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
+                    headers: { 
+                        'Content-Type': 'application/json', 
+                        'Accept': 'application/json' 
+                    },
+                    body: JSON.stringify(submissionData)
                 });
                 
                 const result = await response.json();
                 
-                if(response.ok) {
+                if(response.ok && result.success) {
                     form.classList.add('hidden');
                     successDiv.classList.remove('hidden');
                     successDiv.classList.add('flex');
                 } else {
-                    throw new Error(result.error || 'Failed to send message.');
+                    throw new Error(result.message || 'Failed to send message.');
                 }
             } catch (err) {
-                const safeError = err instanceof Error ? err.message : String(err);
-                errorDiv.innerText = safeError || 'Something went wrong. Please call or email us directly.';
+                errorDiv.innerText = 'Our secure gateway blocked the request. Please email or call us directly.';
                 errorDiv.classList.remove('hidden');
             } finally {
                 submitBtn.disabled = false;
@@ -1790,14 +1811,6 @@ app.get('/robots.txt', (req, res) => {
 // 6. API ROUTES                                                                //
 // ============================================================================ //
 
-const contactLimiter = rateLimit({
-    windowMs: 60 * 60 * 1000, 
-    max: 15,
-    message: { error: 'Too many requests. Please wait or call us directly.' },
-    standardHeaders: true,
-    legacyHeaders: false,
-});
-
 app.get('/api/estimate', (req, res) => {
     const pages = parseInt(req.query.pages, 10) || 5;
     const seo = req.query.seo === 'true';
@@ -1811,83 +1824,6 @@ app.get('/api/estimate', (req, res) => {
         estimate: base, 
         formatted: `${CONFIG.currencySymbol}${base.toLocaleString('en-IN')}` 
     });
-});
-
-app.post('/api/contact', contactLimiter, async (req, res) => {
-    try {
-        const { name, business, phone, email, industry, budget, message } = req.body;
-        
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
-        if (!name || typeof name !== 'string' || name.trim().length === 0 || name.length > 100) {
-            return res.status(400).json({ error: 'Valid name is required.' });
-        }
-        if (!business || typeof business !== 'string' || business.trim().length === 0 || business.length > 100) {
-            return res.status(400).json({ error: 'Valid business name is required.' });
-        }
-        if (!email || typeof email !== 'string' || !emailRegex.test(email) || email.length > 255) {
-            return res.status(400).json({ error: 'Valid email is required.' });
-        }
-        if (message && message.length > 1500) {
-            return res.status(400).json({ error: 'Message exceeds allowed limit.' });
-        }
-
-        const sanitizedData = {
-            name: escapeHTML(name.trim()),
-            business: escapeHTML(business.trim()),
-            phone: escapeHTML(phone ? phone.trim() : 'Not provided'),
-            email: escapeHTML(email.trim()),
-            industry: escapeHTML(industry || 'not-specified'),
-            budget: escapeHTML(budget || 'not-specified'),
-            message: escapeHTML(message ? message.trim() : 'No details provided'),
-            timestamp: new Date().toISOString()
-        };
-
-        if (process.env.WEB3FORMS_ACCESS_KEY) {
-            const web3response = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-                },
-                body: JSON.stringify({
-                    access_key: process.env.WEB3FORMS_ACCESS_KEY,
-                    name: sanitizedData.name,
-                    email: sanitizedData.email,
-                    subject: `New Lead: ${sanitizedData.business}`,
-                    from_name: 'Velora Digital Studio',
-                    replyto: sanitizedData.email !== 'Not provided' ? sanitizedData.email : undefined,
-                    message: `Name: ${sanitizedData.name}\nBusiness: ${sanitizedData.business}\nPhone: ${sanitizedData.phone}\nEmail: ${sanitizedData.email}\nIndustry: ${sanitizedData.industry}\nBudget: ${sanitizedData.budget}\n\nProject Details:\n${sanitizedData.message}`
-                })
-            });
-
-            const responseText = await web3response.text();
-            let result;
-            
-            try {
-                result = JSON.parse(responseText);
-            } catch (e) {
-                console.error('[Web3Forms WAF Block]:', responseText.substring(0, 200));
-                throw new Error('The secure gateway blocked the request. Please call the studio directly.');
-            }
-
-            if (!web3response.ok || !result.success) {
-                console.error('[Web3Forms Error Details]:', result);
-                throw new Error('Email service unavailable.');
-            }
-            
-            console.log(`[API/Contact] Lead successfully routed via Web3Forms for: ${sanitizedData.business}`);
-        } else {
-            console.warn('[API/Contact] WEB3FORMS_ACCESS_KEY missing! Simulating success for lead:', sanitizedData.email);
-        }
-
-        return res.status(200).json({ success: true, message: 'Message sent.' });
-    } catch (error) {
-        const errorMsg = error instanceof Error ? error.message : String(error);
-        console.error('[API/Contact] Catch Block Error:', errorMsg);
-        return res.status(500).json({ error: 'Server could not process the request. Please call us directly.' });
-    }
 });
 
 // ============================================================================ //
