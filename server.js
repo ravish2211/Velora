@@ -6,7 +6,6 @@ const express = require('express');
 const helmet = require('helmet');
 const compression = require('compression');
 const rateLimit = require('express-rate-limit');
-const { Resend } = require('resend');
 
 const app = express();
 app.set('trust proxy', 1);
@@ -48,7 +47,6 @@ const CONFIG = {
     phone: process.env.CONTACT_PHONE || '+91 99997 33735',
     whatsapp: process.env.CONTACT_WHATSAPP || '919999733735',
     email: process.env.CONTACT_EMAIL || 'hello@veloradigital.in', 
-    systemEmail: process.env.SYSTEM_EMAIL || 'jyotimalhotraf9@gmail.com', 
     currencySymbol: '₹',
     pricing: {
         essential: 14999,
@@ -1641,13 +1639,13 @@ app.get('/contact', (req, res) => {
                         <div id="form-error" class="hidden text-red-500 text-sm mt-4 font-medium" role="alert"></div>
                     </form>
 
-                    <div id="form-success-message" class="hidden absolute inset-0 bg-velora-bg/95 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center p-12 text-center z-10" role="alert">
+                    <div id="form-success-message" class="hidden absolute inset-0 bg-velora-bg/95 backdrop-blur-md rounded-3xl flex-col items-center justify-center p-12 text-center z-10" role="alert">
                         <div class="w-16 h-16 bg-velora-faint border border-velora-borderStrong rounded-full flex items-center justify-center mb-6">
                             <svg class="w-8 h-8 text-velora-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                         </div>
                         <h3 class="font-display text-3xl font-bold text-velora-text mb-4 tracking-tight">Message Sent</h3>
                         <p class="text-base text-velora-muted max-w-sm mx-auto mb-10 leading-relaxed text-pretty">Thank you for contacting Velora Digital. We will review your message and reply via email or phone within 24 hours.</p>
-                        <button onclick="document.getElementById('contact-form').reset(); document.getElementById('form-success-message').classList.add('hidden'); document.getElementById('contact-form').classList.remove('hidden');" class="px-8 py-3 min-h-[44px] bg-transparent border border-velora-borderStrong hover:border-velora-border transition-colors text-[10px] font-bold uppercase tracking-widest text-velora-text rounded-full focus:outline-none focus:ring-2 focus:ring-velora-text">Send Another</button>
+                        <button id="send-another-btn" type="button" class="px-8 py-3 min-h-[44px] bg-transparent border border-velora-borderStrong hover:border-velora-border transition-colors text-[10px] font-bold uppercase tracking-widest text-velora-text rounded-full focus:outline-none focus:ring-2 focus:ring-velora-text">Send Another</button>
                     </div>
                 </div>
             </div>
@@ -1660,6 +1658,16 @@ app.get('/contact', (req, res) => {
         const successDiv = document.getElementById('form-success-message');
         const budgetSelect = document.getElementById('budget');
         const messageTextarea = document.getElementById('message');
+        const sendAnotherBtn = document.getElementById('send-another-btn');
+
+        if (sendAnotherBtn) {
+            sendAnotherBtn.addEventListener('click', () => {
+                form.reset();
+                successDiv.classList.add('hidden');
+                successDiv.classList.remove('flex');
+                form.classList.remove('hidden');
+            });
+        }
 
         if (budgetSelect && messageTextarea) {
             const urlParams = new URLSearchParams(window.location.search);
@@ -1709,6 +1717,7 @@ app.get('/contact', (req, res) => {
                 if(response.ok) {
                     form.classList.add('hidden');
                     successDiv.classList.remove('hidden');
+                    successDiv.classList.add('flex');
                 } else {
                     throw new Error(result.error || 'Failed to send message.');
                 }
@@ -1804,8 +1813,6 @@ app.get('/api/estimate', (req, res) => {
     });
 });
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 app.post('/api/contact', contactLimiter, async (req, res) => {
     try {
         const { name, business, phone, email, industry, budget, message } = req.body;
@@ -1836,39 +1843,38 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
             timestamp: new Date().toISOString()
         };
 
-        if (process.env.RESEND_API_KEY) {
-            const { error } = await resend.emails.send({
-                from: process.env.EMAIL_FROM || 'Velora Studio <onboarding@resend.dev>',
-                to: [CONFIG.systemEmail],
-                replyTo: sanitizedData.email !== 'Not provided' ? sanitizedData.email : undefined,
-                subject: `New Lead: ${sanitizedData.business}`,
-                html: `
-                    <div style="font-family: Arial, sans-serif; max-width: 600px; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
-                        <h2 style="color: #333; margin-top: 0;">New Website Quote Request</h2>
-                        <p><strong>Name:</strong> ${sanitizedData.name}</p>
-                        <p><strong>Business:</strong> ${sanitizedData.business}</p>
-                        <p><strong>Phone:</strong> ${sanitizedData.phone}</p>
-                        <p><strong>Email:</strong> ${sanitizedData.email}</p>
-                        <p><strong>Industry:</strong> ${sanitizedData.industry}</p>
-                        <p><strong>Budget:</strong> ${sanitizedData.budget}</p>
-                        <h3 style="border-top: 1px solid #eee; padding-top: 15px;">Project Details</h3>
-                        <p style="background: #f9f9f9; padding: 15px; border-radius: 4px; white-space: pre-wrap;">${sanitizedData.message}</p>
-                        <p style="font-size: 12px; color: #888; margin-top: 20px;">Time: ${sanitizedData.timestamp}</p>
-                    </div>
-                `
+        if (process.env.WEB3FORMS_ACCESS_KEY) {
+            const web3response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    access_key: process.env.WEB3FORMS_ACCESS_KEY,
+                    name: sanitizedData.name,
+                    email: sanitizedData.email,
+                    subject: `New Lead: ${sanitizedData.business}`,
+                    from_name: 'Velora Digital Studio',
+                    message: `Name: ${sanitizedData.name}\nBusiness: ${sanitizedData.business}\nPhone: ${sanitizedData.phone}\nEmail: ${sanitizedData.email}\nIndustry: ${sanitizedData.industry}\nBudget: ${sanitizedData.budget}\n\nProject Details:\n${sanitizedData.message}`
+                })
             });
 
-            if (error) {
-                console.error('[Resend Error]', error);
+            const result = await web3response.json();
+            
+            if (!web3response.ok || !result.success) {
+                console.error('[Web3Forms Error Details]:', result);
                 throw new Error('Email service unavailable.');
             }
+            
+            console.log(`[API/Contact] Lead successfully routed via Web3Forms for: ${sanitizedData.business}`);
         } else {
-            console.warn('[API/Contact] RESEND_API_KEY missing! Simulating success for lead:', sanitizedData.email);
+            console.warn('[API/Contact] WEB3FORMS_ACCESS_KEY missing! Simulating success for lead:', sanitizedData.email);
         }
 
         return res.status(200).json({ success: true, message: 'Message sent.' });
     } catch (error) {
-        console.error('[API/Contact] Error:', error);
+        console.error('[API/Contact] Catch Block Error:', error);
         return res.status(500).json({ error: 'Server could not process the request. Please call us directly.' });
     }
 });
