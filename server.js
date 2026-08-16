@@ -43,10 +43,10 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 // 3. CONSTANTS & DATA                                                          //
 // ============================================================================ //
 const CONFIG = {
-    baseUrl: process.env.BASE_URL || 'https://veloradigital.in',
-    phone: process.env.CONTACT_PHONE || '+91 99997 33735',
-    whatsapp: process.env.CONTACT_WHATSAPP || '919999733735',
-    email: process.env.CONTACT_EMAIL || 'hello@veloradigital.in', 
+    baseUrl: process.env.BASE_URL || 'https://velora-ds6e.onrender.com',
+    phone: process.env.CONTACT_PHONE || '+91 73037 33735',
+    whatsapp: process.env.CONTACT_WHATSAPP || '917303733735',
+    email: process.env.CONTACT_EMAIL || 'ravishnoob123@gmail.com', 
     currencySymbol: '₹',
     pricing: {
         essential: 14999,
