@@ -45,10 +45,10 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 // ============================================================================ //
 const CONFIG = {
     baseUrl: process.env.BASE_URL || 'https://veloradigital.in',
-    phone: process.env.CONTACT_PHONE || '+91 73037 33735',
-    whatsapp: process.env.CONTACT_WHATSAPP || '917303733735',
+    phone: process.env.CONTACT_PHONE || '+91 99997 33735',
+    whatsapp: process.env.CONTACT_WHATSAPP || '919999733735',
     email: process.env.CONTACT_EMAIL || 'hello@veloradigital.in', 
-    systemEmail: process.env.SYSTEM_EMAIL || 'inbox@veloradigital.in', 
+    systemEmail: process.env.SYSTEM_EMAIL || 'jyotimalhotraf9@gmail.com', 
     currencySymbol: '₹',
     pricing: {
         essential: 14999,
@@ -1210,7 +1210,7 @@ app.get('/portfolio', (req, res) => {
             </div>
             
             <div class="mt-20 text-center reveal">
-                <a href="/contact" class="btn-luxury inline-flex items-center justify-center px-10 py-5 min-h-[44px] rounded-full text-[10px] uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText shadow-md focus:outline-none focus:ring-2 focus:ring-velora-gold">
+                <a href="/contact" class="btn-luxury inline-flex items-center justify-center px-10 py-5 min-h-[44px] rounded-full text-[10px] uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText shadow-[0_0_30px_rgba(212,175,55,0.15)] focus:outline-none focus:ring-2 focus:ring-velora-gold">
                     Start a Conversation
                 </a>
             </div>
@@ -1839,21 +1839,21 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
         if (process.env.RESEND_API_KEY) {
             const { error } = await resend.emails.send({
                 from: process.env.EMAIL_FROM || 'Velora Studio <onboarding@resend.dev>',
-                to: CONFIG.systemEmail,
-                reply_to: sanitizedData.email !== 'Not provided' ? sanitizedData.email : undefined,
+                to: [CONFIG.systemEmail],
+                replyTo: sanitizedData.email !== 'Not provided' ? sanitizedData.email : undefined,
                 subject: `New Lead: ${sanitizedData.business}`,
                 html: `
                     <div style="font-family: Arial, sans-serif; max-width: 600px; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
-                        <h2 style="color: #333;">New Website Quote Request</h2>
+                        <h2 style="color: #333; margin-top: 0;">New Website Quote Request</h2>
                         <p><strong>Name:</strong> ${sanitizedData.name}</p>
                         <p><strong>Business:</strong> ${sanitizedData.business}</p>
                         <p><strong>Phone:</strong> ${sanitizedData.phone}</p>
                         <p><strong>Email:</strong> ${sanitizedData.email}</p>
                         <p><strong>Industry:</strong> ${sanitizedData.industry}</p>
                         <p><strong>Budget:</strong> ${sanitizedData.budget}</p>
-                        <h3>Project Details</h3>
+                        <h3 style="border-top: 1px solid #eee; padding-top: 15px;">Project Details</h3>
                         <p style="background: #f9f9f9; padding: 15px; border-radius: 4px; white-space: pre-wrap;">${sanitizedData.message}</p>
-                        <p style="font-size: 12px; color: #888;">Time: ${sanitizedData.timestamp}</p>
+                        <p style="font-size: 12px; color: #888; margin-top: 20px;">Time: ${sanitizedData.timestamp}</p>
                     </div>
                 `
             });
