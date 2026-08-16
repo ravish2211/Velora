@@ -43,10 +43,10 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 // 3. CONSTANTS & DATA                                                          //
 // ============================================================================ //
 const CONFIG = {
-    baseUrl: process.env.BASE_URL || 'https://velora-dsde.onrender.com',
-    phone: process.env.CONTACT_PHONE || '+91 73037 33735',
-    whatsapp: process.env.CONTACT_WHATSAPP || '917303733735',
-    email: process.env.CONTACT_EMAIL || 'ravishnoob123@gmail.com', 
+    baseUrl: process.env.BASE_URL || 'https://veloradigital.in',
+    phone: process.env.CONTACT_PHONE || '+91 99997 33735',
+    whatsapp: process.env.CONTACT_WHATSAPP || '919999733735',
+    email: process.env.CONTACT_EMAIL || 'hello@veloradigital.in', 
     currencySymbol: '₹',
     pricing: {
         essential: 14999,
@@ -913,7 +913,7 @@ app.get('/services', (req, res) => {
     const meta = {
         title: 'Web Design & Local SEO Services | Velora Digital',
         description: 'Professional web design, local SEO, and maintenance services for local businesses.',
-        breadcrumbs: [{title: 'Home', link: '/'}, {title: 'Services', link: '/services'}]
+        breadcrumbs: [{title: 'Home', link: '/services'}, {title: 'Services', link: '/services'}]
     };
 
     const content = `
@@ -1848,7 +1848,8 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                    'Accept': 'application/json',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
                 },
                 body: JSON.stringify({
                     access_key: process.env.WEB3FORMS_ACCESS_KEY,
@@ -1856,12 +1857,21 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
                     email: sanitizedData.email,
                     subject: `New Lead: ${sanitizedData.business}`,
                     from_name: 'Velora Digital Studio',
+                    replyto: sanitizedData.email !== 'Not provided' ? sanitizedData.email : undefined,
                     message: `Name: ${sanitizedData.name}\nBusiness: ${sanitizedData.business}\nPhone: ${sanitizedData.phone}\nEmail: ${sanitizedData.email}\nIndustry: ${sanitizedData.industry}\nBudget: ${sanitizedData.budget}\n\nProject Details:\n${sanitizedData.message}`
                 })
             });
 
-            const result = await web3response.json();
+            const responseText = await web3response.text();
+            let result;
             
+            try {
+                result = JSON.parse(responseText);
+            } catch (e) {
+                console.error('[Web3Forms WAF Block]:', responseText.substring(0, 200));
+                throw new Error('The secure gateway blocked the request. Please call the studio directly.');
+            }
+
             if (!web3response.ok || !result.success) {
                 console.error('[Web3Forms Error Details]:', result);
                 throw new Error('Email service unavailable.');
@@ -1874,7 +1884,8 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 
         return res.status(200).json({ success: true, message: 'Message sent.' });
     } catch (error) {
-        console.error('[API/Contact] Catch Block Error:', error);
+        const errorMsg = error instanceof Error ? error.message : String(error);
+        console.error('[API/Contact] Catch Block Error:', errorMsg);
         return res.status(500).json({ error: 'Server could not process the request. Please call us directly.' });
     }
 });
