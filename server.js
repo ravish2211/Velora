@@ -313,7 +313,7 @@ ${message || 'No additional details provided.'}
 
         const resend = getResend();
         if (resend) {
-            await resend.emails.send({
+            const { data, error } = await resend.emails.send({
                 from: CONFIG.emailFrom,
                 to: CONFIG.systemEmail || CONFIG.email,
                 replyTo: email,
@@ -321,6 +321,10 @@ ${message || 'No additional details provided.'}
                 text: emailText,
                 html: emailHtml
             });
+            if (error) {
+                console.error('[Resend Error]:', error);
+                throw new Error(error.message || 'Email delivery failed');
+            }
         } else {
             console.log('[Inquiry Received - Resend API Key unconfigured, logged to console]:', {
                 name,
