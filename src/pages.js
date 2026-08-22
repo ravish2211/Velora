@@ -1,0 +1,1627 @@
+// ============================================================================ //
+// VELORA DIGITAL - PAGE TEMPLATES & VIEW RENDERERS                             //
+// ============================================================================ //
+
+const { CONFIG, SERVICES, INDUSTRIES, LOCATIONS, PORTFOLIO, BLOG, FAQS } = require('./data');
+const { escapeHTML, generateSchema } = require('./components');
+
+function renderHomePage() {
+    const meta = {
+        title: 'Velora Digital | Web Design, Local SEO & Maintenance Studio',
+        description: 'We engineer fast, mobile-first websites and local search foundations for serious businesses across India. Transparent pricing, clean code, no fluff.',
+        breadcrumbs: null
+    };
+
+    const content = `
+    <!-- 1. HERO SECTION -->
+    <section class="relative pt-24 pb-20 md:pt-36 md:pb-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-velora-faint border border-velora-borderStrong text-xs font-semibold uppercase tracking-widest text-velora-gold mb-8 reveal">
+                    <span class="w-2 h-2 rounded-full bg-velora-gold animate-pulse"></span>
+                    <span>Engineering High-Converting Local Websites</span>
+                </div>
+                <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-velora-text leading-[1.08] text-balance reveal" style="transition-delay: 50ms;">
+                    Websites That Build Instant Trust & <span class="gold-gradient-text">Drive Local Calls</span>.
+                </h1>
+                <p class="mt-6 text-lg sm:text-xl text-velora-muted leading-relaxed max-w-2xl text-pretty reveal" style="transition-delay: 100ms;">
+                    We design and develop fast, mobile-first websites and technical local SEO for clinics, restaurants, real estate firms, and local businesses in India. No bloated page-builders, no fake promises.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 reveal" style="transition-delay: 150ms;">
+                    <a href="/contact" id="hero-primary-cta" class="btn-luxury inline-flex items-center justify-center px-8 py-4 min-h-[48px] rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText hover:opacity-95 transition-opacity shadow-lg">
+                        Get a Free Project Quote
+                    </a>
+                    <a href="/portfolio" id="hero-secondary-cta" class="inline-flex items-center justify-center px-8 py-4 min-h-[48px] rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-faint hover:bg-velora-faintHover border border-velora-borderStrong text-velora-text transition-colors">
+                        Explore Concept Work &rarr;
+                    </a>
+                </div>
+                <div class="mt-12 pt-8 border-t border-velora-border flex flex-wrap items-center gap-6 sm:gap-10 text-xs font-medium text-velora-muted reveal" style="transition-delay: 200ms;">
+                    <div class="flex items-center gap-2">
+                        <span class="text-emerald-500 font-bold">✓</span>
+                        <span>Under 500ms Mobile Load Speed</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-emerald-500 font-bold">✓</span>
+                        <span>100% Custom Coded, Zero Bloat</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-emerald-500 font-bold">✓</span>
+                        <span>Full Code & Domain Ownership</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. WHY VELORA / VALUE PROPOSITION COMPARISON -->
+    <section class="py-20 bg-velora-surface border-y border-velora-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl mb-16 reveal">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Honest Comparison</span>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-velora-text tracking-tight">Why Most Local Websites Fail</h2>
+                <p class="mt-4 text-base text-velora-muted leading-relaxed text-pretty">
+                    Local businesses are usually forced to choose between cheap, broken templates or overpriced agencies with confusing retainers. Here is how we do things differently.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Freelance Template -->
+                <div class="p-8 rounded-2xl bg-velora-bg border border-velora-border opacity-85 reveal">
+                    <div class="text-xs font-bold uppercase tracking-widest text-red-500 mb-4">Typical Cheap Freelancer</div>
+                    <div class="font-display text-xl font-bold text-velora-text mb-4">Pirated Template Trap</div>
+                    <ul class="space-y-3 text-sm text-velora-muted">
+                        <li class="flex items-start gap-2.5"><span class="text-red-500">✕</span> <span>Uses heavy visual builders with 40+ plugins</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-red-500">✕</span> <span>Takes 5-8 seconds to load on mobile 4G</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-red-500">✕</span> <span>Broken contact forms and missed leads</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-red-500">✕</span> <span>Freelancer disappears after initial payment</span></li>
+                    </ul>
+                </div>
+
+                <!-- Bloated Agency -->
+                <div class="p-8 rounded-2xl bg-velora-bg border border-velora-border opacity-85 reveal" style="transition-delay: 100ms;">
+                    <div class="text-xs font-bold uppercase tracking-widest text-amber-500 mb-4">Traditional Big Agency</div>
+                    <div class="font-display text-xl font-bold text-velora-text mb-4">Expensive Agency Bloat</div>
+                    <ul class="space-y-3 text-sm text-velora-muted">
+                        <li class="flex items-start gap-2.5"><span class="text-amber-500">✕</span> <span>Huge retainers starting at ₹1,50,000+</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-amber-500">✕</span> <span>Complicated account managers and endless meetings</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-amber-500">✕</span> <span>Work outsourced to junior interns</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-amber-500">✕</span> <span>Locks you into proprietary server software</span></li>
+                    </ul>
+                </div>
+
+                <!-- Velora Digital -->
+                <div class="p-8 rounded-2xl bg-velora-bg border-2 border-velora-gold/40 shadow-xl relative reveal" style="transition-delay: 200ms;">
+                    <div class="absolute -top-3 right-6 px-3 py-1 rounded-full bg-velora-gold text-black text-[10px] font-bold uppercase tracking-widest">Engineered Right</div>
+                    <div class="text-xs font-bold uppercase tracking-widest text-velora-gold mb-4">The Velora Standard</div>
+                    <div class="font-display text-xl font-bold text-velora-text mb-4">Clean Code & Direct Outcomes</div>
+                    <ul class="space-y-3 text-sm text-velora-muted">
+                        <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-bold">✓</span> <span>Lightweight semantic code built for sub-second speeds</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-bold">✓</span> <span>Transparent fixed pricing from ₹14,999 to ₹34,999</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-bold">✓</span> <span>Local Schema.org metadata and click-to-call conversions</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-bold">✓</span> <span>100% full ownership of your domain and codebase</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SERVICES OVERVIEW -->
+    <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Our Core Services</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-bold text-velora-text tracking-tight">What We Build & Support</h2>
+            </div>
+            <a href="/services" class="text-xs uppercase tracking-[0.2em] font-bold text-velora-gold hover:text-velora-text transition-colors flex items-center gap-2">
+                Explore All Services <span>&rarr;</span>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            ${SERVICES.map((s, idx) => `
+                <div class="premium-border bg-velora-surface p-8 sm:p-10 rounded-3xl flex flex-col justify-between reveal" style="transition-delay: ${idx * 100}ms;">
+                    <div>
+                        <div class="text-3xl mb-6">${s.icon}</div>
+                        <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-velora-gold block mb-2">${s.heroTag}</span>
+                        <h3 class="font-display text-2xl font-bold text-velora-text mb-4 tracking-tight">${s.title}</h3>
+                        <p class="text-sm text-velora-muted leading-relaxed mb-6 text-pretty">${s.short}</p>
+                        
+                        <ul class="space-y-2.5 text-xs text-velora-muted mb-8">
+                            ${s.benefits.slice(0, 4).map(b => `<li class="flex items-center gap-2"><span class="text-velora-gold">✓</span> <span>${b}</span></li>`).join('')}
+                        </ul>
+                    </div>
+                    <a href="/services/${s.slug}" class="inline-flex items-center justify-between py-3 text-xs uppercase tracking-[0.15em] font-bold text-velora-text hover:text-velora-gold border-t border-velora-border transition-colors">
+                        <span>View Service Details</span>
+                        <span>&rarr;</span>
+                    </a>
+                </div>
+            `).join('')}
+        </div>
+    </section>
+
+    <!-- 4. BEFORE VS AFTER COMPARISON (INTERACTIVE) -->
+    <section class="py-20 bg-velora-surface border-y border-velora-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-12 reveal">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Live Comparison</span>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-velora-text tracking-tight">The Difference Is Obvious</h2>
+                <p class="mt-4 text-base text-velora-muted text-pretty">
+                    Slide between a typical bloated local business website and a high-performance Velora build.
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto reveal">
+                <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl border border-velora-border select-none" id="before-after-container">
+                    <!-- Before Layer (Bottom) -->
+                    <div class="absolute inset-0 bg-[#1e1b18] text-[#a89f91] p-6 sm:p-10 flex flex-col justify-between font-serif">
+                        <div class="border-b border-[#3d3830] pb-4 flex justify-between items-center">
+                            <span class="text-xl italic text-[#d4af37]">Old-Style Template</span>
+                            <span class="text-xs px-2 py-1 bg-red-950/80 text-red-400 rounded border border-red-800">4.8s Load Time • 38/100 Mobile Score</span>
+                        </div>
+                        <div class="my-auto space-y-4 max-w-lg">
+                            <div class="text-2xl sm:text-3xl text-white">"Welcome to Our Website - Please Download Our 20MB PDF Catalog"</div>
+                            <div class="text-sm opacity-70">Generic stock photos, hidden contact numbers, unreadable small text on mobile screens.</div>
+                        </div>
+                        <div class="text-xs opacity-50 border-t border-[#3d3830] pt-3">
+                            Missing Schema • Broken WhatsApp Link • High Bounce Rate
+                        </div>
+                    </div>
+
+                    <!-- After Layer (Top / Clipped) -->
+                    <div class="absolute inset-0 bg-velora-card text-velora-text p-6 sm:p-10 flex flex-col justify-between font-sans overflow-hidden" id="after-layer" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);">
+                        <div class="border-b border-velora-border pb-4 flex justify-between items-center">
+                            <span class="font-display text-xl font-bold tracking-tight text-velora-text">Velora Digital Build</span>
+                            <span class="text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-500 rounded-full border border-emerald-500/30 font-mono font-bold">0.4s Load Time • 99/100 Core Web Vitals</span>
+                        </div>
+                        <div class="my-auto space-y-4 max-w-lg">
+                            <div class="font-display text-2xl sm:text-3xl font-bold text-velora-text">Fast Mobile Menu, Tap-to-Call & Local Google Visibility</div>
+                            <div class="text-sm text-velora-muted">Crisp typography, instant WhatsApp inquiries, structured opening hours, and clear pricing.</div>
+                        </div>
+                        <div class="flex items-center gap-4 text-xs font-semibold text-velora-gold border-t border-velora-border pt-3">
+                            <span>✓ Local Schema.org</span>
+                            <span>✓ Sticky Mobile CTA Bar</span>
+                            <span>✓ Guaranteed Zero Bloat</span>
+                        </div>
+                    </div>
+
+                    <!-- Slider Handle -->
+                    <div class="absolute top-0 bottom-0 w-1 bg-velora-gold cursor-ew-resize z-20 flex items-center justify-center" id="slider-handle" style="left: 50%;">
+                        <div class="w-8 h-8 rounded-full bg-velora-button text-velora-buttonText border border-velora-borderStrong shadow-lg flex items-center justify-center text-xs font-bold">
+                            &harr;
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 flex justify-between text-xs text-velora-muted px-2 font-medium">
+                    <span>&larr; Drag left for Outdated Template</span>
+                    <span>Drag right for Velora Standard &rarr;</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. INDUSTRIES WE SERVE -->
+    <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mb-16 reveal">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Specialized Sectors</span>
+            <h2 class="font-display text-3xl sm:text-5xl font-bold text-velora-text tracking-tight">Built for High-Intent Local Customers</h2>
+            <p class="mt-4 text-base text-velora-muted text-pretty">
+                We tailor our site structures around the specific conversion points your customers care about most.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            ${INDUSTRIES.map((ind, idx) => `
+                <a href="/industries/${ind.slug}" class="premium-border bg-velora-surface p-8 rounded-3xl group block reveal" style="transition-delay: ${idx * 75}ms;">
+                    <div class="text-3xl mb-5">${ind.icon}</div>
+                    <h3 class="font-display text-xl font-bold text-velora-text group-hover:text-velora-gold transition-colors mb-3">${ind.name}</h3>
+                    <p class="text-xs text-velora-muted leading-relaxed mb-6 text-pretty">${ind.desc}</p>
+                    <span class="text-[11px] font-bold uppercase tracking-widest text-velora-gold flex items-center gap-1">
+                        View Industry Strategy &rarr;
+                    </span>
+                </a>
+            `).join('')}
+        </div>
+    </section>
+
+    <!-- 6. HONEST CONCEPT WORK SHOWCASE -->
+    <section class="py-20 bg-velora-surface border-y border-velora-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-velora-faint border border-velora-border text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-3">
+                        <span>Transparent Architecture</span>
+                    </div>
+                    <h2 class="font-display text-3xl sm:text-5xl font-bold text-velora-text tracking-tight">Engineered Concept Demonstrations</h2>
+                    <p class="mt-4 text-base text-velora-muted max-w-xl text-pretty">
+                        We don't invent fake client metrics or paid awards. These production-ready prototypes benchmark our code speed, mobile UX, and conversion architecture.
+                    </p>
+                </div>
+                <a href="/portfolio" class="text-xs uppercase tracking-[0.2em] font-bold text-velora-gold hover:text-velora-text transition-colors flex items-center gap-2">
+                    View Complete Portfolio <span>&rarr;</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                ${PORTFOLIO.map((p, idx) => `
+                    <div class="premium-border bg-velora-bg rounded-3xl p-8 flex flex-col justify-between reveal" style="transition-delay: ${idx * 100}ms;">
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-6">
+                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border ${p.badgeColor}">${p.type}</span>
+                                <span class="text-xs font-semibold text-velora-muted">${p.industry}</span>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold text-velora-text mb-3 tracking-tight">${p.title}</h3>
+                            <p class="text-sm text-velora-muted leading-relaxed mb-6 text-pretty">${p.summary}</p>
+                            
+                            <div class="p-4 rounded-2xl bg-velora-surface border border-velora-border mb-6">
+                                <div class="text-[10px] font-bold uppercase tracking-wider text-velora-gold mb-1">What It Proves</div>
+                                <div class="text-xs text-velora-muted leading-relaxed">${p.demonstrates}</div>
+                            </div>
+                        </div>
+
+                        <a href="/portfolio#${p.id}" class="inline-flex items-center justify-between py-3 text-xs uppercase tracking-[0.15em] font-bold text-velora-text hover:text-velora-gold border-t border-velora-border transition-colors">
+                            <span>Inspect Technical Specs</span>
+                            <span>&rarr;</span>
+                        </a>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. OUR 5-STEP PROCESS -->
+    <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mb-16 reveal">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Straightforward Delivery</span>
+            <h2 class="font-display text-3xl sm:text-5xl font-bold text-velora-text tracking-tight">How We Build Your Website</h2>
+            <p class="mt-4 text-base text-velora-muted text-pretty">
+                A structured 2-to-4 week workflow with clear milestones and zero guesswork.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+            <div class="p-6 rounded-2xl bg-velora-surface border border-velora-border reveal">
+                <span class="font-display text-3xl font-bold text-velora-gold block mb-3">01</span>
+                <h4 class="font-display text-base font-bold text-velora-text mb-2">Discovery</h4>
+                <p class="text-xs text-velora-muted leading-relaxed">We clarify your services, local customer search terms, and contact goals.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-velora-surface border border-velora-border reveal" style="transition-delay: 50ms;">
+                <span class="font-display text-3xl font-bold text-velora-gold block mb-3">02</span>
+                <h4 class="font-display text-base font-bold text-velora-text mb-2">Content Map</h4>
+                <p class="text-xs text-velora-muted leading-relaxed">We organize your menus, rate cards, and practitioner credentials.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-velora-surface border border-velora-border reveal" style="transition-delay: 100ms;">
+                <span class="font-display text-3xl font-bold text-velora-gold block mb-3">03</span>
+                <h4 class="font-display text-base font-bold text-velora-text mb-2">Custom Code</h4>
+                <p class="text-xs text-velora-muted leading-relaxed">We write lightweight, fast-loading code tested across iOS and Android.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-velora-surface border border-velora-border reveal" style="transition-delay: 150ms;">
+                <span class="font-display text-3xl font-bold text-velora-gold block mb-3">04</span>
+                <h4 class="font-display text-base font-bold text-velora-text mb-2">SEO & Testing</h4>
+                <p class="text-xs text-velora-muted leading-relaxed">We configure Schema.org markup, verify SSL, and test lead delivery.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-velora-surface border border-velora-border reveal" style="transition-delay: 200ms;">
+                <span class="font-display text-3xl font-bold text-velora-gold block mb-3">05</span>
+                <h4 class="font-display text-base font-bold text-velora-text mb-2">Live Launch</h4>
+                <p class="text-xs text-velora-muted leading-relaxed">Deploy to fast cloud hosting and transfer 100% ownership to you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. TRANSPARENT PRICING PREVIEW -->
+    <section class="py-20 bg-velora-surface border-y border-velora-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl mx-auto text-center mb-16 reveal">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Transparent Investment</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-bold text-velora-text tracking-tight">Clear, Fixed Pricing</h2>
+                <p class="mt-4 text-base text-velora-muted text-pretty">
+                    No hidden fees or surprise invoices. Choose the package that fits your stage of business.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                <!-- Essential -->
+                <div class="p-8 sm:p-10 rounded-3xl bg-velora-bg border border-velora-border flex flex-col justify-between reveal">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-velora-muted block mb-2">Starter Package</span>
+                        <h3 class="font-display text-2xl font-bold text-velora-text mb-2">Essential Web</h3>
+                        <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">₹14,999</div>
+                        <p class="text-xs text-velora-muted leading-relaxed mb-6">Ideal for single-location businesses needing a clean, fast mobile presence.</p>
+                        
+                        <ul class="space-y-3 text-xs text-velora-muted mb-8">
+                            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Up to 5 Custom Mobile-First Pages</li>
+                            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Click-to-Call & WhatsApp Triggers</li>
+                            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Sub-second Mobile Loading Speed</li>
+                            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Secure Contact Form & Email Alerts</li>
+                            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> SSL Certificate & Cloud Deployment</li>
+                        </ul>
+                    </div>
+                    <a href="/contact?tier=essential" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText block">Choose Essential</a>
+                </div>
+
+                <!-- Professional (Highlighted) -->
+                <div class="p-8 sm:p-10 rounded-3xl bg-velora-bg border-2 border-velora-gold/50 shadow-2xl relative flex flex-col justify-between reveal" style="transition-delay: 100ms;">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-velora-gold text-black text-[10px] font-bold uppercase tracking-widest">
+                        Most Popular For Growth
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-velora-gold block mb-2">Complete System</span>
+                        <h3 class="font-display text-2xl font-bold text-velora-text mb-2">Professional + SEO</h3>
+                        <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">₹34,999</div>
+                        <p class="text-xs text-velora-muted leading-relaxed mb-6">For competitive local businesses that need maximum search visibility and high conversions.</p>
+                        
+                        <ul class="space-y-3 text-xs text-velora-muted mb-8">
+                            <li class="flex items-center gap-2"><span class="text-velora-gold font-bold">✓</span> Up to 10 Custom Designed Pages</li>
+                            <li class="flex items-center gap-2"><span class="text-velora-gold font-bold">✓</span> Full Local SEO Schema.org Markup</li>
+                            <li class="flex items-center gap-2"><span class="text-velora-gold font-bold">✓</span> Google Business Profile Alignment</li>
+                            <li class="flex items-center gap-2"><span class="text-velora-gold font-bold">✓</span> Service Menu / Property Showcase Cards</li>
+                            <li class="flex items-center gap-2"><span class="text-velora-gold font-bold">✓</span> Conversion Tracking Integration</li>
+                            <li class="flex items-center gap-2"><span class="text-velora-gold font-bold">✓</span> 3 Months Technical Maintenance Included</li>
+                        </ul>
+                    </div>
+                    <a href="/contact?tier=professional" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-gold text-black block hover:opacity-95">Choose Professional</a>
+                </div>
+
+                <!-- Custom -->
+                <div class="p-8 sm:p-10 rounded-3xl bg-velora-bg border border-velora-border flex flex-col justify-between reveal" style="transition-delay: 200ms;">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-velora-muted block mb-2">Tailored Scale</span>
+                        <h3 class="font-display text-2xl font-bold text-velora-text mb-2">Custom & Multi-Location</h3>
+                        <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">₹69,999+</div>
+                        <p class="text-xs text-velora-muted leading-relaxed mb-6">For multi-branch clinics, large property catalogs, or specialized workflows.</p>
+                        
+                        <ul class="space-y-3 text-xs text-velora-muted mb-8">
+                            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Multi-Branch / Location Page Architecture</li>
+                            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Custom CMS or Catalog Integration</li>
+                            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Advanced Local Directory Structuring</li>
+                            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Priority WhatsApp Engineering Support</li>
+                        </ul>
+                    </div>
+                    <a href="/contact?tier=custom" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText block">Request Custom Scope</a>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center reveal">
+                <a href="/pricing" class="text-xs uppercase tracking-widest font-bold text-velora-gold hover:text-velora-text transition-colors">
+                    Use our Interactive Price Calculator &rarr;
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. FAQ SECTION -->
+    <section class="py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Honest Answers</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-velora-text tracking-tight">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="space-y-6">
+            ${FAQS.map((faq, idx) => `
+                <div class="p-8 rounded-2xl bg-velora-surface border border-velora-border reveal" style="transition-delay: ${idx * 50}ms;">
+                    <h3 class="font-display text-lg font-bold text-velora-text mb-3 tracking-tight">${faq.q}</h3>
+                    <p class="text-sm text-velora-muted leading-relaxed text-pretty">${faq.a}</p>
+                </div>
+            `).join('')}
+        </div>
+    </section>
+
+    <!-- 10. FINAL HIGH-CONVERTING CTA BLOCK -->
+    <section class="py-20 bg-velora-surface border-t border-velora-border">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="p-10 sm:p-16 rounded-3xl bg-velora-bg border border-velora-borderStrong shadow-2xl text-center relative overflow-hidden reveal">
+                <div class="max-w-2xl mx-auto relative z-10">
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-4">Start Your Project</span>
+                    <h2 class="font-display text-3xl sm:text-5xl font-bold text-velora-text tracking-tight leading-tight">
+                        Ready for a Website That Actually Brings in Customers?
+                    </h2>
+                    <p class="mt-6 text-base sm:text-lg text-velora-muted leading-relaxed text-pretty">
+                        Tell us about your business and goals. We will review your project and send a detailed, transparent proposal within 24 hours.
+                    </p>
+                    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="/contact" id="final-cta-quote-btn" class="btn-luxury w-full sm:w-auto px-10 py-4 min-h-[48px] rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText hover:opacity-90 transition-opacity">
+                            Get a Free Quote
+                        </a>
+                        <a href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener noreferrer" id="final-cta-whatsapp-btn" class="w-full sm:w-auto px-8 py-4 min-h-[48px] rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20 transition-colors flex items-center justify-center gap-2">
+                            Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    `;
+
+    const script = `
+        // Before/After Slider Interaction
+        const container = document.getElementById('before-after-container');
+        const afterLayer = document.getElementById('after-layer');
+        const handle = document.getElementById('slider-handle');
+
+        if (container && afterLayer && handle) {
+            let isDragging = false;
+            
+            function updatePosition(x) {
+                const rect = container.getBoundingClientRect();
+                let pos = (x - rect.left) / rect.width;
+                if (pos < 0.05) pos = 0.05;
+                if (pos > 0.95) pos = 0.95;
+                const percent = pos * 100;
+                afterLayer.style.clipPath = 'polygon(0 0, ' + percent + '% 0, ' + percent + '% 100%, 0 100%)';
+                handle.style.left = percent + '%';
+            }
+
+            container.addEventListener('mousedown', (e) => { isDragging = true; updatePosition(e.clientX); });
+            window.addEventListener('mouseup', () => { isDragging = false; });
+            window.addEventListener('mousemove', (e) => { if (isDragging) updatePosition(e.clientX); });
+
+            container.addEventListener('touchstart', (e) => { isDragging = true; updatePosition(e.touches[0].clientX); }, { passive: true });
+            window.addEventListener('touchend', () => { isDragging = false; });
+            window.addEventListener('touchmove', (e) => { if (isDragging) updatePosition(e.touches[0].clientX); }, { passive: true });
+        }
+    `;
+
+    return { meta, content, script };
+}
+
+function renderServicesPage() {
+    const meta = {
+        title: 'Web Design & Local SEO Services | Velora Digital',
+        description: 'Explore our core services: high-speed website design, technical local SEO, and ongoing maintenance care for local businesses.',
+        breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Services', link: '/services' }]
+    };
+
+    const content = `
+    <section class="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-16 reveal">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Our Core Capabilities</span>
+            <h1 class="font-display text-4xl sm:text-6xl font-bold text-velora-text tracking-tight">Engineered for Real Business Growth</h1>
+            <p class="mt-6 text-lg text-velora-muted leading-relaxed text-pretty">
+                We focus exclusively on the three critical pillars local businesses need to win online: high-speed website design, technical local search visibility, and reliable ongoing care.
+            </p>
+        </div>
+
+        <div class="space-y-12">
+            ${SERVICES.map((s, idx) => `
+                <div class="premium-border bg-velora-surface p-8 sm:p-12 rounded-3xl reveal">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                        <div class="lg:col-span-5 space-y-4">
+                            <div class="text-4xl">${s.icon}</div>
+                            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-velora-gold block">${s.heroTag}</span>
+                            <h2 class="font-display text-3xl font-bold text-velora-text tracking-tight">${s.title}</h2>
+                            <p class="text-sm text-velora-muted leading-relaxed text-pretty">${s.longDesc}</p>
+                            <div class="pt-4">
+                                <a href="/services/${s.slug}" class="btn-luxury inline-flex items-center gap-2 px-6 py-3 min-h-[44px] rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
+                                    <span>Detailed Specs & Pricing</span>
+                                    <span>&rarr;</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 bg-velora-bg p-6 sm:p-8 rounded-2xl border border-velora-border">
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-3">What's Included</h4>
+                                <ul class="space-y-2.5 text-xs text-velora-muted">
+                                    ${s.benefits.map(b => `<li class="flex items-start gap-2"><span class="text-emerald-500 font-bold">✓</span> <span>${b}</span></li>`).join('')}
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-widest text-velora-gold mb-3">Ideal For</h4>
+                                <p class="text-xs text-velora-muted leading-relaxed mb-6">${s.whoNeedsIt}</p>
+                                
+                                <div class="text-xs font-bold uppercase tracking-widest text-velora-text mb-1">Standard Delivery Timeline</div>
+                                <div class="text-xs text-velora-muted">${s.timeline}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    </section>
+    `;
+
+    return { meta, content };
+}
+
+function renderServiceDetailPage(service) {
+    const meta = {
+        title: `${service.title} | Velora Digital`,
+        description: service.short,
+        schema: generateSchema('Service', { name: service.title, description: service.short }),
+        breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Services', link: '/services' }, { title: service.title, link: `/services/${service.slug}` }]
+    };
+
+    const content = `
+    <article class="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="mb-16 reveal">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">${service.heroTag}</span>
+            <h1 class="font-display text-4xl sm:text-6xl font-bold text-velora-text tracking-tight leading-tight">${service.title}</h1>
+            <p class="mt-6 text-xl text-velora-muted leading-relaxed max-w-3xl text-pretty">${service.short}</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 reveal">
+            <div class="p-8 rounded-3xl bg-velora-surface border border-velora-border">
+                <h2 class="font-display text-2xl font-bold text-velora-text mb-4 tracking-tight">What Is Included</h2>
+                <ul class="space-y-3 text-sm text-velora-muted">
+                    ${service.benefits.map(b => `<li class="flex items-start gap-2.5"><span class="text-emerald-500 font-bold">✓</span> <span>${b}</span></li>`).join('')}
+                </ul>
+            </div>
+
+            <div class="p-8 rounded-3xl bg-velora-surface border border-velora-border">
+                <h2 class="font-display text-2xl font-bold text-velora-text mb-4 tracking-tight">What Is NOT Included</h2>
+                <ul class="space-y-3 text-sm text-velora-muted mb-6">
+                    ${service.notIncluded.map(n => `<li class="flex items-start gap-2.5"><span class="text-red-500">✕</span> <span>${n}</span></li>`).join('')}
+                </ul>
+                <div class="p-4 rounded-xl bg-velora-bg border border-velora-border text-xs text-velora-muted">
+                    <strong class="text-velora-text block mb-1">Expected Timeline:</strong>
+                    <span>${service.timeline}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5-Step Process for this service -->
+        <div class="mb-16 p-8 sm:p-12 rounded-3xl bg-velora-surface border border-velora-border reveal">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-velora-text mb-8 tracking-tight">Step-by-Step Delivery Workflow</h2>
+            <div class="space-y-6">
+                ${service.process.map(p => `
+                    <div class="flex items-start gap-4 pb-6 border-b border-velora-border last:border-0 last:pb-0">
+                        <span class="font-display text-xl font-bold text-velora-gold shrink-0">${p.step}</span>
+                        <div>
+                            <h3 class="font-display text-base font-bold text-velora-text mb-1">${p.title}</h3>
+                            <p class="text-sm text-velora-muted leading-relaxed">${p.desc}</p>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+
+        <!-- Service FAQs -->
+        <div class="mb-16 reveal">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-velora-text mb-8 tracking-tight">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                ${service.faqs.map(faq => `
+                    <div class="p-6 rounded-2xl bg-velora-surface border border-velora-border">
+                        <h3 class="font-display text-base font-bold text-velora-text mb-2">${faq.q}</h3>
+                        <p class="text-sm text-velora-muted leading-relaxed">${faq.a}</p>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+
+        <!-- CTA Box -->
+        <div class="p-10 rounded-3xl bg-velora-bg border border-velora-borderStrong text-center reveal">
+            <h3 class="font-display text-2xl font-bold text-velora-text mb-3">Ready to Discuss ${service.title}?</h3>
+            <p class="text-sm text-velora-muted max-w-md mx-auto mb-8">Send us a quick message with your project goals for a fast, honest estimate.</p>
+            <a href="/contact" class="btn-luxury inline-flex items-center px-8 py-4 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
+                Request a Free Quote
+            </a>
+        </div>
+    </article>
+    `;
+
+    return { meta, content };
+}
+
+function renderIndustriesPage() {
+    const meta = {
+        title: 'Industries We Serve | Velora Digital',
+        description: 'Specialized web design and local SEO strategies for real estate agencies, restaurants, clinics, and salons.',
+        breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Industries', link: '/industries' }]
+    };
+
+    const content = `
+    <section class="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-16 reveal">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Focused Industry Expertise</span>
+            <h1 class="font-display text-4xl sm:text-6xl font-bold text-velora-text tracking-tight">Built for Your Exact Customer Flow</h1>
+            <p class="mt-6 text-lg text-velora-muted leading-relaxed text-pretty">
+                Every business sector has different customer friction points. We build layouts engineered around what your specific local buyers expect.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            ${INDUSTRIES.map((ind, idx) => `
+                <div class="premium-border bg-velora-surface p-8 sm:p-10 rounded-3xl flex flex-col justify-between reveal" style="transition-delay: ${idx * 75}ms;">
+                    <div>
+                        <div class="text-4xl mb-4">${ind.icon}</div>
+                        <h2 class="font-display text-2xl font-bold text-velora-text mb-3 tracking-tight">${ind.name}</h2>
+                        <p class="text-sm text-velora-muted leading-relaxed mb-6 text-pretty">${ind.desc}</p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="p-4 rounded-xl bg-velora-bg border border-velora-border">
+                                <div class="text-[10px] font-bold uppercase tracking-widest text-red-500 mb-1">Common Problem</div>
+                                <div class="text-xs text-velora-muted leading-relaxed">${ind.challenges}</div>
+                            </div>
+                            <div class="p-4 rounded-xl bg-velora-bg border border-velora-border">
+                                <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-1">Velora Solution</div>
+                                <div class="text-xs text-velora-muted leading-relaxed">${ind.solutions}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/industries/${ind.slug}" class="btn-luxury inline-flex items-center justify-between px-6 py-3.5 min-h-[44px] rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
+                        <span>Read Full ${ind.shortName} Strategy</span>
+                        <span>&rarr;</span>
+                    </a>
+                </div>
+            `).join('')}
+        </div>
+    </section>
+    `;
+
+    return { meta, content };
+}
+
+function renderIndustryDetailPage(industry) {
+    const meta = {
+        title: `${industry.name} Web Design & SEO | Velora Digital`,
+        description: industry.desc,
+        breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Industries', link: '/industries' }, { title: industry.name, link: `/industries/${industry.slug}` }]
+    };
+
+    const content = `
+    <article class="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="mb-16 reveal">
+            <div class="text-4xl mb-4">${industry.icon}</div>
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Industry Playbook</span>
+            <h1 class="font-display text-4xl sm:text-6xl font-bold text-velora-text tracking-tight leading-tight">${industry.name}</h1>
+            <p class="mt-6 text-xl text-velora-muted leading-relaxed max-w-3xl text-pretty">${industry.desc}</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 reveal">
+            <div class="p-8 rounded-3xl bg-velora-surface border border-velora-border">
+                <span class="text-xs font-bold uppercase tracking-widest text-red-500 block mb-2">Common Industry Friction</span>
+                <h2 class="font-display text-xl font-bold text-velora-text mb-4 tracking-tight">Why Most Websites in This Sector Fail</h2>
+                <p class="text-sm text-velora-muted leading-relaxed text-pretty">${industry.challenges}</p>
+            </div>
+
+            <div class="p-8 rounded-3xl bg-velora-surface border border-velora-border">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-500 block mb-2">Customer Expectations</span>
+                <h2 class="font-display text-xl font-bold text-velora-text mb-4 tracking-tight">What High-Intent Visitors Look For</h2>
+                <p class="text-sm text-velora-muted leading-relaxed text-pretty">${industry.expectations}</p>
+            </div>
+        </div>
+
+        <div class="p-8 sm:p-12 rounded-3xl bg-velora-surface border border-velora-border mb-16 reveal">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-velora-text mb-6 tracking-tight">Essential Conversion Elements We Build</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                ${industry.conversionElements.map(el => `
+                    <div class="flex items-center gap-3 p-4 rounded-xl bg-velora-bg border border-velora-border text-sm text-velora-text font-medium">
+                        <span class="text-velora-gold font-bold">✓</span>
+                        <span>${el}</span>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 reveal">
+            <div class="p-8 rounded-3xl bg-velora-surface border border-velora-border">
+                <h3 class="font-display text-lg font-bold text-velora-text mb-3 tracking-tight">Mobile Experience Focus</h3>
+                <p class="text-sm text-velora-muted leading-relaxed text-pretty">${industry.mobileConsiderations}</p>
+            </div>
+            <div class="p-8 rounded-3xl bg-velora-surface border border-velora-border">
+                <h3 class="font-display text-lg font-bold text-velora-text mb-3 tracking-tight">Local SEO Strategy</h3>
+                <p class="text-sm text-velora-muted leading-relaxed text-pretty">${industry.seoConsiderations}</p>
+            </div>
+        </div>
+
+        <!-- CTA Box -->
+        <div class="p-10 rounded-3xl bg-velora-bg border border-velora-borderStrong text-center reveal">
+            <h3 class="font-display text-2xl font-bold text-velora-text mb-3">Upgrade Your ${industry.shortName} Website</h3>
+            <p class="text-sm text-velora-muted max-w-md mx-auto mb-8">Get a modern, fast website tailored specifically for your customers.</p>
+            <a href="/contact?industry=${industry.slug}" class="btn-luxury inline-flex items-center px-8 py-4 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
+                Get a Quote for ${industry.shortName}
+            </a>
+        </div>
+    </article>
+    `;
+
+    return { meta, content };
+}
+
+function renderLocationsPage() {
+    const meta = {
+        title: 'Service Areas & Locations | Velora Digital',
+        description: 'Web design and local SEO studio serving Gurugram, Delhi NCR, Chandigarh Tricity, and Bengaluru.',
+        breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Locations', link: '/locations' }]
+    };
+
+    const content = `
+    <section class="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-16 reveal">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Geographic Reach</span>
+            <h1 class="font-display text-4xl sm:text-6xl font-bold text-velora-text tracking-tight">Local Web Design Across Key Business Hubs</h1>
+            <p class="mt-6 text-lg text-velora-muted leading-relaxed text-pretty">
+                We support serious businesses in competitive regional corridors where local search visibility and smartphone conversion are essential to winning customers.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            ${LOCATIONS.map((loc, idx) => `
+                <div class="premium-border bg-velora-surface p-8 sm:p-10 rounded-3xl flex flex-col justify-between reveal" style="transition-delay: ${idx * 75}ms;">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <span class="text-xs font-bold uppercase tracking-widest text-velora-gold">${loc.region}</span>
+                            <span class="text-xs text-velora-muted">Hub Profile</span>
+                        </div>
+                        <h2 class="font-display text-3xl font-bold text-velora-text mb-3 tracking-tight">${loc.name}</h2>
+                        <p class="text-sm text-velora-muted leading-relaxed mb-6 text-pretty">${loc.desc}</p>
+                        
+                        <div class="mb-6">
+                            <div class="text-xs font-bold uppercase tracking-widest text-velora-text mb-3">Key Sub-Markets & Corridors</div>
+                            <div class="flex flex-wrap gap-2">
+                                ${loc.neighborhoods.map(n => `<span class="px-3 py-1 rounded-lg bg-velora-bg border border-velora-border text-xs text-velora-muted">${n}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/locations/${loc.slug}" class="btn-luxury inline-flex items-center justify-between px-6 py-3.5 min-h-[44px] rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
+                        <span>Explore ${loc.name} Local Strategy</span>
+                        <span>&rarr;</span>
+                    </a>
+                </div>
+            `).join('')}
+        </div>
+    </section>
+    `;
+
+    return { meta, content };
+}
+
+function renderLocationDetailPage(location) {
+    const meta = {
+        title: `Web Design & Local SEO in ${location.name} | Velora Digital`,
+        description: location.desc,
+        breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Locations', link: '/locations' }, { title: location.name, link: `/locations/${location.slug}` }]
+    };
+
+    const content = `
+    <article class="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="mb-16 reveal">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">${location.region}</span>
+            <h1 class="font-display text-4xl sm:text-6xl font-bold text-velora-text tracking-tight leading-tight">Web Design & Local SEO for ${location.name}</h1>
+            <p class="mt-6 text-xl text-velora-muted leading-relaxed max-w-3xl text-pretty">${location.desc}</p>
+        </header>
+
+        <div class="p-8 sm:p-12 rounded-3xl bg-velora-surface border border-velora-border mb-16 reveal">
+            <h2 class="font-display text-2xl font-bold text-velora-text mb-4 tracking-tight">Market Context & Local Consumer Behavior</h2>
+            <p class="text-base text-velora-muted leading-relaxed mb-6 text-pretty">${location.hubContext}</p>
+            <p class="text-base text-velora-muted leading-relaxed text-pretty">${location.localStrategy}</p>
+        </div>
+
+        <div class="p-8 sm:p-12 rounded-3xl bg-velora-surface border border-velora-border mb-16 reveal">
+            <h2 class="font-display text-2xl font-bold text-velora-text mb-6 tracking-tight">Target Neighborhoods & Sub-Markets</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                ${location.neighborhoods.map(n => `
+                    <div class="flex items-center gap-3 p-4 rounded-xl bg-velora-bg border border-velora-border text-sm text-velora-text font-medium">
+                        <span class="text-velora-gold">📍</span>
+                        <span>${n}</span>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+
+        <!-- CTA Box -->
+        <div class="p-10 rounded-3xl bg-velora-bg border border-velora-borderStrong text-center reveal">
+            <h3 class="font-display text-2xl font-bold text-velora-text mb-3">Launch Your ${location.name} Website</h3>
+            <p class="text-sm text-velora-muted max-w-md mx-auto mb-8">Get a high-speed website built for local discovery across ${location.name}.</p>
+            <a href="/contact" class="btn-luxury inline-flex items-center px-8 py-4 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
+                Get a Free Quote
+            </a>
+        </div>
+    </article>
+    `;
+
+    return { meta, content };
+}
+
+function renderPortfolioPage() {
+    const meta = {
+        title: 'Portfolio & Concept Demonstrations | Velora Digital',
+        description: 'Explore our honest portfolio of engineered concept projects benchmarking code performance, mobile UX, and conversion architecture.',
+        breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Portfolio', link: '/portfolio' }]
+    };
+
+    const content = `
+    <section class="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-16 reveal">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-velora-faint border border-velora-border text-[10px] font-bold uppercase tracking-widest text-velora-gold mb-4">
+                <span>Honest Transparency Policy</span>
+            </div>
+            <h1 class="font-display text-4xl sm:text-6xl font-bold text-velora-text tracking-tight">Our Work & Technical Benchmarks</h1>
+            <p class="mt-6 text-lg text-velora-muted leading-relaxed text-pretty">
+                We believe in complete professional honesty. Rather than inventing fake client testimonials or inflated revenue metrics, we showcase fully engineered concept and demo projects that demonstrate our real coding standards, mobile performance, and conversion architecture.
+            </p>
+        </div>
+
+        <div class="space-y-16">
+            ${PORTFOLIO.map((p, idx) => `
+                <div id="${p.id}" class="premium-border bg-velora-surface p-8 sm:p-12 rounded-3xl reveal">
+                    <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-6 border-b border-velora-border">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest border ${p.badgeColor}">${p.type}</span>
+                            <span class="text-xs font-semibold text-velora-muted">${p.industry}</span>
+                        </div>
+                        <span class="text-xs font-mono text-velora-gold font-bold">100% Custom Coded</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+                        <div class="lg:col-span-6 space-y-4">
+                            <h2 class="font-display text-3xl sm:text-4xl font-bold text-velora-text tracking-tight">${p.title}</h2>
+                            <p class="text-base text-velora-muted leading-relaxed text-pretty">${p.summary}</p>
+                            
+                            <div class="p-5 rounded-2xl bg-velora-bg border border-velora-border">
+                                <div class="text-xs font-bold uppercase tracking-widest text-velora-gold mb-1">What This Demonstrates</div>
+                                <div class="text-sm text-velora-muted leading-relaxed">${p.demonstrates}</div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-6 space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="p-4 rounded-xl bg-velora-bg border border-velora-border">
+                                    <div class="text-[10px] font-bold uppercase tracking-widest text-red-500 mb-1">The Challenge</div>
+                                    <div class="text-xs text-velora-muted leading-relaxed">${p.challenge}</div>
+                                </div>
+                                <div class="p-4 rounded-xl bg-velora-bg border border-velora-border">
+                                    <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-1">Our Strategy</div>
+                                    <div class="text-xs text-velora-muted leading-relaxed">${p.strategy}</div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="text-xs font-bold uppercase tracking-widest text-velora-text mb-3">Key Deliverables & Specs</div>
+                                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-velora-muted">
+                                    ${p.deliverables.map(d => `<li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> <span>${d}</span></li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+
+        <div class="mt-20 p-10 sm:p-14 rounded-3xl bg-velora-surface border border-velora-borderStrong text-center reveal">
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-velora-text mb-4">Want This Standard of Quality for Your Business?</h3>
+            <p class="text-base text-velora-muted max-w-xl mx-auto mb-8">We will build a custom website tailored specifically to your services and target locality.</p>
+            <a href="/contact" class="btn-luxury inline-flex items-center px-10 py-4 min-h-[48px] rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
+                Discuss Your Project
+            </a>
+        </div>
+    </section>
+    `;
+
+    return { meta, content };
+}
+
+function renderProcessPage() {
+    const meta = {
+        title: 'Our Process | Velora Digital',
+        description: 'How we deliver production-ready local websites in 2 to 4 weeks with zero hassle.',
+        breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Process', link: '/process' }]
+    };
+
+    const content = `
+    <section class="py-20 md:py-28 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="mb-16 reveal">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Structured Workflow</span>
+            <h1 class="font-display text-4xl sm:text-6xl font-bold text-velora-text tracking-tight">How We Work Together</h1>
+            <p class="mt-6 text-lg text-velora-muted leading-relaxed max-w-3xl text-pretty">
+                We run a clean, transparent process without bloated agency meetings or confusing jargon. Here is exactly what happens from our first conversation to launch day.
+            </p>
+        </header>
+
+        <div class="space-y-8 mb-16">
+            <div class="p-8 sm:p-10 rounded-3xl bg-velora-surface border border-velora-border reveal">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="font-display text-3xl font-bold text-velora-gold">01</span>
+                    <h2 class="font-display text-2xl font-bold text-velora-text">Discovery & Alignment</h2>
+                </div>
+                <p class="text-sm text-velora-muted leading-relaxed text-pretty mb-4">
+                    We start with a straightforward discovery call or questionnaire to understand your business, target neighborhoods, primary services, and ideal customer inquiries.
+                </p>
+                <div class="text-xs text-velora-gold font-semibold">Deliverable: Clear project scope & fixed-price agreement</div>
+            </div>
+
+            <div class="p-8 sm:p-10 rounded-3xl bg-velora-surface border border-velora-border reveal" style="transition-delay: 50ms;">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="font-display text-3xl font-bold text-velora-gold">02</span>
+                    <h2 class="font-display text-2xl font-bold text-velora-text">Content Architecture & Visual Design</h2>
+                </div>
+                <p class="text-sm text-velora-muted leading-relaxed text-pretty mb-4">
+                    We organize your menus, pricing cards, and doctor/practitioner credentials into a clean, mobile-first design layout with high typographic contrast and prominent contact buttons.
+                </p>
+                <div class="text-xs text-velora-gold font-semibold">Deliverable: Interactive mobile & desktop visual layouts for review</div>
+            </div>
+
+            <div class="p-8 sm:p-10 rounded-3xl bg-velora-surface border border-velora-border reveal" style="transition-delay: 100ms;">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="font-display text-3xl font-bold text-velora-gold">03</span>
+                    <h2 class="font-display text-2xl font-bold text-velora-text">High-Performance Custom Development</h2>
+                </div>
+                <p class="text-sm text-velora-muted leading-relaxed text-pretty mb-4">
+                    We write clean semantic code without slow page builders. Every page is optimized for sub-second load times on real 4G/5G mobile networks.
+                </p>
+                <div class="text-xs text-velora-gold font-semibold">Deliverable: Fully functional staging site ready for testing</div>
+            </div>
+
+            <div class="p-8 sm:p-10 rounded-3xl bg-velora-surface border border-velora-border reveal" style="transition-delay: 150ms;">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="font-display text-3xl font-bold text-velora-gold">04</span>
+                    <h2 class="font-display text-2xl font-bold text-velora-text">Local SEO & Lead Flow Verification</h2>
+                </div>
+                <p class="text-sm text-velora-muted leading-relaxed text-pretty mb-4">
+                    We embed Local Business Schema.org structured data, configure XML sitemaps, verify SSL security, and test contact forms to ensure inquiries reach your inbox reliably.
+                </p>
+                <div class="text-xs text-velora-gold font-semibold">Deliverable: Form delivery tests & Schema validation</div>
+            </div>
+
+            <div class="p-8 sm:p-10 rounded-3xl bg-velora-surface border border-velora-border reveal" style="transition-delay: 200ms;">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="font-display text-3xl font-bold text-velora-gold">05</span>
+                    <h2 class="font-display text-2xl font-bold text-velora-text">Live Launch & 100% Asset Handover</h2>
+                </div>
+                <p class="text-sm text-velora-muted leading-relaxed text-pretty mb-4">
+                    We connect your custom domain, deploy to fast cloud servers, and transfer complete ownership of your code and credentials.
+                </p>
+                <div class="text-xs text-velora-gold font-semibold">Deliverable: Live website + full ownership transfer</div>
+            </div>
+        </div>
+
+        <div class="p-10 rounded-3xl bg-velora-bg border border-velora-borderStrong text-center reveal">
+            <h3 class="font-display text-2xl font-bold text-velora-text mb-3">Ready to Begin Step 1?</h3>
+            <p class="text-sm text-velora-muted max-w-md mx-auto mb-8">Send us your project details for a fast discovery review.</p>
+            <a href="/contact" class="btn-luxury inline-flex items-center px-8 py-4 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
+                Get Started
+            </a>
+        </div>
+    </section>
+    `;
+
+    return { meta, content };
+}
+
+function renderPricingPage() {
+    const meta = {
+        title: 'Pricing & Instant Calculator | Velora Digital',
+        description: 'Transparent fixed pricing for web design and local SEO. Use our instant calculator to estimate your project investment.',
+        breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Pricing', link: '/pricing' }]
+    };
+
+    const content = `
+    <section class="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="max-w-3xl mb-16 reveal">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Transparent Investment</span>
+            <h1 class="font-display text-4xl sm:text-6xl font-bold text-velora-text tracking-tight">Fixed Packages & Custom Estimator</h1>
+            <p class="mt-6 text-lg text-velora-muted leading-relaxed text-pretty">
+                We believe you should know what a professional website costs before having to sit through a sales pitch.
+            </p>
+        </header>
+
+        <!-- Fixed Packages Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+            <!-- Essential -->
+            <div class="p-8 sm:p-10 rounded-3xl bg-velora-surface border border-velora-border flex flex-col justify-between reveal">
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-velora-muted block mb-2">Starter Package</span>
+                    <h2 class="font-display text-2xl font-bold text-velora-text mb-2">Essential Web</h2>
+                    <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">₹14,999</div>
+                    <p class="text-xs text-velora-muted leading-relaxed mb-6">Clean, fast mobile presence for local single-location businesses.</p>
+                    
+                    <ul class="space-y-3 text-xs text-velora-muted mb-8">
+                        <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Up to 5 Custom Mobile-First Pages</li>
+                        <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Click-to-Call & WhatsApp Triggers</li>
+                        <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Sub-second Mobile Loading Speed</li>
+                        <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Secure Contact Form with Email Alerts</li>
+                        <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> SSL Certificate & Cloud Deployment</li>
+                        <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> 100% Asset & Code Ownership</li>
+                    </ul>
+                </div>
+                <a href="/contact?tier=essential" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText block">Choose Essential</a>
+            </div>
+
+            <!-- Professional (Highlighted) -->
+            <div class="p-8 sm:p-10 rounded-3xl bg-velora-surface border-2 border-velora-gold/50 shadow-2xl relative flex flex-col justify-between reveal" style="transition-delay: 100ms;">
+                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-velora-gold text-black text-[10px] font-bold uppercase tracking-widest">
+                    Recommended For Growth
+                </div>
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-velora-gold block mb-2">Complete System</span>
+                    <h2 class="font-display text-2xl font-bold text-velora-text mb-2">Professional + SEO</h2>
+                    <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">₹34,999</div>
+                    <p class="text-xs text-velora-muted leading-relaxed mb-6">Designed for businesses needing top-tier mobile conversions and Google Maps visibility.</p>
+                    
+                    <ul class="space-y-3 text-xs text-velora-muted mb-8">
+                        <li class="flex items-center gap-2"><span class="text-velora-gold font-bold">✓</span> Up to 10 Custom Designed Pages</li>
+                        <li class="flex items-center gap-2"><span class="text-velora-gold font-bold">✓</span> Full Local SEO Schema.org Markup</li>
+                        <li class="flex items-center gap-2"><span class="text-velora-gold font-bold">✓</span> Google Business Profile Alignment</li>
+                        <li class="flex items-center gap-2"><span class="text-velora-gold font-bold">✓</span> Service Menu / Property Showcase Cards</li>
+                        <li class="flex items-center gap-2"><span class="text-velora-gold font-bold">✓</span> Conversion Tracking Setup</li>
+                        <li class="flex items-center gap-2"><span class="text-velora-gold font-bold">✓</span> 3 Months Technical Maintenance Included</li>
+                    </ul>
+                </div>
+                <a href="/contact?tier=professional" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-gold text-black block hover:opacity-95">Choose Professional</a>
+            </div>
+
+            <!-- Custom -->
+            <div class="p-8 sm:p-10 rounded-3xl bg-velora-surface border border-velora-border flex flex-col justify-between reveal" style="transition-delay: 200ms;">
+                <div>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-velora-muted block mb-2">Tailored Scale</span>
+                    <h2 class="font-display text-2xl font-bold text-velora-text mb-2">Custom & Multi-Location</h2>
+                    <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">₹69,999+</div>
+                    <p class="text-xs text-velora-muted leading-relaxed mb-6">For multi-branch clinics, large property catalogs, or custom software integrations.</p>
+                    
+                    <ul class="space-y-3 text-xs text-velora-muted mb-8">
+                        <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Multi-Branch / Location Page Architecture</li>
+                        <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Custom CMS or Catalog Integration</li>
+                        <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Advanced Local Directory Structuring</li>
+                        <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Priority WhatsApp Engineering Support</li>
+                    </ul>
+                </div>
+                <a href="/contact?tier=custom" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText block">Request Custom Scope</a>
+            </div>
+        </div>
+
+        <!-- Interactive Calculator -->
+        <div class="p-8 sm:p-14 rounded-3xl bg-velora-surface border border-velora-border reveal">
+            <div class="max-w-3xl mb-10">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-2">Interactive Tool</span>
+                <h3 class="font-display text-3xl font-bold text-velora-text tracking-tight">Instant Project Cost Calculator</h3>
+                <p class="text-sm text-velora-muted mt-2">Adjust your desired page count and optional add-ons to see an instant estimate.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <div class="lg:col-span-7 space-y-8">
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <label for="pages-slider" class="text-xs font-bold uppercase tracking-widest text-velora-text">Number of Custom Pages</label>
+                            <span id="pages-count-display" class="font-mono text-sm font-bold text-velora-gold px-3 py-1 bg-velora-bg border border-velora-border rounded-lg">5 Pages</span>
+                        </div>
+                        <input type="range" id="pages-slider" min="1" max="25" value="5" class="w-full accent-velora-gold cursor-pointer">
+                    </div>
+
+                    <div class="space-y-4">
+                        <label class="flex items-center gap-3.5 p-4 rounded-2xl bg-velora-bg border border-velora-border cursor-pointer hover:border-velora-borderStrong transition-colors">
+                            <input type="checkbox" id="calc-seo-addon" class="w-5 h-5 rounded accent-velora-gold cursor-pointer" checked>
+                            <div class="flex-grow">
+                                <div class="text-xs font-bold text-velora-text uppercase tracking-wider">Local SEO & Schema.org Setup</div>
+                                <div class="text-xs text-velora-muted">Google Maps alignment, structured metadata & NAP audit (+₹7,500)</div>
+                            </div>
+                        </label>
+
+                        <label class="flex items-center gap-3.5 p-4 rounded-2xl bg-velora-bg border border-velora-border cursor-pointer hover:border-velora-borderStrong transition-colors">
+                            <input type="checkbox" id="calc-maint-addon" class="w-5 h-5 rounded accent-velora-gold cursor-pointer">
+                            <div class="flex-grow">
+                                <div class="text-xs font-bold text-velora-text uppercase tracking-wider">1-Year Cloud Maintenance & Security</div>
+                                <div class="text-xs text-velora-muted">Hosting management, SSL renewals & regular content edits (+₹5,000)</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 p-8 rounded-2xl bg-velora-bg border border-velora-border text-center">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-velora-muted block mb-2">Estimated Investment</span>
+                    <div id="calc-estimate-display" class="font-display text-4xl sm:text-5xl font-bold text-velora-text mb-4">₹25,000</div>
+                    <p class="text-xs text-velora-muted leading-relaxed mb-6">Subject to detailed discovery and final agreed deliverables.</p>
+                    
+                    <a id="calc-quote-btn" href="/contact?pages=5&seo=true&maint=false&est=25000" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText block">
+                        Apply This Estimate &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    `;
+
+    const script = `
+        const pagesSlider = document.getElementById('pages-slider');
+        const pagesDisplay = document.getElementById('pages-count-display');
+        const seoCheckbox = document.getElementById('calc-seo-addon');
+        const maintCheckbox = document.getElementById('calc-maint-addon');
+        const estimateDisplay = document.getElementById('calc-estimate-display');
+        const quoteBtn = document.getElementById('calc-quote-btn');
+
+        function updateEstimate() {
+            if (!pagesSlider) return;
+            const pages = parseInt(pagesSlider.value, 10);
+            const seo = seoCheckbox ? seoCheckbox.checked : false;
+            const maint = maintCheckbox ? maintCheckbox.checked : false;
+
+            if (pagesDisplay) pagesDisplay.innerText = pages + (pages === 1 ? ' Page' : ' Pages');
+
+            let total = 10000 + (pages * 1500);
+            if (seo) total += 7500;
+            if (maint) total += 5000;
+
+            if (estimateDisplay) estimateDisplay.innerText = '₹' + total.toLocaleString('en-IN');
+            if (quoteBtn) {
+                quoteBtn.href = '/contact?pages=' + pages + '&seo=' + seo + '&maint=' + maint + '&est=' + total;
+            }
+        }
+
+        if (pagesSlider) pagesSlider.addEventListener('input', updateEstimate);
+        if (seoCheckbox) seoCheckbox.addEventListener('change', updateEstimate);
+        if (maintCheckbox) maintCheckbox.addEventListener('change', updateEstimate);
+    `;
+
+    return { meta, content, script };
+}
+
+function renderAboutPage() {
+    const meta = {
+        title: 'About Velora Digital | Independent Web Studio',
+        description: 'Learn about Velora Digital, our engineering philosophy, and why we focus on fast, honest web design for local businesses.',
+        breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'About Us', link: '/about' }]
+    };
+
+    const content = `
+    <article class="py-20 md:py-28 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="mb-16 reveal">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Studio Philosophy</span>
+            <h1 class="font-display text-4xl sm:text-6xl font-bold text-velora-text tracking-tight leading-tight">Honest Web Design for Real Local Businesses</h1>
+            <p class="mt-6 text-xl text-velora-muted leading-relaxed text-pretty">
+                Most small businesses have two bad choices when they need a website. They either buy a cheap template that breaks and never gets found on Google, or they hire an expensive agency that charges huge retainers and speaks in confusing jargon.
+            </p>
+            <p class="mt-4 text-xl text-velora-muted leading-relaxed text-pretty">
+                We built Velora Digital to be the practical middle ground: a capable, focused studio delivering fast-loading, high-converting websites without the agency nonsense.
+            </p>
+        </header>
+
+        <div class="space-y-8 mb-16 reveal">
+            <div class="p-8 sm:p-12 rounded-3xl bg-velora-surface border border-velora-border">
+                <h2 class="font-display text-2xl font-bold text-velora-text mb-6 tracking-tight">Our Guiding Rules</h2>
+                <div class="space-y-6">
+                    <div class="pb-6 border-b border-velora-border">
+                        <strong class="font-display text-lg text-velora-text block mb-1">1. Absolute Honesty Over Marketing Hype</strong>
+                        <p class="text-sm text-velora-muted leading-relaxed">We will never guarantee you a #1 Google rank overnight, because that is technically impossible. We tell the truth about what it takes to succeed online.</p>
+                    </div>
+                    <div class="pb-6 border-b border-velora-border">
+                        <strong class="font-display text-lg text-velora-text block mb-1">2. Built for Mobile Conversions</strong>
+                        <p class="text-sm text-velora-muted leading-relaxed">A website that looks pretty on a 4K monitor but fails to show a clear phone number on a smartphone is useless. We design everything to turn local searches into phone calls and messages.</p>
+                    </div>
+                    <div>
+                        <strong class="font-display text-lg text-velora-text block mb-1">3. Clean Code & Performance Discipline</strong>
+                        <p class="text-sm text-velora-muted leading-relaxed">We don't use heavy builders that slow down your site. We write lean, hand-crafted code that passes Google Core Web Vitals with flying colors.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-10 rounded-3xl bg-velora-bg border border-velora-borderStrong text-center reveal">
+            <h3 class="font-display text-2xl font-bold text-velora-text mb-3">Have a Project in Mind?</h3>
+            <p class="text-sm text-velora-muted max-w-md mx-auto mb-8">We would love to review your website goals and give you an honest appraisal.</p>
+            <a href="/contact" class="btn-luxury inline-flex items-center px-8 py-4 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
+                Contact Our Studio
+            </a>
+        </div>
+    </article>
+    `;
+
+    return { meta, content };
+}
+
+function renderBlogPage() {
+    const meta = {
+        title: 'Journal & Strategic Advice | Velora Digital',
+        description: 'Practical guides and articles on web design, local SEO, mobile speed, and conversion strategies for local businesses.',
+        breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Journal', link: '/blog' }]
+    };
+
+    const content = `
+    <section class="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="max-w-3xl mb-16 reveal">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Knowledge & Strategy</span>
+            <h1 class="font-display text-4xl sm:text-6xl font-bold text-velora-text tracking-tight">Practical Guides for Local Businesses</h1>
+            <p class="mt-6 text-lg text-velora-muted leading-relaxed text-pretty">
+                Actionable advice on how to improve your website, fix conversion leaks, and get discovered on Google Maps.
+            </p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            ${BLOG.map((b, idx) => `
+                <article class="premium-border bg-velora-surface rounded-3xl p-8 sm:p-10 flex flex-col justify-between reveal" style="transition-delay: ${idx * 50}ms;">
+                    <div>
+                        <div class="flex items-center gap-3 text-xs text-velora-muted mb-4">
+                            <span class="text-velora-gold font-bold uppercase tracking-wider">${b.category}</span>
+                            <span>•</span>
+                            <span>${b.readTime}</span>
+                        </div>
+                        <h2 class="font-display text-2xl font-bold text-velora-text mb-4 leading-tight tracking-tight">
+                            <a href="/blog/${b.slug}" class="hover:text-velora-gold transition-colors">${b.title}</a>
+                        </h2>
+                        <p class="text-sm text-velora-muted leading-relaxed mb-6 text-pretty">${b.summary}</p>
+                    </div>
+
+                    <div class="pt-6 border-t border-velora-border flex items-center justify-between text-xs text-velora-muted">
+                        <time datetime="${new Date(b.date).toISOString()}">${b.date}</time>
+                        <a href="/blog/${b.slug}" class="font-bold uppercase tracking-wider text-velora-text hover:text-velora-gold transition-colors flex items-center gap-1">
+                            Read Guide &rarr;
+                        </a>
+                    </div>
+                </article>
+            `).join('')}
+        </div>
+    </section>
+    `;
+
+    return { meta, content };
+}
+
+function renderBlogDetailPage(article) {
+    const meta = {
+        title: `${article.title} | Velora Digital`,
+        description: article.summary,
+        ogType: 'article',
+        schema: generateSchema('Article', article),
+        breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Journal', link: '/blog' }, { title: article.title, link: `/blog/${article.slug}` }]
+    };
+
+    const content = `
+    <article class="py-20 md:py-28 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="mb-12 pb-8 border-b border-velora-border reveal">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-4">${article.category}</span>
+            <h1 class="font-display text-3xl sm:text-5xl font-bold text-velora-text leading-tight tracking-tight">${article.title}</h1>
+            <div class="flex flex-wrap items-center gap-4 text-xs text-velora-muted mt-6">
+                <span>By <strong class="text-velora-text font-medium">${article.author}</strong></span>
+                <span>•</span>
+                <time datetime="${new Date(article.date).toISOString()}">${article.date}</time>
+                <span>•</span>
+                <span>${article.readTime}</span>
+            </div>
+        </header>
+
+        <div class="prose prose-lg max-w-none text-velora-text reveal">
+            ${article.content}
+        </div>
+
+        <div class="mt-16 p-8 sm:p-12 rounded-3xl bg-velora-surface border border-velora-borderStrong text-center reveal">
+            <h3 class="font-display text-2xl font-bold text-velora-text mb-3">Want Us to Implement This for Your Business?</h3>
+            <p class="text-sm text-velora-muted max-w-md mx-auto mb-6">We can audit your current digital presence and build a fast, high-converting website.</p>
+            <a href="/contact" class="btn-luxury inline-flex items-center px-8 py-4 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
+                Get in Touch
+            </a>
+        </div>
+    </article>
+    `;
+
+    return { meta, content };
+}
+
+function renderContactPage() {
+    const meta = {
+        title: 'Contact Us & Request a Quote | Velora Digital',
+        description: 'Get in touch for an honest project estimate. We reply to all inquiries within 24 business hours.',
+        breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Contact', link: '/contact' }]
+    };
+
+    const content = `
+    <section class="py-20 md:py-28 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="text-center max-w-2xl mx-auto mb-16 reveal">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Let's Connect</span>
+            <h1 class="font-display text-4xl sm:text-6xl font-bold text-velora-text tracking-tight">Request a Project Quote</h1>
+            <p class="mt-4 text-base text-velora-muted text-pretty">
+                Send us your project details or call us directly. We review every inquiry and reply within 24 hours.
+            </p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <!-- Direct Info -->
+            <div class="lg:col-span-4 space-y-5 reveal">
+                <h2 class="font-display text-lg font-bold text-velora-text border-b border-velora-border pb-3 mb-4">Direct Contact</h2>
+
+                <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" class="flex items-start gap-4 p-5 rounded-2xl bg-velora-surface border border-velora-border hover:border-velora-borderStrong transition-all group">
+                    <div class="text-2xl mt-0.5">📞</div>
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-1">Direct Call</div>
+                        <div class="text-sm font-semibold text-velora-text group-hover:text-velora-gold transition-colors">${CONFIG.phone}</div>
+                    </div>
+                </a>
+
+                <a href="mailto:${CONFIG.email}" class="flex items-start gap-4 p-5 rounded-2xl bg-velora-surface border border-velora-border hover:border-velora-borderStrong transition-all group">
+                    <div class="text-2xl mt-0.5">✉️</div>
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-1">Email Inquiries</div>
+                        <div class="text-sm font-semibold text-velora-text group-hover:text-velora-gold transition-colors">${CONFIG.email}</div>
+                    </div>
+                </a>
+
+                <a href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener noreferrer" class="flex items-start gap-4 p-5 rounded-2xl bg-velora-surface border border-emerald-500/30 hover:border-emerald-500 transition-all group">
+                    <div class="text-2xl mt-0.5">💬</div>
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-1">WhatsApp Chat</div>
+                        <div class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Message on WhatsApp</div>
+                    </div>
+                </a>
+
+                <div class="p-5 rounded-2xl bg-velora-surface border border-velora-border text-xs text-velora-muted space-y-2">
+                    <div class="font-bold text-velora-text">Studio Operating Hours</div>
+                    <div>Monday – Friday: 9:00 AM – 6:00 PM IST</div>
+                    <div>Saturday: 10:00 AM – 2:00 PM IST</div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="lg:col-span-8 p-8 sm:p-12 rounded-3xl bg-velora-surface border border-velora-borderStrong shadow-xl relative reveal" style="transition-delay: 100ms;">
+                <h2 class="font-display text-2xl font-bold text-velora-text mb-6">Send Us a Message</h2>
+                
+                <form id="contact-form" class="space-y-6">
+                    <!-- Honeypot field (hidden from users) -->
+                    <div class="hidden" aria-hidden="true">
+                        <input type="text" name="_gotcha" id="_gotcha" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Your Name *</label>
+                            <input type="text" id="name" name="name" maxlength="100" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Rahul Sharma">
+                        </div>
+                        <div>
+                            <label for="business" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Business Name *</label>
+                            <input type="text" id="business" name="business" maxlength="100" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Apex Dental Studio">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="email" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" maxlength="255" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. rahul@apexdental.com">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Phone / WhatsApp Number</label>
+                            <input type="tel" id="phone" name="phone" maxlength="25" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. +91 98765 43210">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="industry" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Industry Sector</label>
+                            <select id="industry" name="industry" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury">
+                                <option value="real-estate" class="bg-velora-surface text-velora-text">Real Estate & Property</option>
+                                <option value="restaurant" class="bg-velora-surface text-velora-text">Restaurants & Hospitality</option>
+                                <option value="clinic" class="bg-velora-surface text-velora-text">Clinics & Dentists</option>
+                                <option value="salon" class="bg-velora-surface text-velora-text">Salons & Wellness</option>
+                                <option value="other" class="bg-velora-surface text-velora-text" selected>Other Local Service</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="budget" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Budget Preference</label>
+                            <select id="budget" name="budget" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury">
+                                <option value="essential" class="bg-velora-surface text-velora-text">₹14,999 – Essential Package</option>
+                                <option value="professional" class="bg-velora-surface text-velora-text" selected>₹34,999 – Professional Package</option>
+                                <option value="custom" class="bg-velora-surface text-velora-text">₹69,999+ – Custom Scope</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Project Details & Target City</label>
+                        <textarea id="message" name="message" rows="3" maxlength="2000" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury resize-none" placeholder="Tell us about what you need, your current website URL (if any), and timeline..."></textarea>
+                    </div>
+
+                    <div class="pt-2">
+                        <button id="contact-submit-btn" type="submit" class="btn-luxury w-full sm:w-auto px-10 py-4 min-h-[48px] rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText hover:opacity-90 transition-opacity">
+                            Send Quote Request
+                        </button>
+                    </div>
+
+                    <div id="form-error-alert" class="hidden p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-500 text-xs font-semibold" role="alert"></div>
+                </form>
+
+                <!-- Success Screen Overlay -->
+                <div id="form-success-overlay" class="hidden absolute inset-0 bg-velora-surface/98 backdrop-blur-md rounded-3xl flex-col items-center justify-center p-8 text-center z-20">
+                    <div class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    </div>
+                    <h3 class="font-display text-3xl font-bold text-velora-text mb-3">Enquiry Received</h3>
+                    <p class="text-sm text-velora-muted max-w-sm mx-auto mb-8 leading-relaxed">
+                        Thank you for contacting Velora Digital. We have received your project details and will review them promptly. You will hear back from us within 24 hours.
+                    </p>
+                    <button id="send-another-quote-btn" type="button" class="px-6 py-2.5 bg-transparent border border-velora-borderStrong text-xs font-bold uppercase tracking-widest text-velora-text rounded-full hover:bg-velora-faint transition-colors">
+                        Send Another Inquiry
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    `;
+
+    const script = `
+        const form = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('contact-submit-btn');
+        const errorAlert = document.getElementById('form-error-alert');
+        const successOverlay = document.getElementById('form-success-overlay');
+        const sendAnotherBtn = document.getElementById('send-another-quote-btn');
+        const budgetSelect = document.getElementById('budget');
+        const industrySelect = document.getElementById('industry');
+        const messageTextarea = document.getElementById('message');
+
+        // Prepopulate from URL params if available
+        const urlParams = new URLSearchParams(window.location.search);
+        const tierParam = urlParams.get('tier');
+        const industryParam = urlParams.get('industry');
+        const pagesParam = urlParams.get('pages');
+        const estParam = urlParams.get('est');
+        const seoParam = urlParams.get('seo');
+        const maintParam = urlParams.get('maint');
+
+        if (budgetSelect && tierParam) {
+            for (let i = 0; i < budgetSelect.options.length; i++) {
+                if (budgetSelect.options[i].value === tierParam) {
+                    budgetSelect.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        if (industrySelect && industryParam) {
+            for (let i = 0; i < industrySelect.options.length; i++) {
+                if (industrySelect.options[i].value === industryParam) {
+                    industrySelect.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        if (messageTextarea && (pagesParam || estParam)) {
+            let msg = 'Estimated via calculator: ' + (pagesParam ? pagesParam + ' pages' : '');
+            if (seoParam === 'true') msg += ', SEO included';
+            if (maintParam === 'true') msg += ', Maintenance included';
+            if (estParam) msg += ', ~₹' + Number(estParam).toLocaleString('en-IN');
+            messageTextarea.value = msg;
+        }
+
+        if (sendAnotherBtn) {
+            sendAnotherBtn.addEventListener('click', () => {
+                form.reset();
+                successOverlay.classList.add('hidden');
+                successOverlay.classList.remove('flex');
+            });
+        }
+
+        if (form) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Sending Enquiry...';
+                errorAlert.classList.add('hidden');
+
+                const formData = new FormData(form);
+                const payload = Object.fromEntries(formData.entries());
+
+                try {
+                    const res = await fetch('/api/contact', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const data = await res.json();
+
+                    if (res.ok && data.success) {
+                        window.veloraTrack('contact_form_submit', { business: payload.business, budget: payload.budget });
+                        successOverlay.classList.remove('hidden');
+                        successOverlay.classList.add('flex');
+                    } else {
+                        throw new Error(data.message || 'An error occurred while submitting your enquiry.');
+                    }
+                } catch (err) {
+                    errorAlert.innerText = err.message || 'Unable to submit enquiry. Please call or email us directly.';
+                    errorAlert.classList.remove('hidden');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = 'Send Quote Request';
+                }
+            });
+        }
+    `;
+
+    return { meta, content, script };
+}
+
+function renderPrivacyPage() {
+    const meta = {
+        title: 'Privacy Policy | Velora Digital',
+        description: 'Our privacy commitments and data handling procedures.',
+        breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Privacy Policy', link: '/privacy-policy' }]
+    };
+
+    const content = `
+    <article class="py-20 md:py-28 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-velora-text tracking-tight mb-4">Privacy Policy</h1>
+        <p class="text-xs text-velora-muted border-b border-velora-border pb-6 mb-8">Last Updated: August 2026</p>
+        <div class="prose prose-lg max-w-none text-velora-muted space-y-6">
+            <p>At Velora Digital, we value your privacy and only collect information required to evaluate and execute your website project.</p>
+            <h2 class="text-xl font-bold text-velora-text">1. Information Collection</h2>
+            <p>When you fill out our quote request form, we collect your name, business name, email address, phone number, and project requirements. We use this strictly to prepare estimates and communicate with you.</p>
+            <h2 class="text-xl font-bold text-velora-text">2. Data Security & Third Parties</h2>
+            <p>We never sell, rent, or trade your contact information to marketing data brokers or third parties.</p>
+            <h2 class="text-xl font-bold text-velora-text">3. Contact Us</h2>
+            <p>If you have questions regarding your data, contact us at <a href="mailto:${CONFIG.email}" class="text-velora-gold">${CONFIG.email}</a>.</p>
+        </div>
+    </article>
+    `;
+
+    return { meta, content };
+}
+
+function renderTermsPage() {
+    const meta = {
+        title: 'Terms of Service | Velora Digital',
+        description: 'Terms of service and engagement agreements for Velora Digital.',
+        breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Terms of Service', link: '/terms' }]
+    };
+
+    const content = `
+    <article class="py-20 md:py-28 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-velora-text tracking-tight mb-4">Terms of Service</h1>
+        <p class="text-xs text-velora-muted border-b border-velora-border pb-6 mb-8">Last Updated: August 2026</p>
+        <div class="prose prose-lg max-w-none text-velora-muted space-y-6">
+            <p>These terms govern your use of the Velora Digital website and our project engagement agreements.</p>
+            <h2 class="text-xl font-bold text-velora-text">1. Project Agreements</h2>
+            <p>All design and development engagements are governed by a written proposal detailing the scope, timeline, price, and deliverables.</p>
+            <h2 class="text-xl font-bold text-velora-text">2. Asset & Code Ownership</h2>
+            <p>Upon receipt of final project payment, the client receives 100% full ownership of custom design layouts, written copy, custom code, and domain records.</p>
+        </div>
+    </article>
+    `;
+
+    return { meta, content };
+}
+
+function renderNotFoundPage() {
+    const meta = {
+        title: '404 - Page Not Found | Velora Digital',
+        description: 'The requested page does not exist.'
+    };
+
+    const content = `
+    <section class="py-32 max-w-3xl mx-auto px-4 text-center">
+        <h1 class="font-display text-8xl font-bold text-velora-gold mb-2">404</h1>
+        <h2 class="font-display text-3xl font-bold text-velora-text mb-4">Page Not Found</h2>
+        <p class="text-base text-velora-muted mb-8">The page you are looking for has moved or does not exist.</p>
+        <a href="/" class="btn-luxury inline-flex items-center px-8 py-3.5 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
+            Return Home
+        </a>
+    </section>
+    `;
+
+    return { meta, content };
+}
+
+function renderServerErrorPage() {
+    const meta = {
+        title: '500 - Server Error | Velora Digital',
+        description: 'An unexpected technical error occurred.'
+    };
+
+    const content = `
+    <section class="py-32 max-w-3xl mx-auto px-4 text-center">
+        <h1 class="font-display text-8xl font-bold text-velora-gold mb-2">500</h1>
+        <h2 class="font-display text-3xl font-bold text-velora-text mb-4">Unexpected Error</h2>
+        <p class="text-base text-velora-muted mb-8">We are currently resolving a technical issue. Please try again shortly.</p>
+        <a href="/" class="btn-luxury inline-flex items-center px-8 py-3.5 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
+            Return Home
+        </a>
+    </section>
+    `;
+
+    return { meta, content };
+}
+
+module.exports = {
+    renderHomePage,
+    renderServicesPage,
+    renderServiceDetailPage,
+    renderIndustriesPage,
+    renderIndustryDetailPage,
+    renderLocationsPage,
+    renderLocationDetailPage,
+    renderPortfolioPage,
+    renderProcessPage,
+    renderPricingPage,
+    renderAboutPage,
+    renderBlogPage,
+    renderBlogDetailPage,
+    renderContactPage,
+    renderPrivacyPage,
+    renderTermsPage,
+    renderNotFoundPage,
+    renderServerErrorPage
+};

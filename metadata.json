@@ -1,0 +1,6 @@
+{
+  "name": "Velora Digital",
+  "description": "Velora Digital Agency Website with SSR, service showcases, local SEO, and quote estimator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
