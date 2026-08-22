@@ -326,15 +326,8 @@ ${message || 'No additional details provided.'}
                 throw new Error(error.message || 'Email delivery failed');
             }
         } else {
-            console.log('[Inquiry Received - Resend API Key unconfigured, logged to console]:', {
-                name,
-                business,
-                email,
-                phone,
-                industry: validatedIndustry,
-                budget: validatedBudget,
-                message
-            });
+            console.error('[System Error]: RESEND_API_KEY is not configured in the environment. Enquiry could not be sent.');
+            throw new Error('Email service is not configured.');
         }
 
         return res.status(200).json({
