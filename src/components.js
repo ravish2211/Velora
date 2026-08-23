@@ -354,7 +354,7 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
     <link rel="stylesheet" href="/styles.css">
 
     <script>
-        if (localStorage.getItem('theme') === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        if (localStorage.getItem('theme') === 'light') {
             document.documentElement.classList.remove('dark');
         } else {
             document.documentElement.classList.add('dark');

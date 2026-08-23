@@ -354,7 +354,7 @@ function renderHomePage() {
             </div>
 
             <div class="max-w-4xl mx-auto reveal">
-                <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl border border-velora-border select-none" id="before-after-container">
+                <div class="relative w-full min-h-[400px] sm:min-h-0 sm:aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl border border-velora-border select-none" id="before-after-container">
                     <!-- Before Layer (Bottom) -->
                     <div class="absolute inset-0 bg-[#1e1b18] text-[#a89f91] p-6 sm:p-10 flex flex-col justify-between font-serif">
                         <div class="border-b border-[#3d3830] pb-4 flex justify-between items-center">
