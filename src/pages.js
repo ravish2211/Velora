@@ -115,7 +115,7 @@ function renderHomePage() {
                                 </div>
                                 <div>
                                     <label for="audit-website-url" class="sr-only">Website URL</label>
-                                    <input type="url" id="audit-website-url" class="audit-url input-luxury w-full px-4 py-3 bg-velora-surface border border-velora-borderStrong rounded-xl text-sm text-velora-text placeholder-velora-muted focus:outline-none focus:ring-1 focus:ring-velora-gold" name="website" placeholder="https://yourwebsite.com" required>
+                                    <input type="url" id="audit-website-url" class="audit-url input-luxury w-full px-4 py-3 bg-velora-surface border border-velora-borderStrong rounded-xl text-base md:text-sm text-velora-text placeholder-velora-muted focus:outline-none focus:ring-1 focus:ring-velora-gold" name="website" placeholder="https://yourwebsite.com" required>
                                 </div>
                                 <div class="audit-error hidden text-xs text-red-500 font-medium"></div>
                                 <button type="submit" class="audit-submit-btn btn-luxury w-full py-3.5 rounded-xl text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText hover:opacity-95 transition-opacity shadow-md disabled:opacity-50 disabled:cursor-not-allowed">
@@ -1718,40 +1718,40 @@ function renderContactPage() {
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                             <label for="name" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Your Name *</label>
-                            <input type="text" id="name" name="name" maxlength="100" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Rahul Sharma">
+                            <input type="text" id="name" name="name" maxlength="100" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Rahul Sharma">
                         </div>
                         <div>
                             <label for="business" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Business Name *</label>
-                            <input type="text" id="business" name="business" maxlength="100" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Apex Dental Studio">
+                            <input type="text" id="business" name="business" maxlength="100" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Apex Dental Studio">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                             <label for="email" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Email Address *</label>
-                            <input type="email" id="email" name="email" maxlength="255" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. rahul@apexdental.com">
+                            <input type="email" id="email" name="email" maxlength="255" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. rahul@apexdental.com">
                         </div>
                         <div>
                             <label for="phone" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Phone / WhatsApp Number (Optional)</label>
-                            <input type="tel" id="phone" name="phone" maxlength="25" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. +91 98765 43210">
+                            <input type="tel" id="phone" name="phone" maxlength="25" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. +91 98765 43210">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                             <label for="website" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Current Website URL (Optional)</label>
-                            <input type="url" id="website" name="website" maxlength="255" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. www.yourdomain.com">
+                            <input type="url" id="website" name="website" maxlength="255" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. www.yourdomain.com">
                         </div>
                         <div>
                             <label for="location" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Primary Target Location (Optional)</label>
-                            <input type="text" id="location" name="location" maxlength="100" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Gurugram, Sector 14">
+                            <input type="text" id="location" name="location" maxlength="100" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Gurugram, Sector 14">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                             <label for="industry" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Industry Sector</label>
-                            <select id="industry" name="industry" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury">
+                            <select id="industry" name="industry" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury">
                                 <option value="real-estate" class="bg-velora-surface text-velora-text">Real Estate & Property</option>
                                 <option value="restaurant" class="bg-velora-surface text-velora-text">Restaurants & Hospitality</option>
                                 <option value="clinic" class="bg-velora-surface text-velora-text">Clinics & Dentists</option>
@@ -1761,7 +1761,7 @@ function renderContactPage() {
                         </div>
                         <div>
                             <label for="budget" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Budget Preference</label>
-                            <select id="budget" name="budget" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury">
+                            <select id="budget" name="budget" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury">
                                 <option value="essential" class="bg-velora-surface text-velora-text">₹14,999 – Essential Package</option>
                                 <option value="professional" class="bg-velora-surface text-velora-text" selected>₹34,999 – Professional Package</option>
                                 <option value="custom" class="bg-velora-surface text-velora-text">₹69,999+ – Custom Scope</option>
@@ -1772,7 +1772,7 @@ function renderContactPage() {
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                             <label for="goal" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Primary Goal</label>
-                            <select id="goal" name="goal" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury">
+                            <select id="goal" name="goal" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury">
                                 <option value="more-enquiries" class="bg-velora-surface text-velora-text">More form enquiries / leads</option>
                                 <option value="more-calls" class="bg-velora-surface text-velora-text">More direct phone calls</option>
                                 <option value="better-visibility" class="bg-velora-surface text-velora-text">Better Google visibility (Local SEO)</option>
@@ -1782,7 +1782,7 @@ function renderContactPage() {
                         </div>
                         <div>
                             <label for="timeline" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Project Timeline</label>
-                            <select id="timeline" name="timeline" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury">
+                            <select id="timeline" name="timeline" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury">
                                 <option value="asap" class="bg-velora-surface text-velora-text">As soon as possible</option>
                                 <option value="1-2-weeks" class="bg-velora-surface text-velora-text">Within 1-2 weeks</option>
                                 <option value="1-month" class="bg-velora-surface text-velora-text">Within 1 month</option>
@@ -1793,7 +1793,7 @@ function renderContactPage() {
 
                     <div>
                         <label for="message" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Additional Project Details (Optional)</label>
-                        <textarea id="message" name="message" rows="3" maxlength="2000" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury resize-none" placeholder="Tell us about what you need and any specific requirements..."></textarea>
+                        <textarea id="message" name="message" rows="3" maxlength="2000" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury resize-none" placeholder="Tell us about what you need and any specific requirements..."></textarea>
                     </div>
 
                     <div class="pt-2">
