@@ -199,39 +199,39 @@ function Footer() {
                 <div class="lg:col-span-2">
                     <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Services</p>
                     <ul class="space-y-2.5 text-sm text-velora-muted">
-                        <li><a href="/services/website-design" class="block py-1 hover:text-velora-gold transition-colors">Web Design</a></li>
-                        <li><a href="/services/local-seo" class="block py-1 hover:text-velora-gold transition-colors">Local SEO</a></li>
-                        <li><a href="/services/website-maintenance" class="block py-1 hover:text-velora-gold transition-colors">Maintenance Care</a></li>
-                        <li><a href="/services" class="block py-1 hover:text-velora-gold font-medium transition-colors">All Services &rarr;</a></li>
+                        <li><a href="/services/website-design" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Web Design</a></li>
+                        <li><a href="/services/local-seo" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Local SEO</a></li>
+                        <li><a href="/services/website-maintenance" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Maintenance Care</a></li>
+                        <li><a href="/services" class="flex items-center min-h-[44px] hover:text-velora-gold font-medium transition-colors">All Services &rarr;</a></li>
                     </ul>
                 </div>
                 <div class="lg:col-span-2">
                     <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Industries</p>
                     <ul class="space-y-2.5 text-sm text-velora-muted">
-                        <li><a href="/industries/real-estate" class="block py-1 hover:text-velora-gold transition-colors">Real Estate</a></li>
-                        <li><a href="/industries/restaurants" class="block py-1 hover:text-velora-gold transition-colors">Restaurants</a></li>
-                        <li><a href="/industries/clinics" class="block py-1 hover:text-velora-gold transition-colors">Clinics & Dentists</a></li>
-                        <li><a href="/industries/salons" class="block py-1 hover:text-velora-gold transition-colors">Salons & Spas</a></li>
+                        <li><a href="/industries/real-estate" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Real Estate</a></li>
+                        <li><a href="/industries/restaurants" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Restaurants</a></li>
+                        <li><a href="/industries/clinics" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Clinics & Dentists</a></li>
+                        <li><a href="/industries/salons" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Salons & Spas</a></li>
                     </ul>
                 </div>
                 <div class="lg:col-span-2">
                     <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Locations</p>
                     <ul class="space-y-2.5 text-sm text-velora-muted">
-                        <li><a href="/locations/gurugram" class="block py-1 hover:text-velora-gold transition-colors">Gurugram</a></li>
-                        <li><a href="/locations/delhi-ncr" class="block py-1 hover:text-velora-gold transition-colors">Delhi NCR</a></li>
-                        <li><a href="/locations/chandigarh" class="block py-1 hover:text-velora-gold transition-colors">Chandigarh</a></li>
-                        <li><a href="/locations/bengaluru" class="block py-1 hover:text-velora-gold transition-colors">Bengaluru</a></li>
+                        <li><a href="/locations/gurugram" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Gurugram</a></li>
+                        <li><a href="/locations/delhi-ncr" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Delhi NCR</a></li>
+                        <li><a href="/locations/chandigarh" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Chandigarh</a></li>
+                        <li><a href="/locations/bengaluru" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Bengaluru</a></li>
                     </ul>
                 </div>
                 <div class="lg:col-span-3">
                     <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Company & Exploration</p>
                     <div class="grid grid-cols-2 gap-2 text-sm text-velora-muted mb-6">
-                        <a href="/about" class="block py-1 hover:text-velora-gold transition-colors">About Studio</a>
-                        <a href="/portfolio" class="block py-1 hover:text-velora-gold transition-colors">Portfolio</a>
-                        <a href="/process" class="block py-1 hover:text-velora-gold transition-colors">Our Process</a>
-                        <a href="/pricing" class="block py-1 hover:text-velora-gold transition-colors">Pricing & Calculator</a>
-                        <a href="/blog" class="block py-1 hover:text-velora-gold transition-colors">Journal & Advice</a>
-                        <a href="/locations" class="block py-1 hover:text-velora-gold transition-colors">Service Areas</a>
+                        <a href="/about" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">About Studio</a>
+                        <a href="/portfolio" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Portfolio</a>
+                        <a href="/process" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Our Process</a>
+                        <a href="/pricing" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Pricing & Calculator</a>
+                        <a href="/blog" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Journal & Advice</a>
+                        <a href="/locations" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Service Areas</a>
                     </div>
                     <div class="p-4 rounded-xl bg-velora-surface border border-velora-border">
                         <div class="text-xs font-semibold text-velora-text mb-1">Honest Studio Guarantee</div>
@@ -406,7 +406,7 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
         .pb-safe { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
         @media (max-width: 639px) { body { padding-bottom: 74px; } }
         
-        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: var(--color-bg); }
         ::-webkit-scrollbar-thumb { background: var(--color-border-strong); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #d4af37; }

@@ -107,7 +107,7 @@ function renderHomePage() {
                                     errorDiv.innerText = err.message || 'Something went wrong. Please try again.';
                                     errorDiv.classList.remove('hidden');
                                     submitBtn.disabled = false;
-                                    submitBtn.innerText = 'Get My Free Audit';
+                                    submitBtn.innerHTML = 'Get Free Audit &rarr;';
                                 });
                             ">
                                 <div class="absolute -left-[9999px] top-auto w-1 h-1 overflow-hidden" aria-hidden="true">
@@ -315,7 +315,7 @@ function renderHomePage() {
                 <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Our Core Services</span>
                 <h2 class="font-display text-3xl sm:text-5xl font-bold text-velora-text tracking-tight">What We Build & Support</h2>
             </div>
-            <a href="/services" class="text-xs uppercase tracking-[0.2em] font-bold text-velora-gold hover:text-velora-text transition-colors flex items-center gap-2">
+            <a href="/services" class="text-xs uppercase tracking-[0.2em] font-bold text-velora-gold hover:text-velora-text transition-colors inline-flex py-3 items-center gap-2">
                 Explore All Services <span>&rarr;</span>
             </a>
         </div>
@@ -439,7 +439,7 @@ function renderHomePage() {
                         We don't invent fake client metrics or paid awards. These production-ready prototypes benchmark our code speed, mobile UX, and conversion architecture.
                     </p>
                 </div>
-                <a href="/portfolio" class="text-xs uppercase tracking-[0.2em] font-bold text-velora-gold hover:text-velora-text transition-colors flex items-center gap-2">
+                <a href="/portfolio" class="text-xs uppercase tracking-[0.2em] font-bold text-velora-gold hover:text-velora-text transition-colors inline-flex py-3 items-center gap-2">
                     View Complete Portfolio <span>&rarr;</span>
                 </a>
             </div>
@@ -584,7 +584,7 @@ function renderHomePage() {
             </div>
 
             <div class="mt-12 text-center reveal">
-                <a href="/pricing" class="text-xs uppercase tracking-widest font-bold text-velora-gold hover:text-velora-text transition-colors">
+                <a href="/pricing" class="text-xs uppercase tracking-widest font-bold text-velora-gold hover:text-velora-text transition-colors inline-flex py-3">
                     Use our Interactive Price Calculator &rarr;
                 </a>
             </div>
@@ -1898,7 +1898,7 @@ function renderContactPage() {
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 submitBtn.disabled = true;
-                submitBtn.innerText = 'Sending Enquiry...';
+                submitBtn.innerHTML = 'Sending...';
                 errorAlert.classList.add('hidden');
 
                 const formData = new FormData(form);
@@ -1926,7 +1926,7 @@ function renderContactPage() {
                     errorAlert.classList.remove('hidden');
                 } finally {
                     submitBtn.disabled = false;
-                    submitBtn.innerText = 'Send Quote Request';
+                    submitBtn.innerHTML = 'Send Request &rarr;';
                 }
             });
         }
