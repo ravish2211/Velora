@@ -1011,6 +1011,13 @@ function renderIndustryDetailPage(industry) {
     const meta = {
         title: `${industry.name} Web Design & Local SEO | Velora Digital`,
         description: industry.desc,
+        schema: [
+            generateSchema('Service', {
+                name: `Web Design & Local SEO for ${industry.name}`,
+                description: industry.desc,
+                url: `${CONFIG.baseUrl}/industries/${industry.slug}`
+            })
+        ],
         breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Industries', link: '/industries' }, { title: industry.name, link: `/industries/${industry.slug}` }]
     };
 
@@ -1148,6 +1155,14 @@ function renderLocationDetailPage(location) {
     const meta = {
         title: `Web Design & Local SEO Company in ${location.name} | Velora Digital`,
         description: location.desc,
+        schema: [
+            generateSchema('Service', {
+                name: `Web Design & Local SEO in ${location.name}`,
+                description: location.desc,
+                url: `${CONFIG.baseUrl}/locations/${location.slug}`,
+                areaServed: location.name
+            })
+        ],
         breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Locations', link: '/locations' }, { title: location.name, link: `/locations/${location.slug}` }]
     };
 

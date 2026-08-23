@@ -49,13 +49,17 @@ function generateSchema(type, data = {}) {
         };
     }
     if (type === 'Service') {
-        return {
+        const schema = {
             ...base,
             "@type": "Service",
             "name": data.name,
             "description": data.description,
             "provider": { "@type": "ProfessionalService", "name": "Velora Digital" }
         };
+        if (data.areaServed) {
+            schema.areaServed = data.areaServed;
+        }
+        return schema;
     }
     if (type === 'Article') {
         return {
