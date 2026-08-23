@@ -483,6 +483,13 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
                 menu.classList.toggle('hidden');
                 menuBtn.setAttribute('aria-expanded', menu.classList.contains('hidden') ? 'false' : 'true');
             });
+
+            document.addEventListener('click', function(e) {
+                if (!menu.classList.contains('hidden') && !menu.contains(e.target) && !menuBtn.contains(e.target)) {
+                    menu.classList.add('hidden');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
         }
 
         // Scroll reveal

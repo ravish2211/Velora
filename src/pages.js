@@ -1523,16 +1523,16 @@ function renderPricingPage() {
             if (pagesDisplay) pagesDisplay.innerText = pages + (pages === 1 ? ' Page' : ' Pages');
 
             let total = 10000 + (pages * 1500);
-            if (seo) total += 7500;
-            if (maint) total += 5000;
+            if (seo) total += 17500;
+            if (maint) total += 15000;
 
             if (estimateDisplay) estimateDisplay.innerText = '~₹' + total.toLocaleString('en-IN');
 
             if (directionLabel) {
-                if (total >= 50000) {
+                if (total >= 69999) {
                     directionLabel.innerText = 'Custom Scope';
                     directionLabel.className = 'inline-block px-3 py-1 bg-velora-bg border border-velora-border rounded-full text-[10px] font-bold uppercase tracking-widest text-velora-text mb-4';
-                } else if (total >= 25000) {
+                } else if (total >= 34999) {
                     directionLabel.innerText = 'Professional Build';
                     directionLabel.className = 'inline-block px-3 py-1 bg-velora-gold/10 border border-velora-gold/30 rounded-full text-[10px] font-bold uppercase tracking-widest text-velora-gold mb-4';
                 } else {
@@ -1553,7 +1553,7 @@ function renderPricingPage() {
             }
 
             if (quoteBtn) {
-                let tier = total >= 50000 ? 'custom' : (total >= 25000 ? 'professional' : 'essential');
+                let tier = total >= 69999 ? 'custom' : (total >= 34999 ? 'professional' : 'essential');
                 quoteBtn.href = '/contact?tier=' + tier + '&pages=' + pages + '&seo=' + seo + '&maint=' + maint + '&est=' + total;
             }
         }
