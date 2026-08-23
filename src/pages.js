@@ -1506,8 +1506,8 @@ function renderAboutPage() {
 
         <div class="p-10 rounded-3xl bg-velora-bg border border-velora-borderStrong text-center reveal">
             <h3 class="font-display text-2xl font-bold text-velora-text mb-3">Have a Project in Mind?</h3>
-            <p class="text-sm text-velora-muted max-w-md mx-auto mb-8">We would love to review your website goals and give you an honest appraisal.</p>
-            <a href="/contact" class="btn-luxury inline-flex items-center px-8 py-4 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
+            <p class="text-sm text-velora-muted max-w-md mx-auto mb-8">Get a free, brutally honest technical audit of your current website.</p>
+            <a href="/contact?audit=true" class="btn-luxury inline-flex items-center px-8 py-4 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
                 Contact Our Studio
             </a>
         </div>
@@ -1617,7 +1617,7 @@ function renderContactPage() {
             <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Let's Connect</span>
             <h1 class="font-display text-4xl sm:text-6xl font-bold text-velora-text tracking-tight">Request a Project Quote</h1>
             <p class="mt-4 text-base text-velora-muted text-pretty">
-                Send us your project details or call us directly. We review every inquiry and reply within 24 hours.
+                Send us your project details or call us directly. We review every inquiry and aim to reply within 24 hours.
             </p>
         </header>
 
@@ -1626,7 +1626,7 @@ function renderContactPage() {
             <div class="lg:col-span-4 space-y-5 reveal">
                 <h2 class="font-display text-lg font-bold text-velora-text border-b border-velora-border pb-3 mb-4">Direct Contact</h2>
 
-                <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" class="flex items-start gap-4 p-5 rounded-2xl bg-velora-surface border border-velora-border hover:border-velora-borderStrong transition-all group">
+                <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" onclick="if(window.veloraTrack) window.veloraTrack('phone_click', { url: this.href })" class="flex items-start gap-4 p-5 rounded-2xl bg-velora-surface border border-velora-border hover:border-velora-borderStrong transition-all group">
                     <div class="text-2xl mt-0.5">📞</div>
                     <div>
                         <div class="text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-1">Direct Call</div>
@@ -1634,7 +1634,7 @@ function renderContactPage() {
                     </div>
                 </a>
 
-                <a href="mailto:${CONFIG.email}" class="flex items-start gap-4 p-5 rounded-2xl bg-velora-surface border border-velora-border hover:border-velora-borderStrong transition-all group">
+                <a href="mailto:${CONFIG.email}" onclick="if(window.veloraTrack) window.veloraTrack('email_click', { url: this.href })" class="flex items-start gap-4 p-5 rounded-2xl bg-velora-surface border border-velora-border hover:border-velora-borderStrong transition-all group">
                     <div class="text-2xl mt-0.5">✉️</div>
                     <div>
                         <div class="text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-1">Email Inquiries</div>
@@ -1659,11 +1659,11 @@ function renderContactPage() {
 
             <!-- Form -->
             <div class="lg:col-span-8 p-8 sm:p-12 rounded-3xl bg-velora-surface border border-velora-borderStrong shadow-xl relative reveal" style="transition-delay: 100ms;">
-                <h2 class="font-display text-2xl font-bold text-velora-text mb-6">Send Us a Message</h2>
+                <h2 id="contact-form-heading" class="font-display text-2xl font-bold text-velora-text mb-6">Send Us a Message</h2>
 
                 <form id="contact-form" class="space-y-6">
                     <!-- Honeypot field (hidden from users) -->
-                    <div class="hidden" aria-hidden="true">
+                    <div class="absolute -left-[9999px] top-auto w-1 h-1 overflow-hidden" aria-hidden="true">
                         <input type="text" name="_gotcha" id="_gotcha" tabindex="-1" autocomplete="off">
                     </div>
 
@@ -1684,18 +1684,18 @@ function renderContactPage() {
                             <input type="email" id="email" name="email" maxlength="255" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. rahul@apexdental.com">
                         </div>
                         <div>
-                            <label for="phone" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Phone / WhatsApp Number</label>
+                            <label for="phone" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Phone / WhatsApp Number (Optional)</label>
                             <input type="tel" id="phone" name="phone" maxlength="25" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. +91 98765 43210">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label for="website" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Current Website URL</label>
+                            <label for="website" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Current Website URL (Optional)</label>
                             <input type="url" id="website" name="website" maxlength="255" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. www.yourdomain.com">
                         </div>
                         <div>
-                            <label for="location" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Primary Target Location</label>
+                            <label for="location" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Primary Target Location (Optional)</label>
                             <input type="text" id="location" name="location" maxlength="100" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Gurugram, Sector 14">
                         </div>
                     </div>
@@ -1744,7 +1744,7 @@ function renderContactPage() {
                     </div>
 
                     <div>
-                        <label for="message" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Additional Project Details</label>
+                        <label for="message" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Additional Project Details (Optional)</label>
                         <textarea id="message" name="message" rows="3" maxlength="2000" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-sm text-velora-text focus:outline-none input-luxury resize-none" placeholder="Tell us about what you need and any specific requirements..."></textarea>
                     </div>
 
@@ -1834,6 +1834,8 @@ function renderContactPage() {
             const websiteInput = document.getElementById('website');
             if (websiteInput) websiteInput.value = auditParam;
             messageTextarea.value = "Please run a free technical website audit on my site to check speed, mobile UX, and local SEO.";
+            const heading = document.getElementById('contact-form-heading');
+            if (heading) heading.innerText = 'Request Your Free Website Audit';
         }
 
         if (sendAnotherBtn) {

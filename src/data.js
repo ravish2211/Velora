@@ -221,7 +221,7 @@ const INDUSTRIES = [
         mobileConsiderations: 'Lightweight image grids optimized for fast scrolling on mobile phones without layout shifts.',
         seoConsiderations: 'BeautySalon / HealthAndBeautyBusiness Schema markup with localized beauty terms.',
         keyFeatures: [
-            'Aesthetic Transformation Galleries',
+            'Before & After Galleries',
             'Transparent Service Pricing Menus',
             'Direct WhatsApp Booking Links'
         ],
@@ -435,10 +435,10 @@ const BLOG = [
             <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">The most common mistake on local business websites is treating the contact information like an afterthought. Your phone number, WhatsApp link, address, and primary call-to-action should be visible within the first two seconds on both mobile and desktop screens. On mobile, a persistent bottom bar with "Call" and "WhatsApp" buttons frequently increases direct inquiries by 25% or more.</p>
             
             <h2 class="text-2xl font-display font-bold text-velora-text mt-10 mb-4 tracking-tight">2. The 15MB PDF Menu Disaster</h2>
-            <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">If you run a restaurant, salon, or clinic, never force visitors to download a PDF file to view your services or prices. On a smartphone with an average mobile data connection, opening a heavy PDF consumes data, takes multiple taps, and often opens in an external viewer where the text is too small to read. Building your menu in clean, native HTML makes it instant to read and searchable by Google.</p>
+            <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">If you run a <a href="/industries/restaurants" class="text-velora-gold hover:underline">restaurant</a>, <a href="/industries/salons" class="text-velora-gold hover:underline">salon</a>, or <a href="/industries/clinics" class="text-velora-gold hover:underline">clinic</a>, never force visitors to download a PDF file to view your services or prices. On a smartphone with an average mobile data connection, opening a heavy PDF consumes data, takes multiple taps, and often opens in an external viewer where the text is too small to read. Building your menu in clean, native HTML makes it instant to read and searchable by Google.</p>
             
             <h2 class="text-2xl font-display font-bold text-velora-text mt-10 mb-4 tracking-tight">3. Heavy Website Builders That Destroy Mobile Speed</h2>
-            <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">Many freelance websites are built by slapping dozens of plugins onto heavy theme builders. This loads megabytes of unnecessary JavaScript before the visitor can even see your headline. Clean, hand-crafted semantic code delivers your content in under a second, improving both user conversion and Google search rankings.</p>
+            <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">Many freelance websites are built by slapping dozens of plugins onto heavy theme builders. This loads megabytes of unnecessary JavaScript before the visitor can even see your headline. Clean, hand-crafted semantic code delivers your content in under a second, improving both user conversion and <a href="/services/local-seo" class="text-velora-gold hover:underline">local search rankings</a>.</p>
             
             <h2 class="text-2xl font-display font-bold text-velora-text mt-10 mb-4 tracking-tight">4. Practical Steps to Audit Your Site Today</h2>
             <ul class="list-disc pl-6 space-y-3 text-base text-velora-muted mb-6">

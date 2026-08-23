@@ -177,11 +177,11 @@ function Footer() {
                         </div>
                         <div class="flex items-center gap-2">
                             <span class="text-velora-gold">✉️</span>
-                            <a href="mailto:${CONFIG.email}" class="hover:text-velora-gold transition-colors">${CONFIG.email}</a>
+                            <a href="mailto:${CONFIG.email}" onclick="if(window.veloraTrack) window.veloraTrack('email_click', { url: this.href })" class="hover:text-velora-gold transition-colors">${CONFIG.email}</a>
                         </div>
                         <div class="flex items-center gap-2">
                             <span class="text-velora-gold">📞</span>
-                            <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" class="hover:text-velora-gold transition-colors">${CONFIG.phone}</a>
+                            <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" onclick="if(window.veloraTrack) window.veloraTrack('phone_click', { url: this.href })" class="hover:text-velora-gold transition-colors">${CONFIG.phone}</a>
                         </div>
                     </div>
                 </div>
@@ -311,6 +311,7 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${escapeHTML(meta.title)}</title>
     <meta name="description" content="${escapeHTML(meta.description)}">
+    <meta name="theme-color" content="#07090e">
     <link rel="canonical" href="${canonical}">
     
     <!-- Favicons -->
