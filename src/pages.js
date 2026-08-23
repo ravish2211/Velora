@@ -1977,7 +1977,9 @@ function renderContactPage() {
                     const data = await res.json();
 
                     if (res.ok && data.success) {
-                        window.veloraTrack('contact_form_submit', { business: payload.business, budget: payload.budget });
+                        if (window.veloraTrack) {
+                            window.veloraTrack('contact_form_submit', { business: payload.business, budget: payload.budget });
+                        }
                         successOverlay.classList.remove('hidden');
                         successOverlay.classList.add('flex');
                     } else {
