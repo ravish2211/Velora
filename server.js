@@ -178,31 +178,41 @@ app.get('/terms', (req, res) => {
 
 // SEO SITEMAP & ROBOTS
 app.get('/sitemap.xml', (req, res) => {
-    const urls = [
-        '/',
-        '/services',
-        '/industries',
-        '/locations',
-        '/portfolio',
-        '/process',
-        '/pricing',
-        '/about',
-        '/blog',
-        '/contact',
-        '/privacy-policy',
-        '/terms'
+    const sitemapUrls = [
+        { url: '/', date: '2026-08-01' },
+        { url: '/services', date: '2026-08-01' },
+        { url: '/industries', date: '2026-08-01' },
+        { url: '/locations', date: '2026-08-01' },
+        { url: '/portfolio', date: '2026-08-01' },
+        { url: '/process', date: '2026-08-01' },
+        { url: '/pricing', date: '2026-08-01' },
+        { url: '/about', date: '2026-08-01' },
+        { url: '/blog', date: '2026-08-01' },
+        { url: '/contact', date: '2026-08-01' },
+        { url: '/privacy-policy', date: '2026-08-01' },
+        { url: '/terms', date: '2026-08-01' }
     ];
-    SERVICES.forEach(s => urls.push(`/services/${s.slug}`));
-    INDUSTRIES.forEach(i => urls.push(`/industries/${i.slug}`));
-    LOCATIONS.forEach(l => urls.push(`/locations/${l.slug}`));
-    BLOG.forEach(b => urls.push(`/blog/${b.slug}`));
+    SERVICES.forEach(s => sitemapUrls.push({ url: `/services/${s.slug}`, date: '2026-08-01' }));
+    INDUSTRIES.forEach(i => sitemapUrls.push({ url: `/industries/${i.slug}`, date: '2026-08-01' }));
+    LOCATIONS.forEach(l => sitemapUrls.push({ url: `/locations/${l.slug}`, date: '2026-08-01' }));
+
+    // Parse blog date, e.g. "August 4, 2026" to "2026-08-04"
+    const formatDate = (dateStr) => {
+        try {
+            const d = new Date(dateStr);
+            if (!isNaN(d.getTime())) return d.toISOString().split('T')[0];
+        } catch(e) {}
+        return '2026-08-01';
+    };
+    BLOG.forEach(b => sitemapUrls.push({ url: `/blog/${b.slug}`, date: formatDate(b.date) }));
 
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(url => `    <url>
-        <loc>${CONFIG.baseUrl}${url}</loc>
-        <changefreq>${url === '/' ? 'weekly' : 'monthly'}</changefreq>
-        <priority>${url === '/' ? '1.0' : '0.8'}</priority>
+${sitemapUrls.map(u => `    <url>
+        <loc>${CONFIG.baseUrl}${u.url}</loc>
+        <lastmod>${u.date}</lastmod>
+        <changefreq>${u.url === '/' ? 'weekly' : 'monthly'}</changefreq>
+        <priority>${u.url === '/' ? '1.0' : '0.8'}</priority>
     </url>`).join('\n')}
 </urlset>`;
 

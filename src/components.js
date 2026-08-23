@@ -31,6 +31,7 @@ function generateSchema(type, data = {}) {
             ...base,
             "@type": "ProfessionalService",
             "name": "Velora Digital",
+            "image": `${CONFIG.baseUrl}/logo.png`,
             "description": "Professional Web Design, Local SEO & Technical Maintenance Studio for Local Businesses",
             "telephone": CONFIG.phone,
             "email": CONFIG.email,
@@ -62,7 +63,7 @@ function generateSchema(type, data = {}) {
         return schema;
     }
     if (type === 'Article') {
-        return {
+        const schema = {
             ...base,
             "@type": "Article",
             "headline": data.title,
@@ -70,6 +71,10 @@ function generateSchema(type, data = {}) {
             "author": { "@type": "Organization", "name": data.author || "Velora Studio" },
             "datePublished": new Date(data.date).toISOString()
         };
+        if (data.image) {
+            schema.image = data.image;
+        }
+        return schema;
     }
 
     if (type === 'BreadcrumbList') {
@@ -192,7 +197,7 @@ function Footer() {
                     </div>
                 </div>
                 <div class="lg:col-span-2">
-                    <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Services</h4>
+                    <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Services</p>
                     <ul class="space-y-2.5 text-sm text-velora-muted">
                         <li><a href="/services/website-design" class="block py-1 hover:text-velora-gold transition-colors">Web Design</a></li>
                         <li><a href="/services/local-seo" class="block py-1 hover:text-velora-gold transition-colors">Local SEO</a></li>
@@ -201,7 +206,7 @@ function Footer() {
                     </ul>
                 </div>
                 <div class="lg:col-span-2">
-                    <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Industries</h4>
+                    <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Industries</p>
                     <ul class="space-y-2.5 text-sm text-velora-muted">
                         <li><a href="/industries/real-estate" class="block py-1 hover:text-velora-gold transition-colors">Real Estate</a></li>
                         <li><a href="/industries/restaurants" class="block py-1 hover:text-velora-gold transition-colors">Restaurants</a></li>
@@ -210,7 +215,7 @@ function Footer() {
                     </ul>
                 </div>
                 <div class="lg:col-span-2">
-                    <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Locations</h4>
+                    <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Locations</p>
                     <ul class="space-y-2.5 text-sm text-velora-muted">
                         <li><a href="/locations/gurugram" class="block py-1 hover:text-velora-gold transition-colors">Gurugram</a></li>
                         <li><a href="/locations/delhi-ncr" class="block py-1 hover:text-velora-gold transition-colors">Delhi NCR</a></li>
@@ -219,7 +224,7 @@ function Footer() {
                     </ul>
                 </div>
                 <div class="lg:col-span-3">
-                    <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Company & Exploration</h4>
+                    <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Company & Exploration</p>
                     <div class="grid grid-cols-2 gap-2 text-sm text-velora-muted mb-6">
                         <a href="/about" class="block py-1 hover:text-velora-gold transition-colors">About Studio</a>
                         <a href="/portfolio" class="block py-1 hover:text-velora-gold transition-colors">Portfolio</a>
@@ -319,7 +324,8 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${escapeHTML(meta.title)}</title>
     <meta name="description" content="${escapeHTML(meta.description)}">
-    <meta name="theme-color" content="#07090e">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#07090e">
     <link rel="canonical" href="${canonical}">
     
     <!-- Favicons -->
