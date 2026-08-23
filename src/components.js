@@ -40,6 +40,14 @@ function generateSchema(type, data = {}) {
             "openingHours": "Mo,Tu,We,Th,Fr 09:00-18:00"
         };
     }
+    if (type === 'WebSite') {
+        return {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Velora Digital",
+            "url": CONFIG.baseUrl
+        };
+    }
     if (type === 'Service') {
         return {
             ...base,
@@ -154,7 +162,7 @@ function Footer() {
     <footer class="relative bg-velora-bg pt-20 pb-28 sm:pb-12 mt-20 border-t border-velora-border overflow-hidden transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
-                <div class="lg:col-span-4 space-y-5">
+                <div class="lg:col-span-3 space-y-5">
                     <div class="flex items-center gap-3">
                         <img src="/logo.png" alt="Velora Digital Logo" width="32" height="32" class="w-8 h-8 rounded object-cover invert dark:invert-0">
                         <span class="font-display font-bold text-xl tracking-tight text-velora-text">VELORA DIGITAL</span>
@@ -195,7 +203,16 @@ function Footer() {
                         <li><a href="/industries/salons" class="block py-1 hover:text-velora-gold transition-colors">Salons & Spas</a></li>
                     </ul>
                 </div>
-                <div class="lg:col-span-4">
+                <div class="lg:col-span-2">
+                    <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Locations</h4>
+                    <ul class="space-y-2.5 text-sm text-velora-muted">
+                        <li><a href="/locations/gurugram" class="block py-1 hover:text-velora-gold transition-colors">Gurugram</a></li>
+                        <li><a href="/locations/delhi-ncr" class="block py-1 hover:text-velora-gold transition-colors">Delhi NCR</a></li>
+                        <li><a href="/locations/chandigarh" class="block py-1 hover:text-velora-gold transition-colors">Chandigarh</a></li>
+                        <li><a href="/locations/bengaluru" class="block py-1 hover:text-velora-gold transition-colors">Bengaluru</a></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-3">
                     <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Company & Exploration</h4>
                     <div class="grid grid-cols-2 gap-2 text-sm text-velora-muted mb-6">
                         <a href="/about" class="block py-1 hover:text-velora-gold transition-colors">About Studio</a>
@@ -233,7 +250,7 @@ function FloatingContact(currentPath = '') {
     return `
     <!-- Desktop Floating Quote Button -->
     <div class="fixed bottom-6 right-6 z-40 hidden sm:block">
-        <a href="/contact" id="desktop-floating-cta" class="flex items-center gap-3 px-5 py-3 bg-velora-button text-velora-buttonText rounded-full transition-transform duration-300 hover:scale-105 shadow-xl border border-velora-borderStrong focus:outline-none focus:ring-2 focus:ring-velora-gold" aria-label="Get a Quote">
+        <a href="/contact" id="desktop-floating-cta" onclick="if(window.veloraTrack) window.veloraTrack('cta_click', { button: 'desktop-floating-cta', location: '${currentPath}' })" class="flex items-center gap-3 px-5 py-3 bg-velora-button text-velora-buttonText rounded-full transition-transform duration-300 hover:scale-105 shadow-xl border border-velora-borderStrong focus:outline-none focus:ring-2 focus:ring-velora-gold" aria-label="Get a Quote">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             <span class="text-xs font-bold uppercase tracking-[0.2em]">Get a Quote</span>
         </a>
@@ -242,11 +259,11 @@ function FloatingContact(currentPath = '') {
     <!-- Mobile Sticky Contact Bar -->
     <div class="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-velora-surface/95 backdrop-blur-xl border-t border-velora-border pb-safe">
         <div class="flex items-center justify-between px-3 py-2.5 gap-2">
-            <a href="https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(defaultMsg)}" id="mobile-whatsapp-btn" class="flex-1 flex items-center justify-center gap-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 py-3 min-h-[44px] rounded-xl text-xs font-bold uppercase tracking-wider transition-colors active:scale-95">
+            <a href="https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(defaultMsg)}" id="mobile-whatsapp-btn" onclick="if(window.veloraTrack) window.veloraTrack('cta_click', { button: 'mobile-whatsapp-btn', location: '${currentPath}' })" class="flex-1 flex items-center justify-center gap-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 py-3 min-h-[44px] rounded-xl text-xs font-bold uppercase tracking-wider transition-colors active:scale-95">
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.031 2c-5.514 0-9.998 4.484-9.998 9.998 0 1.983.58 3.829 1.58 5.385l-1.613 5.888 6.042-1.583c1.492.81 3.208 1.282 5.011 1.282 5.514 0 10.027-4.484 10.027-9.998 0-5.514-4.513-9.998-10.049-9.998zm5.958 14.158c-.247.693-1.229 1.299-1.999 1.464-.528.113-1.218.204-3.535-.758-2.962-1.229-4.869-4.249-5.018-4.448-.148-.198-1.213-1.613-1.213-3.076 0-1.463.766-2.183 1.038-2.48.272-.297.593-.371.791-.371.198 0 .396.002.569.01.183.008.43-.069.673.515.247.585.841 2.052.915 2.201.074.148.124.321.025.519-.099.198-.148.321-.297.495-.148.173-.313.387-.446.52-.148.148-.303.309-.13.606.173.297.771 1.272 1.657 2.062 1.139 1.015 2.1 1.328 2.397 1.476.297.148.47.124.643-.074.173-.198.742-.866.94-1.163.198-.297.396-.247.668-.148.272.099 1.73.816 2.027.965.297.148.495.223.569.346.074.124.074.718-.173 1.411z"/></svg>
                 WhatsApp
             </a>
-            <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" id="mobile-call-btn" class="flex-1 flex items-center justify-center gap-2 bg-velora-faint hover:bg-velora-faintHover border border-velora-borderStrong text-velora-text py-3 min-h-[44px] rounded-xl text-xs font-bold uppercase tracking-wider transition-colors active:scale-95">
+            <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" id="mobile-call-btn" onclick="if(window.veloraTrack) window.veloraTrack('cta_click', { button: 'mobile-call-btn', location: '${currentPath}' })" class="flex-1 flex items-center justify-center gap-2 bg-velora-faint hover:bg-velora-faintHover border border-velora-borderStrong text-velora-text py-3 min-h-[44px] rounded-xl text-xs font-bold uppercase tracking-wider transition-colors active:scale-95">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                 Call Us
             </a>
@@ -279,10 +296,11 @@ function Breadcrumbs(items) {
 function BaseLayout(req, meta, bodyContent, scriptContent = '') {
     const canonical = `${CONFIG.baseUrl}${escapeHTML(req.path)}`;
     const schemaOrg = generateSchema('Organization');
+    const schemaWebSite = generateSchema('WebSite');
     const pageSchema = meta.schema ? meta.schema : null;
     const breadcrumbSchema = meta.breadcrumbs ? generateSchema('BreadcrumbList', { items: meta.breadcrumbs }) : null;
     
-    const schemas = [schemaOrg];
+    const schemas = [schemaOrg, schemaWebSite];
     if (pageSchema) schemas.push(pageSchema);
     if (breadcrumbSchema) schemas.push(breadcrumbSchema);
 

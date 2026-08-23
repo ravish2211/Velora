@@ -3,11 +3,11 @@
 // ============================================================================ //
 
 const CONFIG = {
-    baseUrl: process.env.BASE_URL || 'https://veloradigital.in',
+    baseUrl: process.env.BASE_URL || 'https://velora-ds6e.onrender.com',
     phone: process.env.CONTACT_PHONE || '+91 73037 33735',
     whatsapp: process.env.CONTACT_WHATSAPP || '917303733735',
-    email: process.env.CONTACT_EMAIL || 'hello@veloradigital.in',
-    systemEmail: process.env.SYSTEM_EMAIL || 'hello@veloradigital.in',
+    email: process.env.CONTACT_EMAIL || 'ravishnoob123@gmail.com',
+    systemEmail: process.env.SYSTEM_EMAIL || 'jyotimalhotraf9@gmail.com',
     emailFrom: process.env.EMAIL_FROM || 'Velora Digital <onboarding@resend.dev>',
     currencySymbol: '₹',
     pricing: {
@@ -147,7 +147,13 @@ const INDUSTRIES = [
             'Broker credential & RERA registration badges'
         ],
         mobileConsiderations: 'Fast responsive image galleries that don\'t drain mobile data, sticky bottom call/WhatsApp bar for one-thumb inquiries on 4G networks.',
-        seoConsiderations: 'Locality-specific keyword structure (e.g., "3 BHK luxury apartments Golf Course Extension Gurugram", "commercial office space Noida Sector 62").'
+        seoConsiderations: 'Locality-specific keyword structure (e.g., "3 BHK luxury apartments Golf Course Extension Gurugram", "commercial office space Noida Sector 62").',
+        keyFeatures: [
+            'Advanced Property Filter System',
+            'Interactive Neighborhood Maps',
+            'Lead-Capture Floor Plan Downloads'
+        ],
+        whatWeRecommend: 'We recommend a custom portfolio layout showcasing your best properties, paired with aggressive lead capture forms on every listing. A clean, sub-second mobile experience will out-convert generic broker sites.'
     },
     {
         slug: 'restaurants',
@@ -165,7 +171,13 @@ const INDUSTRIES = [
             'Clear operating hours and private dining inquiry forms'
         ],
         mobileConsiderations: 'Zero-PDF menu architecture; clean, scannable food items with high legibility even in low-light environments.',
-        seoConsiderations: 'Restaurant Schema.org markup with menu URLs, opening hours specification, and neighborhood cuisine alignment.'
+        seoConsiderations: 'Restaurant Schema.org markup with menu URLs, opening hours specification, and neighborhood cuisine alignment.',
+        keyFeatures: [
+            'HTML/CSS Text-Based Menus (No PDFs)',
+            'Direct Table Reservation Integration',
+            'Sticky Mobile "Call to Book" Bar'
+        ],
+        whatWeRecommend: 'We recommend a streamlined mobile interface with a sticky "Call to Book" or "WhatsApp Booking" bar, combined with a fast-loading text-based menu to maximize immediate covers.'
     },
     {
         slug: 'clinics',
@@ -183,7 +195,13 @@ const INDUSTRIES = [
             'Direct emergency call and clinic location details'
         ],
         mobileConsiderations: 'Fast one-tap appointment request form with date/time preference, direct clinic navigation link, and tap-to-call.',
-        seoConsiderations: 'Physician / MedicalBusiness / Dentist Schema.org markup, localized medical service queries (e.g. "root canal specialist Chandigarh Sector 35").'
+        seoConsiderations: 'Physician / MedicalBusiness / Dentist Schema.org markup, localized medical service queries (e.g. "root canal specialist Chandigarh Sector 35").',
+        keyFeatures: [
+            'Verified Practitioner Profiles',
+            'HIPAA/Data Compliant Consultation Forms',
+            'Before & After Clinical Galleries'
+        ],
+        whatWeRecommend: 'We recommend featuring doctor credentials, real patient outcomes, and transparent procedures, paired with sticky mobile booking buttons so anxious patients can book consultations instantly.'
     },
     {
         slug: 'salons',
@@ -201,9 +219,103 @@ const INDUSTRIES = [
             'Client preparation guidelines and studio amenities'
         ],
         mobileConsiderations: 'Lightweight image grids optimized for fast scrolling on mobile phones without layout shifts.',
-        seoConsiderations: 'BeautySalon / HealthAndBeautyBusiness Schema markup with localized beauty terms.'
+        seoConsiderations: 'BeautySalon / HealthAndBeautyBusiness Schema markup with localized beauty terms.',
+        keyFeatures: [
+            'Aesthetic Transformation Galleries',
+            'Transparent Service Pricing Menus',
+            'Direct WhatsApp Booking Links'
+        ],
+        whatWeRecommend: 'We recommend an aesthetic, fast-loading gallery of your work paired with a clear, transparent service menu and direct WhatsApp booking links to eliminate pricing confusion.'
     }
 ];
+
+const RECOMMENDATIONS = {
+    'real-estate': {
+        'more-enquiries': {
+            title: 'Property Showcase + Lead Capture',
+            description: 'We recommend a custom portfolio layout showcasing your best properties, paired with aggressive lead capture forms on every listing. A clean, sub-second mobile experience will out-convert generic broker sites.',
+            tier: 'professional'
+        },
+        'better-visibility': {
+            title: 'Local SEO Real Estate Authority',
+            description: 'We recommend building deep neighborhood-specific landing pages and integrating RealEstateAgent Schema.org markup so you dominate "property dealer near me" searches in your territory.',
+            tier: 'professional'
+        },
+        'default': {
+            title: 'Digital Property Authority',
+            description: 'We recommend a strong, mobile-first presence featuring your key listings, neighborhood expertise, and direct WhatsApp contact channels to establish immediate trust with buyers and sellers.',
+            tier: 'professional'
+        }
+    },
+    'restaurant': {
+        'more-calls': {
+            title: 'Mobile-First Direct Booking',
+            description: 'We recommend a streamlined mobile interface with a sticky "Call to Book" or "WhatsApp Booking" bar, combined with a fast-loading text-based menu (no slow PDF downloads) to maximize immediate covers.',
+            tier: 'essential'
+        },
+        'better-visibility': {
+            title: 'Google Business Alignment',
+            description: 'We recommend a site heavily optimized with Restaurant and Menu Schema.org JSON-LD, linking perfectly with your Google Maps profile to dominate local dining discovery.',
+            tier: 'professional'
+        },
+        'default': {
+            title: 'Modern Dining Experience',
+            description: 'We recommend an aesthetic, fast-loading showcase of your ambiance and menu, paired with friction-free reservation or ordering pathways for hungry local searchers.',
+            tier: 'essential'
+        }
+    },
+    'clinic': {
+        'more-enquiries': {
+            title: 'Trust & Direct Booking Engine',
+            description: 'We recommend featuring doctor credentials, real patient outcomes, and transparent procedures, paired with sticky mobile booking buttons so anxious patients can book consultations instantly.',
+            tier: 'professional'
+        },
+        'stronger-presence': {
+            title: 'Clinical Authority Platform',
+            description: 'We recommend a robust, multi-page MedicalClinic structure featuring detailed treatment pages, physician bios, and deep local SEO architecture to establish definitive regional trust.',
+            tier: 'custom'
+        },
+        'default': {
+            title: 'Professional Medical Presence',
+            description: 'We recommend a clean, accessible layout highlighting your specializations, facility hygiene, and practitioner credentials to reassure patients before they call.',
+            tier: 'professional'
+        }
+    },
+    'salon': {
+        'more-enquiries': {
+            title: 'Visual Portfolio + Pricing',
+            description: 'We recommend an aesthetic, fast-loading gallery of your work paired with a clear, transparent service menu and direct WhatsApp booking links to eliminate pricing confusion.',
+            tier: 'essential'
+        },
+        'better-visibility': {
+            title: 'Local Beauty Authority',
+            description: 'We recommend deep optimization using HealthAndBeautyBusiness Schema, pushing local keywords for your specific treatments (bridal makeup, keratin, etc.) to capture high-intent local searches.',
+            tier: 'professional'
+        },
+        'default': {
+            title: 'Premium Wellness Showcase',
+            description: 'We recommend a visually striking site that highlights your studio atmosphere, stylist expertise, and clear service pricing to attract high-value clientele.',
+            tier: 'essential'
+        }
+    },
+    'other': {
+        'more-enquiries': {
+            title: 'High-Conversion Local Setup',
+            description: 'We recommend our proven local business architecture: a fast-loading, mobile-perfect site with clear service breakdowns, trust signals, and direct call-to-actions to turn visitors into leads.',
+            tier: 'essential'
+        },
+        'stronger-presence': {
+            title: 'Brand Authority Build',
+            description: 'We recommend a multi-page setup that thoroughly explains your unique value, showcases case studies/testimonials, and utilizes professional layout design to elevate you above local competitors.',
+            tier: 'professional'
+        },
+        'default': {
+            title: 'Solid Digital Foundation',
+            description: 'We recommend a tailored, high-performance website that clearly communicates what you do, who you serve, and makes it incredibly easy for local customers to contact you.',
+            tier: 'essential'
+        }
+    }
+};
 
 const LOCATIONS = [
     {
@@ -511,6 +623,7 @@ module.exports = {
     CONFIG,
     SERVICES,
     INDUSTRIES,
+    RECOMMENDATIONS,
     LOCATIONS,
     PORTFOLIO,
     BLOG,

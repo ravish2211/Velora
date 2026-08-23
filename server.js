@@ -30,7 +30,7 @@ const {
 } = require('./src/pages');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.set('trust proxy', 1);
 
@@ -246,10 +246,14 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
         // Server-Side Input Validation
         const name = typeof body.name === 'string' ? body.name.trim() : '';
         const business = typeof body.business === 'string' ? body.business.trim() : '';
+        const website = typeof body.website === 'string' ? body.website.trim() : '';
+        const location = typeof body.location === 'string' ? body.location.trim() : '';
         const email = typeof body.email === 'string' ? body.email.trim() : '';
         const phone = typeof body.phone === 'string' ? body.phone.trim() : '';
         const industry = typeof body.industry === 'string' ? body.industry.trim() : 'other';
         const budget = typeof body.budget === 'string' ? body.budget.trim() : 'professional';
+        const goal = typeof body.goal === 'string' ? body.goal.trim() : '';
+        const timeline = typeof body.timeline === 'string' ? body.timeline.trim() : '';
         const message = typeof body.message === 'string' ? body.message.trim() : '';
 
         if (!name || name.length < 2 || name.length > 100) {
@@ -269,6 +273,14 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
             return res.status(400).json({ success: false, message: 'Phone number exceeds maximum length.' });
         }
 
+        if (website && website.length > 255) {
+            return res.status(400).json({ success: false, message: 'Website URL is too long.' });
+        }
+
+        if (location && location.length > 100) {
+            return res.status(400).json({ success: false, message: 'Location is too long.' });
+        }
+
         if (message && message.length > 2000) {
             return res.status(400).json({ success: false, message: 'Project details message is too long (max 2000 characters).' });
         }
@@ -279,15 +291,25 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
         const allowedBudgets = ['essential', 'professional', 'custom'];
         const validatedBudget = allowedBudgets.includes(budget) ? budget : 'professional';
 
+        const allowedGoals = ['more-enquiries', 'more-calls', 'better-visibility', 'stronger-presence', 'other'];
+        const validatedGoal = allowedGoals.includes(goal) ? goal : (goal || 'Not specified');
+
+        const allowedTimelines = ['asap', '1-2-weeks', '1-month', 'flexible'];
+        const validatedTimeline = allowedTimelines.includes(timeline) ? timeline : (timeline || 'Not specified');
+
         const emailText = `
 New Website Project Inquiry via Velora Digital:
 ----------------------------------------------
 Name: ${name}
 Business: ${business}
+Website: ${website || 'Not provided'}
+Location: ${location || 'Not provided'}
 Email: ${email}
 Phone: ${phone || 'Not provided'}
 Industry: ${validatedIndustry}
 Budget Tier: ${validatedBudget}
+Primary Goal: ${validatedGoal}
+Timeline: ${validatedTimeline}
 
 Project Details:
 ${message || 'No additional details provided.'}
@@ -302,8 +324,12 @@ ${message || 'No additional details provided.'}
         <p><strong>From:</strong> ${escapeHTML(name)} (${escapeHTML(business)})</p>
         <p><strong>Email:</strong> <a href="mailto:${escapeHTML(email)}">${escapeHTML(email)}</a></p>
         <p><strong>Phone:</strong> ${escapeHTML(phone || 'Not provided')}</p>
+        <p><strong>Website:</strong> ${escapeHTML(website || 'Not provided')}</p>
+        <p><strong>Location:</strong> ${escapeHTML(location || 'Not provided')}</p>
         <p><strong>Industry:</strong> ${escapeHTML(validatedIndustry)}</p>
         <p><strong>Budget Tier:</strong> ${escapeHTML(validatedBudget)}</p>
+        <p><strong>Primary Goal:</strong> ${escapeHTML(validatedGoal)}</p>
+        <p><strong>Timeline:</strong> ${escapeHTML(validatedTimeline)}</p>
         <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 20px 0;">
         <h3 style="font-size: 16px; margin-bottom: 8px;">Project Details:</h3>
         <p style="white-space: pre-wrap; background: #f8fafc; padding: 16px; border-radius: 6px; font-size: 14px;">${escapeHTML(message || 'No additional details provided.')}</p>
