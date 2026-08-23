@@ -14,8 +14,8 @@ const CONFIG = {
         essential: 14999,
         professional: 34999,
         customBase: 69999,
-        seoAddon: 7500,
-        maintenanceAddon: 5000,
+        seoAddon: 17500,
+        maintenanceAddon: 15000,
         perPage: 1500,
         baseCalculator: 10000
     }

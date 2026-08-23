@@ -72,7 +72,7 @@ function renderHomePage() {
                         </ul>
                     </div>
                     <div class="md:w-1/2 w-full">
-                        <div id="audit-form-container" class="bg-velora-bg p-6 rounded-2xl border border-velora-border relative">
+                        <div id="audit-form-container-1" class="bg-velora-bg p-6 rounded-2xl border border-velora-border relative">
                             <form class="homepage-audit-form space-y-4" onsubmit="
                                 event.preventDefault();
                                 if(window.veloraTrack) window.veloraTrack('audit_submit');
@@ -484,27 +484,27 @@ function renderHomePage() {
         <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
             <div class="p-6 rounded-2xl bg-velora-surface border border-velora-border reveal">
                 <span class="font-display text-3xl font-bold text-velora-gold block mb-3">01</span>
-                <h4 class="font-display text-base font-bold text-velora-text mb-2">Discovery</h4>
+                <h3 class="font-display text-base font-bold text-velora-text mb-2">Discovery</h3>
                 <p class="text-xs text-velora-muted leading-relaxed">We clarify your services, local customer search terms, and contact goals.</p>
             </div>
             <div class="p-6 rounded-2xl bg-velora-surface border border-velora-border reveal" style="transition-delay: 50ms;">
                 <span class="font-display text-3xl font-bold text-velora-gold block mb-3">02</span>
-                <h4 class="font-display text-base font-bold text-velora-text mb-2">Content Map</h4>
+                <h3 class="font-display text-base font-bold text-velora-text mb-2">Content Map</h3>
                 <p class="text-xs text-velora-muted leading-relaxed">We organize your menus, rate cards, and practitioner credentials.</p>
             </div>
             <div class="p-6 rounded-2xl bg-velora-surface border border-velora-border reveal" style="transition-delay: 100ms;">
                 <span class="font-display text-3xl font-bold text-velora-gold block mb-3">03</span>
-                <h4 class="font-display text-base font-bold text-velora-text mb-2">Custom Code</h4>
+                <h3 class="font-display text-base font-bold text-velora-text mb-2">Custom Code</h3>
                 <p class="text-xs text-velora-muted leading-relaxed">We write lightweight, fast-loading code tested across iOS and Android.</p>
             </div>
             <div class="p-6 rounded-2xl bg-velora-surface border border-velora-border reveal" style="transition-delay: 150ms;">
                 <span class="font-display text-3xl font-bold text-velora-gold block mb-3">04</span>
-                <h4 class="font-display text-base font-bold text-velora-text mb-2">SEO & Testing</h4>
+                <h3 class="font-display text-base font-bold text-velora-text mb-2">SEO & Testing</h3>
                 <p class="text-xs text-velora-muted leading-relaxed">We configure Schema.org markup, verify SSL, and test lead delivery.</p>
             </div>
             <div class="p-6 rounded-2xl bg-velora-surface border border-velora-border reveal" style="transition-delay: 200ms;">
                 <span class="font-display text-3xl font-bold text-velora-gold block mb-3">05</span>
-                <h4 class="font-display text-base font-bold text-velora-text mb-2">Live Launch</h4>
+                <h3 class="font-display text-base font-bold text-velora-text mb-2">Live Launch</h3>
                 <p class="text-xs text-velora-muted leading-relaxed">Deploy to fast cloud hosting and transfer 100% ownership to you.</p>
             </div>
         </div>
@@ -626,7 +626,7 @@ function renderHomePage() {
                         </ul>
                     </div>
                     <div class="md:w-1/2 w-full">
-                        <div id="audit-form-container" class="bg-velora-bg p-6 rounded-2xl border border-velora-border relative">
+                        <div id="audit-form-container-2" class="bg-velora-bg p-6 rounded-2xl border border-velora-border relative">
                             <form class="homepage-audit-form space-y-4" onsubmit="
                                 event.preventDefault();
                                 if(window.veloraTrack) window.veloraTrack('audit_submit');
@@ -1471,7 +1471,7 @@ function renderPricingPage() {
                             <input type="checkbox" id="calc-seo-addon" class="w-5 h-5 rounded accent-velora-gold cursor-pointer" checked>
                             <div class="flex-grow">
                                 <div class="text-xs font-bold text-velora-text uppercase tracking-wider">Local SEO & Schema.org Setup</div>
-                                <div class="text-xs text-velora-muted">Google Maps alignment, structured metadata & NAP audit (+₹7,500)</div>
+                                <div class="text-xs text-velora-muted">Google Maps alignment, structured metadata & NAP audit (+₹17,500)</div>
                             </div>
                         </label>
 
@@ -1479,7 +1479,7 @@ function renderPricingPage() {
                             <input type="checkbox" id="calc-maint-addon" class="w-5 h-5 rounded accent-velora-gold cursor-pointer">
                             <div class="flex-grow">
                                 <div class="text-xs font-bold text-velora-text uppercase tracking-wider">1-Year Cloud Maintenance & Security</div>
-                                <div class="text-xs text-velora-muted">Hosting management, SSL renewals & regular content edits (+₹5,000)</div>
+                                <div class="text-xs text-velora-muted">Hosting management, SSL renewals & regular content edits (+₹15,000)</div>
                             </div>
                         </label>
                     </div>
@@ -1487,7 +1487,7 @@ function renderPricingPage() {
 
                 <div class="lg:col-span-5 p-8 rounded-2xl bg-velora-surface border-2 border-velora-gold/30 text-center relative">
                     <span class="text-[10px] font-bold uppercase tracking-widest text-velora-gold block mb-2">Estimated Investment</span>
-                    <div id="calc-estimate-display" class="font-display text-4xl sm:text-5xl font-bold text-velora-text mb-2">~₹25,000</div>
+                    <div id="calc-estimate-display" class="font-display text-4xl sm:text-5xl font-bold text-velora-text mb-2">~₹35,000</div>
                     <div id="calc-direction-label" class="inline-block px-3 py-1 bg-velora-gold/10 border border-velora-gold/30 rounded-full text-[10px] font-bold uppercase tracking-widest text-velora-gold mb-4">Professional Build</div>
 
                     <ul id="calc-includes-list" class="text-left space-y-2.5 text-xs text-velora-muted mb-8 pb-8 border-b border-velora-border">
