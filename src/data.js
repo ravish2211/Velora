@@ -153,7 +153,7 @@ const INDUSTRIES = [
             'Interactive Neighborhood Maps',
             'Lead-Capture Floor Plan Downloads'
         ],
-        whatWeRecommend: 'We recommend a custom portfolio layout showcasing your best properties, paired with aggressive lead capture forms on every listing. A clean, sub-second mobile experience will out-convert generic broker sites.'
+        whatWeRecommend: 'We recommend a custom portfolio layout showcasing your best properties, paired with aggressive lead capture forms on every listing. A clean, sub-second <a href="/services/website-design" class="text-velora-gold hover:underline">mobile experience</a> will out-convert generic broker sites. We heavily prioritize <a href="/services/local-seo" class="text-velora-gold hover:underline">local SEO</a> to capture hyper-local search intent across <a href="/locations/gurugram" class="text-velora-gold hover:underline">Gurugram</a> and <a href="/locations/delhi-ncr" class="text-velora-gold hover:underline">Delhi NCR</a>.'
     },
     {
         slug: 'restaurants',
@@ -177,7 +177,7 @@ const INDUSTRIES = [
             'Direct Table Reservation Integration',
             'Sticky Mobile "Call to Book" Bar'
         ],
-        whatWeRecommend: 'We recommend a streamlined mobile interface with a sticky "Call to Book" or "WhatsApp Booking" bar, combined with a fast-loading text-based menu to maximize immediate covers.'
+        whatWeRecommend: 'We recommend a streamlined mobile interface with a sticky "Call to Book" or "WhatsApp Booking" bar, combined with a fast-loading text-based menu to maximize immediate covers. Robust <a href="/services/local-seo" class="text-velora-gold hover:underline">local SEO</a> is vital to capture "near me" dining queries, and <a href="/services/website-maintenance" class="text-velora-gold hover:underline">regular website maintenance</a> ensures menu items stay updated across the board.'
     },
     {
         slug: 'clinics',
@@ -201,7 +201,7 @@ const INDUSTRIES = [
             'HIPAA/Data Compliant Consultation Forms',
             'Before & After Clinical Galleries'
         ],
-        whatWeRecommend: 'We recommend featuring doctor credentials, real patient outcomes, and transparent procedures, paired with sticky mobile booking buttons so anxious patients can book consultations instantly.'
+        whatWeRecommend: 'We recommend featuring doctor credentials, real patient outcomes, and transparent procedures, paired with sticky mobile booking buttons so anxious patients can book consultations instantly. Building trust requires a <a href="/services/website-design" class="text-velora-gold hover:underline">premium website design</a> and continuous <a href="/services/local-seo" class="text-velora-gold hover:underline">local SEO</a> visibility.'
     },
     {
         slug: 'salons',
@@ -225,7 +225,7 @@ const INDUSTRIES = [
             'Transparent Service Pricing Menus',
             'Direct WhatsApp Booking Links'
         ],
-        whatWeRecommend: 'We recommend an aesthetic, fast-loading gallery of your work paired with a clear, transparent service menu and direct WhatsApp booking links to eliminate pricing confusion.'
+        whatWeRecommend: 'We recommend an aesthetic, fast-loading gallery of your work paired with a clear, transparent service menu and direct WhatsApp booking links to eliminate pricing confusion. A fast <a href="/services/website-design" class="text-velora-gold hover:underline">mobile-first design</a> combined with <a href="/services/local-seo" class="text-velora-gold hover:underline">targeted local SEO</a> keeps your appointment book full across <a href="/locations/chandigarh" class="text-velora-gold hover:underline">Chandigarh</a>, <a href="/locations/bengaluru" class="text-velora-gold hover:underline">Bengaluru</a>, and beyond.'
     }
 ];
 
@@ -363,9 +363,12 @@ const PORTFOLIO = [
         industry: 'Healthcare & Aesthetics',
         type: 'Concept Project',
         summary: 'A clean, trust-focused clinic website architecture demonstrating transparent treatment menus, practitioner credentials, and one-tap consultation booking.',
-        challenge: 'Medical and dental websites frequently suffer from visual clutter, outdated stock photography, and awkward appointment booking forms that discourage hesitant patients.',
-        strategy: 'Design a calming visual system with prominent doctor qualifications, treatment timelines, transparent consultation pricing, and direct WhatsApp / form booking.',
-        solution: 'Built a lightweight medical clinic template featuring clear treatment overviews, doctor profile cards, and an accessible booking flow that loads in under 400ms.',
+        projectGoals: 'Demonstrate a modern, high-converting digital presence for medical professionals that prioritizes patient trust and instant booking availability.',
+        targetIndustry: 'Healthcare, Dental Clinics, Dermatologists',
+        designDirection: 'Clinical, calming aesthetic (stone grays and emerald greens) with heavy emphasis on legible typography and clear visual hierarchy.',
+        keyUxDecisions: 'Replaced heavy PDF service menus with structured HTML accordions; moved doctor credentials above the fold; added sticky mobile consultation CTA.',
+        technicalPriorities: 'Sub-400ms mobile load time on 4G networks; semantic MedicalBusiness schema integration; strict accessibility (WCAG) compliance for form inputs.',
+        conversionObjectives: 'Maximize form fills for consultation requests; increase direct phone inquiries from mobile devices.',
         deliverables: [
             'Trust-focused clinical layout',
             'Doctor credential highlight cards',
@@ -383,9 +386,12 @@ const PORTFOLIO = [
         industry: 'Real Estate & Property',
         type: 'Concept Project',
         summary: 'A structured property showcase built to highlight residential developments, floor plans, and direct broker lead routing without portal bloat.',
-        challenge: 'Real estate websites often overwhelm users with bloated search filters and pop-ups that push buyers away on smartphones.',
-        strategy: 'Create lightweight property showcase cards with clear specifications (carpet area, possession date, locality) and immediate lead capture.',
-        solution: 'Engineered a clean property catalog layout with immediate unit availability data, high-speed image rendering, and direct broker routing.',
+        projectGoals: 'Showcase high-value residential real estate inventory while minimizing friction for lead capture and direct broker communication.',
+        targetIndustry: 'Real Estate Developers, Independent Property Brokers',
+        designDirection: 'Premium, high-contrast structural layout (charcoal and amber) allowing architectural photography to dominate the viewport.',
+        keyUxDecisions: 'Eliminated invasive newsletter pop-ups; structured property specs into scannable data tables; integrated WhatsApp routing directly on property cards.',
+        technicalPriorities: 'Optimized image delivery for large property galleries; implemented localized RealEstateAgent Schema; achieved perfect mobile viewport scaling.',
+        conversionObjectives: 'Drive qualified leads directly to broker WhatsApp; increase floor plan download requests.',
         deliverables: [
             'Property catalog & floor plan viewer',
             'Direct broker WhatsApp routing',
@@ -401,11 +407,14 @@ const PORTFOLIO = [
         id: 'the-spice-room',
         title: 'THE SPICE ROOM',
         industry: 'Restaurants & Hospitality',
-        type: 'Demo Project',
+        type: 'Concept Project',
         summary: 'A mobile-first culinary website featuring a fast HTML menu, tap-to-reserve functionality, and direct Google Maps directions.',
-        challenge: 'Diners on mobile 4G/5G connections frequently abandon restaurants that require downloading 15MB PDF menus just to see food prices.',
-        strategy: 'Replace slow PDFs with a structured, categorized HTML menu that loads in 350ms, paired with clear table reservation and navigation buttons.',
-        solution: 'Built a lightweight text-based menu with dietary tags, direct table booking integration, and 1-tap Google Maps directions.',
+        projectGoals: 'Eliminate mobile bounce rates caused by slow PDF menus and create a frictionless path to table reservations and directions.',
+        targetIndustry: 'Restaurants, Cafes, Fine Dining',
+        designDirection: 'Warm, appetizing aesthetic (deep slate and rose red) focusing entirely on high-fidelity food imagery and clear pricing.',
+        keyUxDecisions: 'Converted all menu items from PDF to native HTML for instant loading and screen-reader accessibility; added one-tap "Get Directions" button.',
+        technicalPriorities: 'Sub-300ms First Contentful Paint; comprehensive Restaurant Schema for rich snippet generation on Google Maps; touch-target optimization.',
+        conversionObjectives: 'Increase weekend table reservations; drive immediate foot traffic via integrated maps routing.',
         deliverables: [
             'Sub-second mobile HTML menu',
             'Direct table reservation link',

@@ -234,6 +234,81 @@ app.get('/api/estimate', (req, res) => {
     });
 });
 
+app.post('/api/audit', contactLimiter, async (req, res) => {
+    try {
+        const body = req.body || {};
+
+        if (body._gotcha && body._gotcha.trim() !== '') {
+            return res.status(200).json({ success: true, message: 'Audit request received.' });
+        }
+
+        const website = typeof body.website === 'string' ? body.website.trim() : '';
+        const source = typeof body.source === 'string' ? body.source.trim() : 'Homepage';
+
+        if (!website) {
+            return res.status(400).json({ success: false, message: 'Please provide a website URL.' });
+        }
+
+        if (website.length > 2000) {
+            return res.status(400).json({ success: false, message: 'Website URL is too long.' });
+        }
+
+        if (source.length > 100) {
+            return res.status(400).json({ success: false, message: 'Source value is too long.' });
+        }
+
+        let urlObj;
+        try {
+            urlObj = new URL(website.startsWith('http') ? website : 'https://' + website);
+            if (urlObj.protocol !== 'http:' && urlObj.protocol !== 'https:') {
+                throw new Error('Invalid protocol');
+            }
+        } catch(e) {
+            return res.status(400).json({ success: false, message: 'Please provide a valid HTTP/HTTPS website URL.' });
+        }
+
+        const safeUrl = urlObj.href;
+        const safeSource = escapeHTML(source);
+        const emailText = `FREE WEBSITE AUDIT LEAD\n\nURL: ${safeUrl}\nSource: ${source}\nTimestamp: ${new Date().toISOString()}`;
+        const emailHtml = `
+<div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #1e293b; line-height: 1.6;">
+    <div style="background: #d4af37; padding: 24px; border-radius: 8px 8px 0 0; color: #fff;">
+        <h2 style="margin: 0; font-size: 20px; color: #0f172a;">Velora Digital - FREE WEBSITE AUDIT LEAD</h2>
+    </div>
+    <div style="padding: 24px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 8px 8px;">
+        <p><strong>Website URL:</strong> <a href="${safeUrl}">${safeUrl}</a></p>
+        <p><strong>Source:</strong> ${safeSource}</p>
+        <p><strong>Timestamp:</strong> ${new Date().toISOString()}</p>
+    </div>
+</div>`;
+
+        const resend = getResend();
+        if (resend) {
+            const { error } = await resend.emails.send({
+                from: CONFIG.emailFrom,
+                to: CONFIG.systemEmail || CONFIG.email,
+                subject: `[Audit Lead] ${urlObj.hostname}`,
+                text: emailText,
+                html: emailHtml
+            });
+            if (error) {
+                console.error('[Resend Error]:', error);
+                throw new Error(error.message || 'Email delivery failed');
+            }
+        } else {
+            console.warn('[Audit]: Resend not configured. Lead:', safeUrl);
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: 'Your audit request has been received. We will review your site shortly.'
+        });
+    } catch (err) {
+        console.error('[API Error]:', err);
+        return res.status(500).json({ success: false, message: 'An internal error occurred.' });
+    }
+});
+
 app.post('/api/contact', contactLimiter, async (req, res) => {
     try {
         const body = req.body || {};

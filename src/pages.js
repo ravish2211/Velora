@@ -9,6 +9,7 @@ function renderHomePage() {
     const meta = {
         title: 'Velora Digital | Web Design, Local SEO & Maintenance Studio',
         description: 'We engineer fast, mobile-first websites and local search foundations for serious businesses across India. Transparent pricing, clean code, no fluff.',
+        schema: generateSchema('FAQPage', { faqs: FAQS }),
         breadcrumbs: null
     };
 
@@ -71,16 +72,63 @@ function renderHomePage() {
                         </ul>
                     </div>
                     <div class="md:w-1/2 w-full">
-                        <form action="/contact" method="GET" class="space-y-4 bg-velora-bg p-6 rounded-2xl border border-velora-border">
-                            <div>
-                                <label for="audit-url" class="sr-only">Website URL</label>
-                                <input type="url" id="audit-url" name="audit" placeholder="https://yourwebsite.com" required class="input-luxury w-full px-4 py-3 bg-velora-surface border border-velora-borderStrong rounded-xl text-sm text-velora-text placeholder-velora-muted focus:outline-none focus:ring-1 focus:ring-velora-gold">
+                        <div id="audit-form-container" class="bg-velora-bg p-6 rounded-2xl border border-velora-border relative">
+                            <form class="homepage-audit-form space-y-4" onsubmit="
+                                event.preventDefault();
+                                if(window.veloraTrack) window.veloraTrack('audit_submit');
+                                const form = this;
+                                const submitBtn = form.querySelector('.audit-submit-btn');
+                                const errorDiv = form.querySelector('.audit-error');
+                                const successDiv = form.nextElementSibling;
+                                const website = form.querySelector('.audit-url').value;
+                                const gotcha = form.querySelector('.audit_gotcha').value;
+
+                                if(!website) return;
+                                submitBtn.disabled = true;
+                                submitBtn.innerText = 'Submitting...';
+                                errorDiv.classList.add('hidden');
+                                errorDiv.innerText = '';
+
+                                fetch('/api/audit', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ website: website, _gotcha: gotcha, source: 'Homepage Lead Magnet' })
+                                }).then(res => res.json()).then(data => {
+                                    if (data.success) {
+                                        if(window.veloraTrack) window.veloraTrack('audit_success');
+                                        form.classList.add('hidden');
+                                        successDiv.classList.remove('hidden');
+                                        successDiv.classList.add('flex');
+                                    } else {
+                                        throw new Error(data.message || 'Submission failed');
+                                    }
+                                }).catch(err => {
+                                    if(window.veloraTrack) window.veloraTrack('audit_error');
+                                    errorDiv.innerText = err.message || 'Something went wrong. Please try again.';
+                                    errorDiv.classList.remove('hidden');
+                                    submitBtn.disabled = false;
+                                    submitBtn.innerText = 'Get My Free Audit';
+                                });
+                            ">
+                                <div class="absolute -left-[9999px] top-auto w-1 h-1 overflow-hidden" aria-hidden="true">
+                                    <input type="text" name="_gotcha" class="audit_gotcha" tabindex="-1" autocomplete="off">
+                                </div>
+                                <div>
+                                    <label class="sr-only">Website URL</label>
+                                    <input type="url" class="audit-url input-luxury w-full px-4 py-3 bg-velora-surface border border-velora-borderStrong rounded-xl text-sm text-velora-text placeholder-velora-muted focus:outline-none focus:ring-1 focus:ring-velora-gold" name="website" placeholder="https://yourwebsite.com" required>
+                                </div>
+                                <div class="audit-error hidden text-xs text-red-500 font-medium"></div>
+                                <button type="submit" class="audit-submit-btn btn-luxury w-full py-3.5 rounded-xl text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText hover:opacity-95 transition-opacity shadow-md disabled:opacity-50 disabled:cursor-not-allowed">
+                                    Get My Free Audit
+                                </button>
+                                <p class="text-[10px] text-velora-muted text-center mt-3">We'll identify the biggest issues affecting speed, SEO, mobile UX, and enquiries.</p>
+                            </form>
+                            <div class="audit-success hidden flex-col items-center justify-center text-center space-y-3 py-4">
+                                <div class="text-emerald-500 text-3xl">✓</div>
+                                <h3 class="font-display text-lg font-bold text-velora-text">Audit Request Received</h3>
+                                <p class="text-xs text-velora-muted">We will review your site and email you the teardown shortly.</p>
                             </div>
-                            <button type="submit" onclick="if(window.veloraTrack) window.veloraTrack('audit_request_submit')" class="btn-luxury w-full py-3.5 rounded-xl text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText hover:opacity-95 transition-opacity shadow-md">
-                                Request Free Audit
-                            </button>
-                            <p class="text-[10px] text-velora-muted text-center mt-3">100% Free. No pushy sales calls.</p>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -578,16 +626,63 @@ function renderHomePage() {
                         </ul>
                     </div>
                     <div class="md:w-1/2 w-full">
-                        <form action="/contact" method="GET" class="space-y-4 bg-velora-bg p-6 rounded-2xl border border-velora-border">
-                            <div>
-                                <label for="audit-url" class="sr-only">Website URL</label>
-                                <input type="url" id="audit-url" name="audit" placeholder="https://yourwebsite.com" required class="input-luxury w-full px-4 py-3 bg-velora-surface border border-velora-borderStrong rounded-xl text-sm text-velora-text placeholder-velora-muted focus:outline-none focus:ring-1 focus:ring-velora-gold">
+                        <div id="audit-form-container" class="bg-velora-bg p-6 rounded-2xl border border-velora-border relative">
+                            <form class="homepage-audit-form space-y-4" onsubmit="
+                                event.preventDefault();
+                                if(window.veloraTrack) window.veloraTrack('audit_submit');
+                                const form = this;
+                                const submitBtn = form.querySelector('.audit-submit-btn');
+                                const errorDiv = form.querySelector('.audit-error');
+                                const successDiv = form.nextElementSibling;
+                                const website = form.querySelector('.audit-url').value;
+                                const gotcha = form.querySelector('.audit_gotcha').value;
+
+                                if(!website) return;
+                                submitBtn.disabled = true;
+                                submitBtn.innerText = 'Submitting...';
+                                errorDiv.classList.add('hidden');
+                                errorDiv.innerText = '';
+
+                                fetch('/api/audit', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ website: website, _gotcha: gotcha, source: 'Homepage Lead Magnet' })
+                                }).then(res => res.json()).then(data => {
+                                    if (data.success) {
+                                        if(window.veloraTrack) window.veloraTrack('audit_success');
+                                        form.classList.add('hidden');
+                                        successDiv.classList.remove('hidden');
+                                        successDiv.classList.add('flex');
+                                    } else {
+                                        throw new Error(data.message || 'Submission failed');
+                                    }
+                                }).catch(err => {
+                                    if(window.veloraTrack) window.veloraTrack('audit_error');
+                                    errorDiv.innerText = err.message || 'Something went wrong. Please try again.';
+                                    errorDiv.classList.remove('hidden');
+                                    submitBtn.disabled = false;
+                                    submitBtn.innerText = 'Get My Free Audit';
+                                });
+                            ">
+                                <div class="absolute -left-[9999px] top-auto w-1 h-1 overflow-hidden" aria-hidden="true">
+                                    <input type="text" name="_gotcha" class="audit_gotcha" tabindex="-1" autocomplete="off">
+                                </div>
+                                <div>
+                                    <label class="sr-only">Website URL</label>
+                                    <input type="url" class="audit-url input-luxury w-full px-4 py-3 bg-velora-surface border border-velora-borderStrong rounded-xl text-sm text-velora-text placeholder-velora-muted focus:outline-none focus:ring-1 focus:ring-velora-gold" name="website" placeholder="https://yourwebsite.com" required>
+                                </div>
+                                <div class="audit-error hidden text-xs text-red-500 font-medium"></div>
+                                <button type="submit" class="audit-submit-btn btn-luxury w-full py-3.5 rounded-xl text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText hover:opacity-95 transition-opacity shadow-md disabled:opacity-50 disabled:cursor-not-allowed">
+                                    Get My Free Audit
+                                </button>
+                                <p class="text-[10px] text-velora-muted text-center mt-3">We'll identify the biggest issues affecting speed, SEO, mobile UX, and enquiries.</p>
+                            </form>
+                            <div class="audit-success hidden flex-col items-center justify-center text-center space-y-3 py-4">
+                                <div class="text-emerald-500 text-3xl">✓</div>
+                                <h3 class="font-display text-lg font-bold text-velora-text">Audit Request Received</h3>
+                                <p class="text-xs text-velora-muted">We will review your site and email you the teardown shortly.</p>
                             </div>
-                            <button type="submit" onclick="if(window.veloraTrack) window.veloraTrack('audit_request_submit')" class="btn-luxury w-full py-3.5 rounded-xl text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText hover:opacity-95 transition-opacity shadow-md">
-                                Request Free Audit
-                            </button>
-                            <p class="text-[10px] text-velora-muted text-center mt-3">100% Free. No pushy sales calls.</p>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -784,7 +879,10 @@ function renderServiceDetailPage(service) {
     const meta = {
         title: `${service.title} | Velora Digital`,
         description: service.short,
-        schema: generateSchema('Service', { name: service.title, description: service.short }),
+        schema: [
+            generateSchema('Service', { name: service.title, description: service.short }),
+            generateSchema('FAQPage', { faqs: service.faqs })
+        ],
         breadcrumbs: [{ title: 'Home', link: '/' }, { title: 'Services', link: '/services' }, { title: service.title, link: `/services/${service.slug}` }]
     };
 
@@ -1124,25 +1222,36 @@ function renderPortfolioPage() {
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
-                        <div class="lg:col-span-6 space-y-4">
+                        <div class="lg:col-span-5 space-y-4">
                             <h2 class="font-display text-3xl sm:text-4xl font-bold text-velora-text tracking-tight">${p.title}</h2>
                             <p class="text-base text-velora-muted leading-relaxed text-pretty">${p.summary}</p>
-
-                            <div class="p-5 rounded-2xl bg-velora-bg border border-velora-border">
+                            <div class="p-5 rounded-2xl bg-velora-bg border border-velora-border mt-6">
                                 <div class="text-xs font-bold uppercase tracking-widest text-velora-gold mb-1">What This Demonstrates</div>
                                 <div class="text-sm text-velora-muted leading-relaxed">${p.demonstrates}</div>
                             </div>
                         </div>
 
-                        <div class="lg:col-span-6 space-y-6">
+                        <div class="lg:col-span-7 space-y-6">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div class="p-4 rounded-xl bg-velora-bg border border-velora-border">
-                                    <div class="text-[10px] font-bold uppercase tracking-widest text-red-500 mb-1">The Challenge</div>
-                                    <div class="text-xs text-velora-muted leading-relaxed">${p.challenge}</div>
+                                    <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-1">Project Goals</div>
+                                    <div class="text-xs text-velora-muted leading-relaxed">${p.projectGoals}</div>
                                 </div>
                                 <div class="p-4 rounded-xl bg-velora-bg border border-velora-border">
-                                    <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-1">Our Strategy</div>
-                                    <div class="text-xs text-velora-muted leading-relaxed">${p.strategy}</div>
+                                    <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-1">Target Industry</div>
+                                    <div class="text-xs text-velora-muted leading-relaxed">${p.targetIndustry}</div>
+                                </div>
+                                <div class="p-4 rounded-xl bg-velora-bg border border-velora-border">
+                                    <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-1">Conversion Objectives</div>
+                                    <div class="text-xs text-velora-muted leading-relaxed">${p.conversionObjectives}</div>
+                                </div>
+                                <div class="p-4 rounded-xl bg-velora-bg border border-velora-border">
+                                    <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-1">Key UX Decisions</div>
+                                    <div class="text-xs text-velora-muted leading-relaxed">${p.keyUxDecisions}</div>
+                                </div>
+                                <div class="sm:col-span-2 p-4 rounded-xl bg-velora-bg border border-velora-border">
+                                    <div class="text-[10px] font-bold uppercase tracking-widest text-velora-gold mb-1">Technical Priorities</div>
+                                    <div class="text-xs text-velora-muted leading-relaxed">${p.technicalPriorities}</div>
                                 </div>
                             </div>
 
@@ -1485,21 +1594,24 @@ function renderAboutPage() {
         </header>
 
         <div class="space-y-8 mb-16 reveal">
-            <div class="p-8 sm:p-12 rounded-3xl bg-velora-surface border border-velora-border">
-                <h2 class="font-display text-2xl font-bold text-velora-text mb-6 tracking-tight">Our Guiding Rules</h2>
-                <div class="space-y-6">
-                    <div class="pb-6 border-b border-velora-border">
-                        <strong class="font-display text-lg text-velora-text block mb-1">1. Absolute Honesty Over Marketing Hype</strong>
-                        <p class="text-sm text-velora-muted leading-relaxed">We will never guarantee you a #1 Google rank overnight, because that is technically impossible. We tell the truth about what it takes to succeed online.</p>
-                    </div>
-                    <div class="pb-6 border-b border-velora-border">
-                        <strong class="font-display text-lg text-velora-text block mb-1">2. Built for Mobile Conversions</strong>
-                        <p class="text-sm text-velora-muted leading-relaxed">A website that looks pretty on a 4K monitor but fails to show a clear phone number on a smartphone is useless. We design everything to turn local searches into phone calls and messages.</p>
-                    </div>
-                    <div>
-                        <strong class="font-display text-lg text-velora-text block mb-1">3. Clean Code & Performance Discipline</strong>
-                        <p class="text-sm text-velora-muted leading-relaxed">We don't use heavy builders that slow down your site. We write lean, hand-crafted code that passes Google Core Web Vitals with flying colors.</p>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="p-8 sm:p-12 rounded-3xl bg-velora-surface border border-velora-border">
+                    <h2 class="font-display text-2xl font-bold text-velora-text mb-6 tracking-tight">What You Can Expect</h2>
+                    <ul class="space-y-4 text-sm text-velora-muted leading-relaxed">
+                        <li class="flex gap-3"><span class="text-velora-gold">✓</span> <div><strong>Direct Communication:</strong> You work directly with the developers building your site. No account managers or middlemen blocking the way.</div></li>
+                        <li class="flex gap-3"><span class="text-velora-gold">✓</span> <div><strong>Transparent Pricing:</strong> No hidden fees, surprise bills, or confusing retainers. What we quote is what you pay.</div></li>
+                        <li class="flex gap-3"><span class="text-velora-gold">✓</span> <div><strong>Performance-First Implementation:</strong> Your site is hand-coded to load in under a second and pass Google Core Web Vitals out of the box.</div></li>
+                        <li class="flex gap-3"><span class="text-velora-gold">✓</span> <div><strong>Measurable Goals:</strong> We focus on making the phone ring, not just making the site look pretty.</div></li>
+                    </ul>
+                </div>
+                <div class="p-8 sm:p-12 rounded-3xl bg-velora-surface border border-velora-border">
+                    <h2 class="font-display text-2xl font-bold text-velora-text mb-6 tracking-tight">What We Refuse to Do</h2>
+                    <ul class="space-y-4 text-sm text-velora-muted leading-relaxed">
+                        <li class="flex gap-3"><span class="text-red-500 font-bold">×</span> <div><strong>Use Heavy Page Builders:</strong> We don't drag-and-drop bloated plugins that slow your site down and break during updates.</div></li>
+                        <li class="flex gap-3"><span class="text-red-500 font-bold">×</span> <div><strong>Fake SEO Guarantees:</strong> We will never promise a "#1 Ranking on Google overnight" because that is technically impossible and highly unethical.</div></li>
+                        <li class="flex gap-3"><span class="text-red-500 font-bold">×</span> <div><strong>Hostage Contracts:</strong> We build on standard, maintainable code. You own your website completely once it's launched.</div></li>
+                        <li class="flex gap-3"><span class="text-red-500 font-bold">×</span> <div><strong>Offshore the Work:</strong> We handle architecture, design, and coding strictly in-house to maintain our strict quality standards.</div></li>
+                    </ul>
                 </div>
             </div>
         </div>

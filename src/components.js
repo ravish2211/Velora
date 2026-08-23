@@ -67,6 +67,7 @@ function generateSchema(type, data = {}) {
             "datePublished": new Date(data.date).toISOString()
         };
     }
+
     if (type === 'BreadcrumbList') {
         return {
             ...base,
@@ -80,10 +81,11 @@ function generateSchema(type, data = {}) {
         };
     }
     if (type === 'FAQPage') {
+        const faqs = (data && Array.isArray(data.faqs)) ? data.faqs : [];
         return {
             ...base,
             "@type": "FAQPage",
-            "mainEntity": data.faqs.map(faq => ({
+            "mainEntity": faqs.map(faq => ({
                 "@type": "Question",
                 "name": faq.q,
                 "acceptedAnswer": {
@@ -301,7 +303,9 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
     const breadcrumbSchema = meta.breadcrumbs ? generateSchema('BreadcrumbList', { items: meta.breadcrumbs }) : null;
     
     const schemas = [schemaOrg, schemaWebSite];
-    if (pageSchema) schemas.push(pageSchema);
+    if (pageSchema) {
+        Array.isArray(pageSchema) ? schemas.push(...pageSchema) : schemas.push(pageSchema);
+    }
     if (breadcrumbSchema) schemas.push(breadcrumbSchema);
 
     return `<!DOCTYPE html>
