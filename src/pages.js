@@ -114,8 +114,8 @@ function renderHomePage() {
                                     <input type="text" name="_gotcha" class="audit_gotcha" tabindex="-1" autocomplete="off">
                                 </div>
                                 <div>
-                                    <label class="sr-only">Website URL</label>
-                                    <input type="url" class="audit-url input-luxury w-full px-4 py-3 bg-velora-surface border border-velora-borderStrong rounded-xl text-sm text-velora-text placeholder-velora-muted focus:outline-none focus:ring-1 focus:ring-velora-gold" name="website" placeholder="https://yourwebsite.com" required>
+                                    <label for="audit-website-url" class="sr-only">Website URL</label>
+                                    <input type="url" id="audit-website-url" class="audit-url input-luxury w-full px-4 py-3 bg-velora-surface border border-velora-borderStrong rounded-xl text-sm text-velora-text placeholder-velora-muted focus:outline-none focus:ring-1 focus:ring-velora-gold" name="website" placeholder="https://yourwebsite.com" required>
                                 </div>
                                 <div class="audit-error hidden text-xs text-red-500 font-medium"></div>
                                 <button type="submit" class="audit-submit-btn btn-luxury w-full py-3.5 rounded-xl text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText hover:opacity-95 transition-opacity shadow-md disabled:opacity-50 disabled:cursor-not-allowed">
@@ -237,7 +237,7 @@ function renderHomePage() {
 
             <!-- Step 1: Industry -->
             <div id="rec-step-1" class="space-y-6">
-                <label class="block text-[10px] font-bold uppercase tracking-widest text-velora-text mb-4 text-center">1. Select Your Industry</label>
+                <p class="block text-[10px] font-bold uppercase tracking-widest text-velora-text mb-4 text-center">1. Select Your Industry</p>
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
                     ${INDUSTRIES.map(ind => `
                         <button type="button" onclick="setRecIndustry('${ind.slug}')" class="p-4 rounded-2xl border border-velora-border bg-velora-surface hover:border-velora-gold transition-colors text-center group">
@@ -254,7 +254,7 @@ function renderHomePage() {
 
             <!-- Step 2: Goal (Hidden initially) -->
             <div id="rec-step-2" class="hidden space-y-6">
-                <label class="block text-[10px] font-bold uppercase tracking-widest text-velora-text mb-4 text-center">2. What is your primary goal?</label>
+                <p class="block text-[10px] font-bold uppercase tracking-widest text-velora-text mb-4 text-center">2. What is your primary goal?</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
                     <button type="button" onclick="setRecGoal('more-enquiries')" class="p-4 rounded-2xl border border-velora-border bg-velora-surface hover:border-velora-gold transition-colors text-left flex items-center gap-4">
                         <div class="w-10 h-10 rounded-full bg-velora-bg flex items-center justify-center text-velora-gold font-bold">1</div>
