@@ -365,7 +365,7 @@ function renderHomePage() {
                     <div class="absolute inset-0 text-[#a89f91] p-6 sm:p-10 flex flex-col justify-between font-serif pointer-events-none transition-opacity duration-200" id="before-content" style="opacity: 0;">
                         <div class="border-b border-[#3d3830] pb-4 flex justify-between items-center">
                             <span class="text-xl italic text-[#d4af37]">Old-Style Template</span>
-                            <span class="text-xs px-2 py-1 bg-red-950/80 text-red-400 rounded border border-red-800">4.8s Load Time • 38/100 Mobile Score</span>
+                            <span class="text-xs px-2 py-1 bg-red-950/80 text-red-400 rounded border border-red-800">Slow Load Times • Poor Mobile Score</span>
                         </div>
                         <div class="my-auto space-y-4 max-w-lg">
                             <div class="text-2xl sm:text-3xl text-white">"Welcome to Our Website - Please Download Our 20MB PDF Catalog"</div>
@@ -380,7 +380,7 @@ function renderHomePage() {
                     <div class="absolute inset-0 text-velora-text p-6 sm:p-10 flex flex-col justify-between font-sans pointer-events-none transition-opacity duration-200" id="after-content" style="opacity: 1;">
                         <div class="border-b border-velora-border pb-4 flex justify-between items-center">
                             <span class="font-display text-xl font-bold tracking-tight text-velora-text">Velora Digital Build</span>
-                            <span class="text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-500 rounded-full border border-emerald-500/30 font-mono font-bold">0.4s Load Time • 99/100 Core Web Vitals</span>
+                            <span class="text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-500 rounded-full border border-emerald-500/30 font-mono font-bold">Built for Speed • Core Web Vitals Focused</span>
                         </div>
                         <div class="my-auto space-y-4 max-w-lg">
                             <div class="font-display text-2xl sm:text-3xl font-bold text-velora-text">Fast Mobile Menu, Tap-to-Call & Local Google Visibility</div>
@@ -389,7 +389,7 @@ function renderHomePage() {
                         <div class="flex items-center gap-4 text-xs font-semibold text-velora-gold border-t border-velora-border pt-3">
                             <span>✓ Local Schema.org</span>
                             <span>✓ Sticky Mobile CTA Bar</span>
-                            <span>✓ Guaranteed Zero Bloat</span>
+                            <span>✓ Lean, Purpose-Built Code</span>
                         </div>
                     </div>
 
@@ -1598,7 +1598,7 @@ function renderAboutPage() {
                     <ul class="space-y-4 text-sm text-velora-muted leading-relaxed">
                         <li class="flex gap-3"><span class="text-velora-gold">✓</span> <div><strong>Direct Communication:</strong> You work directly with the developers building your site. No account managers or middlemen blocking the way.</div></li>
                         <li class="flex gap-3"><span class="text-velora-gold">✓</span> <div><strong>Transparent Pricing:</strong> No hidden fees, surprise bills, or confusing retainers. What we quote is what you pay.</div></li>
-                        <li class="flex gap-3"><span class="text-velora-gold">✓</span> <div><strong>Performance-First Implementation:</strong> Your site is hand-coded to load in under a second and pass Google Core Web Vitals out of the box.</div></li>
+                        <li class="flex gap-3"><span class="text-velora-gold">✓</span> <div><strong>Performance-First Implementation:</strong> Your site is hand-coded for maximum speed and engineered to target Google Core Web Vitals out of the box.</div></li>
                         <li class="flex gap-3"><span class="text-velora-gold">✓</span> <div><strong>Measurable Goals:</strong> We focus on making the phone ring, not just making the site look pretty.</div></li>
                     </ul>
                 </div>
