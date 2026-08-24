@@ -163,7 +163,7 @@ const INDUSTRIES = [
         desc: 'Lightning-fast mobile menus, direct table reservations, and clear location directions for dining establishments.',
         challenges: 'Hungry customers searching on mobile will instantly abandon a restaurant website if forced to download a 15MB PDF menu. Outdated opening hours and missing parking details also cost direct walk-ins.',
         expectations: 'Diners want an instant, categorized food menu with clear vegetarian/non-vegetarian indicators, direct table booking or call links, operating hours, and a 1-tap Google Maps directions link.',
-        solutions: 'We create native HTML menus that load in under 500ms, integrate direct table booking links, and prominently display location, parking, and timing details on mobile.',
+        solutions: 'We create native HTML menus that load lightning-fast, integrate direct table booking links, and prominently display location, parking, and timing details on mobile.',
         conversionElements: [
             'Lightning-fast mobile-readable menu with dietary filters',
             'Prominent "Reserve a Table" or "Order Online" buttons',
@@ -367,7 +367,7 @@ const PORTFOLIO = [
         targetIndustry: 'Healthcare, Dental Clinics, Dermatologists',
         designDirection: 'Clinical, calming aesthetic (stone grays and emerald greens) with heavy emphasis on legible typography and clear visual hierarchy.',
         keyUxDecisions: 'Replaced heavy PDF service menus with structured HTML accordions; moved doctor credentials above the fold; added sticky mobile consultation CTA.',
-        technicalPriorities: 'Sub-400ms mobile load time on 4G networks; semantic MedicalBusiness schema integration; strict accessibility (WCAG) compliance for form inputs.',
+        technicalPriorities: 'Lightning-fast mobile load time on 4G networks; semantic MedicalBusiness schema integration; strict accessibility (WCAG) compliance for form inputs.',
         conversionObjectives: 'Maximize form fills for consultation requests; increase direct phone inquiries from mobile devices.',
         deliverables: [
             'Trust-focused clinical layout',

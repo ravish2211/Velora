@@ -39,7 +39,7 @@ function renderHomePage() {
                 <div class="mt-12 pt-8 border-t border-velora-border flex flex-wrap items-center gap-6 sm:gap-10 text-xs font-medium text-velora-muted reveal" style="transition-delay: 200ms;">
                     <div class="flex items-center gap-2">
                         <span class="text-emerald-500 font-bold">✓</span>
-                        <span>Under 500ms Mobile Load Speed</span>
+                        <span>Lightning-fast Mobile Load Speed</span>
                     </div>
                     <div class="flex items-center gap-2">
                         <span class="text-emerald-500 font-bold">✓</span>
