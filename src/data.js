@@ -413,7 +413,7 @@ const PORTFOLIO = [
         targetIndustry: 'Restaurants, Cafes, Fine Dining',
         designDirection: 'Warm, appetizing aesthetic (deep slate and rose red) focusing entirely on high-fidelity food imagery and clear pricing.',
         keyUxDecisions: 'Converted all menu items from PDF to native HTML for lightning-fast loading and screen-reader accessibility; added one-tap "Get Directions" button.',
-        technicalPriorities: 'Sub-300ms First Contentful Paint; comprehensive Restaurant Schema for rich snippet generation on Google Maps; touch-target optimization.',
+        technicalPriorities: 'Lightning-fast First Contentful Paint; comprehensive Restaurant Schema for rich snippet generation on Google Maps; touch-target optimization.',
         conversionObjectives: 'Increase weekend table reservations; drive immediate foot traffic via integrated maps routing.',
         deliverables: [
             'Instant-feeling mobile HTML menu',
