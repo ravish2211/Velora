@@ -675,11 +675,12 @@ function renderHomePage() {
                 afterBg.style.clipPath = 'polygon(0 0, ' + percent + '% 0, ' + percent + '% 100%, 0 100%)';
                 container.setAttribute('aria-valuenow', Math.round(percent));
 
-                if (pos <= 0.45 && currentTextState !== 'before') {
+                const roundedPercent = Math.round(percent);
+                if (roundedPercent <= 45 && currentTextState !== 'before') {
                     currentTextState = 'before';
                     beforeContent.style.opacity = '1';
                     afterContent.style.opacity = '0';
-                } else if (pos >= 0.55 && currentTextState !== 'after') {
+                } else if (roundedPercent >= 55 && currentTextState !== 'after') {
                     currentTextState = 'after';
                     beforeContent.style.opacity = '0';
                     afterContent.style.opacity = '1';
