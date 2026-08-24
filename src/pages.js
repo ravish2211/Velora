@@ -354,13 +354,15 @@ function renderHomePage() {
             </div>
 
             <div class="max-w-4xl mx-auto reveal">
-                <div class="relative w-full min-h-[400px] sm:min-h-0 sm:aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl border border-velora-border select-none" id="before-after-container">
-                    <!-- Slider Backgrounds -->
-                    <div class="absolute inset-0 bg-[#1e1b18]" id="before-bg"></div>
-                    <div class="absolute inset-0 bg-velora-card" id="after-bg" style="opacity: 0.5;"></div>
+                <div class="relative w-full min-h-[400px] sm:min-h-0 sm:aspect-[16/9] select-none touch-pan-y focus:outline-none" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-label="Before and After Comparison" id="before-after-container">
+                    <!-- Background Comparison Wrapper -->
+                    <div class="absolute inset-0 overflow-hidden rounded-2xl shadow-2xl border border-velora-border">
+                        <div class="absolute inset-0 bg-[#1e1b18]" id="before-bg"></div>
+                        <div class="absolute inset-0 bg-velora-card" id="after-bg" style="clip-path: polygon(0 0, 85% 0, 85% 100%, 0 100%);"></div>
+                    </div>
 
                     <!-- Before Content Layer -->
-                    <div class="absolute inset-0 text-[#a89f91] p-6 sm:p-10 flex flex-col justify-between font-serif pointer-events-none" id="before-content" style="opacity: 0;">
+                    <div class="absolute inset-0 text-[#a89f91] p-6 sm:p-10 flex flex-col justify-between font-serif pointer-events-none transition-opacity duration-200" id="before-content" style="opacity: 0;">
                         <div class="border-b border-[#3d3830] pb-4 flex justify-between items-center">
                             <span class="text-xl italic text-[#d4af37]">Old-Style Template</span>
                             <span class="text-xs px-2 py-1 bg-red-950/80 text-red-400 rounded border border-red-800">4.8s Load Time • 38/100 Mobile Score</span>
@@ -375,7 +377,7 @@ function renderHomePage() {
                     </div>
 
                     <!-- After Content Layer -->
-                    <div class="absolute inset-0 text-velora-text p-6 sm:p-10 flex flex-col justify-between font-sans pointer-events-none" id="after-content" style="opacity: 0;">
+                    <div class="absolute inset-0 text-velora-text p-6 sm:p-10 flex flex-col justify-between font-sans pointer-events-none transition-opacity duration-200" id="after-content" style="opacity: 1;">
                         <div class="border-b border-velora-border pb-4 flex justify-between items-center">
                             <span class="font-display text-xl font-bold tracking-tight text-velora-text">Velora Digital Build</span>
                             <span class="text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-500 rounded-full border border-emerald-500/30 font-mono font-bold">0.4s Load Time • 99/100 Core Web Vitals</span>
@@ -392,9 +394,10 @@ function renderHomePage() {
                     </div>
 
                     <!-- Slider Handle -->
-                    <div class="absolute top-0 bottom-0 w-1 bg-velora-gold cursor-ew-resize z-20 flex items-center justify-center" id="slider-handle" style="left: 100%;">
-                        <div class="w-8 h-8 rounded-full bg-velora-button text-velora-buttonText border border-velora-borderStrong shadow-lg flex items-center justify-center text-xs font-bold">
-                            &harr;
+                    <div class="absolute top-0 bottom-0 w-1 bg-velora-gold cursor-ew-resize z-20 flex items-center justify-center pointer-events-none" id="slider-handle" style="left: 85%;">
+                        <div class="w-8 h-8 rounded-full bg-velora-card border-2 border-velora-gold shadow-lg flex items-center justify-center gap-1 pointer-events-auto">
+                            <div class="w-0.5 h-3 bg-velora-muted rounded-full"></div>
+                            <div class="w-0.5 h-3 bg-velora-muted rounded-full"></div>
                         </div>
                     </div>
                 </div>
@@ -643,62 +646,84 @@ function renderHomePage() {
     const script = `
         // Before/After Slider Interaction
         const container = document.getElementById('before-after-container');
-        const beforeBg = document.getElementById('before-bg');
         const afterBg = document.getElementById('after-bg');
         const beforeContent = document.getElementById('before-content');
         const afterContent = document.getElementById('after-content');
         const handle = document.getElementById('slider-handle');
 
-        if (container && beforeBg && afterBg && beforeContent && afterContent && handle) {
+        if (container && afterBg && beforeContent && afterContent && handle) {
             let isDragging = false;
-            
-            // Set initial state corresponding to handle left: 100%
-            afterBg.style.opacity = '1';
-            beforeContent.style.opacity = '0';
-            afterContent.style.opacity = '1';
-            handle.style.left = '100%';
+            let currentTextState = 'after';
+            let currentPos = 0.85;
 
-            function updatePosition(x) {
+            function updatePosition(x, fromKeyboard = false) {
                 const rect = container.getBoundingClientRect();
-                let pos = (x - rect.left) / rect.width;
+                let pos;
+                if (fromKeyboard) {
+                    pos = x;
+                } else {
+                    pos = (x - rect.left) / rect.width;
+                }
+
                 if (pos < 0) pos = 0;
                 if (pos > 1) pos = 1;
-                
-                // Update handle position visually
+                currentPos = pos;
+
                 const percent = pos * 100;
+
                 handle.style.left = percent + '%';
-                
-                // Background crossfade: smooth 0 to 1
-                afterBg.style.opacity = pos.toString();
-                
-                // Text crossfade (Rapid overlap zone between 40% and 60%)
-                let beforeOpacity = 1;
-                let afterOpacity = 0;
-                
-                if (pos < 0.4) {
-                    beforeOpacity = 1;
-                    afterOpacity = 0;
-                } else if (pos > 0.6) {
-                    beforeOpacity = 0;
-                    afterOpacity = 1;
-                } else {
-                    // Crossfade zone 40% to 60%
-                    const localPos = (pos - 0.4) * 5; // maps 0.4-0.6 to 0.0-1.0
-                    beforeOpacity = 1 - localPos;
-                    afterOpacity = localPos;
+                afterBg.style.clipPath = 'polygon(0 0, ' + percent + '% 0, ' + percent + '% 100%, 0 100%)';
+                container.setAttribute('aria-valuenow', Math.round(percent));
+
+                if (pos <= 0.45 && currentTextState !== 'before') {
+                    currentTextState = 'before';
+                    beforeContent.style.opacity = '1';
+                    afterContent.style.opacity = '0';
+                } else if (pos >= 0.55 && currentTextState !== 'after') {
+                    currentTextState = 'after';
+                    beforeContent.style.opacity = '0';
+                    afterContent.style.opacity = '1';
                 }
-                
-                beforeContent.style.opacity = beforeOpacity.toString();
-                afterContent.style.opacity = afterOpacity.toString();
             }
 
-            container.addEventListener('mousedown', (e) => { isDragging = true; updatePosition(e.clientX); });
-            window.addEventListener('mouseup', () => { isDragging = false; });
-            window.addEventListener('mousemove', (e) => { if (isDragging) updatePosition(e.clientX); });
+            container.addEventListener('pointerdown', (e) => {
+                isDragging = true;
+                container.setPointerCapture(e.pointerId);
+                updatePosition(e.clientX);
+            });
 
-            container.addEventListener('touchstart', (e) => { isDragging = true; updatePosition(e.touches[0].clientX); }, { passive: true });
-            window.addEventListener('touchend', () => { isDragging = false; });
-            window.addEventListener('touchmove', (e) => { if (isDragging) updatePosition(e.touches[0].clientX); }, { passive: true });
+            container.addEventListener('pointermove', (e) => {
+                if (!isDragging) return;
+                updatePosition(e.clientX);
+            });
+
+            container.addEventListener('pointerup', () => {
+                isDragging = false;
+            });
+
+            container.addEventListener('pointercancel', () => {
+                isDragging = false;
+            });
+
+            container.addEventListener('keydown', (e) => {
+                const step = 0.05;
+                if (e.key === 'ArrowLeft') {
+                    updatePosition(currentPos - step, true);
+                    e.preventDefault();
+                } else if (e.key === 'ArrowRight') {
+                    updatePosition(currentPos + step, true);
+                    e.preventDefault();
+                } else if (e.key === 'Home') {
+                    updatePosition(0, true);
+                    e.preventDefault();
+                } else if (e.key === 'End') {
+                    updatePosition(1, true);
+                    e.preventDefault();
+                }
+            });
+
+            // Initialize
+            updatePosition(0.85, true);
         }
 
         // Recommendation Tool Logic
