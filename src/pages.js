@@ -1,4 +1,4 @@
-﻿// ============================================================================ //
+// ============================================================================ //
 // VELORA DIGITAL - PAGE TEMPLATES & VIEW RENDERERS                             //
 // ============================================================================ //
 
@@ -32,7 +32,7 @@ function renderHomePage() {
                     <a href="/contact" id="hero-primary-cta" class="btn-luxury inline-flex items-center justify-center px-8 py-4 min-h-[48px] rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText hover:opacity-95 transition-opacity shadow-lg">
                         Get a Free Project Quote
                     </a>
-                    <a href="/portfoli✓ id="hero-secondary-cta" class="inline-flex items-center justify-center px-8 py-4 min-h-[48px] rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-faint hover:bg-velora-faintHover border border-velora-borderStrong text-velora-text transition-colors">
+                    <a href="/portfolio" id="hero-secondary-cta" class="inline-flex items-center justify-center px-8 py-4 min-h-[48px] rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-faint hover:bg-velora-faintHover border border-velora-borderStrong text-velora-text transition-colors">
                         Explore Concept Work &rarr;
                     </a>
                 </div>
@@ -61,7 +61,7 @@ function renderHomePage() {
                 <div class="flex flex-col md:flex-row gap-8 items-center">
                     <div class="md:w-1/2">
                         <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-3">Free Website Audit</span>
-                        <h2 class="font-display text-2xl sm:text-3xl font-bold text-velora-text tracking-tight mb-4">Is Your Current Website Losing Customers•</h2>
+                        <h2 class="font-display text-2xl sm:text-3xl font-bold text-velora-text tracking-tight mb-4">Is Your Current Website Losing Customers?</h2>
                         <p class="text-sm text-velora-muted leading-relaxed mb-6">
                             Enter your website URL below. We will manually review your site for speed, mobile usability, and local SEO, and send you a free, no-obligation technical teardown.
                         </p>
@@ -152,10 +152,10 @@ function renderHomePage() {
                     <div class="text-xs font-bold uppercase tracking-widest text-red-500 mb-4">Typical Cheap Freelancer</div>
                     <div class="font-display text-xl font-bold text-velora-text mb-4">Pirated Template Trap</div>
                     <ul class="space-y-3 text-sm text-velora-muted">
-                        <li class="flex items-start gap-2.5"><span class="text-red-500">âœ•</span> <span>Uses heavy visual builders with 40+ plugins</span></li>
-                        <li class="flex items-start gap-2.5"><span class="text-red-500">âœ•</span> <span>Takes 5-8 seconds to load on mobile 4G</span></li>
-                        <li class="flex items-start gap-2.5"><span class="text-red-500">âœ•</span> <span>Broken contact forms and missed leads</span></li>
-                        <li class="flex items-start gap-2.5"><span class="text-red-500">âœ•</span> <span>Freelancer disappears after initial payment</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-red-500">✕</span> <span>Uses heavy visual builders with 40+ plugins</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-red-500">✕</span> <span>Takes 5-8 seconds to load on mobile 4G</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-red-500">✕</span> <span>Broken contact forms and missed leads</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-red-500">✕</span> <span>Freelancer disappears after initial payment</span></li>
                     </ul>
                 </div>
 
@@ -164,10 +164,10 @@ function renderHomePage() {
                     <div class="text-xs font-bold uppercase tracking-widest text-amber-500 mb-4">Traditional Big Agency</div>
                     <div class="font-display text-xl font-bold text-velora-text mb-4">Expensive Agency Bloat</div>
                     <ul class="space-y-3 text-sm text-velora-muted">
-                        <li class="flex items-start gap-2.5"><span class="text-amber-500">âœ•</span> <span>Huge retainers starting at â‚¹1,50,000+</span></li>
-                        <li class="flex items-start gap-2.5"><span class="text-amber-500">âœ•</span> <span>Complicated account managers and endless meetings</span></li>
-                        <li class="flex items-start gap-2.5"><span class="text-amber-500">âœ•</span> <span>Work outsourced to junior interns</span></li>
-                        <li class="flex items-start gap-2.5"><span class="text-amber-500">âœ•</span> <span>Locks you into proprietary server software</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-amber-500">✕</span> <span>Huge retainers starting at ₹1,50,000+</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-amber-500">✕</span> <span>Complicated account managers and endless meetings</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-amber-500">✕</span> <span>Work outsourced to junior interns</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-amber-500">✕</span> <span>Locks you into proprietary server software</span></li>
                     </ul>
                 </div>
 
@@ -178,7 +178,7 @@ function renderHomePage() {
                     <div class="font-display text-xl font-bold text-velora-text mb-4">Clean Code & Direct Outcomes</div>
                     <ul class="space-y-3 text-sm text-velora-muted">
                         <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-bold">✓</span> <span>Lightweight semantic code built for sub-second speeds</span></li>
-                        <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-bold">✓</span> <span>Transparent fixed pricing from â‚¹14,999 to â‚¹34,999</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-bold">✓</span> <span>Transparent fixed pricing from ₹14,999 to ₹34,999</span></li>
                         <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-bold">✓</span> <span>Local Schema.org metadata and click-to-call conversions</span></li>
                         <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-bold">✓</span> <span>100% full ownership of your domain and codebase</span></li>
                     </ul>
@@ -246,7 +246,7 @@ function renderHomePage() {
                         </button>
                     `).join('')}
                     <button type="button" onclick="setRecIndustry('other')" class="p-4 rounded-2xl border border-velora-border bg-velora-surface hover:border-velora-gold transition-colors text-center group">
-                        <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">ðŸ¢</div>
+                        <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">🏢</div>
                         <div class="text-[10px] font-bold text-velora-text">Other Business</div>
                     </button>
                 </div>
@@ -254,8 +254,8 @@ function renderHomePage() {
 
             <!-- Step 2: Goal (Hidden initially) -->
             <div id="rec-step-2" class="hidden space-y-6">
-                <p class="block text-[10px] font-bold uppercase tracking-widest text-velora-text mb-4 text-center">2. What is your primary goal•</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-aut✓>
+                <p class="block text-[10px] font-bold uppercase tracking-widest text-velora-text mb-4 text-center">2. What is your primary goal?</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
                     <button type="button" onclick="setRecGoal('more-enquiries')" class="p-4 rounded-2xl border border-velora-border bg-velora-surface hover:border-velora-gold transition-colors text-left flex items-center gap-4">
                         <div class="w-10 h-10 rounded-full bg-velora-bg flex items-center justify-center text-velora-gold font-bold">1</div>
                         <div>
@@ -360,22 +360,22 @@ function renderHomePage() {
                     <div class="absolute inset-0 bg-velora-card" id="after-bg" style="opacity: 0.5;"></div>
 
                     <!-- Before Content Layer -->
-                    <div class="absolute inset-0 text-[#a89f91] p-6 sm:p-10 flex flex-col justify-between font-serif pointer-events-none" id="before-content" style="opacity: 0; ">
+                    <div class="absolute inset-0 text-[#a89f91] p-6 sm:p-10 flex flex-col justify-between font-serif pointer-events-none" id="before-content" style="opacity: 0;">
                         <div class="border-b border-[#3d3830] pb-4 flex justify-between items-center">
                             <span class="text-xl italic text-[#d4af37]">Old-Style Template</span>
-                            <span class="text-xs px-2 py-1 bg-red-950/80 text-red-400 rounded border border-red-800">4.8s Load Time &bull; 38/100 Mobile Score</span>
+                            <span class="text-xs px-2 py-1 bg-red-950/80 text-red-400 rounded border border-red-800">4.8s Load Time • 38/100 Mobile Score</span>
                         </div>
                         <div class="my-auto space-y-4 max-w-lg">
                             <div class="text-2xl sm:text-3xl text-white">"Welcome to Our Website - Please Download Our 20MB PDF Catalog"</div>
                             <div class="text-sm opacity-70">Generic stock photos, hidden contact numbers, unreadable small text on mobile screens.</div>
                         </div>
                         <div class="text-xs opacity-50 border-t border-[#3d3830] pt-3">
-                            Missing Schema &bull; Broken WhatsApp Link &bull; High Bounce Rate
+                            Missing Schema • Broken WhatsApp Link • High Bounce Rate
                         </div>
                     </div>
 
                     <!-- After Content Layer -->
-                    <div class="absolute inset-0 text-velora-text p-6 sm:p-10 flex flex-col justify-between font-sans pointer-events-none" id="after-content" style="opacity: 0; ">
+                    <div class="absolute inset-0 text-velora-text p-6 sm:p-10 flex flex-col justify-between font-sans pointer-events-none" id="after-content" style="opacity: 0;">
                         <div class="border-b border-velora-border pb-4 flex justify-between items-center">
                             <span class="font-display text-xl font-bold tracking-tight text-velora-text">Velora Digital Build</span>
                             <span class="text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-500 rounded-full border border-emerald-500/30 font-mono font-bold">0.4s Load Time • 99/100 Core Web Vitals</span>
@@ -392,7 +392,7 @@ function renderHomePage() {
                     </div>
 
                     <!-- Slider Handle -->
-                    <div class="absolute top-0 bottom-0 w-1 bg-velora-gold cursor-ew-resize z-20 flex items-center justify-center" id="slider-handle" style="left: 50%;">
+                    <div class="absolute top-0 bottom-0 w-1 bg-velora-gold cursor-ew-resize z-20 flex items-center justify-center" id="slider-handle" style="left: 100%;">
                         <div class="w-8 h-8 rounded-full bg-velora-button text-velora-buttonText border border-velora-borderStrong shadow-lg flex items-center justify-center text-xs font-bold">
                             &harr;
                         </div>
@@ -443,7 +443,7 @@ function renderHomePage() {
                         We don't invent fake client metrics or paid awards. These production-ready prototypes benchmark our code speed, mobile UX, and conversion architecture.
                     </p>
                 </div>
-                <a href="/portfoli✓ class="text-xs uppercase tracking-[0.2em] font-bold text-velora-gold hover:text-velora-text transition-colors inline-flex py-3 items-center gap-2">
+                <a href="/portfolio" class="text-xs uppercase tracking-[0.2em] font-bold text-velora-gold hover:text-velora-text transition-colors inline-flex py-3 items-center gap-2">
                     View Complete Portfolio <span>&rarr;</span>
                 </a>
             </div>
@@ -531,7 +531,7 @@ function renderHomePage() {
                     <div>
                         <span class="text-[10px] font-bold uppercase tracking-widest text-velora-muted block mb-2">Starter Package</span>
                         <h3 class="font-display text-2xl font-bold text-velora-text mb-2">Essential Web</h3>
-                        <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">â‚¹14,999</div>
+                        <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">₹14,999</div>
                         <p class="text-xs text-velora-muted leading-relaxed mb-6">Ideal for single-location businesses needing a clean, fast mobile presence.</p>
 
                         <ul class="space-y-3 text-xs text-velora-muted mb-8">
@@ -542,7 +542,7 @@ function renderHomePage() {
                             <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> SSL Certificate & Cloud Deployment</li>
                         </ul>
                     </div>
-                    <a href="/contact•tier=essential" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText block">Choose Essential</a>
+                    <a href="/contact?tier=essential" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText block">Choose Essential</a>
                 </div>
 
                 <!-- Professional (Highlighted) -->
@@ -553,7 +553,7 @@ function renderHomePage() {
                     <div>
                         <span class="text-[10px] font-bold uppercase tracking-widest text-velora-gold block mb-2">Complete System</span>
                         <h3 class="font-display text-2xl font-bold text-velora-text mb-2">Professional + SEO</h3>
-                        <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">â‚¹34,999</div>
+                        <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">₹34,999</div>
                         <p class="text-xs text-velora-muted leading-relaxed mb-6">For competitive local businesses that need maximum search visibility and high conversions.</p>
 
                         <ul class="space-y-3 text-xs text-velora-muted mb-8">
@@ -565,7 +565,7 @@ function renderHomePage() {
                             <li class="flex items-center gap-2"><span class="text-velora-gold font-bold">✓</span> 3 Months Technical Maintenance Included</li>
                         </ul>
                     </div>
-                    <a href="/contact•tier=professional" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-gold text-black block hover:opacity-95">Choose Professional</a>
+                    <a href="/contact?tier=professional" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-gold text-black block hover:opacity-95">Choose Professional</a>
                 </div>
 
                 <!-- Custom -->
@@ -573,7 +573,7 @@ function renderHomePage() {
                     <div>
                         <span class="text-[10px] font-bold uppercase tracking-widest text-velora-muted block mb-2">Tailored Scale</span>
                         <h3 class="font-display text-2xl font-bold text-velora-text mb-2">Custom & Multi-Location</h3>
-                        <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">â‚¹69,999+</div>
+                        <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">₹69,999+</div>
                         <p class="text-xs text-velora-muted leading-relaxed mb-6">For multi-branch clinics, large property catalogs, or specialized workflows.</p>
 
                         <ul class="space-y-3 text-xs text-velora-muted mb-8">
@@ -583,7 +583,7 @@ function renderHomePage() {
                             <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Priority WhatsApp Engineering Support</li>
                         </ul>
                     </div>
-                    <a href="/contact•tier=custom" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText block">Request Custom Scope</a>
+                    <a href="/contact?tier=custom" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText block">Request Custom Scope</a>
                 </div>
             </div>
 
@@ -621,7 +621,7 @@ function renderHomePage() {
                 <div class="max-w-2xl mx-auto relative z-10">
                     <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-gold block mb-4">Start Your Project</span>
                     <h2 class="font-display text-3xl sm:text-5xl font-bold text-velora-text tracking-tight leading-tight">
-                        Ready for a Website That Actually Brings in Customers•
+                        Ready for a Website That Actually Brings in Customers?
                     </h2>
                     <p class="mt-6 text-base sm:text-lg text-velora-muted leading-relaxed text-pretty">
                         Tell us about your business and goals. We will review your project and send a detailed, transparent proposal within 24 hours.
@@ -652,10 +652,11 @@ function renderHomePage() {
         if (container && beforeBg && afterBg && beforeContent && afterContent && handle) {
             let isDragging = false;
             
-            // Set initial state corresponding to handle left: 50%
-            afterBg.style.opacity = '0.5';
+            // Set initial state corresponding to handle left: 100%
+            afterBg.style.opacity = '1';
             beforeContent.style.opacity = '0';
-            afterContent.style.opacity = '0';
+            afterContent.style.opacity = '1';
+            handle.style.left = '100%';
 
             function updatePosition(x) {
                 const rect = container.getBoundingClientRect();
@@ -670,18 +671,21 @@ function renderHomePage() {
                 // Background crossfade: smooth 0 to 1
                 afterBg.style.opacity = pos.toString();
                 
-                // Text crossfade (V-shape to prevent overlapping/doubled typography)
+                // Text crossfade (Rapid overlap zone between 40% and 60%)
                 let beforeOpacity = 1;
                 let afterOpacity = 0;
                 
-                if (pos <= 0.5) {
-                    // 0 to 0.5 maps to 1 to 0
-                    beforeOpacity = 1 - (pos * 2);
+                if (pos < 0.4) {
+                    beforeOpacity = 1;
                     afterOpacity = 0;
-                } else {
-                    // 0.5 to 1.0 maps to 0 to 1
+                } else if (pos > 0.6) {
                     beforeOpacity = 0;
-                    afterOpacity = (pos - 0.5) * 2;
+                    afterOpacity = 1;
+                } else {
+                    // Crossfade zone 40% to 60%
+                    const localPos = (pos - 0.4) * 5; // maps 0.4-0.6 to 0.0-1.0
+                    beforeOpacity = 1 - localPos;
+                    afterOpacity = localPos;
                 }
                 
                 beforeContent.style.opacity = beforeOpacity.toString();
@@ -747,7 +751,7 @@ function renderHomePage() {
 
             document.getElementById('rec-result-title').innerText = result.t;
             document.getElementById('rec-result-desc').innerText = result.d;
-            document.getElementById('rec-cta-btn').href = '/contact•industry=' + selectedIndustry + '&goal=' + selectedGoal;
+            document.getElementById('rec-cta-btn').href = '/contact?industry=' + selectedIndustry + '&goal=' + selectedGoal;
 
             if (window.veloraTrack) {
                 window.veloraTrack('recommendation_completed', { industry: selectedIndustry, goal: selectedGoal });
@@ -859,7 +863,7 @@ function renderServiceDetailPage(service) {
             <div class="p-8 rounded-3xl bg-velora-surface border border-velora-border">
                 <h2 class="font-display text-2xl font-bold text-velora-text mb-4 tracking-tight">What Is NOT Included</h2>
                 <ul class="space-y-3 text-sm text-velora-muted mb-6">
-                    ${service.notIncluded.map(n => `<li class="flex items-start gap-2.5"><span class="text-red-500">âœ•</span> <span>${n}</span></li>`).join('')}
+                    ${service.notIncluded.map(n => `<li class="flex items-start gap-2.5"><span class="text-red-500">✕</span> <span>${n}</span></li>`).join('')}
                 </ul>
                 <div class="p-4 rounded-xl bg-velora-bg border border-velora-border text-xs text-velora-muted">
                     <strong class="text-velora-text block mb-1">Expected Timeline:</strong>
@@ -899,7 +903,7 @@ function renderServiceDetailPage(service) {
 
         <!-- CTA Box -->
         <div class="p-10 rounded-3xl bg-velora-bg border border-velora-borderStrong text-center reveal">
-            <h3 class="font-display text-2xl font-bold text-velora-text mb-3">Ready to Discuss ${service.title}•</h3>
+            <h3 class="font-display text-2xl font-bold text-velora-text mb-3">Ready to Discuss ${service.title}?</h3>
             <p class="text-sm text-velora-muted max-w-md mx-auto mb-8">Send us a quick message with your project goals for a fast, honest estimate.</p>
             <a href="/contact" class="btn-luxury inline-flex items-center px-8 py-4 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
                 Request a Free Quote
@@ -1046,7 +1050,7 @@ function renderIndustryDetailPage(industry) {
         <div class="p-10 rounded-3xl bg-velora-bg border border-velora-borderStrong text-center reveal">
             <h3 class="font-display text-2xl font-bold text-velora-text mb-3">Upgrade Your ${industry.shortName} Website</h3>
             <p class="text-sm text-velora-muted max-w-md mx-auto mb-8">Get a modern, fast website tailored specifically for your customers.</p>
-            <a href="/contact•industry=${industry.slug}" class="btn-luxury inline-flex items-center px-8 py-4 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
+            <a href="/contact?industry=${industry.slug}" class="btn-luxury inline-flex items-center px-8 py-4 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
                 Get a Quote for ${industry.shortName}
             </a>
         </div>
@@ -1139,7 +1143,7 @@ function renderLocationDetailPage(location) {
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 ${location.neighborhoods.map(n => `
                     <div class="flex items-center gap-3 p-4 rounded-xl bg-velora-bg border border-velora-border text-sm text-velora-text font-medium">
-                        <span class="text-velora-gold">ðŸ“</span>
+                        <span class="text-velora-gold">📍</span>
                         <span>${n}</span>
                     </div>
                 `).join('')}
@@ -1237,7 +1241,7 @@ function renderPortfolioPage() {
         </div>
 
         <div class="mt-20 p-10 sm:p-14 rounded-3xl bg-velora-surface border border-velora-borderStrong text-center reveal">
-            <h3 class="font-display text-2xl sm:text-3xl font-bold text-velora-text mb-4">Want This Standard of Quality for Your Business•</h3>
+            <h3 class="font-display text-2xl sm:text-3xl font-bold text-velora-text mb-4">Want This Standard of Quality for Your Business?</h3>
             <p class="text-base text-velora-muted max-w-xl mx-auto mb-8">We will build a custom website tailored specifically to your services and target locality.</p>
             <a href="/contact" class="btn-luxury inline-flex items-center px-10 py-4 min-h-[48px] rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
                 Discuss Your Project
@@ -1324,7 +1328,7 @@ function renderProcessPage() {
         </div>
 
         <div class="p-10 rounded-3xl bg-velora-bg border border-velora-borderStrong text-center reveal">
-            <h3 class="font-display text-2xl font-bold text-velora-text mb-3">Ready to Begin Step 1•</h3>
+            <h3 class="font-display text-2xl font-bold text-velora-text mb-3">Ready to Begin Step 1?</h3>
             <p class="text-sm text-velora-muted max-w-md mx-auto mb-8">Send us your project details for a fast discovery review.</p>
             <a href="/contact" class="btn-luxury inline-flex items-center px-8 py-4 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
                 Get Started
@@ -1360,7 +1364,7 @@ function renderPricingPage() {
                 <div>
                     <span class="text-[10px] font-bold uppercase tracking-widest text-velora-muted block mb-2">Starter Package</span>
                     <h2 class="font-display text-2xl font-bold text-velora-text mb-2">Essential Web</h2>
-                    <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">â‚¹14,999</div>
+                    <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">₹14,999</div>
                     <p class="text-xs text-velora-muted leading-relaxed mb-6">Clean, fast mobile presence for local single-location businesses.</p>
 
                     <ul class="space-y-3 text-xs text-velora-muted mb-8">
@@ -1372,7 +1376,7 @@ function renderPricingPage() {
                         <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> 100% Asset & Code Ownership</li>
                     </ul>
                 </div>
-                <a href="/contact•tier=essential" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText block">Choose Essential</a>
+                <a href="/contact?tier=essential" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText block">Choose Essential</a>
             </div>
 
             <!-- Professional (Highlighted) -->
@@ -1383,7 +1387,7 @@ function renderPricingPage() {
                 <div>
                     <span class="text-[10px] font-bold uppercase tracking-widest text-velora-gold block mb-2">Complete System</span>
                     <h2 class="font-display text-2xl font-bold text-velora-text mb-2">Professional + SEO</h2>
-                    <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">â‚¹34,999</div>
+                    <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">₹34,999</div>
                     <p class="text-xs text-velora-muted leading-relaxed mb-6">Designed for businesses needing top-tier mobile conversions and Google Maps visibility.</p>
 
                     <ul class="space-y-3 text-xs text-velora-muted mb-8">
@@ -1395,7 +1399,7 @@ function renderPricingPage() {
                         <li class="flex items-center gap-2"><span class="text-velora-gold font-bold">✓</span> 3 Months Technical Maintenance Included</li>
                     </ul>
                 </div>
-                <a href="/contact•tier=professional" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-gold text-black block hover:opacity-95">Choose Professional</a>
+                <a href="/contact?tier=professional" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-gold text-black block hover:opacity-95">Choose Professional</a>
             </div>
 
             <!-- Custom -->
@@ -1403,7 +1407,7 @@ function renderPricingPage() {
                 <div>
                     <span class="text-[10px] font-bold uppercase tracking-widest text-velora-muted block mb-2">Tailored Scale</span>
                     <h2 class="font-display text-2xl font-bold text-velora-text mb-2">Custom & Multi-Location</h2>
-                    <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">â‚¹69,999+</div>
+                    <div class="text-3xl sm:text-4xl font-bold text-velora-text font-display mb-4">₹69,999+</div>
                     <p class="text-xs text-velora-muted leading-relaxed mb-6">For multi-branch clinics, large property catalogs, or custom software integrations.</p>
 
                     <ul class="space-y-3 text-xs text-velora-muted mb-8">
@@ -1413,7 +1417,7 @@ function renderPricingPage() {
                         <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Priority WhatsApp Engineering Support</li>
                     </ul>
                 </div>
-                <a href="/contact•tier=custom" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText block">Request Custom Scope</a>
+                <a href="/contact?tier=custom" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText block">Request Custom Scope</a>
             </div>
         </div>
 
@@ -1440,7 +1444,7 @@ function renderPricingPage() {
                             <input type="checkbox" id="calc-seo-addon" class="w-5 h-5 rounded accent-velora-gold cursor-pointer" checked>
                             <div class="flex-grow">
                                 <div class="text-xs font-bold text-velora-text uppercase tracking-wider">Local SEO & Schema.org Setup</div>
-                                <div class="text-xs text-velora-muted">Google Maps alignment, structured metadata & NAP audit (+â‚¹17,500)</div>
+                                <div class="text-xs text-velora-muted">Google Maps alignment, structured metadata & NAP audit (+₹17,500)</div>
                             </div>
                         </label>
 
@@ -1448,7 +1452,7 @@ function renderPricingPage() {
                             <input type="checkbox" id="calc-maint-addon" class="w-5 h-5 rounded accent-velora-gold cursor-pointer">
                             <div class="flex-grow">
                                 <div class="text-xs font-bold text-velora-text uppercase tracking-wider">1-Year Cloud Maintenance & Security</div>
-                                <div class="text-xs text-velora-muted">Hosting management, SSL renewals & regular content edits (+â‚¹15,000)</div>
+                                <div class="text-xs text-velora-muted">Hosting management, SSL renewals & regular content edits (+₹15,000)</div>
                             </div>
                         </label>
                     </div>
@@ -1456,7 +1460,7 @@ function renderPricingPage() {
 
                 <div class="lg:col-span-5 p-8 rounded-2xl bg-velora-surface border-2 border-velora-gold/30 text-center relative">
                     <span class="text-[10px] font-bold uppercase tracking-widest text-velora-gold block mb-2">Estimated Investment</span>
-                    <div id="calc-estimate-display" class="font-display text-4xl sm:text-5xl font-bold text-velora-text mb-2">~â‚¹35,000</div>
+                    <div id="calc-estimate-display" class="font-display text-4xl sm:text-5xl font-bold text-velora-text mb-2">~₹35,000</div>
                     <div id="calc-direction-label" class="inline-block px-3 py-1 bg-velora-gold/10 border border-velora-gold/30 rounded-full text-[10px] font-bold uppercase tracking-widest text-velora-gold mb-4">Professional Build</div>
 
                     <ul id="calc-includes-list" class="text-left space-y-2.5 text-xs text-velora-muted mb-8 pb-8 border-b border-velora-border">
@@ -1464,7 +1468,7 @@ function renderPricingPage() {
                         <li class="flex items-start gap-2"><span class="text-emerald-500 font-bold">✓</span> <span>Local SEO & Schema.org Setup</span></li>
                     </ul>
 
-                    <a id="calc-quote-btn" href="/contact•pages=5&seo=true&maint=false&est=25000" onclick="if(window.veloraTrack) window.veloraTrack('calculator_submit', { url: this.href })" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-gold text-black block hover:opacity-95">
+                    <a id="calc-quote-btn" href="/contact?pages=5&seo=true&maint=false&est=25000" onclick="if(window.veloraTrack) window.veloraTrack('calculator_submit', { url: this.href })" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-gold text-black block hover:opacity-95">
                         Request Quote for this Project &rarr;
                     </a>
                 </div>
@@ -1486,16 +1490,16 @@ function renderPricingPage() {
         function updateEstimate() {
             if (!pagesSlider) return;
             const pages = parseInt(pagesSlider.value, 10);
-            const seo = seoCheckbox • seoCheckbox.checked : false;
-            const maint = maintCheckbox • maintCheckbox.checked : false;
+            const seo = seoCheckbox ? seoCheckbox.checked : false;
+            const maint = maintCheckbox ? maintCheckbox.checked : false;
 
-            if (pagesDisplay) pagesDisplay.innerText = pages + (pages === 1 • ' Page' : ' Pages');
+            if (pagesDisplay) pagesDisplay.innerText = pages + (pages === 1 ? ' Page' : ' Pages');
 
             let total = 10000 + (pages * 1500);
             if (seo) total += 17500;
             if (maint) total += 15000;
 
-            if (estimateDisplay) estimateDisplay.innerText = '~â‚¹' + total.toLocaleString('en-IN');
+            if (estimateDisplay) estimateDisplay.innerText = '~₹' + total.toLocaleString('en-IN');
 
             if (directionLabel) {
                 if (total >= 69999) {
@@ -1522,8 +1526,8 @@ function renderPricingPage() {
             }
 
             if (quoteBtn) {
-                let tier = total >= 69999 • 'custom' : (total >= 34999 • 'professional' : 'essential');
-                quoteBtn.href = '/contact•tier=' + tier + '&pages=' + pages + '&seo=' + seo + '&maint=' + maint + '&est=' + total;
+                let tier = total >= 69999 ? 'custom' : (total >= 34999 ? 'professional' : 'essential');
+                quoteBtn.href = '/contact?tier=' + tier + '&pages=' + pages + '&seo=' + seo + '&maint=' + maint + '&est=' + total;
             }
         }
 
@@ -1576,19 +1580,19 @@ function renderAboutPage() {
                 <div class="p-8 sm:p-12 rounded-3xl bg-velora-surface border border-velora-border">
                     <h2 class="font-display text-2xl font-bold text-velora-text mb-6 tracking-tight">What We Refuse to Do</h2>
                     <ul class="space-y-4 text-sm text-velora-muted leading-relaxed">
-                        <li class="flex gap-3"><span class="text-red-500 font-bold">Ã—</span> <div><strong>Use Heavy Page Builders:</strong> We don't drag-and-drop bloated plugins that slow your site down and break during updates.</div></li>
-                        <li class="flex gap-3"><span class="text-red-500 font-bold">Ã—</span> <div><strong>Fake SEO Guarantees:</strong> We will never promise a "#1 Ranking on Google overnight" because that is technically impossible and highly unethical.</div></li>
-                        <li class="flex gap-3"><span class="text-red-500 font-bold">Ã—</span> <div><strong>Hostage Contracts:</strong> We build on standard, maintainable code. You own your website completely once it's launched.</div></li>
-                        <li class="flex gap-3"><span class="text-red-500 font-bold">Ã—</span> <div><strong>Offshore the Work:</strong> We handle architecture, design, and coding strictly in-house to maintain our strict quality standards.</div></li>
+                        <li class="flex gap-3"><span class="text-red-500 font-bold">×</span> <div><strong>Use Heavy Page Builders:</strong> We don't drag-and-drop bloated plugins that slow your site down and break during updates.</div></li>
+                        <li class="flex gap-3"><span class="text-red-500 font-bold">×</span> <div><strong>Fake SEO Guarantees:</strong> We will never promise a "#1 Ranking on Google overnight" because that is technically impossible and highly unethical.</div></li>
+                        <li class="flex gap-3"><span class="text-red-500 font-bold">×</span> <div><strong>Hostage Contracts:</strong> We build on standard, maintainable code. You own your website completely once it's launched.</div></li>
+                        <li class="flex gap-3"><span class="text-red-500 font-bold">×</span> <div><strong>Offshore the Work:</strong> We handle architecture, design, and coding strictly in-house to maintain our strict quality standards.</div></li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="p-10 rounded-3xl bg-velora-bg border border-velora-borderStrong text-center reveal">
-            <h3 class="font-display text-2xl font-bold text-velora-text mb-3">Have a Project in Mind•</h3>
+            <h3 class="font-display text-2xl font-bold text-velora-text mb-3">Have a Project in Mind?</h3>
             <p class="text-sm text-velora-muted max-w-md mx-auto mb-8">Get a free, brutally honest technical audit of your current website.</p>
-            <a href="/contact•audit=true" class="btn-luxury inline-flex items-center px-8 py-4 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
+            <a href="/contact?audit=true" class="btn-luxury inline-flex items-center px-8 py-4 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
                 Contact Our Studio
             </a>
         </div>
@@ -1673,7 +1677,7 @@ function renderBlogDetailPage(article) {
         </div>
 
         <div class="mt-16 p-8 sm:p-12 rounded-3xl bg-velora-surface border border-velora-borderStrong text-center reveal">
-            <h3 class="font-display text-2xl font-bold text-velora-text mb-3">Want Us to Implement This for Your Business•</h3>
+            <h3 class="font-display text-2xl font-bold text-velora-text mb-3">Want Us to Implement This for Your Business?</h3>
             <p class="text-sm text-velora-muted max-w-md mx-auto mb-6">We can audit your current digital presence and build a fast, high-converting website.</p>
             <a href="/contact" class="btn-luxury inline-flex items-center px-8 py-4 rounded-full text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText">
                 Get in Touch
@@ -1708,7 +1712,7 @@ function renderContactPage() {
                 <h2 class="font-display text-lg font-bold text-velora-text border-b border-velora-border pb-3 mb-4">Direct Contact</h2>
 
                 <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" onclick="if(window.veloraTrack) window.veloraTrack('phone_click', { url: this.href })" class="flex items-start gap-4 p-5 rounded-2xl bg-velora-surface border border-velora-border hover:border-velora-borderStrong transition-all group">
-                    <div class="text-2xl mt-0.5">ðŸ“ž</div>
+                    <div class="text-2xl mt-0.5">📞</div>
                     <div>
                         <div class="text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-1">Direct Call</div>
                         <div class="text-sm font-semibold text-velora-text group-hover:text-velora-gold transition-colors">${CONFIG.phone}</div>
@@ -1716,7 +1720,7 @@ function renderContactPage() {
                 </a>
 
                 <a href="mailto:${CONFIG.email}" onclick="if(window.veloraTrack) window.veloraTrack('email_click', { url: this.href })" class="flex items-start gap-4 p-5 rounded-2xl bg-velora-surface border border-velora-border hover:border-velora-borderStrong transition-all group">
-                    <div class="text-2xl mt-0.5">âœ‰ï¸</div>
+                    <div class="text-2xl mt-0.5">✉️</div>
                     <div>
                         <div class="text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-1">Email Inquiries</div>
                         <div class="text-sm font-semibold text-velora-text group-hover:text-velora-gold transition-colors">${CONFIG.email}</div>
@@ -1724,7 +1728,7 @@ function renderContactPage() {
                 </a>
 
                 <a href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener noreferrer" class="flex items-start gap-4 p-5 rounded-2xl bg-velora-surface border border-emerald-500/30 hover:border-emerald-500 transition-all group">
-                    <div class="text-2xl mt-0.5">ðŸ’¬</div>
+                    <div class="text-2xl mt-0.5">💬</div>
                     <div>
                         <div class="text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-1">WhatsApp Chat</div>
                         <div class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Message on WhatsApp</div>
@@ -1733,8 +1737,8 @@ function renderContactPage() {
 
                 <div class="p-5 rounded-2xl bg-velora-surface border border-velora-border text-xs text-velora-muted space-y-2">
                     <div class="font-bold text-velora-text">Studio Operating Hours</div>
-                    <div>Monday â€“ Friday: 9:00 AM â€“ 6:00 PM IST</div>
-                    <div>Saturday: 10:00 AM â€“ 2:00 PM IST</div>
+                    <div>Monday – Friday: 9:00 AM – 6:00 PM IST</div>
+                    <div>Saturday: 10:00 AM – 2:00 PM IST</div>
                 </div>
             </div>
 
@@ -1755,7 +1759,7 @@ function renderContactPage() {
                         </div>
                         <div>
                             <label for="business" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Business Name *</label>
-                            <input type="text" id="business" name="business" maxlength="100" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Apex Dental Studi✓>
+                            <input type="text" id="business" name="business" maxlength="100" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Apex Dental Studio">
                         </div>
                     </div>
 
@@ -1795,9 +1799,9 @@ function renderContactPage() {
                         <div>
                             <label for="budget" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Budget Preference</label>
                             <select id="budget" name="budget" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury">
-                                <option value="essential" class="bg-velora-surface text-velora-text">â‚¹14,999 â€“ Essential Package</option>
-                                <option value="professional" class="bg-velora-surface text-velora-text" selected>â‚¹34,999 â€“ Professional Package</option>
-                                <option value="custom" class="bg-velora-surface text-velora-text">â‚¹69,999+ â€“ Custom Scope</option>
+                                <option value="essential" class="bg-velora-surface text-velora-text">₹14,999 – Essential Package</option>
+                                <option value="professional" class="bg-velora-surface text-velora-text" selected>₹34,999 – Professional Package</option>
+                                <option value="custom" class="bg-velora-surface text-velora-text">₹69,999+ – Custom Scope</option>
                             </select>
                         </div>
                     </div>
@@ -1906,10 +1910,10 @@ function renderContactPage() {
         }
 
         if (messageTextarea && (pagesParam || estParam)) {
-            let msg = 'Estimated via calculator: ' + (pagesParam • pagesParam + ' pages' : '');
+            let msg = 'Estimated via calculator: ' + (pagesParam ? pagesParam + ' pages' : '');
             if (seoParam === 'true') msg += ', SEO included';
             if (maintParam === 'true') msg += ', Maintenance included';
-            if (estParam) msg += ', ~â‚¹' + Number(estParam).toLocaleString('en-IN');
+            if (estParam) msg += ', ~₹' + Number(estParam).toLocaleString('en-IN');
             messageTextarea.value = msg;
         } else if (messageTextarea && auditParam) {
             const websiteInput = document.getElementById('website');
@@ -2078,10 +2082,3 @@ module.exports = {
     renderNotFoundPage,
     renderServerErrorPage
 };
-
-
-
-
-
-
-
