@@ -160,12 +160,12 @@ const INDUSTRIES = [
         name: 'Restaurants, Cafes & Hospitality',
         shortName: 'Restaurants',
         icon: '🍽️',
-        desc: 'Instant mobile menus, direct table reservations, and clear location directions for dining establishments.',
+        desc: 'Lightning-fast mobile menus, direct table reservations, and clear location directions for dining establishments.',
         challenges: 'Hungry customers searching on mobile will instantly abandon a restaurant website if forced to download a 15MB PDF menu. Outdated opening hours and missing parking details also cost direct walk-ins.',
         expectations: 'Diners want an instant, categorized food menu with clear vegetarian/non-vegetarian indicators, direct table booking or call links, operating hours, and a 1-tap Google Maps directions link.',
         solutions: 'We create native HTML menus that load in under 500ms, integrate direct table booking links, and prominently display location, parking, and timing details on mobile.',
         conversionElements: [
-            'Instant mobile-readable menu with dietary filters',
+            'Lightning-fast mobile-readable menu with dietary filters',
             'Prominent "Reserve a Table" or "Order Online" buttons',
             'Direct Google Maps integration for one-tap navigation',
             'Clear operating hours and private dining inquiry forms'
@@ -412,7 +412,7 @@ const PORTFOLIO = [
         projectGoals: 'Eliminate mobile bounce rates caused by slow PDF menus and create a frictionless path to table reservations and directions.',
         targetIndustry: 'Restaurants, Cafes, Fine Dining',
         designDirection: 'Warm, appetizing aesthetic (deep slate and rose red) focusing entirely on high-fidelity food imagery and clear pricing.',
-        keyUxDecisions: 'Converted all menu items from PDF to native HTML for instant loading and screen-reader accessibility; added one-tap "Get Directions" button.',
+        keyUxDecisions: 'Converted all menu items from PDF to native HTML for lightning-fast loading and screen-reader accessibility; added one-tap "Get Directions" button.',
         technicalPriorities: 'Sub-300ms First Contentful Paint; comprehensive Restaurant Schema for rich snippet generation on Google Maps; touch-target optimization.',
         conversionObjectives: 'Increase weekend table reservations; drive immediate foot traffic via integrated maps routing.',
         deliverables: [
@@ -444,10 +444,10 @@ const BLOG = [
             <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">The most common mistake on local business websites is treating the contact information like an afterthought. Your phone number, WhatsApp link, address, and primary call-to-action should be visible within the first two seconds on both mobile and desktop screens. On mobile, a persistent bottom bar with "Call" and "WhatsApp" buttons frequently increases direct inquiries by 25% or more.</p>
             
             <h2 class="text-2xl font-display font-bold text-velora-text mt-10 mb-4 tracking-tight">2. The 15MB PDF Menu Disaster</h2>
-            <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">If you run a <a href="/industries/restaurants" class="text-velora-gold hover:underline">restaurant</a>, <a href="/industries/salons" class="text-velora-gold hover:underline">salon</a>, or <a href="/industries/clinics" class="text-velora-gold hover:underline">clinic</a>, never force visitors to download a PDF file to view your services or prices. On a smartphone with an average mobile data connection, opening a heavy PDF consumes data, takes multiple taps, and often opens in an external viewer where the text is too small to read. Building your menu in clean, native HTML makes it instant to read and searchable by Google.</p>
+            <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">If you run a <a href="/industries/restaurants" class="text-velora-gold hover:underline">restaurant</a>, <a href="/industries/salons" class="text-velora-gold hover:underline">salon</a>, or <a href="/industries/clinics" class="text-velora-gold hover:underline">clinic</a>, never force visitors to download a PDF file to view your services or prices. On a smartphone with an average mobile data connection, opening a heavy PDF consumes data, takes multiple taps, and often opens in an external viewer where the text is too small to read. Building your menu in clean, native HTML makes it lightning-fast to read and searchable by Google.</p>
             
             <h2 class="text-2xl font-display font-bold text-velora-text mt-10 mb-4 tracking-tight">3. Heavy Website Builders That Destroy Mobile Speed</h2>
-            <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">Many freelance websites are built by slapping dozens of plugins onto heavy theme builders. This loads megabytes of unnecessary JavaScript before the visitor can even see your headline. Clean, hand-crafted semantic code delivers your content instantly, improving both user conversion and <a href="/services/local-seo" class="text-velora-gold hover:underline">local search rankings</a>.</p>
+            <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">Many freelance websites are built by slapping dozens of plugins onto heavy theme builders. This loads megabytes of unnecessary JavaScript before the visitor can even see your headline. Clean, hand-crafted semantic code delivers your content lightning-fast, improving both user conversion and <a href="/services/local-seo" class="text-velora-gold hover:underline">local search rankings</a>.</p>
             
             <h2 class="text-2xl font-display font-bold text-velora-text mt-10 mb-4 tracking-tight">4. Practical Steps to Audit Your Site Today</h2>
             <ul class="list-disc pl-6 space-y-3 text-base text-velora-muted mb-6">
@@ -532,12 +532,12 @@ const BLOG = [
         date: 'August 14, 2026',
         readTime: '4 min read',
         author: 'Velora Studio',
-        summary: 'How replacing slow, downloadable PDF menus with instant HTML menus increases table reservations and direct takeaway calls.',
+        summary: 'How replacing slow, downloadable PDF menus with lightning-fast HTML menus increases table reservations and direct takeaway calls.',
         content: `
             <p class="text-lg leading-relaxed text-velora-muted mb-6 text-pretty">When a couple or group is deciding where to eat on a Friday evening, they check 3 or 4 restaurant websites on their phones. If your menu is a download button that takes 10 seconds to load a multi-page PDF, they leave immediately.</p>
             
             <h2 class="text-2xl font-display font-bold text-velora-text mt-10 mb-4 tracking-tight">The Mobile Menu Rule</h2>
-            <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">A native HTML menu loads instantly, adapts to screen width, lets visitors search for specific dishes, and allows search engines to index your menu items (e.g. "wood fired pizza in Gurugram").</p>
+            <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">A native HTML menu loads lightning-fast, adapts to screen width, lets visitors search for specific dishes, and allows search engines to index your menu items (e.g. "wood fired pizza in Gurugram").</p>
             
             <h2 class="text-2xl font-display font-bold text-velora-text mt-10 mb-4 tracking-tight">Essential Restaurant Website Elements</h2>
             <ul class="list-disc pl-6 space-y-3 text-base text-velora-muted mb-6">
