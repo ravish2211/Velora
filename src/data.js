@@ -31,7 +31,7 @@ const SERVICES = [
         benefits: [
             'Mobile-first responsive architecture',
             'Direct Click-to-Call & WhatsApp conversion triggers',
-            'Sub-second page load times on mobile 4G/5G',
+            'Ultra-fast page load times on mobile 4G/5G',
             'Clean semantic markup without heavy page-builder bloat',
             'Clear service menus, price presentations & portfolios',
             'Secure contact forms with instant email notifications'
@@ -153,7 +153,7 @@ const INDUSTRIES = [
             'Interactive Neighborhood Maps',
             'Lead-Capture Floor Plan Downloads'
         ],
-        whatWeRecommend: 'We recommend a custom portfolio layout showcasing your best properties, paired with aggressive lead capture forms on every listing. A clean, sub-second <a href="/services/website-design" class="text-velora-gold hover:underline">mobile experience</a> will out-convert generic broker sites. We heavily prioritize <a href="/services/local-seo" class="text-velora-gold hover:underline">local SEO</a> to capture hyper-local search intent across <a href="/locations/gurugram" class="text-velora-gold hover:underline">Gurugram</a> and <a href="/locations/delhi-ncr" class="text-velora-gold hover:underline">Delhi NCR</a>.'
+        whatWeRecommend: 'We recommend a custom portfolio layout showcasing your best properties, paired with aggressive lead capture forms on every listing. A clean, ultra-fast <a href="/services/website-design" class="text-velora-gold hover:underline">mobile experience</a> will out-convert generic broker sites. We heavily prioritize <a href="/services/local-seo" class="text-velora-gold hover:underline">local SEO</a> to capture hyper-local search intent across <a href="/locations/gurugram" class="text-velora-gold hover:underline">Gurugram</a> and <a href="/locations/delhi-ncr" class="text-velora-gold hover:underline">Delhi NCR</a>.'
     },
     {
         slug: 'restaurants',
@@ -233,7 +233,7 @@ const RECOMMENDATIONS = {
     'real-estate': {
         'more-enquiries': {
             title: 'Property Showcase + Lead Capture',
-            description: 'We recommend a custom portfolio layout showcasing your best properties, paired with aggressive lead capture forms on every listing. A clean, sub-second mobile experience will out-convert generic broker sites.',
+            description: 'We recommend a custom portfolio layout showcasing your best properties, paired with aggressive lead capture forms on every listing. A clean, ultra-fast mobile experience will out-convert generic broker sites.',
             tier: 'professional'
         },
         'better-visibility': {
@@ -351,7 +351,7 @@ const LOCATIONS = [
         region: 'Karnataka',
         hubContext: 'Serving clinics, cafes, boutique agencies, and local services in Koramangala, Indiranagar, Whitefield, and HSR Layout.',
         desc: 'High-speed, mobile-optimized web design for modern businesses in Bengaluru, India\'s technology capital.',
-        localStrategy: 'In Bengaluru, customers are exceptionally tech-literate and will immediately dismiss a business with a clunky, slow, or outdated website. We build sub-second loading websites that reflect modern technical standards.',
+        localStrategy: 'In Bengaluru, customers are exceptionally tech-literate and will immediately dismiss a business with a clunky, slow, or outdated website. We build lightning-fast websites that reflect modern technical standards.',
         neighborhoods: ['Indiranagar & 100ft Road', 'Koramangala 4th-7th Blocks', 'HSR Layout & BTM', 'Whitefield & ITPL Corridor', 'Jayanagar & JP Nagar', 'Lavelle Road & CBD']
     }
 ];
@@ -416,7 +416,7 @@ const PORTFOLIO = [
         technicalPriorities: 'Sub-300ms First Contentful Paint; comprehensive Restaurant Schema for rich snippet generation on Google Maps; touch-target optimization.',
         conversionObjectives: 'Increase weekend table reservations; drive immediate foot traffic via integrated maps routing.',
         deliverables: [
-            'Sub-second mobile HTML menu',
+            'Instant-feeling mobile HTML menu',
             'Direct table reservation link',
             'One-tap Google Maps route trigger',
             'Operating hours & parking information',
@@ -447,7 +447,7 @@ const BLOG = [
             <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">If you run a <a href="/industries/restaurants" class="text-velora-gold hover:underline">restaurant</a>, <a href="/industries/salons" class="text-velora-gold hover:underline">salon</a>, or <a href="/industries/clinics" class="text-velora-gold hover:underline">clinic</a>, never force visitors to download a PDF file to view your services or prices. On a smartphone with an average mobile data connection, opening a heavy PDF consumes data, takes multiple taps, and often opens in an external viewer where the text is too small to read. Building your menu in clean, native HTML makes it instant to read and searchable by Google.</p>
             
             <h2 class="text-2xl font-display font-bold text-velora-text mt-10 mb-4 tracking-tight">3. Heavy Website Builders That Destroy Mobile Speed</h2>
-            <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">Many freelance websites are built by slapping dozens of plugins onto heavy theme builders. This loads megabytes of unnecessary JavaScript before the visitor can even see your headline. Clean, hand-crafted semantic code delivers your content in under a second, improving both user conversion and <a href="/services/local-seo" class="text-velora-gold hover:underline">local search rankings</a>.</p>
+            <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">Many freelance websites are built by slapping dozens of plugins onto heavy theme builders. This loads megabytes of unnecessary JavaScript before the visitor can even see your headline. Clean, hand-crafted semantic code delivers your content instantly, improving both user conversion and <a href="/services/local-seo" class="text-velora-gold hover:underline">local search rankings</a>.</p>
             
             <h2 class="text-2xl font-display font-bold text-velora-text mt-10 mb-4 tracking-tight">4. Practical Steps to Audit Your Site Today</h2>
             <ul class="list-disc pl-6 space-y-3 text-base text-velora-muted mb-6">

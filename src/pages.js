@@ -43,7 +43,7 @@ function renderHomePage() {
                     </div>
                     <div class="flex items-center gap-2">
                         <span class="text-emerald-500 font-bold">✓</span>
-                        <span>100% Custom Coded, Zero Bloat</span>
+                        <span>100% Custom Coded, Zero Builder Bloat</span>
                     </div>
                     <div class="flex items-center gap-2">
                         <span class="text-emerald-500 font-bold">✓</span>
@@ -177,7 +177,7 @@ function renderHomePage() {
                     <div class="text-xs font-bold uppercase tracking-widest text-velora-gold mb-4">The Velora Standard</div>
                     <div class="font-display text-xl font-bold text-velora-text mb-4">Clean Code & Direct Outcomes</div>
                     <ul class="space-y-3 text-sm text-velora-muted">
-                        <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-bold">✓</span> <span>Lightweight semantic code built for sub-second speeds</span></li>
+                        <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-bold">✓</span> <span>Lightweight semantic code built for lightning-fast speeds</span></li>
                         <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-bold">✓</span> <span>Transparent fixed pricing from ₹14,999 to ₹34,999</span></li>
                         <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-bold">✓</span> <span>Local Schema.org metadata and click-to-call conversions</span></li>
                         <li class="flex items-start gap-2.5"><span class="text-emerald-500 font-bold">✓</span> <span>100% full ownership of your domain and codebase</span></li>
@@ -203,7 +203,7 @@ function renderHomePage() {
                         <tr class="border-b border-velora-border/50">
                             <td class="py-5 px-6 font-semibold text-velora-text">Mobile Speed</td>
                             <td class="py-5 px-6 text-velora-muted">4-8 seconds (kills conversions)</td>
-                            <td class="py-5 px-6 text-emerald-400 font-medium bg-velora-gold/5">Sub-second loading</td>
+                            <td class="py-5 px-6 text-emerald-400 font-medium bg-velora-gold/5">Lightning-fast loading</td>
                         </tr>
                         <tr class="border-b border-velora-border/50">
                             <td class="py-5 px-6 font-semibold text-velora-text">SEO Foundation</td>
@@ -540,7 +540,7 @@ function renderHomePage() {
                         <ul class="space-y-3 text-xs text-velora-muted mb-8">
                             <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Up to 5 Custom Mobile-First Pages</li>
                             <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Click-to-Call & WhatsApp Triggers</li>
-                            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Sub-second Mobile Loading Speed</li>
+                            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Lightning-fast Mobile Loading Speed</li>
                             <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Secure Contact Form & Email Alerts</li>
                             <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> SSL Certificate & Cloud Deployment</li>
                         </ul>
@@ -744,7 +744,7 @@ function renderHomePage() {
 
             const recs = {
                 'real-estate': {
-                    'more-enquiries': { t: 'Property Showcase + Lead Capture', d: 'We recommend a custom portfolio layout showcasing your best properties, paired with aggressive lead capture forms on every listing. A clean, sub-second mobile experience will out-convert generic broker sites.' },
+                    'more-enquiries': { t: 'Property Showcase + Lead Capture', d: 'We recommend a custom portfolio layout showcasing your best properties, paired with aggressive lead capture forms on every listing. A clean, ultra-fast mobile experience will out-convert generic broker sites.' },
                     'better-visibility': { t: 'Local SEO Real Estate Authority', d: 'We recommend building deep neighborhood-specific landing pages and integrating RealEstateAgent Schema.org markup so you dominate "property dealer near me" searches in your territory.' }
                 },
                 'restaurant': {
@@ -1325,7 +1325,7 @@ function renderProcessPage() {
                     <h2 class="font-display text-2xl font-bold text-velora-text">High-Performance Custom Development</h2>
                 </div>
                 <p class="text-sm text-velora-muted leading-relaxed text-pretty mb-4">
-                    We write clean semantic code without slow page builders. Every page is optimized for sub-second load times on real 4G/5G mobile networks.
+                    We write clean semantic code without slow page builders. Every page is optimized for lightning-fast load times on real 4G/5G mobile networks.
                 </p>
                 <div class="text-xs text-velora-gold font-semibold">Deliverable: Fully functional staging site ready for testing</div>
             </div>
@@ -1396,7 +1396,7 @@ function renderPricingPage() {
                     <ul class="space-y-3 text-xs text-velora-muted mb-8">
                         <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Up to 5 Custom Mobile-First Pages</li>
                         <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Click-to-Call & WhatsApp Triggers</li>
-                        <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Sub-second Mobile Loading Speed</li>
+                        <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Lightning-fast Mobile Loading Speed</li>
                         <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> Secure Contact Form with Email Alerts</li>
                         <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> SSL Certificate & Cloud Deployment</li>
                         <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> 100% Asset & Code Ownership</li>
