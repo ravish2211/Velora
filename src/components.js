@@ -114,7 +114,7 @@ function Header(currentPath) {
     };
 
     return `
-    <header class="sticky top-0 z-50 nav-glass transition-all duration-300 border-b border-velora-border">
+    <header class="sticky top-0 z-50 bg-velora-bg/95 backdrop-blur-md transition-all duration-300 border-b border-velora-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <a href="/" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-velora-gold rounded-lg min-h-[44px] px-1" id="nav-brand-logo">
@@ -235,11 +235,11 @@ function Footer() {
                     </div>
                     <div class="p-4 rounded-xl bg-velora-surface border border-velora-border">
                         <div class="text-xs font-semibold text-velora-text mb-1">Honest Studio Guarantee</div>
-                        <div class="text-xs text-velora-muted leading-relaxed">No fake metrics or inflated agency retainers. Clean code, clear pricing, and reliable delivery.</div>
+                        <div class="text-xs text-gray-400 leading-relaxed">No fake metrics or inflated agency retainers. Clean code, clear pricing, and reliable delivery.</div>
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-velora-border text-xs text-velora-muted">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-velora-border text-xs text-gray-400">
                 <div>&copy; ${new Date().getFullYear()} Velora Digital. All rights reserved.</div>
                 <div class="flex items-center gap-4">
                     <a href="/privacy-policy" class="hover:text-velora-text transition-colors">Privacy Policy</a>

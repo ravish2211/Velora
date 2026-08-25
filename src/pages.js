@@ -121,7 +121,7 @@ function renderHomePage() {
                                 <button type="submit" class="audit-submit-btn btn-luxury w-full py-3.5 rounded-xl text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText hover:opacity-95 transition-opacity shadow-md disabled:opacity-50 disabled:cursor-not-allowed">
                                     Get My Free Audit
                                 </button>
-                                <p class="text-[10px] text-velora-muted text-center mt-3">We'll identify the biggest issues affecting speed, SEO, mobile UX, and enquiries.</p>
+                                <p class="text-[10px] text-velora-muted text-center mt-3">Reviewed personally • No automated spam</p>
                             </form>
                             <div class="audit-success hidden flex-col items-center justify-center text-center space-y-3 py-4">
                                 <div class="text-emerald-500 text-3xl">✓</div>
@@ -301,7 +301,7 @@ function renderHomePage() {
                         <a id="rec-cta-btn" href="/contact" onclick="if(window.veloraTrack) window.veloraTrack('cta_click', { button: 'rec-cta-btn' })" class="btn-luxury w-full sm:w-auto px-8 py-3.5 rounded-full text-[10px] uppercase tracking-widest font-bold bg-velora-gold text-black text-center">
                             Request Quote for this Setup
                         </a>
-                        <button type="button" onclick="resetRecTool()" class="text-[10px] font-bold uppercase tracking-widest text-velora-muted hover:text-velora-text transition-colors">Start Over</button>
+                        <button type="button" onclick="resetRecTool()" class="w-full sm:w-auto px-8 py-3.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-velora-muted border border-velora-border hover:border-velora-borderStrong hover:text-velora-text transition-colors">Start Over</button>
                     </div>
                 </div>
             </div>
@@ -591,9 +591,12 @@ function renderHomePage() {
             </div>
 
             <div class="mt-12 text-center reveal">
-                <a href="/pricing" class="text-xs uppercase tracking-widest font-bold text-velora-gold hover:text-velora-text transition-colors inline-flex py-3">
+                <a href="/pricing" class="text-xs uppercase tracking-widest font-bold text-velora-gold hover:text-velora-text transition-colors inline-flex py-3 mb-4">
                     Use our Interactive Price Calculator &rarr;
                 </a>
+                <p class="text-[10px] text-velora-muted leading-relaxed max-w-2xl mx-auto">
+                    Project pricing covers website design & development. Domain, hosting, third-party services and optional ongoing maintenance are quoted separately where applicable.
+                </p>
             </div>
         </div>
     </section>
@@ -1494,9 +1497,12 @@ function renderPricingPage() {
                         <li class="flex items-start gap-2"><span class="text-emerald-500 font-bold">✓</span> <span>Local SEO & Schema.org Setup</span></li>
                     </ul>
 
-                    <a id="calc-quote-btn" href="/contact?pages=5&seo=true&maint=false&est=${CONFIG.pricing.baseCalculator + (5 * CONFIG.pricing.perPage) + CONFIG.pricing.seoAddon}" onclick="if(window.veloraTrack) window.veloraTrack('calculator_submit', { url: this.href })" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-gold text-black block hover:opacity-95">
+                    <a id="calc-quote-btn" href="/contact?pages=5&seo=true&maint=false&est=${CONFIG.pricing.baseCalculator + (5 * CONFIG.pricing.perPage) + CONFIG.pricing.seoAddon}" onclick="if(window.veloraTrack) window.veloraTrack('calculator_submit', { url: this.href })" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-gold text-black block hover:opacity-95 mb-4">
                         Request Quote for this Project &rarr;
                     </a>
+                    <p class="text-[10px] text-velora-muted leading-relaxed text-balance mx-auto">
+                        Project pricing covers website design & development. Domain, hosting, third-party services and ongoing maintenance are quoted separately where applicable.
+                    </p>
                 </div>
             </div>
         </div>
