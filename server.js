@@ -366,6 +366,14 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
             return res.status(400).json({ success: false, message: 'Location is too long.' });
         }
 
+        if (goal && goal.length > 100) {
+            return res.status(400).json({ success: false, message: 'Goal description is too long (max 100 characters).' });
+        }
+
+        if (timeline && timeline.length > 100) {
+            return res.status(400).json({ success: false, message: 'Timeline description is too long (max 100 characters).' });
+        }
+
         if (message && message.length > 2000) {
             return res.status(400).json({ success: false, message: 'Project details message is too long (max 2000 characters).' });
         }
@@ -424,11 +432,14 @@ ${message || 'No additional details provided.'}
 
         const resend = getResend();
         if (resend) {
+            const safeName = name.replace(/[\r\n]/g, ' ');
+            const safeBusiness = business.replace(/[\r\n]/g, ' ');
+
             const { data, error } = await resend.emails.send({
                 from: CONFIG.emailFrom,
                 to: CONFIG.systemEmail || CONFIG.email,
                 replyTo: email,
-                subject: `[New Inquiry] ${business} - ${name}`,
+                subject: `[New Inquiry] ${safeBusiness} - ${safeName}`,
                 text: emailText,
                 html: emailHtml
             });

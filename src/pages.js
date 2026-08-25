@@ -1470,7 +1470,7 @@ function renderPricingPage() {
                             <input type="checkbox" id="calc-seo-addon" class="w-5 h-5 rounded accent-velora-gold cursor-pointer" checked>
                             <div class="flex-grow">
                                 <div class="text-xs font-bold text-velora-text uppercase tracking-wider">Local SEO & Schema.org Setup</div>
-                                <div class="text-xs text-velora-muted">Google Maps alignment, structured metadata & NAP audit (+₹17,500)</div>
+                                <div class="text-xs text-velora-muted">Google Maps alignment, structured metadata & NAP audit (+₹${CONFIG.pricing.seoAddon.toLocaleString('en-IN')})</div>
                             </div>
                         </label>
 
@@ -1478,7 +1478,7 @@ function renderPricingPage() {
                             <input type="checkbox" id="calc-maint-addon" class="w-5 h-5 rounded accent-velora-gold cursor-pointer">
                             <div class="flex-grow">
                                 <div class="text-xs font-bold text-velora-text uppercase tracking-wider">1-Year Cloud Maintenance & Security</div>
-                                <div class="text-xs text-velora-muted">Hosting management, SSL renewals & regular content edits (+₹15,000)</div>
+                                <div class="text-xs text-velora-muted">Hosting management, SSL renewals & regular content edits (+₹${CONFIG.pricing.maintenanceAddon.toLocaleString('en-IN')})</div>
                             </div>
                         </label>
                     </div>
@@ -1486,7 +1486,7 @@ function renderPricingPage() {
 
                 <div class="lg:col-span-5 p-8 rounded-2xl bg-velora-surface border-2 border-velora-gold/30 text-center relative">
                     <span class="text-[10px] font-bold uppercase tracking-widest text-velora-gold block mb-2">Estimated Investment</span>
-                    <div id="calc-estimate-display" class="font-display text-4xl sm:text-5xl font-bold text-velora-text mb-2">~₹35,000</div>
+                    <div id="calc-estimate-display" class="font-display text-4xl sm:text-5xl font-bold text-velora-text mb-2">~₹${(CONFIG.pricing.baseCalculator + (5 * CONFIG.pricing.perPage) + CONFIG.pricing.seoAddon).toLocaleString('en-IN')}</div>
                     <div id="calc-direction-label" class="inline-block px-3 py-1 bg-velora-gold/10 border border-velora-gold/30 rounded-full text-[10px] font-bold uppercase tracking-widest text-velora-gold mb-4">Professional Build</div>
 
                     <ul id="calc-includes-list" class="text-left space-y-2.5 text-xs text-velora-muted mb-8 pb-8 border-b border-velora-border">
@@ -1494,7 +1494,7 @@ function renderPricingPage() {
                         <li class="flex items-start gap-2"><span class="text-emerald-500 font-bold">✓</span> <span>Local SEO & Schema.org Setup</span></li>
                     </ul>
 
-                    <a id="calc-quote-btn" href="/contact?pages=5&seo=true&maint=false&est=25000" onclick="if(window.veloraTrack) window.veloraTrack('calculator_submit', { url: this.href })" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-gold text-black block hover:opacity-95">
+                    <a id="calc-quote-btn" href="/contact?pages=5&seo=true&maint=false&est=${CONFIG.pricing.baseCalculator + (5 * CONFIG.pricing.perPage) + CONFIG.pricing.seoAddon}" onclick="if(window.veloraTrack) window.veloraTrack('calculator_submit', { url: this.href })" class="btn-luxury w-full py-4 rounded-full text-center text-xs uppercase tracking-widest font-bold bg-velora-gold text-black block hover:opacity-95">
                         Request Quote for this Project &rarr;
                     </a>
                 </div>
@@ -1521,17 +1521,17 @@ function renderPricingPage() {
 
             if (pagesDisplay) pagesDisplay.innerText = pages + (pages === 1 ? ' Page' : ' Pages');
 
-            let total = 10000 + (pages * 1500);
-            if (seo) total += 17500;
-            if (maint) total += 15000;
+            let total = ${CONFIG.pricing.baseCalculator} + (pages * ${CONFIG.pricing.perPage});
+            if (seo) total += ${CONFIG.pricing.seoAddon};
+            if (maint) total += ${CONFIG.pricing.maintenanceAddon};
 
             if (estimateDisplay) estimateDisplay.innerText = '~₹' + total.toLocaleString('en-IN');
 
             if (directionLabel) {
-                if (total >= 69999) {
+                if (total >= ${CONFIG.pricing.customBase}) {
                     directionLabel.innerText = 'Custom Scope';
                     directionLabel.className = 'inline-block px-3 py-1 bg-velora-bg border border-velora-border rounded-full text-[10px] font-bold uppercase tracking-widest text-velora-text mb-4';
-                } else if (total >= 34999) {
+                } else if (total >= ${CONFIG.pricing.professional}) {
                     directionLabel.innerText = 'Professional Build';
                     directionLabel.className = 'inline-block px-3 py-1 bg-velora-gold/10 border border-velora-gold/30 rounded-full text-[10px] font-bold uppercase tracking-widest text-velora-gold mb-4';
                 } else {
@@ -1552,7 +1552,7 @@ function renderPricingPage() {
             }
 
             if (quoteBtn) {
-                let tier = total >= 69999 ? 'custom' : (total >= 34999 ? 'professional' : 'essential');
+                let tier = total >= ${CONFIG.pricing.customBase} ? 'custom' : (total >= ${CONFIG.pricing.professional} ? 'professional' : 'essential');
                 quoteBtn.href = '/contact?tier=' + tier + '&pages=' + pages + '&seo=' + seo + '&maint=' + maint + '&est=' + total;
             }
         }
