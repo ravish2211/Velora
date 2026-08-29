@@ -153,7 +153,7 @@ const INDUSTRIES = [
             'Interactive Neighborhood Maps',
             'Lead-Capture Floor Plan Downloads'
         ],
-        whatWeRecommend: 'We recommend a custom portfolio layout showcasing your best properties, paired with aggressive lead capture forms on every listing. A clean, ultra-fast <a href="/services/website-design" class="text-velora-gold hover:underline">mobile experience</a> will out-convert generic broker sites. We heavily prioritize <a href="/services/local-seo" class="text-velora-gold hover:underline">local SEO</a> to capture hyper-local search intent across <a href="/locations/gurugram" class="text-velora-gold hover:underline">Gurugram</a> and <a href="/locations/delhi-ncr" class="text-velora-gold hover:underline">Delhi NCR</a>.'
+        whatWeRecommend: 'We recommend a custom portfolio layout showcasing your best properties, paired with aggressive lead capture forms on every listing. A clean, ultra-fast <a href="/services/website-design" class="text-velora-accent hover:underline">mobile experience</a> will out-convert generic broker sites. We heavily prioritize <a href="/services/local-seo" class="text-velora-accent hover:underline">local SEO</a> to capture hyper-local search intent across <a href="/locations/gurugram" class="text-velora-accent hover:underline">Gurugram</a> and <a href="/locations/delhi-ncr" class="text-velora-accent hover:underline">Delhi NCR</a>.'
     },
     {
         slug: 'restaurants',
@@ -177,7 +177,7 @@ const INDUSTRIES = [
             'Direct Table Reservation Integration',
             'Sticky Mobile "Call to Book" Bar'
         ],
-        whatWeRecommend: 'We recommend a streamlined mobile interface with a sticky "Call to Book" or "WhatsApp Booking" bar, combined with a fast-loading text-based menu to maximize immediate covers. Robust <a href="/services/local-seo" class="text-velora-gold hover:underline">local SEO</a> is vital to capture "near me" dining queries, and <a href="/services/website-maintenance" class="text-velora-gold hover:underline">regular website maintenance</a> ensures menu items stay updated across the board.'
+        whatWeRecommend: 'We recommend a streamlined mobile interface with a sticky "Call to Book" or "WhatsApp Booking" bar, combined with a fast-loading text-based menu to maximize immediate covers. Robust <a href="/services/local-seo" class="text-velora-accent hover:underline">local SEO</a> is vital to capture "near me" dining queries, and <a href="/services/website-maintenance" class="text-velora-accent hover:underline">regular website maintenance</a> ensures menu items stay updated across the board.'
     },
     {
         slug: 'clinics',
@@ -201,7 +201,7 @@ const INDUSTRIES = [
             'HIPAA/Data Compliant Consultation Forms',
             'Before & After Clinical Galleries'
         ],
-        whatWeRecommend: 'We recommend featuring doctor credentials, real patient outcomes, and transparent procedures, paired with sticky mobile booking buttons so anxious patients can book consultations instantly. Building trust requires a <a href="/services/website-design" class="text-velora-gold hover:underline">premium website design</a> and continuous <a href="/services/local-seo" class="text-velora-gold hover:underline">local SEO</a> visibility.'
+        whatWeRecommend: 'We recommend featuring doctor credentials, real patient outcomes, and transparent procedures, paired with sticky mobile booking buttons so anxious patients can book consultations instantly. Building trust requires a <a href="/services/website-design" class="text-velora-accent hover:underline">premium website design</a> and continuous <a href="/services/local-seo" class="text-velora-accent hover:underline">local SEO</a> visibility.'
     },
     {
         slug: 'salons',
@@ -225,7 +225,7 @@ const INDUSTRIES = [
             'Transparent Service Pricing Menus',
             'Direct WhatsApp Booking Links'
         ],
-        whatWeRecommend: 'We recommend an aesthetic, fast-loading gallery of your work paired with a clear, transparent service menu and direct WhatsApp booking links to eliminate pricing confusion. A fast <a href="/services/website-design" class="text-velora-gold hover:underline">mobile-first design</a> combined with <a href="/services/local-seo" class="text-velora-gold hover:underline">targeted local SEO</a> keeps your appointment book full across <a href="/locations/chandigarh" class="text-velora-gold hover:underline">Chandigarh</a>, <a href="/locations/bengaluru" class="text-velora-gold hover:underline">Bengaluru</a>, and beyond.'
+        whatWeRecommend: 'We recommend an aesthetic, fast-loading gallery of your work paired with a clear, transparent service menu and direct WhatsApp booking links to eliminate pricing confusion. A fast <a href="/services/website-design" class="text-velora-accent hover:underline">mobile-first design</a> combined with <a href="/services/local-seo" class="text-velora-accent hover:underline">targeted local SEO</a> keeps your appointment book full across <a href="/locations/chandigarh" class="text-velora-accent hover:underline">Chandigarh</a>, <a href="/locations/bengaluru" class="text-velora-accent hover:underline">Bengaluru</a>, and beyond.'
     }
 ];
 
@@ -356,10 +356,10 @@ const BLOG = [
             <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">The most common mistake on local business websites is treating the contact information like an afterthought. Your phone number, WhatsApp link, address, and primary call-to-action should be visible within the first two seconds on both mobile and desktop screens. On mobile, a persistent bottom bar with "Call" and "WhatsApp" buttons frequently increases direct inquiries by 25% or more.</p>
             
             <h2 class="text-2xl font-display font-bold text-velora-text mt-10 mb-4 tracking-tight">2. The 15MB PDF Menu Disaster</h2>
-            <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">If you run a <a href="/industries/restaurants" class="text-velora-gold hover:underline">restaurant</a>, <a href="/industries/salons" class="text-velora-gold hover:underline">salon</a>, or <a href="/industries/clinics" class="text-velora-gold hover:underline">clinic</a>, never force visitors to download a PDF file to view your services or prices. On a smartphone with an average mobile data connection, opening a heavy PDF consumes data, takes multiple taps, and often opens in an external viewer where the text is too small to read. Building your menu in clean, native HTML makes it lightning-fast to read and searchable by Google.</p>
+            <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">If you run a <a href="/industries/restaurants" class="text-velora-accent hover:underline">restaurant</a>, <a href="/industries/salons" class="text-velora-accent hover:underline">salon</a>, or <a href="/industries/clinics" class="text-velora-accent hover:underline">clinic</a>, never force visitors to download a PDF file to view your services or prices. On a smartphone with an average mobile data connection, opening a heavy PDF consumes data, takes multiple taps, and often opens in an external viewer where the text is too small to read. Building your menu in clean, native HTML makes it lightning-fast to read and searchable by Google.</p>
             
             <h2 class="text-2xl font-display font-bold text-velora-text mt-10 mb-4 tracking-tight">3. Heavy Website Builders That Destroy Mobile Speed</h2>
-            <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">Many freelance websites are built by slapping dozens of plugins onto heavy theme builders. This loads megabytes of unnecessary JavaScript before the visitor can even see your headline. Clean, hand-crafted semantic code delivers your content lightning-fast, improving both user conversion and <a href="/services/local-seo" class="text-velora-gold hover:underline">local search rankings</a>.</p>
+            <p class="text-base leading-relaxed text-velora-muted mb-6 text-pretty">Many freelance websites are built by slapping dozens of plugins onto heavy theme builders. This loads megabytes of unnecessary JavaScript before the visitor can even see your headline. Clean, hand-crafted semantic code delivers your content lightning-fast, improving both user conversion and <a href="/services/local-seo" class="text-velora-accent hover:underline">local search rankings</a>.</p>
             
             <h2 class="text-2xl font-display font-bold text-velora-text mt-10 mb-4 tracking-tight">4. Practical Steps to Audit Your Site Today</h2>
             <ul class="list-disc pl-6 space-y-3 text-base text-velora-muted mb-6">

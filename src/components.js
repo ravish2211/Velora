@@ -110,14 +110,14 @@ function generateSchema(type, data = {}) {
 function Header(currentPath) {
     const navItem = (href, label) => {
         const isActive = currentPath === href || (href !== '/' && currentPath.startsWith(href));
-        return `<a href="${href}" class="px-3 py-2 min-h-[44px] flex items-center rounded-lg text-sm tracking-wide transition-all ${isActive ? 'text-velora-gold font-semibold bg-velora-faint' : 'text-velora-muted hover:text-velora-text hover:bg-velora-faint'}">${label}</a>`;
+        return `<a href="${href}" class="px-3 py-2 min-h-[44px] flex items-center rounded-lg text-sm tracking-wide transition-all ${isActive ? 'text-velora-accent font-semibold bg-velora-faint' : 'text-velora-muted hover:text-velora-text hover:bg-velora-faint'}">${label}</a>`;
     };
 
     return `
     <header class="sticky top-0 z-50 bg-velora-bg/95 backdrop-blur-md transition-all duration-300 border-b border-velora-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <a href="/" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-velora-gold rounded-lg min-h-[44px] px-1" id="nav-brand-logo">
+                <a href="/" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-velora-accent rounded-lg min-h-[44px] px-1" id="nav-brand-logo">
                     <img src="/logo.png" alt="Velora Digital Logo" width="36" height="36" class="w-9 h-9 rounded object-cover shadow-sm transition-transform duration-300 group-hover:scale-105 invert dark:invert-0">
                     <div class="flex flex-col">
                         <span class="font-display font-bold text-xl tracking-tight text-velora-text leading-none">VELORA</span>
@@ -135,20 +135,12 @@ function Header(currentPath) {
                     ${navItem('/locations', 'Locations')}
                 </nav>
                 <div class="hidden xl:flex items-center gap-4">
-                    <button id="theme-toggle-btn" class="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-velora-muted hover:text-velora-text hover:bg-velora-faint focus:outline-none focus:ring-2 focus:ring-velora-gold transition-colors" aria-label="Toggle Theme" aria-pressed="false">
-                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                    </button>
-                    <a href="/contact" id="header-cta-btn" class="btn-luxury px-6 py-2.5 min-h-[44px] flex items-center rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText focus:outline-none focus:ring-2 focus:ring-velora-gold shadow-sm hover:opacity-90 transition-opacity">
+                    <a href="/contact" id="header-cta-btn" class="btn-luxury px-6 py-2.5 min-h-[44px] flex items-center rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText focus:outline-none focus:ring-2 focus:ring-velora-accent shadow-sm hover:opacity-90 transition-opacity">
                         <span>Get a Quote</span>
                     </a>
                 </div>
                 <div class="flex items-center xl:hidden">
-                    <button id="theme-toggle-mobile-btn" class="p-2 mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-velora-muted hover:text-velora-text focus:outline-none focus:ring-2 focus:ring-velora-gold transition-colors" aria-label="Toggle Theme" aria-pressed="false">
-                        <svg id="theme-toggle-light-icon-mob" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                        <svg id="theme-toggle-dark-icon-mob" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                    </button>
-                    <button id="mobile-menu-btn" aria-expanded="false" aria-label="Toggle Navigation Menu" class="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-velora-muted hover:text-velora-text hover:bg-velora-faint focus:outline-none focus:ring-2 focus:ring-velora-gold">
+                    <button id="mobile-menu-btn" aria-expanded="false" aria-label="Toggle Navigation Menu" class="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-velora-muted hover:text-velora-text hover:bg-velora-faint focus:outline-none focus:ring-2 focus:ring-velora-accent">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                     </button>
                 </div>
@@ -183,55 +175,55 @@ function Footer() {
                     </p>
                     <div class="pt-2 text-xs text-velora-muted space-y-1.5">
                         <div class="flex items-center gap-2">
-                            <span class="text-velora-gold">📍</span>
+                            <span class="text-velora-accent">📍</span>
                             <span>Serving Gurugram, Delhi NCR, Chandigarh & Bengaluru</span>
                         </div>
                         <div class="flex items-center gap-2">
-                            <span class="text-velora-gold">✉️</span>
-                            <a href="mailto:${CONFIG.email}" onclick="if(window.veloraTrack) window.veloraTrack('email_click', { url: this.href })" class="hover:text-velora-gold transition-colors">${CONFIG.email}</a>
+                            <span class="text-velora-accent">✉️</span>
+                            <a href="mailto:${CONFIG.email}" onclick="if(window.veloraTrack) window.veloraTrack('email_click', { url: this.href })" class="hover:text-velora-accent transition-colors">${CONFIG.email}</a>
                         </div>
                         <div class="flex items-center gap-2">
-                            <span class="text-velora-gold">📞</span>
-                            <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" onclick="if(window.veloraTrack) window.veloraTrack('phone_click', { url: this.href })" class="hover:text-velora-gold transition-colors">${CONFIG.phone}</a>
+                            <span class="text-velora-accent">📞</span>
+                            <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" onclick="if(window.veloraTrack) window.veloraTrack('phone_click', { url: this.href })" class="hover:text-velora-accent transition-colors">${CONFIG.phone}</a>
                         </div>
                     </div>
                 </div>
                 <div class="lg:col-span-2">
                     <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Services</p>
                     <ul class="space-y-2.5 text-sm text-velora-muted">
-                        <li><a href="/services/website-design" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Web Design</a></li>
-                        <li><a href="/services/local-seo" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Local SEO</a></li>
-                        <li><a href="/services/website-maintenance" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Maintenance Care</a></li>
-                        <li><a href="/services" class="flex items-center min-h-[44px] hover:text-velora-gold font-medium transition-colors">All Services &rarr;</a></li>
+                        <li><a href="/services/website-design" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Web Design</a></li>
+                        <li><a href="/services/local-seo" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Local SEO</a></li>
+                        <li><a href="/services/website-maintenance" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Maintenance Care</a></li>
+                        <li><a href="/services" class="flex items-center min-h-[44px] hover:text-velora-accent font-medium transition-colors">All Services &rarr;</a></li>
                     </ul>
                 </div>
                 <div class="lg:col-span-2">
                     <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Industries</p>
                     <ul class="space-y-2.5 text-sm text-velora-muted">
-                        <li><a href="/industries/real-estate" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Real Estate</a></li>
-                        <li><a href="/industries/restaurants" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Restaurants</a></li>
-                        <li><a href="/industries/clinics" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Clinics & Dentists</a></li>
-                        <li><a href="/industries/salons" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Salons & Spas</a></li>
+                        <li><a href="/industries/real-estate" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Real Estate</a></li>
+                        <li><a href="/industries/restaurants" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Restaurants</a></li>
+                        <li><a href="/industries/clinics" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Clinics & Dentists</a></li>
+                        <li><a href="/industries/salons" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Salons & Spas</a></li>
                     </ul>
                 </div>
                 <div class="lg:col-span-2">
                     <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Locations</p>
                     <ul class="space-y-2.5 text-sm text-velora-muted">
-                        <li><a href="/locations/gurugram" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Gurugram</a></li>
-                        <li><a href="/locations/delhi-ncr" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Delhi NCR</a></li>
-                        <li><a href="/locations/chandigarh" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Chandigarh</a></li>
-                        <li><a href="/locations/bengaluru" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Bengaluru</a></li>
+                        <li><a href="/locations/gurugram" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Gurugram</a></li>
+                        <li><a href="/locations/delhi-ncr" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Delhi NCR</a></li>
+                        <li><a href="/locations/chandigarh" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Chandigarh</a></li>
+                        <li><a href="/locations/bengaluru" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Bengaluru</a></li>
                     </ul>
                 </div>
                 <div class="lg:col-span-3">
                     <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Company & Exploration</p>
                     <div class="grid grid-cols-2 gap-2 text-sm text-velora-muted mb-6">
-                        <a href="/about" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">About Studio</a>
-                        <a href="/portfolio" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Portfolio</a>
-                        <a href="/process" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Our Process</a>
-                        <a href="/pricing" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Pricing & Calculator</a>
-                        <a href="/blog" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Journal & Advice</a>
-                        <a href="/locations" class="flex items-center min-h-[44px] hover:text-velora-gold transition-colors">Service Areas</a>
+                        <a href="/about" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">About Studio</a>
+                        <a href="/portfolio" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Portfolio</a>
+                        <a href="/process" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Our Process</a>
+                        <a href="/pricing" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Pricing & Calculator</a>
+                        <a href="/blog" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Journal & Advice</a>
+                        <a href="/locations" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Service Areas</a>
                     </div>
                     <div class="p-4 rounded-xl bg-velora-surface border border-velora-border">
                         <div class="text-xs font-semibold text-velora-text mb-1">Honest Studio Guarantee</div>
@@ -240,8 +232,31 @@ function Footer() {
                 </div>
             </div>
             <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-velora-border text-xs text-gray-400">
-                <div>&copy; ${new Date().getFullYear()} Velora Digital. All rights reserved.</div>
-                <div class="flex items-center gap-4">
+                <div class="flex items-center gap-4 flex-wrap justify-center">
+                    <div>&copy; ${new Date().getFullYear()} Velora Digital. All rights reserved.</div>
+                    <span aria-hidden="true" class="hidden md:inline">&bull;</span>
+                    <div class="relative group">
+                        <button id="studio-theme-btn" class="flex items-center gap-1.5 hover:text-velora-text transition-colors focus:outline-none" aria-haspopup="true" aria-expanded="false">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                            <span>Studio Themes</span>
+                        </button>
+                        <div id="studio-theme-menu" class="absolute bottom-full left-0 mb-2 w-48 bg-velora-surface border border-velora-border rounded-xl shadow-xl p-2 hidden z-50">
+                            <button class="theme-option w-full flex items-center justify-between px-3 py-2 text-left text-sm rounded-lg hover:bg-velora-faint transition-colors text-velora-text" data-theme-value="onyx">
+                                <span>Onyx / Champagne</span>
+                                <span class="w-3 h-3 rounded-full bg-velora-accent"></span>
+                            </button>
+                            <button class="theme-option w-full flex items-center justify-between px-3 py-2 text-left text-sm rounded-lg hover:bg-velora-faint transition-colors text-velora-text" data-theme-value="obsidian">
+                                <span>Obsidian / Titanium</span>
+                                <span class="w-3 h-3 rounded-full bg-[#E2E8F0]"></span>
+                            </button>
+                            <button class="theme-option w-full flex items-center justify-between px-3 py-2 text-left text-sm rounded-lg hover:bg-velora-faint transition-colors text-velora-text" data-theme-value="midnight">
+                                <span>Midnight / Cobalt</span>
+                                <span class="w-3 h-3 rounded-full bg-[#0ea5e9]"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 flex-wrap justify-center">
                     <a href="/privacy-policy" class="hover:text-velora-text transition-colors">Privacy Policy</a>
                     <span aria-hidden="true">&bull;</span>
                     <a href="/terms" class="hover:text-velora-text transition-colors">Terms of Service</a>
@@ -261,7 +276,7 @@ function FloatingContact(currentPath = '') {
     return `
     <!-- Desktop Floating Quote Button -->
     <div class="fixed bottom-6 right-6 z-40 hidden sm:block">
-        <a href="/contact" id="desktop-floating-cta" onclick="if(window.veloraTrack) window.veloraTrack('cta_click', { button: 'desktop-floating-cta', location: '${currentPath}' })" class="flex items-center gap-3 px-5 py-3 bg-velora-button text-velora-buttonText rounded-full transition-transform duration-300 hover:scale-105 shadow-xl border border-velora-borderStrong focus:outline-none focus:ring-2 focus:ring-velora-gold" aria-label="Get a Quote">
+        <a href="/contact" id="desktop-floating-cta" onclick="if(window.veloraTrack) window.veloraTrack('cta_click', { button: 'desktop-floating-cta', location: '${currentPath}' })" class="flex items-center gap-3 px-5 py-3 bg-velora-button text-velora-buttonText rounded-full transition-transform duration-300 hover:scale-105 shadow-xl focus:outline-none focus:ring-2 focus:ring-velora-accent" aria-label="Get a Quote">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             <span class="text-xs font-bold uppercase tracking-[0.2em]">Get a Quote</span>
         </a>
@@ -274,7 +289,7 @@ function FloatingContact(currentPath = '') {
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.031 2c-5.514 0-9.998 4.484-9.998 9.998 0 1.983.58 3.829 1.58 5.385l-1.613 5.888 6.042-1.583c1.492.81 3.208 1.282 5.011 1.282 5.514 0 10.027-4.484 10.027-9.998 0-5.514-4.513-9.998-10.049-9.998zm5.958 14.158c-.247.693-1.229 1.299-1.999 1.464-.528.113-1.218.204-3.535-.758-2.962-1.229-4.869-4.249-5.018-4.448-.148-.198-1.213-1.613-1.213-3.076 0-1.463.766-2.183 1.038-2.48.272-.297.593-.371.791-.371.198 0 .396.002.569.01.183.008.43-.069.673.515.247.585.841 2.052.915 2.201.074.148.124.321.025.519-.099.198-.148.321-.297.495-.148.173-.313.387-.446.52-.148.148-.303.309-.13.606.173.297.771 1.272 1.657 2.062 1.139 1.015 2.1 1.328 2.397 1.476.297.148.47.124.643-.074.173-.198.742-.866.94-1.163.198-.297.396-.247.668-.148.272.099 1.73.816 2.027.965.297.148.495.223.569.346.074.124.074.718-.173 1.411z"/></svg>
                 WhatsApp
             </a>
-            <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" id="mobile-call-btn" onclick="if(window.veloraTrack) window.veloraTrack('cta_click', { button: 'mobile-call-btn', location: '${currentPath}' })" class="flex-1 flex items-center justify-center gap-2 bg-velora-faint hover:bg-velora-faintHover border border-velora-borderStrong text-velora-text py-3 min-h-[44px] rounded-xl text-xs font-bold uppercase tracking-wider transition-colors active:scale-95">
+            <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" id="mobile-call-btn" onclick="if(window.veloraTrack) window.veloraTrack('cta_click', { button: 'mobile-call-btn', location: '${currentPath}' })" class="flex-1 flex items-center justify-center gap-2 bg-velora-faint hover:bg-velora-faintHover text-velora-text py-3 min-h-[44px] rounded-xl text-xs font-bold uppercase tracking-wider transition-colors active:scale-95">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                 Call Us
             </a>
@@ -291,7 +306,7 @@ function Breadcrumbs(items) {
         const isLast = idx === items.length - 1;
         return `
             ${idx > 0 ? '<span class="text-velora-muted opacity-40 px-2 text-xs" aria-hidden="true">/</span>' : ''}
-            ${isLast ? `<span class="text-velora-gold font-semibold text-xs uppercase tracking-wider" aria-current="page">${item.title}</span>` 
+            ${isLast ? `<span class="text-velora-accent font-semibold text-xs uppercase tracking-wider" aria-current="page">${item.title}</span>` 
                      : `<a href="${item.link}" class="text-xs uppercase tracking-wider text-velora-muted hover:text-velora-text transition-colors">${item.title}</a>`}
         `;
     }).join('');
@@ -354,45 +369,68 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
     <link rel="stylesheet" href="/styles.css">
 
     <script>
-        if (localStorage.getItem('theme') === 'light') {
-            document.documentElement.classList.remove('dark');
-        } else {
-            document.documentElement.classList.add('dark');
-        }
+        const storedTheme = localStorage.getItem('studio-theme') || 'onyx';
+        document.documentElement.setAttribute('data-theme', storedTheme);
     </script>
     <style>
         :root {
-            --color-bg: #f8fafc;
-            --color-surface: #ffffff;
-            --color-card: #f1f5f9;
-            --color-card-hover: #e2e8f0;
-            --color-border: rgba(0, 0, 0, 0.08);
-            --color-border-strong: rgba(0, 0, 0, 0.15);
-            --color-text-main: #0f172a;
-            --color-text-muted: #475569;
-            --color-faint: rgba(0, 0, 0, 0.04);
-            --color-faint-hover: rgba(0, 0, 0, 0.08);
-            --color-btn-bg: #0f172a;
-            --color-btn-text: #ffffff;
-            --color-btn-hover: #334155;
-            --color-nav-glass: rgba(248, 250, 252, 0.92);
-        }
-        
-        html.dark {
-            --color-bg: #07090e;
-            --color-surface: #0e121a;
-            --color-card: #141a24;
-            --color-card-hover: #1c2432;
-            --color-border: rgba(255, 255, 255, 0.09);
-            --color-border-strong: rgba(255, 255, 255, 0.18);
+            /* Theme 1: Onyx / Champagne (Default) */
+            --color-bg: #070708;
+            --color-surface: #0E0E11;
+            --color-card: #121216;
+            --color-card-hover: #18181d;
+            --color-border: rgba(212, 175, 55, 0.12);
+            --color-border-strong: rgba(212, 175, 55, 0.25);
             --color-text-main: #f1f5f9;
             --color-text-muted: #94a3b8;
-            --color-faint: rgba(255, 255, 255, 0.05);
-            --color-faint-hover: rgba(255, 255, 255, 0.1);
-            --color-btn-bg: #ffffff;
-            --color-btn-text: #07090e;
-            --color-btn-hover: #e2e8f0;
-            --color-nav-glass: rgba(7, 9, 14, 0.90);
+            --color-faint: rgba(212, 175, 55, 0.04);
+            --color-faint-hover: rgba(212, 175, 55, 0.08);
+            --color-btn-bg: #D4AF37;
+            --color-btn-text: #070708;
+            --color-btn-hover: #F3E5AB;
+            --color-nav-glass: rgba(7, 7, 8, 0.90);
+            --color-accent: #d4af37;
+            --color-accent-light: #f3e5ab;
+        }
+        
+        html[data-theme="obsidian"] {
+            /* Theme 2: Obsidian / Titanium */
+            --color-bg: #050608;
+            --color-surface: #0D0F14;
+            --color-card: #13161c;
+            --color-card-hover: #1a1e26;
+            --color-border: rgba(226, 232, 240, 0.08);
+            --color-border-strong: rgba(226, 232, 240, 0.2);
+            --color-text-main: #f8fafc;
+            --color-text-muted: #64748b;
+            --color-faint: rgba(226, 232, 240, 0.03);
+            --color-faint-hover: rgba(226, 232, 240, 0.07);
+            --color-btn-bg: #E2E8F0;
+            --color-btn-text: #050608;
+            --color-btn-hover: #ffffff;
+            --color-nav-glass: rgba(5, 6, 8, 0.90);
+            --color-accent: #e2e8f0;
+            --color-accent-light: #ffffff;
+        }
+
+        html[data-theme="midnight"] {
+            /* Theme 3: Midnight / Cobalt */
+            --color-bg: #030816;
+            --color-surface: #071022;
+            --color-card: #0a142b;
+            --color-card-hover: #101d3a;
+            --color-border: rgba(56, 189, 248, 0.12);
+            --color-border-strong: rgba(56, 189, 248, 0.25);
+            --color-text-main: #f0f9ff;
+            --color-text-muted: #7dd3fc;
+            --color-faint: rgba(56, 189, 248, 0.04);
+            --color-faint-hover: rgba(56, 189, 248, 0.08);
+            --color-btn-bg: #0ea5e9;
+            --color-btn-text: #030816;
+            --color-btn-hover: #38bdf8;
+            --color-nav-glass: rgba(3, 8, 22, 0.90);
+            --color-accent: #0ea5e9;
+            --color-accent-light: #38bdf8;
         }
 
         body { 
@@ -400,44 +438,64 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
             color: var(--color-text-main); 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             overflow-x: hidden; 
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
         
+        /* Ambient Background */
+        .ambient-background {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1; pointer-events: none; overflow: hidden;
+        }
+        .ambient-blob {
+            position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.15;
+            mix-blend-mode: screen; transition: background 0.8s ease;
+        }
+        .ambient-blob-1 {
+            width: 70vw; height: 70vw; top: -20vw; left: -10vw;
+            background: radial-gradient(circle, var(--color-accent) 0%, transparent 60%);
+            animation: float1 25s infinite alternate ease-in-out;
+        }
+        .ambient-blob-2 {
+            width: 60vw; height: 60vw; bottom: -20vw; right: -10vw;
+            background: radial-gradient(circle, var(--color-accent-light) 0%, transparent 60%);
+            animation: float2 30s infinite alternate ease-in-out;
+        }
+        @keyframes float1 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(6vw, 6vh) scale(1.05); } }
+        @keyframes float2 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-6vw, -6vh) scale(1.05); } }
+        @media (max-width: 640px), (prefers-reduced-motion: reduce) {
+            .ambient-blob { animation: none; opacity: 0.05; }
+        }
+
         .pb-safe { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
         @media (max-width: 639px) { body { padding-bottom: 74px; } }
         
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: var(--color-bg); }
         ::-webkit-scrollbar-thumb { background: var(--color-border-strong); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
         
-        ::selection { background-color: #d4af37; color: #000; }
+        ::selection { background-color: var(--color-accent); color: var(--color-bg); }
         
         .gold-gradient-text { 
-            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%); 
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
         }
 
-        html:not(.dark) .text-velora-gold { color: #b8860b !important; }
-        html:not(.dark) .hover\\:text-velora-gold:hover { color: #b8860b !important; }
-        html:not(.dark) .group:hover .group-hover\\:text-velora-gold { color: #b8860b !important; }
-        
         .premium-border { 
             border: 1px solid var(--color-border); 
             transition: all 0.25s ease;
         }
         .premium-border:hover {
-            border-color: rgba(212, 175, 55, 0.35);
+            border-color: var(--color-border-strong);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35);
         }
-        html.dark .premium-border:hover { box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35); }
         
         .input-luxury { transition: all 0.25s ease; }
-        .input-luxury:focus { border-color: #d4af37; box-shadow: 0 1px 0 0 #d4af37; }
+        .input-luxury:focus { border-color: var(--color-accent); box-shadow: 0 1px 0 0 var(--color-accent); }
         .nav-glass { background: var(--color-nav-glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid #d4af37; outline-offset: 2px; }
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
         
         .reveal { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -448,7 +506,12 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
     ${JSON.stringify(schemas, null, 2)}
     </script>
 </head>
-<body class="min-h-screen flex flex-col bg-velora-bg text-velora-text">
+<body class="min-h-screen flex flex-col bg-velora-bg text-velora-text relative">
+    <div class="ambient-background">
+        <div class="ambient-blob ambient-blob-1"></div>
+        <div class="ambient-blob ambient-blob-2"></div>
+    </div>
+    
     ${FloatingContact(req.path)}
     ${Header(req.path)}
     ${meta.breadcrumbs ? Breadcrumbs(meta.breadcrumbs) : ''}
@@ -460,31 +523,36 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
     ${Footer()}
 
     <script>
-        // Theme toggle
-        const themeToggleBtnDesktop = document.getElementById('theme-toggle-btn');
-        const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile-btn');
+        // Theme switching logic
+        const themeMenuBtn = document.getElementById('studio-theme-btn');
+        const themeMenu = document.getElementById('studio-theme-menu');
+        const themeOptions = document.querySelectorAll('.theme-option');
 
-        function updateThemeIcons() {
-            const isDark = document.documentElement.classList.contains('dark');
-            ['desktop', 'mobile'].forEach(type => {
-                const light = document.getElementById('theme-toggle-light-icon' + (type==='mobile'?'-mob':''));
-                const dark = document.getElementById('theme-toggle-dark-icon' + (type==='mobile'?'-mob':''));
-                const btn = type==='mobile' ? themeToggleBtnMobile : themeToggleBtnDesktop;
-                if(light) light.classList.toggle('hidden', !isDark);
-                if(dark) dark.classList.toggle('hidden', isDark);
-                if(btn) btn.setAttribute('aria-pressed', isDark ? 'false' : 'true');
+        if (themeMenuBtn && themeMenu) {
+            themeMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isExpanded = themeMenuBtn.getAttribute('aria-expanded') === 'true';
+                themeMenuBtn.setAttribute('aria-expanded', !isExpanded);
+                themeMenu.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!themeMenu.contains(e.target) && !themeMenuBtn.contains(e.target)) {
+                    themeMenu.classList.add('hidden');
+                    themeMenuBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            themeOptions.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const selectedTheme = btn.getAttribute('data-theme-value');
+                    document.documentElement.setAttribute('data-theme', selectedTheme);
+                    localStorage.setItem('studio-theme', selectedTheme);
+                    themeMenu.classList.add('hidden');
+                    themeMenuBtn.setAttribute('aria-expanded', 'false');
+                });
             });
         }
-
-        function handleThemeToggle() {
-            document.documentElement.classList.toggle('dark');
-            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-            updateThemeIcons();
-        }
-
-        if(themeToggleBtnDesktop) { updateThemeIcons(); themeToggleBtnDesktop.addEventListener('click', handleThemeToggle); }
-        if(themeToggleBtnMobile) { themeToggleBtnMobile.addEventListener('click', handleThemeToggle); }
-
         // Mobile menu
         const menuBtn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
