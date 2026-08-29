@@ -476,6 +476,8 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
         
         ::selection { background-color: var(--color-accent); color: var(--color-bg); }
         
+        .text-stroke { -webkit-text-stroke: 1px var(--color-borderStrong); color: transparent; }
+
         .gold-gradient-text { 
             background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%); 
             -webkit-background-clip: text; 

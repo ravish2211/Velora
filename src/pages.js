@@ -16,8 +16,8 @@ function renderHomePage() {
     const content = `
     <!-- 1. HERO SECTION -->
     <section class="relative pt-24 pb-20 md:pt-36 md:pb-28 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="max-w-3xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+            <div class="w-full lg:w-[55%] xl:w-[60%]">
                 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-velora-faint border-none text-xs font-semibold uppercase tracking-widest text-velora-accent mb-8 reveal">
                     <span class="w-2 h-2 rounded-full bg-velora-accent animate-pulse"></span>
                     <span>Engineering High-Converting Local Websites</span>
@@ -29,8 +29,9 @@ function renderHomePage() {
                     We design and develop fast, mobile-first websites and technical local SEO for clinics, restaurants, real estate firms, and local businesses in India. No bloated page-builders, no fake promises.
                 </p>
                 <div class="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 reveal" style="transition-delay: 150ms;">
-                    <a href="/contact" id="hero-primary-cta" class="btn-luxury inline-flex items-center justify-center px-8 py-4 min-h-[48px] rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText hover:opacity-95 transition-opacity shadow-lg">
-                        Get a Free Project Quote
+                    <a href="/contact" id="hero-primary-cta" class="btn-luxury inline-flex items-center justify-center px-8 py-4 min-h-[48px] rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText hover:opacity-95 transition-opacity shadow-lg relative group">
+                        <span class="relative z-10">Get a Free Project Quote</span>
+                        <div class="absolute inset-0 rounded-full bg-velora-accent opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-500"></div>
                     </a>
                     <a href="/portfolio" id="hero-secondary-cta" class="inline-flex items-center justify-center px-8 py-4 min-h-[48px] rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-faint hover:bg-velora-faintHover border-none text-velora-text transition-colors">
                         Explore Concept Work &rarr;
@@ -51,14 +52,44 @@ function renderHomePage() {
                     </div>
                 </div>
             </div>
+            
+            <div class="w-full lg:w-[45%] xl:w-[40%] hidden md:block relative reveal" style="transition-delay: 250ms;">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-velora-accent opacity-5 blur-[100px] rounded-full mix-blend-screen pointer-events-none"></div>
+                <div class="w-full max-w-sm mx-auto aspect-[4/5] bg-velora-surface/50 backdrop-blur-xl border border-velora-borderStrong rounded-3xl shadow-2xl overflow-hidden flex flex-col relative z-10 hover:-translate-y-2 transition-transform duration-700">
+                    <div class="h-10 border-b border-velora-border flex items-center px-4 gap-2 bg-black/20">
+                        <div class="w-2.5 h-2.5 rounded-full bg-velora-borderStrong"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-velora-borderStrong"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-velora-borderStrong"></div>
+                    </div>
+                    <div class="flex-1 p-6 flex flex-col gap-5">
+                        <div class="w-2/3 h-6 rounded-md bg-velora-text/10 animate-pulse" style="animation-duration: 3s"></div>
+                        <div class="w-full h-3 rounded-sm bg-velora-text/5"></div>
+                        <div class="w-5/6 h-3 rounded-sm bg-velora-text/5"></div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mt-4">
+                            <div class="aspect-square rounded-2xl bg-gradient-to-br from-velora-accent/20 to-transparent border border-velora-accent/10"></div>
+                            <div class="aspect-square rounded-2xl bg-velora-faint border border-velora-border"></div>
+                        </div>
+                        
+                        <div class="mt-auto flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-velora-accent/20 flex-shrink-0"></div>
+                            <div class="flex-1 space-y-2">
+                                <div class="w-full h-2 rounded bg-velora-text/10"></div>
+                                <div class="w-1/2 h-2 rounded bg-velora-text/5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- 9.5 WEBSITE AUDIT LEAD MAGNET -->
     <section class="py-24 bg-velora-bg">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="p-8 sm:p-12 rounded-3xl bg-velora-surface shadow-xl premium-border reveal">
-                <div class="flex flex-col md:flex-row gap-8 items-center">
+            <div class="p-8 sm:p-12 rounded-3xl bg-velora-surface shadow-2xl reveal relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-velora-accent opacity-[0.03] blur-[100px] rounded-full pointer-events-none"></div>
+                <div class="flex flex-col md:flex-row gap-8 items-center relative z-10">
                     <div class="md:w-1/2">
                         <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-accent block mb-3">Free Website Audit</span>
                         <h2 class="font-display text-2xl sm:text-3xl font-bold text-velora-text tracking-tight mb-4">Is Your Current Website Losing Customers?</h2>
@@ -488,31 +519,89 @@ function renderHomePage() {
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
-            <div class="p-6 rounded-2xl bg-velora-surface border-none reveal">
-                <span class="font-display text-3xl font-bold text-velora-accent block mb-3">01</span>
-                <h3 class="font-display text-base font-bold text-velora-text mb-2">Discovery</h3>
-                <p class="text-xs text-velora-muted leading-relaxed">We clarify your services, local customer search terms, and contact goals.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-velora-surface border-none reveal" style="transition-delay: 50ms;">
-                <span class="font-display text-3xl font-bold text-velora-accent block mb-3">02</span>
-                <h3 class="font-display text-base font-bold text-velora-text mb-2">Content Map</h3>
-                <p class="text-xs text-velora-muted leading-relaxed">We organize your menus, rate cards, and practitioner credentials.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-velora-surface border-none reveal" style="transition-delay: 100ms;">
-                <span class="font-display text-3xl font-bold text-velora-accent block mb-3">03</span>
-                <h3 class="font-display text-base font-bold text-velora-text mb-2">Custom Code</h3>
-                <p class="text-xs text-velora-muted leading-relaxed">We write lightweight, fast-loading code tested across iOS and Android.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-velora-surface border-none reveal" style="transition-delay: 150ms;">
-                <span class="font-display text-3xl font-bold text-velora-accent block mb-3">04</span>
-                <h3 class="font-display text-base font-bold text-velora-text mb-2">SEO & Testing</h3>
-                <p class="text-xs text-velora-muted leading-relaxed">We configure Schema.org markup, verify SSL, and test lead delivery.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-velora-surface border-none reveal" style="transition-delay: 200ms;">
-                <span class="font-display text-3xl font-bold text-velora-accent block mb-3">05</span>
-                <h3 class="font-display text-base font-bold text-velora-text mb-2">Live Launch</h3>
-                <p class="text-xs text-velora-muted leading-relaxed">Deploy to fast cloud hosting and transfer 100% ownership to you.</p>
+        <div class="relative max-w-4xl mx-auto">
+            <div class="hidden md:block absolute left-[50%] top-4 bottom-4 w-px bg-gradient-to-b from-velora-border via-velora-borderStrong to-transparent -translate-x-1/2"></div>
+            <div class="space-y-12 md:space-y-0">
+                
+                <div class="relative flex flex-col md:flex-row items-center md:items-start group reveal">
+                    <div class="hidden md:flex w-1/2 justify-end pr-12 pt-1">
+                        <div class="text-right">
+                            <span class="font-display text-6xl font-bold text-velora-bg text-stroke">01</span>
+                        </div>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-velora-accent bg-velora-bg mt-6 md:mt-4 z-10 transition-transform group-hover:scale-150"></div>
+                    <div class="w-full md:w-1/2 pl-8 md:pl-12">
+                        <div class="p-8 rounded-3xl bg-velora-surface shadow-xl hover:-translate-y-1 transition-transform duration-500">
+                            <span class="md:hidden font-display text-3xl font-bold text-velora-accent block mb-2">01</span>
+                            <h3 class="font-display text-lg font-bold text-velora-text mb-2">Discovery</h3>
+                            <p class="text-sm text-velora-muted leading-relaxed">We clarify your services, local customer search terms, and contact goals before writing a single line of code.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative flex flex-col md:flex-row-reverse items-center md:items-start group reveal md:-mt-12">
+                    <div class="hidden md:flex w-1/2 justify-start pl-12 pt-1">
+                        <div class="text-left">
+                            <span class="font-display text-6xl font-bold text-velora-bg text-stroke">02</span>
+                        </div>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-velora-borderStrong bg-velora-bg mt-6 md:mt-4 z-10 transition-transform group-hover:border-velora-accent group-hover:scale-150"></div>
+                    <div class="w-full md:w-1/2 pl-8 md:pr-12 md:pl-0 text-left md:text-right">
+                        <div class="p-8 rounded-3xl bg-velora-surface shadow-xl hover:-translate-y-1 transition-transform duration-500">
+                            <span class="md:hidden font-display text-3xl font-bold text-velora-accent block mb-2">02</span>
+                            <h3 class="font-display text-lg font-bold text-velora-text mb-2">Content Map</h3>
+                            <p class="text-sm text-velora-muted leading-relaxed">We organize your menus, rate cards, and practitioner credentials into a scannable, conversion-focused layout.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative flex flex-col md:flex-row items-center md:items-start group reveal md:-mt-12">
+                    <div class="hidden md:flex w-1/2 justify-end pr-12 pt-1">
+                        <div class="text-right">
+                            <span class="font-display text-6xl font-bold text-velora-bg text-stroke">03</span>
+                        </div>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-velora-borderStrong bg-velora-bg mt-6 md:mt-4 z-10 transition-transform group-hover:border-velora-accent group-hover:scale-150"></div>
+                    <div class="w-full md:w-1/2 pl-8 md:pl-12">
+                        <div class="p-8 rounded-3xl bg-velora-surface shadow-xl hover:-translate-y-1 transition-transform duration-500">
+                            <span class="md:hidden font-display text-3xl font-bold text-velora-accent block mb-2">03</span>
+                            <h3 class="font-display text-lg font-bold text-velora-text mb-2">Custom Code</h3>
+                            <p class="text-sm text-velora-muted leading-relaxed">We write lightweight, fast-loading code tested rigorously across iOS and Android devices for instant load times.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative flex flex-col md:flex-row-reverse items-center md:items-start group reveal md:-mt-12">
+                    <div class="hidden md:flex w-1/2 justify-start pl-12 pt-1">
+                        <div class="text-left">
+                            <span class="font-display text-6xl font-bold text-velora-bg text-stroke">04</span>
+                        </div>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-velora-borderStrong bg-velora-bg mt-6 md:mt-4 z-10 transition-transform group-hover:border-velora-accent group-hover:scale-150"></div>
+                    <div class="w-full md:w-1/2 pl-8 md:pr-12 md:pl-0 text-left md:text-right">
+                        <div class="p-8 rounded-3xl bg-velora-surface shadow-xl hover:-translate-y-1 transition-transform duration-500">
+                            <span class="md:hidden font-display text-3xl font-bold text-velora-accent block mb-2">04</span>
+                            <h3 class="font-display text-lg font-bold text-velora-text mb-2">SEO & QA</h3>
+                            <p class="text-sm text-velora-muted leading-relaxed">We configure detailed Schema.org markup, verify SSL, test lead delivery, and ensure 100% WCAG accessibility compliance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative flex flex-col md:flex-row items-center md:items-start group reveal md:-mt-12">
+                    <div class="hidden md:flex w-1/2 justify-end pr-12 pt-1">
+                        <div class="text-right">
+                            <span class="font-display text-6xl font-bold text-velora-bg text-stroke">05</span>
+                        </div>
+                    </div>
+                    <div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-velora-accent bg-velora-bg mt-6 md:mt-4 z-10 transition-transform group-hover:scale-150"></div>
+                    <div class="w-full md:w-1/2 pl-8 md:pl-12">
+                        <div class="p-8 rounded-3xl bg-velora-surface shadow-xl hover:-translate-y-1 transition-transform duration-500">
+                            <span class="md:hidden font-display text-3xl font-bold text-velora-accent block mb-2">05</span>
+                            <h3 class="font-display text-lg font-bold text-velora-text mb-2">Live Launch</h3>
+                            <p class="text-sm text-velora-muted leading-relaxed">We deploy to enterprise-grade cloud hosting and transfer 100% code and domain ownership directly to you.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -549,7 +638,8 @@ function renderHomePage() {
                 </div>
 
                 <!-- Professional (Highlighted) -->
-                <div class="p-8 sm:p-10 rounded-3xl bg-velora-bg border-2 border-velora-accent/50 shadow-2xl relative flex flex-col justify-between reveal" style="transition-delay: 100ms;">
+                <div class="p-8 sm:p-10 rounded-3xl bg-velora-surface border border-velora-accent/30 shadow-2xl relative flex flex-col justify-between reveal lg:scale-105 lg:-translate-y-2 z-10 group" style="transition-delay: 100ms;">
+                    <div class="absolute inset-0 bg-velora-accent/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-velora-accent text-black text-[10px] font-bold uppercase tracking-widest">
                         Most Popular For Growth
                     </div>
@@ -1212,55 +1302,46 @@ function renderPortfolioPage() {
             </p>
         </div>
 
-        <div class="space-y-16">
+        <div class="space-y-24">
             ${PORTFOLIO.map((p, idx) => `
-                <div id="${p.id}" class="premium-border bg-velora-surface p-8 sm:p-12 rounded-3xl reveal">
-                    <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-6 border-b border-velora-border">
-                        <div class="flex items-center gap-3">
-                            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest border ${p.badgeColor}">${p.type}</span>
-                            <span class="text-xs font-semibold text-velora-muted">${p.industry}</span>
-                        </div>
-                        <span class="text-xs font-mono text-velora-accent font-bold">100% Custom Coded</span>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
-                        <div class="lg:col-span-5 space-y-4">
-                            <h2 class="font-display text-3xl sm:text-4xl font-bold text-velora-text tracking-tight">${p.title}</h2>
-                            <p class="text-base text-velora-muted leading-relaxed text-pretty">${p.summary}</p>
-                            <div class="p-5 rounded-2xl bg-velora-surface border-none shadow-lg mt-6">
-                                <div class="text-xs font-bold uppercase tracking-widest text-velora-accent mb-1">What This Demonstrates</div>
-                                <div class="text-sm text-velora-muted leading-relaxed">${p.demonstrates}</div>
+                <div id="${p.id}" class="reveal relative group">
+                    <div class="absolute -inset-8 bg-velora-surface/30 opacity-0 group-hover:opacity-100 rounded-[3rem] transition-all duration-700 blur-xl pointer-events-none"></div>
+                    <div class="relative z-10 flex flex-col lg:flex-row gap-12 lg:gap-16">
+                        <div class="lg:w-5/12 space-y-6">
+                            <div class="flex items-center gap-3">
+                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border ${p.badgeColor}">${p.type}</span>
+                                <span class="text-xs font-semibold text-velora-muted">${p.industry}</span>
+                            </div>
+                            
+                            <h2 class="font-display text-4xl sm:text-5xl font-bold text-velora-text tracking-tight">${p.title}</h2>
+                            <p class="text-lg text-velora-muted leading-relaxed text-pretty">${p.summary}</p>
+                            
+                            <div class="pt-6 border-t border-velora-border">
+                                <div class="text-xs font-bold uppercase tracking-widest text-velora-accent mb-3">Core Objective</div>
+                                <div class="text-sm text-velora-text leading-relaxed font-medium italic">"${p.demonstrates}"</div>
                             </div>
                         </div>
 
-                        <div class="lg:col-span-7 space-y-6">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="p-4 rounded-xl bg-velora-surface border-none shadow-md">
-                                    <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-1">Project Goals</div>
-                                    <div class="text-xs text-velora-muted leading-relaxed">${p.projectGoals}</div>
+                        <div class="lg:w-7/12">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+                                <div>
+                                    <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-2 border-l-2 border-emerald-500 pl-3">Project Goals</div>
+                                    <div class="text-sm text-velora-muted leading-relaxed pl-3">${p.projectGoals}</div>
                                 </div>
-                                <div class="p-4 rounded-xl bg-velora-surface border-none shadow-md">
-                                    <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-1">Target Industry</div>
-                                    <div class="text-xs text-velora-muted leading-relaxed">${p.targetIndustry}</div>
+                                <div>
+                                    <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-2 border-l-2 border-emerald-500 pl-3">Conversion Target</div>
+                                    <div class="text-sm text-velora-muted leading-relaxed pl-3">${p.conversionObjectives}</div>
                                 </div>
-                                <div class="p-4 rounded-xl bg-velora-surface border-none shadow-md">
-                                    <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-1">Conversion Objectives</div>
-                                    <div class="text-xs text-velora-muted leading-relaxed">${p.conversionObjectives}</div>
-                                </div>
-                                <div class="p-4 rounded-xl bg-velora-surface border-none shadow-md">
-                                    <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-1">Key UX Decisions</div>
-                                    <div class="text-xs text-velora-muted leading-relaxed">${p.keyUxDecisions}</div>
-                                </div>
-                                <div class="sm:col-span-2 p-4 rounded-xl bg-velora-surface border-none shadow-md">
-                                    <div class="text-[10px] font-bold uppercase tracking-widest text-velora-accent mb-1">Technical Priorities</div>
-                                    <div class="text-xs text-velora-muted leading-relaxed">${p.technicalPriorities}</div>
+                                <div class="sm:col-span-2">
+                                    <div class="text-[10px] font-bold uppercase tracking-widest text-velora-accent mb-2 border-l-2 border-velora-accent pl-3">Technical Priorities</div>
+                                    <div class="text-sm text-velora-muted leading-relaxed pl-3">${p.technicalPriorities}</div>
                                 </div>
                             </div>
 
-                            <div>
-                                <div class="text-xs font-bold uppercase tracking-widest text-velora-text mb-3">Key Deliverables & Specs</div>
-                                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-velora-muted">
-                                    ${p.deliverables.map(d => `<li class="flex items-center gap-2"><span class="text-emerald-500 font-bold">✓</span> <span>${d}</span></li>`).join('')}
+                            <div class="mt-10 p-8 rounded-3xl bg-velora-surface shadow-xl">
+                                <div class="text-xs font-bold uppercase tracking-widest text-velora-text mb-4">Key Deliverables</div>
+                                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4 text-sm text-velora-muted">
+                                    ${p.deliverables.map(d => `<li class="flex items-start gap-2"><span class="text-velora-accent font-bold mt-0.5">✓</span> <span class="leading-snug">${d}</span></li>`).join('')}
                                 </ul>
                             </div>
                         </div>
@@ -1587,20 +1668,28 @@ function renderAboutPage() {
 
     const content = `
     <article class="py-20 md:py-28 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header class="mb-16 reveal">
+        <header class="mb-20 reveal relative">
+            <div class="absolute -left-12 top-0 text-[12rem] font-display font-bold text-velora-accent/5 pointer-events-none select-none hidden md:block">"</div>
             <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-accent block mb-3">Studio Philosophy</span>
             <h1 class="font-display text-4xl sm:text-6xl font-bold text-velora-text tracking-tight leading-tight">Honest Web Design for Real Local Businesses</h1>
-            <p class="mt-6 text-xl text-velora-muted leading-relaxed text-pretty">
-                Most small businesses have two bad choices when they need a website. They either buy a cheap template that breaks and never gets found on Google, or they hire an expensive agency that charges huge retainers and speaks in confusing jargon.
-            </p>
-            <p class="mt-4 text-xl text-velora-muted leading-relaxed text-pretty">
-                We built Velora Digital to be the practical middle ground: a capable, focused studio delivering fast-loading, high-converting websites without the agency nonsense.
-            </p>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                <div class="md:col-span-7">
+                    <p class="text-xl text-velora-text leading-relaxed text-pretty">
+                        Most small businesses have two bad choices when they need a website. They either buy a cheap template that breaks and never gets found on Google, or they hire an expensive agency that charges huge retainers and speaks in confusing jargon.
+                    </p>
+                    <p class="mt-4 text-xl text-velora-muted leading-relaxed text-pretty">
+                        We built Velora Digital to be the practical middle ground: a capable, focused studio delivering fast-loading, high-converting websites without the agency nonsense.
+                    </p>
+                </div>
+                <div class="md:col-span-5 md:pl-8 border-l border-velora-accent/20">
+                    <p class="text-lg font-display text-velora-muted italic">"Premium design is about knowing what to remove, not what to add."</p>
+                </div>
+            </div>
         </header>
 
         <div class="space-y-8 mb-16 reveal">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="p-8 sm:p-12 rounded-3xl bg-velora-surface shadow-xl">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                <div class="md:col-span-6 p-8 sm:p-12 rounded-3xl bg-velora-surface shadow-xl">
                     <h2 class="font-display text-2xl font-bold text-velora-text mb-6 tracking-tight">What You Can Expect</h2>
                     <ul class="space-y-4 text-sm text-velora-muted leading-relaxed">
                         <li class="flex gap-3"><span class="text-velora-accent">✓</span> <div><strong>Direct Communication:</strong> You work directly with the developers building your site. No account managers or middlemen blocking the way.</div></li>
@@ -1609,7 +1698,7 @@ function renderAboutPage() {
                         <li class="flex gap-3"><span class="text-velora-accent">✓</span> <div><strong>Measurable Goals:</strong> We focus on making the phone ring, not just making the site look pretty.</div></li>
                     </ul>
                 </div>
-                <div class="p-8 sm:p-12 rounded-3xl bg-velora-surface shadow-xl">
+                <div class="md:col-span-6 p-8 sm:p-12 rounded-3xl bg-velora-surface shadow-xl md:mt-16">
                     <h2 class="font-display text-2xl font-bold text-velora-text mb-6 tracking-tight">What We Refuse to Do</h2>
                     <ul class="space-y-4 text-sm text-velora-muted leading-relaxed">
                         <li class="flex gap-3"><span class="text-red-500 font-bold">×</span> <div><strong>Use Heavy Page Builders:</strong> We don't drag-and-drop bloated plugins that slow your site down and break during updates.</div></li>
@@ -1653,7 +1742,7 @@ function renderBlogPage() {
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             ${BLOG.map((b, idx) => `
-                <article class="premium-border bg-velora-surface rounded-3xl p-8 sm:p-10 flex flex-col justify-between reveal" style="transition-delay: ${idx * 50}ms;">
+                <article class="bg-velora-surface shadow-xl rounded-3xl p-8 sm:p-10 flex flex-col justify-between reveal group hover:-translate-y-1 transition-transform duration-300" style="transition-delay: ${idx * 50}ms;">
                     <div>
                         <div class="flex items-center gap-3 text-xs text-velora-muted mb-4">
                             <span class="text-velora-accent font-bold uppercase tracking-wider">${b.category}</span>
@@ -1740,7 +1829,7 @@ function renderContactPage() {
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <!-- Direct Info -->
-            <div class="lg:col-span-4 space-y-5 reveal">
+            <div class="lg:col-span-4 space-y-5 reveal lg:sticky lg:top-24 h-max">
                 <h2 class="font-display text-lg font-bold text-velora-text border-b border-velora-border pb-3 mb-4">Direct Contact</h2>
 
                 <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" onclick="if(window.veloraTrack) window.veloraTrack('phone_click', { url: this.href })" class="flex items-start gap-4 p-5 rounded-2xl bg-velora-surface border-none hover:border-velora-borderStrong transition-all group">
