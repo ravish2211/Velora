@@ -23,7 +23,7 @@ function renderHomePage() {
                     <span>Engineering High-Converting Local Websites</span>
                 </div>
                 <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-velora-text leading-[1.08] text-balance reveal" style="transition-delay: 50ms;">
-                    Websites That Build Instant Trust & <span class="gold-gradient-text">Drive Local Calls</span>.
+                    Websites That Build Instant Trust & <span class="accent-gradient-text">Drive Local Calls</span>.
                 </h1>
                 <p class="mt-6 text-lg sm:text-xl text-velora-muted leading-relaxed max-w-2xl text-pretty reveal" style="transition-delay: 100ms;">
                     We design and develop fast, mobile-first websites and technical local SEO for clinics, restaurants, real estate firms, and local businesses in India. No bloated page-builders, no fake promises.
@@ -53,29 +53,36 @@ function renderHomePage() {
                 </div>
             </div>
             
-            <div class="w-full lg:w-[45%] xl:w-[40%] hidden md:block relative reveal" style="transition-delay: 250ms;">
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-velora-accent opacity-5 blur-[100px] rounded-full mix-blend-screen pointer-events-none"></div>
-                <div class="w-full max-w-sm mx-auto aspect-[4/5] bg-velora-surface/50 backdrop-blur-xl border border-velora-borderStrong rounded-3xl shadow-2xl overflow-hidden flex flex-col relative z-10 hover:-translate-y-2 transition-transform duration-700">
-                    <div class="h-10 border-b border-velora-border flex items-center px-4 gap-2 bg-black/20">
-                        <div class="w-2.5 h-2.5 rounded-full bg-velora-borderStrong"></div>
-                        <div class="w-2.5 h-2.5 rounded-full bg-velora-borderStrong"></div>
-                        <div class="w-2.5 h-2.5 rounded-full bg-velora-borderStrong"></div>
-                    </div>
-                    <div class="flex-1 p-6 flex flex-col gap-5">
-                        <div class="w-2/3 h-6 rounded-md bg-velora-text/10 animate-pulse" style="animation-duration: 3s"></div>
-                        <div class="w-full h-3 rounded-sm bg-velora-text/5"></div>
-                        <div class="w-5/6 h-3 rounded-sm bg-velora-text/5"></div>
-                        
-                        <div class="grid grid-cols-2 gap-4 mt-4">
-                            <div class="aspect-square rounded-2xl bg-gradient-to-br from-velora-accent/20 to-transparent border border-velora-accent/10"></div>
-                            <div class="aspect-square rounded-2xl bg-velora-faint border border-velora-border"></div>
+            <div class="w-full lg:w-[45%] xl:w-[40%] hidden lg:block relative reveal" style="transition-delay: 250ms;">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 bg-velora-accent opacity-10 blur-[120px] rounded-full mix-blend-screen pointer-events-none"></div>
+                <div class="w-full max-w-md mx-auto relative z-10 flex flex-col gap-4">
+                    <!-- Architectural layout frame representing a premium interface -->
+                    <div class="w-full flex gap-4">
+                        <div class="w-2/3 aspect-[3/2] bg-velora-surface/40 backdrop-blur-md border border-velora-borderStrong rounded-3xl p-6 flex flex-col justify-between hover:border-velora-accent/30 transition-colors shadow-2xl">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full border border-velora-accent bg-transparent"></div>
+                                <div class="w-1/3 h-2 rounded-full bg-velora-text/10"></div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="w-5/6 h-4 rounded bg-velora-text/20"></div>
+                                <div class="w-4/6 h-2 rounded bg-velora-text/10"></div>
+                            </div>
                         </div>
-                        
-                        <div class="mt-auto flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-full bg-velora-accent/20 flex-shrink-0"></div>
-                            <div class="flex-1 space-y-2">
-                                <div class="w-full h-2 rounded bg-velora-text/10"></div>
-                                <div class="w-1/2 h-2 rounded bg-velora-text/5"></div>
+                        <div class="w-1/3 aspect-[3/2] bg-velora-accent/10 backdrop-blur-md border border-velora-accent/20 rounded-3xl flex items-center justify-center shadow-xl">
+                            <div class="w-12 h-12 rounded-full border-[3px] border-velora-accent/30 border-t-velora-accent animate-spin" style="animation-duration: 3s;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full flex gap-4">
+                        <div class="w-1/4 bg-velora-surface/30 backdrop-blur-md border border-velora-border rounded-3xl shadow-lg relative overflow-hidden aspect-square">
+                           <div class="absolute inset-0 bg-gradient-to-br from-velora-text/5 to-transparent"></div>
+                        </div>
+                        <div class="w-3/4 bg-velora-surface/80 backdrop-blur-xl border border-velora-borderStrong rounded-3xl p-5 flex items-center gap-4 shadow-2xl relative overflow-hidden">
+                            <div class="absolute -right-4 -top-4 w-16 h-16 bg-velora-accent/20 blur-2xl rounded-full"></div>
+                            <div class="w-10 h-10 rounded-full bg-velora-accent/10 border border-velora-accent/30 flex-shrink-0"></div>
+                            <div class="flex-1 space-y-2 relative z-10">
+                                <div class="w-full h-2.5 rounded-full bg-velora-text/20"></div>
+                                <div class="w-1/2 h-2 rounded-full bg-velora-text/10"></div>
                             </div>
                         </div>
                     </div>
@@ -1305,7 +1312,7 @@ function renderPortfolioPage() {
         <div class="space-y-24">
             ${PORTFOLIO.map((p, idx) => `
                 <div id="${p.id}" class="reveal relative group">
-                    <div class="absolute -inset-8 bg-velora-surface/30 opacity-0 group-hover:opacity-100 rounded-[3rem] transition-all duration-700 blur-xl pointer-events-none"></div>
+                    <div class="absolute -inset-8 bg-velora-accent/5 opacity-0 group-hover:opacity-100 rounded-[3rem] transition-all duration-700 blur-2xl pointer-events-none"></div>
                     <div class="relative z-10 flex flex-col lg:flex-row gap-12 lg:gap-16">
                         <div class="lg:w-5/12 space-y-6">
                             <div class="flex items-center gap-3">
@@ -1829,7 +1836,7 @@ function renderContactPage() {
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <!-- Direct Info -->
-            <div class="lg:col-span-4 space-y-5 reveal lg:sticky lg:top-24 h-max">
+            <div class="lg:col-span-4 space-y-5 reveal lg:sticky lg:top-32 self-start h-max">
                 <h2 class="font-display text-lg font-bold text-velora-text border-b border-velora-border pb-3 mb-4">Direct Contact</h2>
 
                 <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" onclick="if(window.veloraTrack) window.veloraTrack('phone_click', { url: this.href })" class="flex items-start gap-4 p-5 rounded-2xl bg-velora-surface border-none hover:border-velora-borderStrong transition-all group">

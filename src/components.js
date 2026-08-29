@@ -478,7 +478,7 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
         
         .text-stroke { -webkit-text-stroke: 1px var(--color-borderStrong); color: transparent; }
 
-        .gold-gradient-text { 
+        .accent-gradient-text { 
             background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
