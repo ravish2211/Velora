@@ -494,7 +494,7 @@ function renderHomePage() {
                     <div class="premium-border bg-velora-bg rounded-3xl p-8 flex flex-col justify-between reveal" style="transition-delay: ${idx * 100}ms;">
                         <div>
                             <div class="flex items-center justify-between gap-2 mb-6">
-                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border ${p.badgeColor}">${p.type}</span>
+                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ${p.badgeColor}">${p.type}</span>
                                 <span class="text-xs font-semibold text-velora-muted">${p.industry}</span>
                             </div>
                             <h3 class="font-display text-2xl font-bold text-velora-text mb-3 tracking-tight">${p.title}</h3>
@@ -517,7 +517,7 @@ function renderHomePage() {
     </section>
 
     <!-- 7. OUR 5-STEP PROCESS -->
-    <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="process" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-2xl mb-16 reveal">
             <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-accent block mb-3">Straightforward Delivery</span>
             <h2 class="font-display text-3xl sm:text-5xl font-bold text-velora-text tracking-tight">How We Build Your Website</h2>
@@ -527,83 +527,133 @@ function renderHomePage() {
         </div>
 
         <div class="relative max-w-4xl mx-auto">
-            <div class="hidden md:block absolute left-[50%] top-4 bottom-4 w-px bg-gradient-to-b from-velora-border via-velora-borderStrong to-transparent -translate-x-1/2"></div>
-            <div class="space-y-12 md:space-y-0">
+            <!-- Mobile/Tablet Left Vertical Spine (< lg) -->
+            <div class="timeline-spine-mobile lg:hidden"></div>
+
+            <!-- Desktop Center Vertical Spine (lg+) -->
+            <div class="hidden lg:block absolute left-1/2 top-4 bottom-4 w-px bg-gradient-to-b from-velora-border via-velora-borderStrong to-transparent -translate-x-1/2"></div>
+
+            <div class="space-y-10 lg:space-y-0">
                 
-                <div class="relative flex flex-col md:flex-row items-center md:items-start group reveal">
-                    <div class="hidden md:flex w-1/2 justify-end pr-12 pt-1">
+                <div class="relative flex flex-col lg:flex-row items-start group reveal">
+                    <!-- Desktop Hollow Step Number -->
+                    <div class="hidden lg:flex w-1/2 justify-end pr-12 pt-1">
                         <div class="text-right">
                             <span class="font-display text-6xl font-bold text-velora-bg text-stroke">01</span>
                         </div>
                     </div>
-                    <div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-velora-accent bg-velora-bg mt-6 md:mt-4 z-10 transition-transform group-hover:scale-150"></div>
-                    <div class="w-full md:w-1/2 pl-8 md:pl-12">
-                        <div class="p-8 rounded-3xl bg-velora-surface shadow-xl hover:-translate-y-1 transition-transform duration-500">
-                            <span class="md:hidden font-display text-3xl font-bold text-velora-accent block mb-2">01</span>
+
+                    <!-- Mobile/Tablet Left-Aligned Milestone Node (< lg) -->
+                    <div class="lg:hidden absolute left-4 -translate-x-1/2 top-5 z-10 w-7 h-7 rounded-full bg-velora-surface border border-velora-accent/60 text-velora-accent flex items-center justify-center font-display text-xs font-bold shadow-sm">
+                        01
+                    </div>
+
+                    <!-- Desktop Milestone Center Dot (lg+) -->
+                    <div class="hidden lg:block absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-velora-accent bg-velora-bg mt-4 z-10 transition-transform group-hover:scale-150"></div>
+
+                    <!-- Step Content Card -->
+                    <div class="w-full lg:w-1/2 pl-11 sm:pl-12 lg:pl-12">
+                        <div class="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-velora-surface shadow-xl hover:-translate-y-1 transition-transform duration-500">
                             <h3 class="font-display text-lg font-bold text-velora-text mb-2">Discovery</h3>
                             <p class="text-sm text-velora-muted leading-relaxed">We clarify your services, local customer search terms, and contact goals before writing a single line of code.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="relative flex flex-col md:flex-row-reverse items-center md:items-start group reveal md:-mt-12">
-                    <div class="hidden md:flex w-1/2 justify-start pl-12 pt-1">
+                <div class="relative flex flex-col lg:flex-row-reverse items-start group reveal lg:-mt-12">
+                    <!-- Desktop Hollow Step Number -->
+                    <div class="hidden lg:flex w-1/2 justify-start pl-12 pt-1">
                         <div class="text-left">
                             <span class="font-display text-6xl font-bold text-velora-bg text-stroke">02</span>
                         </div>
                     </div>
-                    <div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-velora-borderStrong bg-velora-bg mt-6 md:mt-4 z-10 transition-transform group-hover:border-velora-accent group-hover:scale-150"></div>
-                    <div class="w-full md:w-1/2 pl-8 md:pr-12 md:pl-0 text-left md:text-right">
-                        <div class="p-8 rounded-3xl bg-velora-surface shadow-xl hover:-translate-y-1 transition-transform duration-500">
-                            <span class="md:hidden font-display text-3xl font-bold text-velora-accent block mb-2">02</span>
+
+                    <!-- Mobile/Tablet Left-Aligned Milestone Node (< lg) -->
+                    <div class="lg:hidden absolute left-4 -translate-x-1/2 top-5 z-10 w-7 h-7 rounded-full bg-velora-surface border border-velora-borderStrong text-velora-muted group-hover:border-velora-accent group-hover:text-velora-accent flex items-center justify-center font-display text-xs font-bold shadow-sm transition-colors">
+                        02
+                    </div>
+
+                    <!-- Desktop Milestone Center Dot (lg+) -->
+                    <div class="hidden lg:block absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-velora-borderStrong bg-velora-bg mt-4 z-10 transition-transform group-hover:border-velora-accent group-hover:scale-150"></div>
+
+                    <!-- Step Content Card -->
+                    <div class="w-full lg:w-1/2 pl-11 sm:pl-12 lg:pr-12 lg:pl-0 text-left lg:text-right">
+                        <div class="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-velora-surface shadow-xl hover:-translate-y-1 transition-transform duration-500">
                             <h3 class="font-display text-lg font-bold text-velora-text mb-2">Content Map</h3>
                             <p class="text-sm text-velora-muted leading-relaxed">We organize your menus, rate cards, and practitioner credentials into a scannable, conversion-focused layout.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="relative flex flex-col md:flex-row items-center md:items-start group reveal md:-mt-12">
-                    <div class="hidden md:flex w-1/2 justify-end pr-12 pt-1">
+                <div class="relative flex flex-col lg:flex-row items-start group reveal lg:-mt-12">
+                    <!-- Desktop Hollow Step Number -->
+                    <div class="hidden lg:flex w-1/2 justify-end pr-12 pt-1">
                         <div class="text-right">
                             <span class="font-display text-6xl font-bold text-velora-bg text-stroke">03</span>
                         </div>
                     </div>
-                    <div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-velora-borderStrong bg-velora-bg mt-6 md:mt-4 z-10 transition-transform group-hover:border-velora-accent group-hover:scale-150"></div>
-                    <div class="w-full md:w-1/2 pl-8 md:pl-12">
-                        <div class="p-8 rounded-3xl bg-velora-surface shadow-xl hover:-translate-y-1 transition-transform duration-500">
-                            <span class="md:hidden font-display text-3xl font-bold text-velora-accent block mb-2">03</span>
+
+                    <!-- Mobile/Tablet Left-Aligned Milestone Node (< lg) -->
+                    <div class="lg:hidden absolute left-4 -translate-x-1/2 top-5 z-10 w-7 h-7 rounded-full bg-velora-surface border border-velora-borderStrong text-velora-muted group-hover:border-velora-accent group-hover:text-velora-accent flex items-center justify-center font-display text-xs font-bold shadow-sm transition-colors">
+                        03
+                    </div>
+
+                    <!-- Desktop Milestone Center Dot (lg+) -->
+                    <div class="hidden lg:block absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-velora-borderStrong bg-velora-bg mt-4 z-10 transition-transform group-hover:border-velora-accent group-hover:scale-150"></div>
+
+                    <!-- Step Content Card -->
+                    <div class="w-full lg:w-1/2 pl-11 sm:pl-12 lg:pl-12">
+                        <div class="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-velora-surface shadow-xl hover:-translate-y-1 transition-transform duration-500">
                             <h3 class="font-display text-lg font-bold text-velora-text mb-2">Custom Code</h3>
                             <p class="text-sm text-velora-muted leading-relaxed">We write lightweight, fast-loading code tested rigorously across iOS and Android devices for instant load times.</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="relative flex flex-col md:flex-row-reverse items-center md:items-start group reveal md:-mt-12">
-                    <div class="hidden md:flex w-1/2 justify-start pl-12 pt-1">
+                <div class="relative flex flex-col lg:flex-row-reverse items-start group reveal lg:-mt-12">
+                    <!-- Desktop Hollow Step Number -->
+                    <div class="hidden lg:flex w-1/2 justify-start pl-12 pt-1">
                         <div class="text-left">
                             <span class="font-display text-6xl font-bold text-velora-bg text-stroke">04</span>
                         </div>
                     </div>
-                    <div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-velora-borderStrong bg-velora-bg mt-6 md:mt-4 z-10 transition-transform group-hover:border-velora-accent group-hover:scale-150"></div>
-                    <div class="w-full md:w-1/2 pl-8 md:pr-12 md:pl-0 text-left md:text-right">
-                        <div class="p-8 rounded-3xl bg-velora-surface shadow-xl hover:-translate-y-1 transition-transform duration-500">
-                            <span class="md:hidden font-display text-3xl font-bold text-velora-accent block mb-2">04</span>
+
+                    <!-- Mobile/Tablet Left-Aligned Milestone Node (< lg) -->
+                    <div class="lg:hidden absolute left-4 -translate-x-1/2 top-5 z-10 w-7 h-7 rounded-full bg-velora-surface border border-velora-borderStrong text-velora-muted group-hover:border-velora-accent group-hover:text-velora-accent flex items-center justify-center font-display text-xs font-bold shadow-sm transition-colors">
+                        04
+                    </div>
+
+                    <!-- Desktop Milestone Center Dot (lg+) -->
+                    <div class="hidden lg:block absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-velora-borderStrong bg-velora-bg mt-4 z-10 transition-transform group-hover:border-velora-accent group-hover:scale-150"></div>
+
+                    <!-- Step Content Card -->
+                    <div class="w-full lg:w-1/2 pl-11 sm:pl-12 lg:pr-12 lg:pl-0 text-left lg:text-right">
+                        <div class="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-velora-surface shadow-xl hover:-translate-y-1 transition-transform duration-500">
                             <h3 class="font-display text-lg font-bold text-velora-text mb-2">SEO & QA</h3>
                             <p class="text-sm text-velora-muted leading-relaxed">We configure detailed Schema.org markup, verify SSL, test lead delivery, and ensure 100% WCAG accessibility compliance.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="relative flex flex-col md:flex-row items-center md:items-start group reveal md:-mt-12">
-                    <div class="hidden md:flex w-1/2 justify-end pr-12 pt-1">
+                <div class="relative flex flex-col lg:flex-row items-start group reveal lg:-mt-12">
+                    <!-- Desktop Hollow Step Number -->
+                    <div class="hidden lg:flex w-1/2 justify-end pr-12 pt-1">
                         <div class="text-right">
                             <span class="font-display text-6xl font-bold text-velora-bg text-stroke">05</span>
                         </div>
                     </div>
-                    <div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-velora-accent bg-velora-bg mt-6 md:mt-4 z-10 transition-transform group-hover:scale-150"></div>
-                    <div class="w-full md:w-1/2 pl-8 md:pl-12">
-                        <div class="p-8 rounded-3xl bg-velora-surface shadow-xl hover:-translate-y-1 transition-transform duration-500">
-                            <span class="md:hidden font-display text-3xl font-bold text-velora-accent block mb-2">05</span>
+
+                    <!-- Mobile/Tablet Left-Aligned Milestone Node (< lg) -->
+                    <div class="lg:hidden absolute left-4 -translate-x-1/2 top-5 z-10 w-7 h-7 rounded-full bg-velora-surface border border-velora-accent/60 text-velora-accent flex items-center justify-center font-display text-xs font-bold shadow-sm">
+                        05
+                    </div>
+
+                    <!-- Desktop Milestone Center Dot (lg+) -->
+                    <div class="hidden lg:block absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-velora-accent bg-velora-bg mt-4 z-10 transition-transform group-hover:scale-150"></div>
+
+                    <!-- Step Content Card -->
+                    <div class="w-full lg:w-1/2 pl-11 sm:pl-12 lg:pl-12">
+                        <div class="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-velora-surface shadow-xl hover:-translate-y-1 transition-transform duration-500">
                             <h3 class="font-display text-lg font-bold text-velora-text mb-2">Live Launch</h3>
                             <p class="text-sm text-velora-muted leading-relaxed">We deploy to enterprise-grade cloud hosting and transfer 100% code and domain ownership directly to you.</p>
                         </div>
@@ -1316,7 +1366,7 @@ function renderPortfolioPage() {
                     <div class="relative z-10 flex flex-col lg:flex-row gap-12 lg:gap-16">
                         <div class="lg:w-5/12 space-y-6">
                             <div class="flex items-center gap-3">
-                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border ${p.badgeColor}">${p.type}</span>
+                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ${p.badgeColor}">${p.type}</span>
                                 <span class="text-xs font-semibold text-velora-muted">${p.industry}</span>
                             </div>
                             
@@ -1332,16 +1382,16 @@ function renderPortfolioPage() {
                         <div class="lg:w-7/12">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
                                 <div>
-                                    <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-2 border-l-2 border-emerald-500 pl-3">Project Goals</div>
-                                    <div class="text-sm text-velora-muted leading-relaxed pl-3">${p.projectGoals}</div>
+                                    <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-1.5">Project Goals</div>
+                                    <div class="text-sm text-velora-muted leading-relaxed">${p.projectGoals}</div>
                                 </div>
                                 <div>
-                                    <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-2 border-l-2 border-emerald-500 pl-3">Conversion Target</div>
-                                    <div class="text-sm text-velora-muted leading-relaxed pl-3">${p.conversionObjectives}</div>
+                                    <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-1.5">Conversion Target</div>
+                                    <div class="text-sm text-velora-muted leading-relaxed">${p.conversionObjectives}</div>
                                 </div>
                                 <div class="sm:col-span-2">
-                                    <div class="text-[10px] font-bold uppercase tracking-widest text-velora-accent mb-2 border-l-2 border-velora-accent pl-3">Technical Priorities</div>
-                                    <div class="text-sm text-velora-muted leading-relaxed pl-3">${p.technicalPriorities}</div>
+                                    <div class="text-[10px] font-bold uppercase tracking-widest text-velora-accent mb-1.5">Technical Priorities</div>
+                                    <div class="text-sm text-velora-muted leading-relaxed">${p.technicalPriorities}</div>
                                 </div>
                             </div>
 
@@ -1688,7 +1738,7 @@ function renderAboutPage() {
                         We built Velora Digital to be the practical middle ground: a capable, focused studio delivering fast-loading, high-converting websites without the agency nonsense.
                     </p>
                 </div>
-                <div class="md:col-span-5 md:pl-8 border-l border-velora-accent/20">
+                <div class="md:col-span-5 pl-6 md:pl-8 border-l border-velora-accent/20">
                     <p class="text-lg font-display text-velora-muted italic">"Premium design is about knowing what to remove, not what to add."</p>
                 </div>
             </div>

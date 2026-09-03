@@ -476,7 +476,7 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
         
         ::selection { background-color: var(--color-accent); color: var(--color-bg); }
         
-        .text-stroke { -webkit-text-stroke: 1px var(--color-borderStrong); color: transparent; }
+        .text-stroke { -webkit-text-stroke: 1px var(--color-border-strong); color: transparent; }
 
         .accent-gradient-text { 
             background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%); 
@@ -492,6 +492,16 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
             border-color: var(--color-border-strong);
             transform: translateY(-2px);
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35);
+        }
+
+        .timeline-spine-mobile {
+            position: absolute;
+            left: 1rem;
+            top: 2rem;
+            bottom: 2rem;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--color-border-strong) 0%, var(--color-border) 70%, transparent 100%);
+            transform: translateX(-50%);
         }
         
         .input-luxury { transition: all 0.25s ease; }

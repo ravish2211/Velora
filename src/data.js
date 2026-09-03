@@ -290,7 +290,7 @@ const PORTFOLIO = [
         ],
         demonstrates: 'How aesthetic clinics and dental practices can build patient confidence and drive consultation bookings before the first phone call.',
         ui: { hero: 'bg-stone-800', accent: 'bg-emerald-600', layout: 'grid-cols-2' },
-        badgeColor: 'border-emerald-500/30 text-emerald-600 dark:text-emerald-400 bg-emerald-500/10'
+        badgeColor: 'text-emerald-600 dark:text-emerald-400 bg-emerald-500/10'
     },
     {
         id: 'aarav-estates',
@@ -313,7 +313,7 @@ const PORTFOLIO = [
         ],
         demonstrates: 'How real estate brokers and developers can capture high-intent inquiries without bloated third-party portal dependencies.',
         ui: { hero: 'bg-neutral-800', accent: 'bg-amber-600', layout: 'grid-cols-3' },
-        badgeColor: 'border-amber-500/30 text-amber-600 dark:text-amber-400 bg-amber-500/10'
+        badgeColor: 'text-amber-600 dark:text-amber-400 bg-amber-500/10'
     },
     {
         id: 'the-spice-room',
@@ -336,7 +336,7 @@ const PORTFOLIO = [
         ],
         demonstrates: 'How restaurants can eliminate friction for hungry local diners searching on mobile phones.',
         ui: { hero: 'bg-orange-950/60', accent: 'bg-orange-600', layout: 'grid-cols-2' },
-        badgeColor: 'border-orange-500/30 text-orange-600 dark:text-orange-400 bg-orange-500/10'
+        badgeColor: 'text-orange-600 dark:text-orange-400 bg-orange-500/10'
     }
 ];
 
