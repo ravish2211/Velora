@@ -53,38 +53,173 @@ function renderHomePage() {
                 </div>
             </div>
             
-            <div class="w-full lg:w-[45%] xl:w-[40%] hidden lg:block relative reveal" style="transition-delay: 250ms;">
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 bg-velora-accent opacity-10 blur-[120px] rounded-full mix-blend-screen pointer-events-none"></div>
-                <div class="w-full max-w-md mx-auto relative z-10 flex flex-col gap-4">
-                    <!-- Architectural layout frame representing a premium interface -->
-                    <div class="w-full flex gap-4">
-                        <div class="w-2/3 aspect-[3/2] bg-velora-surface/40 backdrop-blur-md border border-velora-borderStrong rounded-3xl p-6 flex flex-col justify-between hover:border-velora-accent/30 transition-colors shadow-2xl">
-                            <div class="flex items-center gap-3">
-                                <div class="w-3 h-3 rounded-full border border-velora-accent bg-transparent"></div>
-                                <div class="w-1/3 h-2 rounded-full bg-velora-text/10"></div>
-                            </div>
-                            <div class="space-y-3">
-                                <div class="w-5/6 h-4 rounded bg-velora-text/20"></div>
-                                <div class="w-4/6 h-2 rounded bg-velora-text/10"></div>
-                            </div>
-                        </div>
-                        <div class="w-1/3 aspect-[3/2] bg-velora-accent/10 backdrop-blur-md border border-velora-accent/20 rounded-3xl flex items-center justify-center shadow-xl">
-                            <div class="w-12 h-12 rounded-full border-[3px] border-velora-accent/30 border-t-velora-accent animate-spin" style="animation-duration: 3s;"></div>
-                        </div>
+            <!-- HERO RIGHT: Architectural Drafting Composition (Desktop Only) -->
+            <div class="w-full lg:w-[45%] xl:w-[40%] hidden lg:block relative" aria-hidden="true">
+                <!-- Extremely subtle ambient radiance -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 bg-velora-accent/5 blur-[100px] rounded-full pointer-events-none"></div>
+
+                <div class="w-full max-w-[480px] mx-auto relative hero-drafting-plate">
+                    <!-- Layer 1: Recessed Base (Dark Architectural Backing Plane) -->
+                    <div class="absolute inset-0 translate-x-3 translate-y-3 rounded-3xl bg-velora-bg/80 border border-velora-border/40 shadow-2xl pointer-events-none">
+                        <!-- Corner Registration Ticks on Recessed Layer -->
+                        <div class="absolute -top-1.5 -left-1.5 w-3 h-3 border-t border-l border-velora-border"></div>
+                        <div class="absolute -top-1.5 -right-1.5 w-3 h-3 border-t border-r border-velora-border"></div>
+                        <div class="absolute -bottom-1.5 -left-1.5 w-3 h-3 border-b border-l border-velora-border"></div>
+                        <div class="absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b border-r border-velora-border"></div>
                     </div>
-                    
-                    <div class="w-full flex gap-4">
-                        <div class="w-1/4 bg-velora-surface/30 backdrop-blur-md border border-velora-border rounded-3xl shadow-lg relative overflow-hidden aspect-square">
-                           <div class="absolute inset-0 bg-gradient-to-br from-velora-text/5 to-transparent"></div>
+
+                    <!-- Layer 2: Primary Drafting Plate -->
+                    <div class="relative z-10 w-full rounded-3xl bg-velora-card/90 border border-velora-borderStrong/50 p-5 sm:p-6 shadow-2xl overflow-hidden backdrop-blur-sm">
+                        <!-- Corner Accent Crosshairs -->
+                        <div class="absolute top-3 left-3 w-2.5 h-2.5 pointer-events-none">
+                            <div class="absolute top-1.5 left-0 w-2.5 h-px bg-velora-borderStrong"></div>
+                            <div class="absolute top-0 left-1.5 w-px h-2.5 bg-velora-borderStrong"></div>
                         </div>
-                        <div class="w-3/4 bg-velora-surface/80 backdrop-blur-xl border border-velora-borderStrong rounded-3xl p-5 flex items-center gap-4 shadow-2xl relative overflow-hidden">
-                            <div class="absolute -right-4 -top-4 w-16 h-16 bg-velora-accent/20 blur-2xl rounded-full"></div>
-                            <div class="w-10 h-10 rounded-full bg-velora-accent/10 border border-velora-accent/30 flex-shrink-0"></div>
-                            <div class="flex-1 space-y-2 relative z-10">
-                                <div class="w-full h-2.5 rounded-full bg-velora-text/20"></div>
-                                <div class="w-1/2 h-2 rounded-full bg-velora-text/10"></div>
-                            </div>
+                        <div class="absolute top-3 right-3 w-2.5 h-2.5 pointer-events-none">
+                            <div class="absolute top-1.5 left-0 w-2.5 h-px bg-velora-borderStrong"></div>
+                            <div class="absolute top-0 left-1.5 w-px h-2.5 bg-velora-borderStrong"></div>
                         </div>
+                        <div class="absolute bottom-3 left-3 w-2.5 h-2.5 pointer-events-none">
+                            <div class="absolute top-1.5 left-0 w-2.5 h-px bg-velora-borderStrong"></div>
+                            <div class="absolute top-0 left-1.5 w-px h-2.5 bg-velora-borderStrong"></div>
+                        </div>
+                        <div class="absolute bottom-3 right-3 w-2.5 h-2.5 pointer-events-none">
+                            <div class="absolute top-1.5 left-0 w-2.5 h-px bg-velora-borderStrong"></div>
+                            <div class="absolute top-0 left-1.5 w-px h-2.5 bg-velora-borderStrong"></div>
+                        </div>
+
+                        <!-- Architectural Vector Drafting Plate SVG (ViewBox 0 0 440 540) -->
+                        <svg class="w-full h-auto block select-none" viewBox="0 0 440 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- ================= ZONE 1: HEADER / DATUM (y: 10 - 75) ================= -->
+                            <!-- Registration Corner Crosses -->
+                            <path d="M 12 18 h 12 M 18 12 v 12" stroke="var(--color-border-strong)" stroke-width="0.75" />
+                            <path d="M 416 18 h 12 M 422 12 v 12" stroke="var(--color-border-strong)" stroke-width="0.75" />
+
+                            <!-- Header Micro-Typography -->
+                            <text x="36" y="22" font-family="'Space Grotesk', monospace" font-size="8.5" font-weight="600" letter-spacing="0.18em" fill="var(--color-accent)">SYSTEM // 12-COL MODULAR</text>
+                            <text x="404" y="22" font-family="'Space Grotesk', monospace" font-size="8" letter-spacing="0.16em" fill="var(--color-text-muted)" text-anchor="end">RATIO: 1.618 ── Φ</text>
+
+                            <!-- Primary Datum Ruler Line -->
+                            <line x1="18" y1="36" x2="422" y2="36" stroke="var(--color-border)" stroke-width="1" />
+                            
+                            <!-- Calibration Ticks along Datum -->
+                            <line x1="18" y1="32" x2="18" y2="40" stroke="var(--color-border-strong)" stroke-width="1" />
+                            <line x1="85" y1="34" x2="85" y2="38" stroke="var(--color-border)" stroke-width="0.75" />
+                            <line x1="152" y1="34" x2="152" y2="38" stroke="var(--color-border)" stroke-width="0.75" />
+                            <line x1="220" y1="32" x2="220" y2="40" stroke="var(--color-accent)" stroke-width="1" />
+                            <line x1="288" y1="34" x2="288" y2="38" stroke="var(--color-border)" stroke-width="0.75" />
+                            <line x1="355" y1="34" x2="355" y2="38" stroke="var(--color-border)" stroke-width="0.75" />
+                            <line x1="422" y1="32" x2="422" y2="40" stroke="var(--color-border-strong)" stroke-width="1" />
+
+                            <!-- Sub-datum Coordinate Reference -->
+                            <text x="36" y="54" font-family="'Space Grotesk', monospace" font-size="7.5" letter-spacing="0.14em" fill="var(--color-text-muted)" fill-opacity="0.7">CANVAS // 01-A [DESKTOP PRIMARY]</text>
+                            <text x="404" y="54" font-family="'Space Grotesk', monospace" font-size="7.5" letter-spacing="0.12em" fill="var(--color-text-muted)" fill-opacity="0.7" text-anchor="end">W: 1280 • H: FLUID</text>
+
+                            <!-- Secondary Horizontal Rule (Grid Ceiling) -->
+                            <line x1="18" y1="66" x2="422" y2="66" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-dasharray="2 3" />
+
+                            <!-- ================= ZONE 2: ARCHITECTURAL GRID (y: 66 - 412) ================= -->
+                            <!-- Subtle 12-Column Structural Grid (Hairlines) -->
+                            <line x1="28" y1="66" x2="28" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                            <line x1="60" y1="66" x2="60" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                            <line x1="92" y1="66" x2="92" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                            <line x1="124" y1="66" x2="124" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                            <line x1="156" y1="66" x2="156" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                            <line x1="188" y1="66" x2="188" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                            <line x1="220" y1="66" x2="220" y2="412" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-dasharray="4 4" stroke-opacity="0.4" />
+                            <line x1="252" y1="66" x2="252" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                            <line x1="284" y1="66" x2="284" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                            <line x1="316" y1="66" x2="316" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                            <line x1="348" y1="66" x2="348" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                            <line x1="380" y1="66" x2="380" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                            <line x1="412" y1="66" x2="412" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+
+                            <!-- Horizontal Baseline Guide Lines -->
+                            <line x1="18" y1="120" x2="422" y2="120" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
+                            <line x1="18" y1="174" x2="422" y2="174" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
+                            <line x1="18" y1="228" x2="422" y2="228" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
+                            <line x1="18" y1="282" x2="422" y2="282" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
+                            <line x1="18" y1="336" x2="422" y2="336" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
+                            <line x1="18" y1="390" x2="422" y2="390" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
+
+                            <!-- Primary Architectural Proportion Frame (Golden Section Specimen Box) -->
+                            <rect x="60" y="96" width="288" height="178" rx="2" fill="var(--color-surface)" fill-opacity="0.5" stroke="var(--color-border-strong)" stroke-width="1" stroke-opacity="0.6" />
+
+                            <!-- Diagonal Dynamic Construction Vector -->
+                            <line x1="60" y1="96" x2="348" y2="274" stroke="var(--color-accent)" stroke-width="0.75" stroke-dasharray="3 4" stroke-opacity="0.35" />
+
+                            <!-- Golden Cut Vertical Harmonic Rule -->
+                            <line x1="238" y1="96" x2="238" y2="274" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-dasharray="2 2" stroke-opacity="0.5" />
+
+                            <!-- Architectural Typographic Specimen: Monumental Outline Glyph "V" -->
+                            <text x="96" y="222" font-family="'Space Grotesk', sans-serif" font-size="96" font-weight="700" fill="none" stroke="var(--color-border-strong)" stroke-width="1" stroke-opacity="0.25" letter-spacing="-0.04em">V</text>
+
+                            <!-- Dimension Caliper / Margin Callout: Left Margin -->
+                            <g stroke="var(--color-accent)" stroke-width="0.75" stroke-opacity="0.7">
+                                <line x1="28" y1="185" x2="60" y2="185" />
+                                <line x1="28" y1="180" x2="28" y2="190" />
+                                <line x1="60" y1="180" x2="60" y2="190" />
+                            </g>
+                            <text x="44" y="178" font-family="'Space Grotesk', monospace" font-size="6.5" font-weight="600" fill="var(--color-accent)" text-anchor="middle" letter-spacing="0.1em">64 PX</text>
+
+                            <!-- Proportion Annotation: Right of Frame -->
+                            <text x="358" y="125" font-family="'Space Grotesk', monospace" font-size="7.5" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.12em">H1 // 56PX PROPORTION</text>
+                            <text x="358" y="138" font-family="'Space Grotesk', monospace" font-size="7" fill="var(--color-text-muted)" fill-opacity="0.6" letter-spacing="0.1em">LINE-HEIGHT: 1.08</text>
+                            
+                            <g stroke="var(--color-border-strong)" stroke-width="0.75" stroke-opacity="0.5">
+                                <line x1="358" y1="148" x2="412" y2="148" />
+                                <line x1="412" y1="148" x2="412" y2="230" />
+                                <line x1="358" y1="230" x2="412" y2="230" />
+                            </g>
+                            <text x="358" y="244" font-family="'Space Grotesk', monospace" font-size="7" fill="var(--color-accent)" letter-spacing="0.1em">RATIO: Φ (1.618)</text>
+
+                            <!-- Horizontal Fluid Axis Annotation (y: 298) -->
+                            <line x1="28" y1="298" x2="412" y2="298" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-opacity="0.6" />
+                            <circle cx="28" cy="298" r="2" fill="var(--color-accent)" />
+                            <circle cx="412" cy="298" r="2" fill="var(--color-accent)" />
+                            <rect x="156" y="291" width="128" height="14" rx="2" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="0.5" />
+                            <text x="220" y="301" font-family="'Space Grotesk', monospace" font-size="7" font-weight="600" fill="var(--color-text-muted)" text-anchor="middle" letter-spacing="0.14em">FLUID CONTENT AXIS // 1280 MAX</text>
+
+                            <!-- Modular Sub-Layout Modules (y: 326 - 386) -->
+                            <!-- Column Module A (Left: 3 cols) -->
+                            <rect x="60" y="326" width="96" height="60" rx="3" fill="var(--color-surface)" fill-opacity="0.4" stroke="var(--color-border)" stroke-width="0.75" />
+                            <text x="70" y="344" font-family="'Space Grotesk', monospace" font-size="7.5" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.1em">MOD // NAV-SIDE</text>
+                            <text x="70" y="358" font-family="'Space Grotesk', monospace" font-size="6.5" fill="var(--color-accent)" letter-spacing="0.08em">WIDTH: 25.0%</text>
+                            <line x1="70" y1="368" x2="140" y2="368" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 2" />
+
+                            <!-- Column Module B (Right: 7 cols) -->
+                            <rect x="166" y="326" width="214" height="60" rx="3" fill="var(--color-surface)" fill-opacity="0.4" stroke="var(--color-border)" stroke-width="0.75" />
+                            <text x="178" y="344" font-family="'Space Grotesk', monospace" font-size="7.5" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.1em">MOD // EDITORIAL CORE</text>
+                            <text x="178" y="358" font-family="'Space Grotesk', monospace" font-size="6.5" fill="var(--color-accent)" letter-spacing="0.08em">WIDTH: 75.0%</text>
+                            <line x1="178" y1="368" x2="350" y2="368" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 2" />
+
+                            <!-- Grid Base Datum Line -->
+                            <line x1="18" y1="412" x2="422" y2="412" stroke="var(--color-border)" stroke-width="1" />
+
+                            <!-- ================= ZONE 3: CONVERSION / FOCAL ANCHOR (y: 412 - 525) ================= -->
+                            <!-- Architectural Target Motif (Precision Crosshair) -->
+                            <g>
+                                <circle cx="66" cy="472" r="24" fill="none" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-dasharray="2 3" stroke-opacity="0.6" />
+                                <circle cx="66" cy="472" r="14" fill="none" stroke="var(--color-accent)" stroke-width="0.75" stroke-opacity="0.6" />
+                                <circle cx="66" cy="472" r="2.5" fill="var(--color-accent)" />
+                                <line x1="36" y1="472" x2="96" y2="472" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-opacity="0.8" />
+                                <line x1="66" y1="442" x2="66" y2="502" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-opacity="0.8" />
+                                <line x1="58" y1="464" x2="74" y2="480" stroke="var(--color-accent)" stroke-width="0.5" stroke-opacity="0.3" />
+                                <line x1="58" y1="480" x2="74" y2="464" stroke="var(--color-accent)" stroke-width="0.5" stroke-opacity="0.3" />
+                            </g>
+
+                            <!-- Metadata Specification Block -->
+                            <text x="112" y="458" font-family="'Space Grotesk', monospace" font-size="8.5" font-weight="700" fill="var(--color-accent)" letter-spacing="0.16em">TARGET: TRUST</text>
+                            <text x="250" y="458" font-family="'Space Grotesk', monospace" font-size="8" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.14em">DISCIPLINE: BESPOKE</text>
+
+                            <!-- Sub-Specification -->
+                            <text x="112" y="478" font-family="'Space Grotesk', monospace" font-size="7.5" fill="var(--color-text-muted)" fill-opacity="0.8" letter-spacing="0.12em">ARCHITECTURE: 100% HAND-CRAFTED SSR</text>
+
+                            <!-- Footer Plate Notation -->
+                            <line x1="112" y1="490" x2="412" y2="490" stroke="var(--color-border)" stroke-width="0.5" />
+                            <text x="112" y="506" font-family="'Space Grotesk', monospace" font-size="7" fill="var(--color-text-muted)" fill-opacity="0.6" letter-spacing="0.12em">VELORA // ARCHITECTURAL DRAFTING PLATE</text>
+                            <text x="412" y="506" font-family="'Space Grotesk', monospace" font-size="7" font-weight="600" fill="var(--color-accent)" letter-spacing="0.12em" text-anchor="end">PLATE NO. 01</text>
+                        </svg>
                     </div>
                 </div>
             </div>

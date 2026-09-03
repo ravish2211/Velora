@@ -332,8 +332,10 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
     }
     if (breadcrumbSchema) schemas.push(breadcrumbSchema);
 
+    const initialTheme = (req.query && req.query.theme) ? escapeHTML(req.query.theme) : '';
+
     return `<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth"${initialTheme ? ` data-theme="${initialTheme}"` : ''}>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -369,7 +371,8 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
     <link rel="stylesheet" href="/styles.css">
 
     <script>
-        const storedTheme = localStorage.getItem('studio-theme') || 'onyx';
+        const paramTheme = new URLSearchParams(window.location.search).get('theme');
+        const storedTheme = paramTheme || localStorage.getItem('studio-theme') || 'onyx';
         document.documentElement.setAttribute('data-theme', storedTheme);
     </script>
     <style>
@@ -502,6 +505,21 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
             width: 1px;
             background: linear-gradient(to bottom, var(--color-border-strong) 0%, var(--color-border) 70%, transparent 100%);
             transform: translateX(-50%);
+        }
+
+        @keyframes plateEntrance {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-drafting-plate {
+            animation: plateEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-drafting-plate {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
         }
         
         .input-luxury { transition: all 0.25s ease; }
