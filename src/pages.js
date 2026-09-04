@@ -112,8 +112,8 @@ function renderHomePage() {
                             <line x1="422" y1="32" x2="422" y2="40" stroke="var(--color-border-strong)" stroke-width="1" />
 
                             <!-- Sub-datum Coordinate Reference -->
-                            <text x="36" y="54" font-family="'Space Grotesk', monospace" font-size="7.5" letter-spacing="0.14em" fill="var(--color-text-muted)" fill-opacity="0.7">CANVAS // 01-A [DESKTOP PRIMARY]</text>
-                            <text x="404" y="54" font-family="'Space Grotesk', monospace" font-size="7.5" letter-spacing="0.12em" fill="var(--color-text-muted)" fill-opacity="0.7" text-anchor="end">W: 1280 • H: FLUID</text>
+                            <text x="36" y="54" font-family="'Space Grotesk', monospace" font-size="7.5" letter-spacing="0.14em" fill="var(--color-text-muted)" fill-opacity="0.7">CANVAS // 01-A [PRIMARY COMPOSITION]</text>
+                            <text x="404" y="54" font-family="'Space Grotesk', monospace" font-size="7.5" letter-spacing="0.12em" fill="var(--color-text-muted)" fill-opacity="0.7" text-anchor="end">SCALE // PROPORTIONAL DATUM</text>
 
                             <!-- Secondary Horizontal Rule (Grid Ceiling) -->
                             <line x1="18" y1="66" x2="422" y2="66" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-dasharray="2 3" />
@@ -163,8 +163,9 @@ function renderHomePage() {
                             <text x="44" y="178" font-family="'Space Grotesk', monospace" font-size="6.5" font-weight="600" fill="var(--color-accent)" text-anchor="middle" letter-spacing="0.1em">64 PX</text>
 
                             <!-- Proportion Annotation: Right of Frame -->
-                            <text x="358" y="125" font-family="'Space Grotesk', monospace" font-size="7.5" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.12em">H1 // 56PX PROPORTION</text>
-                            <text x="358" y="138" font-family="'Space Grotesk', monospace" font-size="7" fill="var(--color-text-muted)" fill-opacity="0.6" letter-spacing="0.1em">LINE-HEIGHT: 1.08</text>
+                            <text x="358" y="122" font-family="'Space Grotesk', monospace" font-size="7" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.1em">DISPLAY</text>
+                            <text x="358" y="133" font-family="'Space Grotesk', monospace" font-size="6.5" fill="var(--color-text-muted)" fill-opacity="0.8" letter-spacing="0.08em">SCALE // Φ</text>
+                            <text x="358" y="144" font-family="'Space Grotesk', monospace" font-size="6.5" fill="var(--color-text-muted)" fill-opacity="0.6" letter-spacing="0.08em">RHYTHM: 1.08</text>
                             
                             <g stroke="var(--color-border-strong)" stroke-width="0.75" stroke-opacity="0.5">
                                 <line x1="358" y1="148" x2="412" y2="148" />
@@ -178,12 +179,12 @@ function renderHomePage() {
                             <circle cx="28" cy="298" r="2" fill="var(--color-accent)" />
                             <circle cx="412" cy="298" r="2" fill="var(--color-accent)" />
                             <rect x="156" y="291" width="128" height="14" rx="2" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="0.5" />
-                            <text x="220" y="301" font-family="'Space Grotesk', monospace" font-size="7" font-weight="600" fill="var(--color-text-muted)" text-anchor="middle" letter-spacing="0.14em">FLUID CONTENT AXIS // 1280 MAX</text>
+                            <text x="220" y="301" font-family="'Space Grotesk', monospace" font-size="7" font-weight="600" fill="var(--color-text-muted)" text-anchor="middle" letter-spacing="0.14em">COMPOSITIONAL AXIS // DATUM</text>
 
                             <!-- Modular Sub-Layout Modules (y: 326 - 386) -->
                             <!-- Column Module A (Left: 3 cols) -->
                             <rect x="60" y="326" width="96" height="60" rx="3" fill="var(--color-surface)" fill-opacity="0.4" stroke="var(--color-border)" stroke-width="0.75" />
-                            <text x="70" y="344" font-family="'Space Grotesk', monospace" font-size="7.5" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.1em">MOD // NAV-SIDE</text>
+                            <text x="70" y="344" font-family="'Space Grotesk', monospace" font-size="7.5" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.1em">MOD // LATERAL AXIS</text>
                             <text x="70" y="358" font-family="'Space Grotesk', monospace" font-size="6.5" fill="var(--color-accent)" letter-spacing="0.08em">WIDTH: 25.0%</text>
                             <line x1="70" y1="368" x2="140" y2="368" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 2" />
 
@@ -213,7 +214,7 @@ function renderHomePage() {
                             <text x="250" y="458" font-family="'Space Grotesk', monospace" font-size="8" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.14em">DISCIPLINE: BESPOKE</text>
 
                             <!-- Sub-Specification -->
-                            <text x="112" y="478" font-family="'Space Grotesk', monospace" font-size="7.5" fill="var(--color-text-muted)" fill-opacity="0.8" letter-spacing="0.12em">ARCHITECTURE: 100% HAND-CRAFTED SSR</text>
+                            <text x="112" y="478" font-family="'Space Grotesk', monospace" font-size="7.5" fill="var(--color-text-muted)" fill-opacity="0.8" letter-spacing="0.12em">ARCHITECTURE: BESPOKE DIGITAL SYSTEMS</text>
 
                             <!-- Footer Plate Notation -->
                             <line x1="112" y1="490" x2="412" y2="490" stroke="var(--color-border)" stroke-width="0.5" />
@@ -481,11 +482,11 @@ function renderHomePage() {
         </div>
     </section>
 
-    <!-- 3. SERVICES OVERVIEW -->
+    <!-- 3. SERVICES OVERVIEW (Open Architectural Ledger) -->
     <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal">
             <div>
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-accent block mb-3">Our Core Services</span>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-velora-accent block mb-3">Studio Disciplines</span>
                 <h2 class="font-display text-3xl sm:text-5xl font-bold text-velora-text tracking-tight">What We Build & Support</h2>
             </div>
             <a href="/services" class="text-xs uppercase tracking-[0.2em] font-bold text-velora-accent hover:text-velora-text transition-colors inline-flex py-3 items-center gap-2">
@@ -493,26 +494,68 @@ function renderHomePage() {
             </a>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            ${SERVICES.map((s, idx) => `
-                <div class="premium-border bg-velora-surface p-8 sm:p-10 rounded-3xl flex flex-col justify-between reveal" style="transition-delay: ${idx * 100}ms;">
-                    <div>
-                        <div class="text-3xl mb-6">${s.icon}</div>
-                        <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-velora-accent block mb-2">${s.heroTag}</span>
-                        <h3 class="font-display text-2xl font-bold text-velora-text mb-4 tracking-tight">${s.title}</h3>
-                        <p class="text-sm text-velora-muted leading-relaxed mb-6 text-pretty">${s.short}</p>
+        <div class="border-t border-velora-border/60 divide-y divide-velora-border/40">
+            ${SERVICES.map((s, idx) => {
+                const num = (idx + 1) < 10 ? `0${idx + 1}` : `${idx + 1}`;
+                return `
+                <article class="group py-8 lg:py-11 transition-colors duration-200 reveal" style="transition-delay: ${idx * 80}ms;">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                        <!-- Left Column: Number, Discipline Tag, Title, Timeline, Action Link -->
+                        <div class="lg:col-span-5">
+                            <div class="flex items-baseline gap-3 mb-4">
+                                <span class="font-display text-2xl lg:text-3xl font-light text-velora-accent tracking-tight">${num}</span>
+                                <span class="text-velora-borderStrong/60 text-xs font-mono select-none">//</span>
+                                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-velora-accent">${s.heroTag}</span>
+                            </div>
+                            
+                            <h3 class="font-display text-2xl sm:text-3xl font-bold text-velora-text tracking-tight group-hover:text-velora-accent transition-colors duration-200 mb-3">
+                                <a href="/services/${s.slug}" class="hover:underline decoration-velora-accent/40 decoration-1 underline-offset-4">${s.title}</a>
+                            </h3>
+                            
+                            <div class="text-xs text-velora-muted/80 font-mono tracking-wide mb-6">
+                                <span class="text-velora-text/60 font-semibold">CADENCE //</span> ${s.timeline}
+                            </div>
 
-                        <ul class="space-y-2.5 text-xs text-velora-muted mb-8">
-                            ${s.benefits.slice(0, 4).map(b => `<li class="flex items-center gap-2"><span class="text-velora-accent">✓</span> <span>${b}</span></li>`).join('')}
-                        </ul>
+                            <a href="/services/${s.slug}" class="hidden lg:inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-bold text-velora-text group-hover:text-velora-accent transition-colors">
+                                <span>Explore Service Scope</span>
+                                <span class="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
+                            </a>
+                        </div>
+
+                        <!-- Right Column: Narrative Overview & Core Deliverables Specification -->
+                        <div class="lg:col-span-7">
+                            <p class="text-base text-velora-muted leading-relaxed mb-6 max-w-2xl text-pretty">
+                                ${s.short}
+                            </p>
+
+                            <div class="pt-5 border-t border-velora-border/40">
+                                <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-velora-muted/70 font-mono mb-3.5">
+                                    CORE DELIVERABLES // SCOPE SPECIFICATION
+                                </div>
+                                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                                    ${s.benefits.slice(0, 4).map(b => `
+                                        <li class="flex items-start gap-2.5 text-xs text-velora-text/80">
+                                            <span class="text-velora-accent font-mono text-xs flex-shrink-0 select-none">&mdash;</span>
+                                            <span class="leading-relaxed">${b}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+
+                            <!-- Mobile Action Link (bottom of service block) -->
+                            <div class="mt-6 lg:hidden">
+                                <a href="/services/${s.slug}" class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-bold text-velora-accent">
+                                    <span>Explore Service Scope</span>
+                                    <span>&rarr;</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="/services/${s.slug}" class="inline-flex items-center justify-between py-3 text-xs uppercase tracking-[0.15em] font-bold text-velora-text hover:text-velora-accent border-t border-velora-border transition-colors">
-                        <span>View Service Details</span>
-                        <span>&rarr;</span>
-                    </a>
-                </div>
-            `).join('')}
+                </article>
+                `;
+            }).join('')}
         </div>
+        <div class="border-b border-velora-border/60"></div>
     </section>
 
     <!-- 4. BEFORE VS AFTER COMPARISON (INTERACTIVE) -->
