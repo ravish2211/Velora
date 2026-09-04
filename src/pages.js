@@ -482,7 +482,7 @@ function renderHomePage() {
         </div>
     </section>
 
-    <!-- 3. SERVICES OVERVIEW (Open Architectural Ledger) -->
+    <!-- 3. SERVICES OVERVIEW (Structured Editorial Service Index) -->
     <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal">
             <div>
@@ -497,58 +497,41 @@ function renderHomePage() {
         <div class="border-t border-velora-border/60 divide-y divide-velora-border/40">
             ${SERVICES.map((s, idx) => {
                 const num = (idx + 1) < 10 ? `0${idx + 1}` : `${idx + 1}`;
-                return `
-                <article class="group py-8 lg:py-11 transition-colors duration-200 reveal" style="transition-delay: ${idx * 80}ms;">
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-                        <!-- Left Column: Number, Discipline Tag, Title, Timeline, Action Link -->
-                        <div class="lg:col-span-5">
-                            <div class="flex items-baseline gap-3 mb-4">
-                                <span class="font-display text-2xl lg:text-3xl font-light text-velora-accent tracking-tight">${num}</span>
-                                <span class="text-velora-borderStrong/60 text-xs font-mono select-none">//</span>
-                                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-velora-accent">${s.heroTag}</span>
-                            </div>
-                            
-                            <h3 class="font-display text-2xl sm:text-3xl font-bold text-velora-text tracking-tight group-hover:text-velora-accent transition-colors duration-200 mb-3">
-                                <a href="/services/${s.slug}" class="hover:underline decoration-velora-accent/40 decoration-1 underline-offset-4">${s.title}</a>
-                            </h3>
-                            
-                            <div class="text-xs text-velora-muted/80 font-mono tracking-wide mb-6">
-                                <span class="text-velora-text/60 font-semibold">CADENCE //</span> ${s.timeline}
-                            </div>
+                const deliverables = [
+                    ['Mobile-First Responsive Architecture', 'Click-to-Call & WhatsApp Triggers', 'Ultra-Fast Mobile Speed', 'Clean Semantic Code'],
+                    ['Google Business Profile Alignment', 'Schema.org Structured Data', 'NAP Consistency Audits', 'Local Search Intent Architecture'],
+                    ['High-Availability Cloud Hosting', 'SSL & Security Monitoring', 'Monthly Content Updates', 'Uptime & Lead Delivery Verification']
+                ][idx] || s.benefits.slice(0, 4);
 
-                            <a href="/services/${s.slug}" class="hidden lg:inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-bold text-velora-text group-hover:text-velora-accent transition-colors">
-                                <span>Explore Service Scope</span>
+                return `
+                <article class="group py-8 sm:py-10 lg:py-12 transition-colors duration-200 reveal" style="transition-delay: ${idx * 60}ms;">
+                    <!-- Row Header: Index Numeral + Service Title -->
+                    <div class="flex items-baseline gap-4 sm:gap-6 mb-3 sm:mb-4">
+                        <span class="font-display text-2xl sm:text-3xl lg:text-4xl font-light text-velora-accent tracking-tight select-none">${num}</span>
+                        <h3 class="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-velora-text tracking-tight group-hover:text-velora-accent transition-colors duration-200">
+                            <a href="/services/${s.slug}">${s.title}</a>
+                        </h3>
+                    </div>
+
+                    <!-- Indented Content: Narrative Description + Deliverables & CTA -->
+                    <div class="pl-10 sm:pl-14 lg:pl-16">
+                        <p class="text-base text-velora-muted leading-relaxed mb-4 max-w-3xl text-pretty">
+                            ${s.short}
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1">
+                            <div class="text-xs sm:text-sm text-velora-text/80 font-normal leading-relaxed flex flex-wrap items-center gap-x-2.5 gap-y-1">
+                                ${deliverables.map((b, i) => `
+                                    <span class="inline-flex items-center">
+                                        ${i > 0 ? '<span class="text-velora-accent/50 select-none text-xs mx-2">&middot;</span>' : ''}
+                                        <span>${b}</span>
+                                    </span>
+                                `).join('')}
+                            </div>
+                            <a href="/services/${s.slug}" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-velora-accent hover:text-velora-text transition-colors flex-shrink-0">
+                                <span>View Service Details</span>
                                 <span class="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
                             </a>
-                        </div>
-
-                        <!-- Right Column: Narrative Overview & Core Deliverables Specification -->
-                        <div class="lg:col-span-7">
-                            <p class="text-base text-velora-muted leading-relaxed mb-6 max-w-2xl text-pretty">
-                                ${s.short}
-                            </p>
-
-                            <div class="pt-5 border-t border-velora-border/40">
-                                <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-velora-muted/70 font-mono mb-3.5">
-                                    CORE DELIVERABLES // SCOPE SPECIFICATION
-                                </div>
-                                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
-                                    ${s.benefits.slice(0, 4).map(b => `
-                                        <li class="flex items-start gap-2.5 text-xs text-velora-text/80">
-                                            <span class="text-velora-accent font-mono text-xs flex-shrink-0 select-none">&mdash;</span>
-                                            <span class="leading-relaxed">${b}</span>
-                                        </li>
-                                    `).join('')}
-                                </ul>
-                            </div>
-
-                            <!-- Mobile Action Link (bottom of service block) -->
-                            <div class="mt-6 lg:hidden">
-                                <a href="/services/${s.slug}" class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-bold text-velora-accent">
-                                    <span>Explore Service Scope</span>
-                                    <span>&rarr;</span>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </article>
