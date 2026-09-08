@@ -162,7 +162,7 @@ function Header(currentPath) {
 
 function Footer() {
     return `
-    <footer class="relative bg-velora-bg pt-20 pb-28 sm:pb-12 mt-20 border-t border-velora-border overflow-hidden transition-colors duration-300">
+    <footer class="relative bg-velora-bg pt-20 pb-28 sm:pb-24 mt-20 border-t border-velora-border overflow-hidden transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
                 <div class="lg:col-span-3 space-y-5">
@@ -256,7 +256,7 @@ function Footer() {
                         </div>
                     </div>
                 </div>
-                <div class="flex items-center gap-4 flex-wrap justify-center">
+                <div class="flex items-center gap-4 flex-wrap justify-center md:justify-end md:pr-36">
                     <a href="/privacy-policy" class="hover:text-velora-text transition-colors">Privacy Policy</a>
                     <span aria-hidden="true">&bull;</span>
                     <a href="/terms" class="hover:text-velora-text transition-colors">Terms of Service</a>
