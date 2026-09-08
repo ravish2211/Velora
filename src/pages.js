@@ -94,136 +94,148 @@ function renderHomePage() {
 
                         <!-- Architectural Vector Drafting Plate SVG (ViewBox 0 0 440 540) -->
                         <svg class="w-full h-auto block select-none" viewBox="0 0 440 540" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- ================= ZONE 1: HEADER / DATUM (y: 10 - 75) ================= -->
-                            <!-- Registration Corner Crosses -->
-                            <path d="M 12 18 h 12 M 18 12 v 12" stroke="var(--color-border-strong)" stroke-width="0.75" />
-                            <path d="M 416 18 h 12 M 422 12 v 12" stroke="var(--color-border-strong)" stroke-width="0.75" />
+                            <!-- PHASE 1: Primary Structural Framework (Frame, Datum, Registration) -->
+                            <g class="drafting-phase-1">
+                                <!-- Registration Corner Crosses -->
+                                <path d="M 12 18 h 12 M 18 12 v 12" stroke="var(--color-border-strong)" stroke-width="0.75" />
+                                <path d="M 416 18 h 12 M 422 12 v 12" stroke="var(--color-border-strong)" stroke-width="0.75" />
 
-                            <!-- Header Micro-Typography -->
-                            <text x="36" y="22" font-family="'Space Grotesk', monospace" font-size="8.5" font-weight="600" letter-spacing="0.18em" fill="var(--color-accent)">SYSTEM // 12-COL MODULAR</text>
-                            <text x="404" y="22" font-family="'Space Grotesk', monospace" font-size="8" letter-spacing="0.16em" fill="var(--color-text-muted)" text-anchor="end">RATIO: 1.618 ── Φ</text>
+                                <!-- Primary Datum Ruler Line -->
+                                <line x1="18" y1="36" x2="422" y2="36" stroke="var(--color-border)" stroke-width="1" />
+                                
+                                <!-- Calibration Ticks along Datum -->
+                                <line x1="18" y1="32" x2="18" y2="40" stroke="var(--color-border-strong)" stroke-width="1" />
+                                <line x1="85" y1="34" x2="85" y2="38" stroke="var(--color-border)" stroke-width="0.75" />
+                                <line x1="152" y1="34" x2="152" y2="38" stroke="var(--color-border)" stroke-width="0.75" />
+                                <line x1="220" y1="32" x2="220" y2="40" stroke="var(--color-accent)" stroke-width="1" />
+                                <line x1="288" y1="34" x2="288" y2="38" stroke="var(--color-border)" stroke-width="0.75" />
+                                <line x1="355" y1="34" x2="355" y2="38" stroke="var(--color-border)" stroke-width="0.75" />
+                                <line x1="422" y1="32" x2="422" y2="40" stroke="var(--color-border-strong)" stroke-width="1" />
 
-                            <!-- Primary Datum Ruler Line -->
-                            <line x1="18" y1="36" x2="422" y2="36" stroke="var(--color-border)" stroke-width="1" />
-                            
-                            <!-- Calibration Ticks along Datum -->
-                            <line x1="18" y1="32" x2="18" y2="40" stroke="var(--color-border-strong)" stroke-width="1" />
-                            <line x1="85" y1="34" x2="85" y2="38" stroke="var(--color-border)" stroke-width="0.75" />
-                            <line x1="152" y1="34" x2="152" y2="38" stroke="var(--color-border)" stroke-width="0.75" />
-                            <line x1="220" y1="32" x2="220" y2="40" stroke="var(--color-accent)" stroke-width="1" />
-                            <line x1="288" y1="34" x2="288" y2="38" stroke="var(--color-border)" stroke-width="0.75" />
-                            <line x1="355" y1="34" x2="355" y2="38" stroke="var(--color-border)" stroke-width="0.75" />
-                            <line x1="422" y1="32" x2="422" y2="40" stroke="var(--color-border-strong)" stroke-width="1" />
+                                <!-- Secondary Horizontal Rule (Grid Ceiling) -->
+                                <line x1="18" y1="66" x2="422" y2="66" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-dasharray="2 3" />
 
-                            <!-- Sub-datum Coordinate Reference -->
-                            <text x="36" y="54" font-family="'Space Grotesk', monospace" font-size="7.5" letter-spacing="0.14em" fill="var(--color-text-muted)" fill-opacity="0.7">CANVAS // 01-A [PRIMARY COMPOSITION]</text>
-                            <text x="404" y="54" font-family="'Space Grotesk', monospace" font-size="7.5" letter-spacing="0.12em" fill="var(--color-text-muted)" fill-opacity="0.7" text-anchor="end">SCALE // PROPORTIONAL DATUM</text>
+                                <!-- Primary Architectural Proportion Frame (Golden Section Specimen Box) -->
+                                <rect x="60" y="96" width="288" height="178" rx="2" fill="var(--color-surface)" fill-opacity="0.5" stroke="var(--color-border-strong)" stroke-width="1" stroke-opacity="0.6" />
 
-                            <!-- Secondary Horizontal Rule (Grid Ceiling) -->
-                            <line x1="18" y1="66" x2="422" y2="66" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-dasharray="2 3" />
+                                <!-- Grid Base Datum Line -->
+                                <line x1="18" y1="412" x2="422" y2="412" stroke="var(--color-border)" stroke-width="1" />
 
-                            <!-- ================= ZONE 2: ARCHITECTURAL GRID (y: 66 - 412) ================= -->
-                            <!-- Subtle 12-Column Structural Grid (Hairlines) -->
-                            <line x1="28" y1="66" x2="28" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
-                            <line x1="60" y1="66" x2="60" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
-                            <line x1="92" y1="66" x2="92" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
-                            <line x1="124" y1="66" x2="124" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
-                            <line x1="156" y1="66" x2="156" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
-                            <line x1="188" y1="66" x2="188" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
-                            <line x1="220" y1="66" x2="220" y2="412" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-dasharray="4 4" stroke-opacity="0.4" />
-                            <line x1="252" y1="66" x2="252" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
-                            <line x1="284" y1="66" x2="284" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
-                            <line x1="316" y1="66" x2="316" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
-                            <line x1="348" y1="66" x2="348" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
-                            <line x1="380" y1="66" x2="380" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
-                            <line x1="412" y1="66" x2="412" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
-
-                            <!-- Horizontal Baseline Guide Lines -->
-                            <line x1="18" y1="120" x2="422" y2="120" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
-                            <line x1="18" y1="174" x2="422" y2="174" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
-                            <line x1="18" y1="228" x2="422" y2="228" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
-                            <line x1="18" y1="282" x2="422" y2="282" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
-                            <line x1="18" y1="336" x2="422" y2="336" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
-                            <line x1="18" y1="390" x2="422" y2="390" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
-
-                            <!-- Primary Architectural Proportion Frame (Golden Section Specimen Box) -->
-                            <rect x="60" y="96" width="288" height="178" rx="2" fill="var(--color-surface)" fill-opacity="0.5" stroke="var(--color-border-strong)" stroke-width="1" stroke-opacity="0.6" />
-
-                            <!-- Diagonal Dynamic Construction Vector -->
-                            <line x1="60" y1="96" x2="348" y2="274" stroke="var(--color-accent)" stroke-width="0.75" stroke-dasharray="3 4" stroke-opacity="0.35" />
-
-                            <!-- Golden Cut Vertical Harmonic Rule -->
-                            <line x1="238" y1="96" x2="238" y2="274" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-dasharray="2 2" stroke-opacity="0.5" />
-
-                            <!-- Architectural Typographic Specimen: Monumental Outline Glyph "V" -->
-                            <text x="96" y="222" font-family="'Space Grotesk', sans-serif" font-size="96" font-weight="700" fill="none" stroke="var(--color-border-strong)" stroke-width="1" stroke-opacity="0.25" letter-spacing="-0.04em">V</text>
-
-                            <!-- Dimension Caliper / Margin Callout: Left Margin -->
-                            <g stroke="var(--color-accent)" stroke-width="0.75" stroke-opacity="0.7">
-                                <line x1="28" y1="185" x2="60" y2="185" />
-                                <line x1="28" y1="180" x2="28" y2="190" />
-                                <line x1="60" y1="180" x2="60" y2="190" />
-                            </g>
-                            <text x="44" y="178" font-family="'Space Grotesk', monospace" font-size="6.5" font-weight="600" fill="var(--color-accent)" text-anchor="middle" letter-spacing="0.1em">64 PX</text>
-
-                            <!-- Proportion Annotation: Right of Frame -->
-                            <text x="358" y="122" font-family="'Space Grotesk', monospace" font-size="7" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.1em">DISPLAY</text>
-                            <text x="358" y="133" font-family="'Space Grotesk', monospace" font-size="6.5" fill="var(--color-text-muted)" fill-opacity="0.8" letter-spacing="0.08em">SCALE // Φ</text>
-                            <text x="358" y="144" font-family="'Space Grotesk', monospace" font-size="6.5" fill="var(--color-text-muted)" fill-opacity="0.6" letter-spacing="0.08em">RHYTHM: 1.08</text>
-                            
-                            <g stroke="var(--color-border-strong)" stroke-width="0.75" stroke-opacity="0.5">
-                                <line x1="358" y1="148" x2="412" y2="148" />
-                                <line x1="412" y1="148" x2="412" y2="230" />
-                                <line x1="358" y1="230" x2="412" y2="230" />
-                            </g>
-                            <text x="358" y="244" font-family="'Space Grotesk', monospace" font-size="7" fill="var(--color-accent)" letter-spacing="0.1em">RATIO: Φ (1.618)</text>
-
-                            <!-- Horizontal Fluid Axis Annotation (y: 298) -->
-                            <line x1="28" y1="298" x2="412" y2="298" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-opacity="0.6" />
-                            <circle cx="28" cy="298" r="2" fill="var(--color-accent)" />
-                            <circle cx="412" cy="298" r="2" fill="var(--color-accent)" />
-                            <rect x="156" y="291" width="128" height="14" rx="2" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="0.5" />
-                            <text x="220" y="301" font-family="'Space Grotesk', monospace" font-size="7" font-weight="600" fill="var(--color-text-muted)" text-anchor="middle" letter-spacing="0.14em">COMPOSITIONAL AXIS // DATUM</text>
-
-                            <!-- Modular Sub-Layout Modules (y: 326 - 386) -->
-                            <!-- Column Module A (Left: 3 cols) -->
-                            <rect x="60" y="326" width="96" height="60" rx="3" fill="var(--color-surface)" fill-opacity="0.4" stroke="var(--color-border)" stroke-width="0.75" />
-                            <text x="70" y="344" font-family="'Space Grotesk', monospace" font-size="7.5" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.1em">MOD // LATERAL AXIS</text>
-                            <text x="70" y="358" font-family="'Space Grotesk', monospace" font-size="6.5" fill="var(--color-accent)" letter-spacing="0.08em">WIDTH: 25.0%</text>
-                            <line x1="70" y1="368" x2="140" y2="368" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 2" />
-
-                            <!-- Column Module B (Right: 7 cols) -->
-                            <rect x="166" y="326" width="214" height="60" rx="3" fill="var(--color-surface)" fill-opacity="0.4" stroke="var(--color-border)" stroke-width="0.75" />
-                            <text x="178" y="344" font-family="'Space Grotesk', monospace" font-size="7.5" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.1em">MOD // EDITORIAL CORE</text>
-                            <text x="178" y="358" font-family="'Space Grotesk', monospace" font-size="6.5" fill="var(--color-accent)" letter-spacing="0.08em">WIDTH: 75.0%</text>
-                            <line x1="178" y1="368" x2="350" y2="368" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 2" />
-
-                            <!-- Grid Base Datum Line -->
-                            <line x1="18" y1="412" x2="422" y2="412" stroke="var(--color-border)" stroke-width="1" />
-
-                            <!-- ================= ZONE 3: CONVERSION / FOCAL ANCHOR (y: 412 - 525) ================= -->
-                            <!-- Architectural Target Motif (Precision Crosshair) -->
-                            <g>
-                                <circle cx="66" cy="472" r="24" fill="none" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-dasharray="2 3" stroke-opacity="0.6" />
-                                <circle cx="66" cy="472" r="14" fill="none" stroke="var(--color-accent)" stroke-width="0.75" stroke-opacity="0.6" />
-                                <circle cx="66" cy="472" r="2.5" fill="var(--color-accent)" />
-                                <line x1="36" y1="472" x2="96" y2="472" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-opacity="0.8" />
-                                <line x1="66" y1="442" x2="66" y2="502" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-opacity="0.8" />
-                                <line x1="58" y1="464" x2="74" y2="480" stroke="var(--color-accent)" stroke-width="0.5" stroke-opacity="0.3" />
-                                <line x1="58" y1="480" x2="74" y2="464" stroke="var(--color-accent)" stroke-width="0.5" stroke-opacity="0.3" />
+                                <!-- Footer Plate Notation Line -->
+                                <line x1="112" y1="490" x2="412" y2="490" stroke="var(--color-border)" stroke-width="0.5" />
                             </g>
 
-                            <!-- Metadata Specification Block -->
-                            <text x="112" y="458" font-family="'Space Grotesk', monospace" font-size="8.5" font-weight="700" fill="var(--color-accent)" letter-spacing="0.16em">TARGET: TRUST</text>
-                            <text x="250" y="458" font-family="'Space Grotesk', monospace" font-size="8" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.14em">DISCIPLINE: BESPOKE</text>
+                            <!-- PHASE 2: Secondary Construction (Grid, Guides, Calipers, Sub-Modules) -->
+                            <g class="drafting-phase-2">
+                                <!-- Subtle 12-Column Structural Grid (Hairlines) -->
+                                <line x1="28" y1="66" x2="28" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                                <line x1="60" y1="66" x2="60" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                                <line x1="92" y1="66" x2="92" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                                <line x1="124" y1="66" x2="124" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                                <line x1="156" y1="66" x2="156" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                                <line x1="188" y1="66" x2="188" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                                <line x1="220" y1="66" x2="220" y2="412" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-dasharray="4 4" stroke-opacity="0.4" />
+                                <line x1="252" y1="66" x2="252" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                                <line x1="284" y1="66" x2="284" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                                <line x1="316" y1="66" x2="316" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                                <line x1="348" y1="66" x2="348" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                                <line x1="380" y1="66" x2="380" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
+                                <line x1="412" y1="66" x2="412" y2="412" stroke="var(--color-border)" stroke-width="0.5" stroke-opacity="0.3" />
 
-                            <!-- Sub-Specification -->
-                            <text x="112" y="478" font-family="'Space Grotesk', monospace" font-size="7.5" fill="var(--color-text-muted)" fill-opacity="0.8" letter-spacing="0.12em">ARCHITECTURE: BESPOKE DIGITAL SYSTEMS</text>
+                                <!-- Horizontal Baseline Guide Lines -->
+                                <line x1="18" y1="120" x2="422" y2="120" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
+                                <line x1="18" y1="174" x2="422" y2="174" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
+                                <line x1="18" y1="228" x2="422" y2="228" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
+                                <line x1="18" y1="282" x2="422" y2="282" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
+                                <line x1="18" y1="336" x2="422" y2="336" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
+                                <line x1="18" y1="390" x2="422" y2="390" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 4" stroke-opacity="0.25" />
 
-                            <!-- Footer Plate Notation -->
-                            <line x1="112" y1="490" x2="412" y2="490" stroke="var(--color-border)" stroke-width="0.5" />
-                            <text x="112" y="506" font-family="'Space Grotesk', monospace" font-size="7" fill="var(--color-text-muted)" fill-opacity="0.6" letter-spacing="0.12em">VELORA // ARCHITECTURAL DRAFTING PLATE</text>
-                            <text x="412" y="506" font-family="'Space Grotesk', monospace" font-size="7" font-weight="600" fill="var(--color-accent)" letter-spacing="0.12em" text-anchor="end">PLATE NO. 01</text>
+                                <!-- Diagonal Dynamic Construction Vector -->
+                                <line x1="60" y1="96" x2="348" y2="274" stroke="var(--color-accent)" stroke-width="0.75" stroke-dasharray="3 4" stroke-opacity="0.35" />
+
+                                <!-- Golden Cut Vertical Harmonic Rule -->
+                                <line x1="238" y1="96" x2="238" y2="274" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-dasharray="2 2" stroke-opacity="0.5" />
+
+                                <!-- Dimension Caliper / Margin Callout: Left Margin Lines -->
+                                <g stroke="var(--color-accent)" stroke-width="0.75" stroke-opacity="0.7">
+                                    <line x1="28" y1="185" x2="60" y2="185" />
+                                    <line x1="28" y1="180" x2="28" y2="190" />
+                                    <line x1="60" y1="180" x2="60" y2="190" />
+                                </g>
+
+                                <!-- Proportion Annotation: Right of Frame Lines -->
+                                <g stroke="var(--color-border-strong)" stroke-width="0.75" stroke-opacity="0.5">
+                                    <line x1="358" y1="148" x2="412" y2="148" />
+                                    <line x1="412" y1="148" x2="412" y2="230" />
+                                    <line x1="358" y1="230" x2="412" y2="230" />
+                                </g>
+
+                                <!-- Horizontal Fluid Axis Line & Markers -->
+                                <line x1="28" y1="298" x2="412" y2="298" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-opacity="0.6" />
+                                <circle cx="28" cy="298" r="2" fill="var(--color-accent)" />
+                                <circle cx="412" cy="298" r="2" fill="var(--color-accent)" />
+                                <rect x="156" y="291" width="128" height="14" rx="2" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="0.5" />
+
+                                <!-- Modular Sub-Layout Modules (y: 326 - 386) -->
+                                <rect x="60" y="326" width="96" height="60" rx="3" fill="var(--color-surface)" fill-opacity="0.4" stroke="var(--color-border)" stroke-width="0.75" />
+                                <line x1="70" y1="368" x2="140" y2="368" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 2" />
+
+                                <rect x="166" y="326" width="214" height="60" rx="3" fill="var(--color-surface)" fill-opacity="0.4" stroke="var(--color-border)" stroke-width="0.75" />
+                                <line x1="178" y1="368" x2="350" y2="368" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="2 2" />
+
+                                <!-- Architectural Target Motif (Precision Crosshair) -->
+                                <g>
+                                    <circle cx="66" cy="472" r="24" fill="none" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-dasharray="2 3" stroke-opacity="0.6" />
+                                    <circle cx="66" cy="472" r="14" fill="none" stroke="var(--color-accent)" stroke-width="0.75" stroke-opacity="0.6" />
+                                    <circle cx="66" cy="472" r="2.5" fill="var(--color-accent)" />
+                                    <line x1="36" y1="472" x2="96" y2="472" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-opacity="0.8" />
+                                    <line x1="66" y1="442" x2="66" y2="502" stroke="var(--color-border-strong)" stroke-width="0.75" stroke-opacity="0.8" />
+                                    <line x1="58" y1="464" x2="74" y2="480" stroke="var(--color-accent)" stroke-width="0.5" stroke-opacity="0.3" />
+                                    <line x1="58" y1="480" x2="74" y2="464" stroke="var(--color-accent)" stroke-width="0.5" stroke-opacity="0.3" />
+                                </g>
+                            </g>
+
+                            <!-- PHASE 3: Finishing Annotations & Typography -->
+                            <g class="drafting-phase-3">
+                                <!-- Header Micro-Typography -->
+                                <text x="36" y="22" font-family="'Space Grotesk', monospace" font-size="8.5" font-weight="600" letter-spacing="0.18em" fill="var(--color-accent)">SYSTEM // 12-COL MODULAR</text>
+                                <text x="404" y="22" font-family="'Space Grotesk', monospace" font-size="8" letter-spacing="0.16em" fill="var(--color-text-muted)" text-anchor="end">RATIO: 1.618 ── Φ</text>
+
+                                <!-- Sub-datum Coordinate Reference -->
+                                <text x="36" y="54" font-family="'Space Grotesk', monospace" font-size="7.5" letter-spacing="0.14em" fill="var(--color-text-muted)" fill-opacity="0.7">CANVAS // 01-A [PRIMARY COMPOSITION]</text>
+                                <text x="404" y="54" font-family="'Space Grotesk', monospace" font-size="7.5" letter-spacing="0.12em" fill="var(--color-text-muted)" fill-opacity="0.7" text-anchor="end">SCALE // PROPORTIONAL DATUM</text>
+
+                                <!-- Architectural Typographic Specimen: Monumental Outline Glyph "V" -->
+                                <text x="96" y="222" font-family="'Space Grotesk', sans-serif" font-size="96" font-weight="700" fill="none" stroke="var(--color-border-strong)" stroke-width="1" stroke-opacity="0.25" letter-spacing="-0.04em">V</text>
+
+                                <!-- Dimension Caliper / Margin Callout Text -->
+                                <text x="44" y="178" font-family="'Space Grotesk', monospace" font-size="6.5" font-weight="600" fill="var(--color-accent)" text-anchor="middle" letter-spacing="0.1em">64 PX</text>
+
+                                <!-- Proportion Annotation Texts -->
+                                <text x="358" y="122" font-family="'Space Grotesk', monospace" font-size="7" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.1em">DISPLAY</text>
+                                <text x="358" y="133" font-family="'Space Grotesk', monospace" font-size="6.5" fill="var(--color-text-muted)" fill-opacity="0.8" letter-spacing="0.08em">SCALE // Φ</text>
+                                <text x="358" y="144" font-family="'Space Grotesk', monospace" font-size="6.5" fill="var(--color-text-muted)" fill-opacity="0.6" letter-spacing="0.08em">RHYTHM: 1.08</text>
+                                <text x="358" y="244" font-family="'Space Grotesk', monospace" font-size="7" fill="var(--color-accent)" letter-spacing="0.1em">RATIO: Φ (1.618)</text>
+
+                                <!-- Horizontal Fluid Axis Annotation Text -->
+                                <text x="220" y="301" font-family="'Space Grotesk', monospace" font-size="7" font-weight="600" fill="var(--color-text-muted)" text-anchor="middle" letter-spacing="0.14em">COMPOSITIONAL AXIS // DATUM</text>
+
+                                <!-- Modular Sub-Layout Texts -->
+                                <text x="70" y="344" font-family="'Space Grotesk', monospace" font-size="7.5" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.1em">MOD // LATERAL AXIS</text>
+                                <text x="70" y="358" font-family="'Space Grotesk', monospace" font-size="6.5" fill="var(--color-accent)" letter-spacing="0.08em">WIDTH: 25.0%</text>
+
+                                <text x="178" y="344" font-family="'Space Grotesk', monospace" font-size="7.5" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.1em">MOD // EDITORIAL CORE</text>
+                                <text x="178" y="358" font-family="'Space Grotesk', monospace" font-size="6.5" fill="var(--color-accent)" letter-spacing="0.08em">WIDTH: 75.0%</text>
+
+                                <!-- Metadata Specification Block Texts -->
+                                <text x="112" y="458" font-family="'Space Grotesk', monospace" font-size="8.5" font-weight="700" fill="var(--color-accent)" letter-spacing="0.16em">TARGET: TRUST</text>
+                                <text x="250" y="458" font-family="'Space Grotesk', monospace" font-size="8" font-weight="600" fill="var(--color-text-muted)" letter-spacing="0.14em">DISCIPLINE: BESPOKE</text>
+                                <text x="112" y="478" font-family="'Space Grotesk', monospace" font-size="7.5" fill="var(--color-text-muted)" fill-opacity="0.8" letter-spacing="0.12em">ARCHITECTURE: BESPOKE DIGITAL SYSTEMS</text>
+
+                                <!-- Footer Plate Notation Texts -->
+                                <text x="112" y="506" font-family="'Space Grotesk', monospace" font-size="7" fill="var(--color-text-muted)" fill-opacity="0.6" letter-spacing="0.12em">VELORA // ARCHITECTURAL DRAFTING PLATE</text>
+                                <text x="412" y="506" font-family="'Space Grotesk', monospace" font-size="7" font-weight="600" fill="var(--color-accent)" letter-spacing="0.12em" text-anchor="end">PLATE NO. 01</text>
+                            </g>
                         </svg>
                     </div>
                 </div>
@@ -964,11 +976,11 @@ function renderHomePage() {
             let currentPos = 0.85;
 
             function updatePosition(x, fromKeyboard = false) {
-                const rect = container.getBoundingClientRect();
                 let pos;
                 if (fromKeyboard) {
                     pos = x;
                 } else {
+                    const rect = container.getBoundingClientRect();
                     pos = (x - rect.left) / rect.width;
                 }
 
@@ -994,11 +1006,26 @@ function renderHomePage() {
                 }
             }
 
+            // User interaction cancellation for discovery cue
+            let hasUserInteracted = false;
+            let discoveryRafId = null;
+
+            function cancelDiscovery() {
+                hasUserInteracted = true;
+                if (discoveryRafId) {
+                    cancelAnimationFrame(discoveryRafId);
+                    discoveryRafId = null;
+                }
+            }
+
             container.addEventListener('pointerdown', (e) => {
+                cancelDiscovery();
                 isDragging = true;
                 container.setPointerCapture(e.pointerId);
                 updatePosition(e.clientX);
             });
+
+            container.addEventListener('touchstart', cancelDiscovery, { passive: true });
 
             container.addEventListener('pointermove', (e) => {
                 if (!isDragging) return;
@@ -1014,6 +1041,7 @@ function renderHomePage() {
             });
 
             container.addEventListener('keydown', (e) => {
+                cancelDiscovery();
                 const step = 0.05;
                 if (e.key === 'ArrowLeft') {
                     updatePosition(currentPos - step, true);
@@ -1032,6 +1060,44 @@ function renderHomePage() {
 
             // Initialize
             updatePosition(0.85, true);
+
+            // One-Time Discovery Cue on First Viewport Intersection
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+                let discoveryTriggered = false;
+                const cueObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !discoveryTriggered && !hasUserInteracted) {
+                            discoveryTriggered = true;
+                            cueObserver.disconnect();
+                            setTimeout(() => {
+                                if (hasUserInteracted) return;
+                                const cueStartTime = performance.now();
+                                const cueDuration = 480;
+                                const startP = 0.85;
+                                const apexP = 0.80;
+
+                                function cueStep(now) {
+                                    if (hasUserInteracted) return;
+                                    const elapsed = now - cueStartTime;
+                                    const t = Math.min(elapsed / cueDuration, 1);
+                                    const dip = Math.sin(t * Math.PI);
+                                    const pos = startP - (startP - apexP) * dip;
+                                    updatePosition(pos, true);
+
+                                    if (t < 1) {
+                                        discoveryRafId = requestAnimationFrame(cueStep);
+                                    } else {
+                                        discoveryRafId = null;
+                                        updatePosition(0.85, true);
+                                    }
+                                }
+                                discoveryRafId = requestAnimationFrame(cueStep);
+                            }, 350);
+                        }
+                    });
+                }, { threshold: 0.25 });
+                cueObserver.observe(container);
+            }
         }
     `;
 
@@ -1716,7 +1782,7 @@ function renderPricingPage() {
 
                 <div class="lg:col-span-5 p-8 rounded-2xl bg-velora-surface border-2 border-velora-accent/30 text-center relative">
                     <span class="text-[10px] font-bold uppercase tracking-widest text-velora-accent block mb-2">Estimated Investment</span>
-                    <div id="calc-estimate-display" class="font-display text-4xl sm:text-5xl font-bold text-velora-text mb-2">~₹${(CONFIG.pricing.baseCalculator + (5 * CONFIG.pricing.perPage) + CONFIG.pricing.seoAddon).toLocaleString('en-IN')}</div>
+                    <div id="calc-estimate-display" class="font-display text-4xl sm:text-5xl font-bold text-velora-text mb-2" style="font-variant-numeric: tabular-nums;">~₹${(CONFIG.pricing.baseCalculator + (5 * CONFIG.pricing.perPage) + CONFIG.pricing.seoAddon).toLocaleString('en-IN')}</div>
                     <div id="calc-direction-label" class="inline-block px-3 py-1 bg-velora-accent/10 border border-velora-accent/30 rounded-full text-[10px] font-bold uppercase tracking-widest text-velora-accent mb-4">Professional Build</div>
 
                     <ul id="calc-includes-list" class="text-left space-y-2.5 text-xs text-velora-muted mb-8 pb-8 border-b border-velora-border">
@@ -1746,6 +1812,50 @@ function renderPricingPage() {
         const directionLabel = document.getElementById('calc-direction-label');
         const includesList = document.getElementById('calc-includes-list');
 
+        let currentDisplayedTotal = ${CONFIG.pricing.baseCalculator + (5 * CONFIG.pricing.perPage) + CONFIG.pricing.seoAddon};
+        let counterRafId = null;
+
+        function animateEstimateNumber(targetTotal) {
+            if (!estimateDisplay) return;
+            if (counterRafId) {
+                cancelAnimationFrame(counterRafId);
+                counterRafId = null;
+            }
+
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReducedMotion || currentDisplayedTotal === targetTotal) {
+                currentDisplayedTotal = targetTotal;
+                estimateDisplay.innerText = '~₹' + targetTotal.toLocaleString('en-IN');
+                estimateDisplay.setAttribute('aria-label', 'Estimated investment: approximately ₹' + targetTotal.toLocaleString('en-IN'));
+                return;
+            }
+
+            const startVal = currentDisplayedTotal;
+            const endVal = targetTotal;
+            const startTime = performance.now();
+            const duration = 240;
+
+            function step(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                // easeOutQuad
+                const ease = progress * (2 - progress);
+                const currentVal = Math.round(startVal + (endVal - startVal) * ease);
+                currentDisplayedTotal = currentVal;
+                estimateDisplay.innerText = '~₹' + currentVal.toLocaleString('en-IN');
+
+                if (progress < 1) {
+                    counterRafId = requestAnimationFrame(step);
+                } else {
+                    counterRafId = null;
+                    currentDisplayedTotal = endVal;
+                    estimateDisplay.innerText = '~₹' + endVal.toLocaleString('en-IN');
+                    estimateDisplay.setAttribute('aria-label', 'Estimated investment: approximately ₹' + endVal.toLocaleString('en-IN'));
+                }
+            }
+            counterRafId = requestAnimationFrame(step);
+        }
+
         function updateEstimate() {
             if (!pagesSlider) return;
             const pages = parseInt(pagesSlider.value, 10);
@@ -1758,7 +1868,7 @@ function renderPricingPage() {
             if (seo) total += ${CONFIG.pricing.seoAddon};
             if (maint) total += ${CONFIG.pricing.maintenanceAddon};
 
-            if (estimateDisplay) estimateDisplay.innerText = '~₹' + total.toLocaleString('en-IN');
+            animateEstimateNumber(total);
 
             if (directionLabel) {
                 if (total >= ${CONFIG.pricing.customBase}) {

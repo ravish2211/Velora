@@ -146,7 +146,7 @@ function Header(currentPath) {
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden xl:hidden bg-velora-surface border-b border-velora-border px-4 pt-2 pb-6 space-y-1 shadow-2xl">
+        <div id="mobile-menu" class="mobile-nav-drawer xl:hidden bg-velora-surface border-b border-velora-border px-4 pt-2 pb-6 space-y-1 shadow-2xl" aria-hidden="true">
             <a href="/services" class="block px-4 py-3 min-h-[44px] rounded-lg text-sm font-medium text-velora-muted hover:text-velora-text hover:bg-velora-faint transition-colors">Services</a>
             <a href="/industries" class="block px-4 py-3 min-h-[44px] rounded-lg text-sm font-medium text-velora-muted hover:text-velora-text hover:bg-velora-faint transition-colors">Industries</a>
             <a href="/portfolio" class="block px-4 py-3 min-h-[44px] rounded-lg text-sm font-medium text-velora-muted hover:text-velora-text hover:bg-velora-faint transition-colors">Portfolio</a>
@@ -332,6 +332,19 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
     }
     if (breadcrumbSchema) schemas.push(breadcrumbSchema);
 
+    const cleanEntities = schemas.map(entity => {
+        if (entity && typeof entity === 'object' && entity['@context']) {
+            const { ['@context']: _, ...rest } = entity;
+            return rest;
+        }
+        return entity;
+    });
+
+    const graphSchema = {
+        "@context": "https://schema.org",
+        "@graph": cleanEntities
+    };
+
     const initialTheme = (req.query && req.query.theme) ? escapeHTML(req.query.theme) : '';
 
     return `<!DOCTYPE html>
@@ -348,6 +361,15 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="apple-touch-icon" href="/favicon.png">
+    ${CONFIG.gaMeasurementId ? `
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=${escapeHTML(CONFIG.gaMeasurementId)}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${escapeHTML(CONFIG.gaMeasurementId)}');
+    </script>` : ''}
     
     <!-- Open Graph Metadata -->
     <meta property="og:site_name" content="Velora Digital">
@@ -508,17 +530,69 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
         }
 
         @keyframes plateEntrance {
-            from { opacity: 0; transform: translateY(16px); }
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .hero-drafting-plate {
-            animation: plateEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: plateEntrance 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Hero Architectural Drafting Plate Sequential Reveal */
+        @keyframes draftingPhaseFadeScale {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes draftingPhaseFadeOnly {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .drafting-phase-1 {
+            opacity: 0;
+            animation: draftingPhaseFadeScale 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
+            transform-box: fill-box;
+            transform-origin: center;
+        }
+        .drafting-phase-2 {
+            opacity: 0;
+            animation: draftingPhaseFadeOnly 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+            transform-box: fill-box;
+            transform-origin: center;
+        }
+        .drafting-phase-3 {
+            opacity: 0;
+            animation: draftingPhaseFadeScale 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
+            transform-box: fill-box;
+            transform-origin: center;
         }
         @media (prefers-reduced-motion: reduce) {
-            .hero-drafting-plate {
-                animation: none;
-                opacity: 1;
-                transform: none;
+            .hero-drafting-plate,
+            .drafting-phase-1,
+            .drafting-phase-2,
+            .drafting-phase-3 {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* Mobile Navigation Drawer Transition */
+        .mobile-nav-drawer {
+            opacity: 0;
+            transform: translateY(-8px);
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-origin: top center;
+        }
+        .mobile-nav-drawer.is-open {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+            pointer-events: auto;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .mobile-nav-drawer {
+                transition: none !important;
             }
         }
         
@@ -533,7 +607,7 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
     </style>
     
     <script type="application/ld+json">
-    ${JSON.stringify(schemas, null, 2)}
+    ${JSON.stringify(graphSchema, null, 2)}
     </script>
 </head>
 <body class="min-h-screen flex flex-col bg-velora-bg text-velora-text relative">
@@ -587,15 +661,40 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '') {
         const menuBtn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
         if(menuBtn && menu) {
-            menuBtn.addEventListener('click', function() {
-                menu.classList.toggle('hidden');
-                menuBtn.setAttribute('aria-expanded', menu.classList.contains('hidden') ? 'false' : 'true');
+            function openMenu() {
+                menu.classList.add('is-open');
+                menu.removeAttribute('aria-hidden');
+                menuBtn.setAttribute('aria-expanded', 'true');
+            }
+
+            function closeMenu(restoreFocus = false) {
+                if (!menu.classList.contains('is-open')) return;
+                menu.classList.remove('is-open');
+                menu.setAttribute('aria-hidden', 'true');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                if (restoreFocus) {
+                    menuBtn.focus();
+                }
+            }
+
+            menuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (menu.classList.contains('is-open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
             });
 
             document.addEventListener('click', function(e) {
-                if (!menu.classList.contains('hidden') && !menu.contains(e.target) && !menuBtn.contains(e.target)) {
-                    menu.classList.add('hidden');
-                    menuBtn.setAttribute('aria-expanded', 'false');
+                if (menu.classList.contains('is-open') && !menu.contains(e.target) && !menuBtn.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+                    closeMenu(true);
                 }
             });
         }

@@ -72,6 +72,16 @@ function getResend() {
     return resendClient;
 }
 
+// Trailing-Slash URL Normalization (301 Permanent Redirect)
+app.use((req, res, next) => {
+    if ((req.method === 'GET' || req.method === 'HEAD') && req.path && req.path.length > 1 && req.path.endsWith('/')) {
+        const cleanPath = req.path.replace(/\/+$/, '');
+        const query = req.url.slice(req.path.length);
+        return res.redirect(301, cleanPath + query);
+    }
+    next();
+});
+
 // ============================================================================ //
 // PAGE ROUTES                                                                  //
 // ============================================================================ //

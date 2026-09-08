@@ -4,6 +4,7 @@
 
 const CONFIG = {
     baseUrl: process.env.BASE_URL || 'https://velora-ds6e.onrender.com',
+    gaMeasurementId: (process.env.GA_MEASUREMENT_ID || '').trim(),
     phone: process.env.CONTACT_PHONE || '+91 73037 33735',
     whatsapp: process.env.CONTACT_WHATSAPP || '917303733735',
     email: process.env.CONTACT_EMAIL || 'ravishnoob123@gmail.com',
