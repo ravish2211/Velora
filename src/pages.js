@@ -13,6 +13,10 @@ function renderHomePage() {
         breadcrumbs: null
     };
 
+    const aurora = PORTFOLIO.find(p => p.id === 'aurora-aesthetics') || PORTFOLIO[0];
+    const aarav = PORTFOLIO.find(p => p.id === 'aarav-estates') || PORTFOLIO[1];
+    const spice = PORTFOLIO.find(p => p.id === 'the-spice-room') || PORTFOLIO[2];
+
     const content = `
     <!-- 1. HERO SECTION -->
     <section class="relative pt-24 pb-20 md:pt-36 md:pb-28 overflow-hidden">
@@ -287,9 +291,9 @@ function renderHomePage() {
     </section>
 
     <!-- 3. SELECTED WORK / PORTFOLIO -->
-    <section class="py-20 bg-velora-surface border-y border-velora-border">
+    <section class="py-20 md:py-28 bg-velora-surface border-y border-velora-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 lg:mb-16 gap-6 reveal">
                 <div>
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-velora-faint border-none text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-3">
                         <span>Transparent Architecture</span>
@@ -304,29 +308,141 @@ function renderHomePage() {
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                ${PORTFOLIO.map((p, idx) => `
-                    <div class="premium-border bg-velora-bg rounded-3xl p-8 flex flex-col justify-between reveal" style="transition-delay: ${idx * 100}ms;">
-                        <div>
-                            <div class="flex items-center justify-between gap-2 mb-6">
-                                <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ${p.badgeColor}">${p.type}</span>
-                                <span class="text-xs font-semibold text-velora-muted">${p.industry}</span>
-                            </div>
-                            <h3 class="font-display text-2xl font-bold text-velora-text mb-3 tracking-tight">${p.title}</h3>
-                            <p class="text-sm text-velora-muted leading-relaxed mb-6 text-pretty">${p.summary}</p>
+            <!-- Asymmetric Editorial Showcase -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 pt-8 border-t border-velora-border/60">
+                <!-- FLAGSHIP LEAD: AURORA CLINIC (lg:col-span-7) -->
+                <div class="lg:col-span-7 flex flex-col justify-between reveal">
+                    <div>
+                        <!-- Datum header line -->
+                        <div class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 pb-4 border-b border-velora-border/60">
+                            <span class="font-mono text-xs font-semibold tracking-wider text-velora-accent">01 // HEALTHCARE &amp; CLINICAL AESTHETICS</span>
+                            <span class="font-mono text-[10px] font-semibold uppercase tracking-widest text-velora-muted">Signature Design Concept</span>
+                        </div>
 
-                            <div class="p-4 rounded-2xl bg-velora-surface border-none mb-6">
-                                <div class="text-[10px] font-bold uppercase tracking-wider text-velora-accent mb-1">What It Proves</div>
-                                <div class="text-xs text-velora-muted leading-relaxed">${p.demonstrates}</div>
+                        <!-- Title & Positioning -->
+                        <div class="mt-6 mb-5">
+                            <h3 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-velora-text tracking-tight mb-2">
+                                ${aurora.title}
+                            </h3>
+                            <div class="text-sm sm:text-base font-semibold text-velora-accent">
+                                ${aurora.industry} &bull; Conversion Architecture Benchmark
                             </div>
                         </div>
 
-                        <a href="/portfolio#${p.id}" class="inline-flex items-center justify-between py-3 text-xs uppercase tracking-[0.15em] font-bold text-velora-text hover:text-velora-accent border-t border-velora-border transition-colors">
-                            <span>Inspect Technical Specs</span>
-                            <span>&rarr;</span>
+                        <!-- Summary -->
+                        <p class="text-base text-velora-muted leading-relaxed mb-6 text-pretty">
+                            ${aurora.summary}
+                        </p>
+
+                        <!-- Strategic Demonstration Rationale (Open Framing) -->
+                        <div class="py-5 border-y border-velora-border/60 mb-6 space-y-4">
+                            <div>
+                                <div class="font-mono text-[10px] font-bold uppercase tracking-wider text-velora-accent mb-1">Strategic Objective</div>
+                                <p class="text-sm text-velora-text font-medium leading-relaxed">${aurora.demonstrates}</p>
+                            </div>
+                            <div>
+                                <div class="font-mono text-[10px] font-bold uppercase tracking-wider text-velora-muted mb-1">Key UX Decisions</div>
+                                <p class="text-xs text-velora-muted leading-relaxed">${aurora.keyUxDecisions}</p>
+                            </div>
+                        </div>
+
+                        <!-- Key Deliverables -->
+                        <div class="mb-6">
+                            <div class="font-mono text-[10px] font-bold uppercase tracking-wider text-velora-muted mb-3">Architectural Deliverables</div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-velora-muted">
+                                ${aurora.deliverables.slice(0, 4).map(d => `
+                                    <div class="flex items-start gap-2">
+                                        <span class="text-velora-accent font-bold mt-px">&mdash;</span>
+                                        <span class="leading-snug">${d}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Link -->
+                    <div class="pt-6 border-t border-velora-border/60">
+                        <a href="/portfolio#${aurora.id}" class="group inline-flex items-center justify-between w-full py-2 text-xs uppercase tracking-[0.2em] font-bold text-velora-text hover:text-velora-accent transition-colors">
+                            <span>Inspect Technical Specifications</span>
+                            <span class="transform group-hover:translate-x-1 transition-transform">&rarr;</span>
                         </a>
                     </div>
-                `).join('')}
+                </div>
+
+                <!-- SUPPORTING STUDIES: AARAV PROPERTIES & THE SPICE ROOM (lg:col-span-5) -->
+                <div class="lg:col-span-5 lg:border-l border-velora-border/60 lg:pl-8 xl:pl-12 flex flex-col justify-between pt-10 lg:pt-0 border-t lg:border-t-0 border-velora-border/60">
+                    <!-- Study 02: Aarav Properties -->
+                    <div class="flex flex-col justify-between flex-1 pb-10 border-b border-velora-border/60 reveal" style="transition-delay: 100ms;">
+                        <div>
+                            <!-- Datum header line -->
+                            <div class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 pb-3 border-b border-velora-border/60">
+                                <span class="font-mono text-[11px] xl:text-xs font-semibold tracking-wider text-velora-accent sm:whitespace-nowrap">02 // REAL ESTATE &amp; PROPERTY</span>
+                                <span class="font-mono text-[10px] font-semibold uppercase tracking-widest text-velora-muted">Signature Concept</span>
+                            </div>
+
+                            <!-- Title & Subtitle -->
+                            <div class="mt-5 mb-3">
+                                <h3 class="font-display text-2xl sm:text-3xl font-bold text-velora-text tracking-tight mb-1">
+                                    ${aarav.title}
+                                </h3>
+                                <div class="text-xs font-semibold text-velora-muted mb-3">
+                                    ${aarav.industry}
+                                </div>
+                                <p class="text-sm text-velora-muted leading-relaxed text-pretty mb-4">
+                                    ${aarav.summary}
+                                </p>
+                            </div>
+
+                            <!-- Demonstration Objective (Open Framing) -->
+                            <div class="pt-3 border-t border-velora-border/50 mb-6">
+                                <div class="font-mono text-[10px] font-bold uppercase tracking-wider text-velora-accent mb-1">Strategic Objective</div>
+                                <p class="text-xs text-velora-muted leading-relaxed">${aarav.demonstrates}</p>
+                            </div>
+                        </div>
+
+                        <!-- Action Link -->
+                        <a href="/portfolio#${aarav.id}" class="group inline-flex items-center justify-between w-full py-2 text-xs uppercase tracking-[0.18em] font-bold text-velora-text hover:text-velora-accent transition-colors">
+                            <span>Inspect Technical Specs</span>
+                            <span class="transform group-hover:translate-x-1 transition-transform">&rarr;</span>
+                        </a>
+                    </div>
+
+                    <!-- Study 03: The Spice Room -->
+                    <div class="flex flex-col justify-between flex-1 pt-10 reveal" style="transition-delay: 200ms;">
+                        <div>
+                            <!-- Datum header line -->
+                            <div class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 pb-3 border-b border-velora-border/60">
+                                <span class="font-mono text-[11px] xl:text-xs font-semibold tracking-wider text-velora-accent sm:whitespace-nowrap">03 // RESTAURANTS &amp; HOSPITALITY</span>
+                                <span class="font-mono text-[10px] font-semibold uppercase tracking-widest text-velora-muted">Signature Concept</span>
+                            </div>
+
+                            <!-- Title & Subtitle -->
+                            <div class="mt-5 mb-3">
+                                <h3 class="font-display text-2xl sm:text-3xl font-bold text-velora-text tracking-tight mb-1">
+                                    ${spice.title}
+                                </h3>
+                                <div class="text-xs font-semibold text-velora-muted mb-3">
+                                    ${spice.industry}
+                                </div>
+                                <p class="text-sm text-velora-muted leading-relaxed text-pretty mb-4">
+                                    ${spice.summary}
+                                </p>
+                            </div>
+
+                            <!-- Demonstration Objective (Open Framing) -->
+                            <div class="pt-3 border-t border-velora-border/50 mb-6">
+                                <div class="font-mono text-[10px] font-bold uppercase tracking-wider text-velora-accent mb-1">Strategic Objective</div>
+                                <p class="text-xs text-velora-muted leading-relaxed">${spice.demonstrates}</p>
+                            </div>
+                        </div>
+
+                        <!-- Action Link -->
+                        <a href="/portfolio#${spice.id}" class="group inline-flex items-center justify-between w-full py-2 text-xs uppercase tracking-[0.18em] font-bold text-velora-text hover:text-velora-accent transition-colors">
+                            <span>Inspect Technical Specs</span>
+                            <span class="transform group-hover:translate-x-1 transition-transform">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
