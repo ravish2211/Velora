@@ -3,7 +3,7 @@
 // ============================================================================ //
 
 const CONFIG = {
-    baseUrl: process.env.BASE_URL || 'https://velora-ds6e.onrender.com',
+    baseUrl: process.env.BASE_URL || 'https://veloradigital.co.in',
     gaMeasurementId: (process.env.GA_MEASUREMENT_ID || '').trim(),
     phone: process.env.CONTACT_PHONE || '+91 73037 33735',
     whatsapp: process.env.CONTACT_WHATSAPP || '917303733735',
@@ -280,7 +280,7 @@ const PORTFOLIO = [
         targetIndustry: 'Healthcare, Dental Clinics, Dermatologists',
         designDirection: 'Clinical, calming aesthetic (stone grays and emerald greens) with heavy emphasis on legible typography and clear visual hierarchy.',
         keyUxDecisions: 'Replaced heavy PDF service menus with structured HTML accordions; moved doctor credentials above the fold; added sticky mobile consultation CTA.',
-        technicalPriorities: 'Lightning-fast mobile load time on 4G networks; semantic MedicalBusiness schema integration; strict accessibility (WCAG) compliance for form inputs.',
+        technicalPriorities: 'Lightning-fast mobile load time on 4G networks; semantic MedicalBusiness schema integration; aligned with WCAG 2.1 AA accessibility standards for form inputs.',
         conversionObjectives: 'Maximize form fills for consultation requests; increase direct phone inquiries from mobile devices.',
         deliverables: [
             'Trust-focused clinical layout',

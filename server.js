@@ -8,6 +8,7 @@ const { Resend } = require('resend');
 
 const { CONFIG, SERVICES, INDUSTRIES, LOCATIONS, PORTFOLIO, BLOG, FAQS } = require('./src/data');
 const { BaseLayout, escapeHTML } = require('./src/components');
+const { resolveExperience, renderExperience } = require('./src/experience-engine');
 const {
     renderHomePage,
     renderServicesPage,
@@ -30,7 +31,7 @@ const {
 } = require('./src/pages');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3105;
 
 app.set('trust proxy', 1);
 
@@ -48,6 +49,7 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: '1d' }));
 const globalLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 300,
+    skip: (req) => process.env.NODE_ENV === 'test' || (process.env.NODE_ENV !== 'production' && (req.ip === '127.0.0.1' || req.ip === '::1' || req.ip === '::ffff:127.0.0.1')),
     message: { error: 'Too many requests, please try again later.' },
     standardHeaders: true,
     legacyHeaders: false
@@ -58,6 +60,7 @@ app.use(globalLimiter);
 const contactLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 10,
+    skip: (req) => process.env.NODE_ENV === 'test' || (process.env.NODE_ENV !== 'production' && (req.ip === '127.0.0.1' || req.ip === '::1' || req.ip === '::ffff:127.0.0.1')),
     message: { error: 'Too many contact requests from this IP. Please call or email us directly.' },
     standardHeaders: true,
     legacyHeaders: false
@@ -87,8 +90,35 @@ app.use((req, res, next) => {
 // ============================================================================ //
 
 app.get('/', (req, res) => {
-    const { meta, content, script } = renderHomePage();
-    res.send(BaseLayout(req, meta, content, script));
+    const currentExp = resolveExperience(req);
+
+    // Partial JSON response for seamless client-side crossfade DOM swaps
+    if (req.query.partial === 'true') {
+        const { meta, content, script } = renderExperience(currentExp);
+        res.cookie('velora_exp', currentExp, {
+            path: '/',
+            maxAge: 365 * 24 * 60 * 60 * 1000,
+            sameSite: 'lax'
+        });
+        return res.json({
+            experience: currentExp,
+            meta: {
+                title: meta.title,
+                description: meta.description
+            },
+            html: content,
+            script: script || ''
+        });
+    }
+
+    // Full SSR
+    const { meta, content, script } = renderExperience(currentExp);
+    res.cookie('velora_exp', currentExp, {
+        path: '/',
+        maxAge: 365 * 24 * 60 * 60 * 1000,
+        sameSite: 'lax'
+    });
+    res.send(BaseLayout(req, meta, content, script, currentExp));
 });
 
 app.get('/services', (req, res) => {
@@ -262,7 +292,8 @@ app.post('/api/audit', contactLimiter, async (req, res) => {
             return res.status(200).json({ success: true, message: 'Audit request received.' });
         }
 
-        const website = typeof body.website === 'string' ? body.website.trim() : '';
+        const rawWebsite = (typeof body.website === 'string' ? body.website.trim() : '') || (typeof body.url === 'string' ? body.url.trim() : '');
+        const website = rawWebsite;
         const source = typeof body.source === 'string' ? body.source.trim() : 'Homepage';
 
         if (!website) {
@@ -388,8 +419,10 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
             return res.status(400).json({ success: false, message: 'Project details message is too long (max 2000 characters).' });
         }
 
-        const allowedIndustries = ['real-estate', 'restaurant', 'clinic', 'salon', 'other'];
-        const validatedIndustry = allowedIndustries.includes(industry) ? industry : 'other';
+        const allowedIndustries = ['real-estate', 'restaurants', 'clinics', 'salons', 'other'];
+        const industryNormMap = { 'restaurant': 'restaurants', 'clinic': 'clinics', 'salon': 'salons' };
+        const normalizedIndustry = industryNormMap[industry] || industry;
+        const validatedIndustry = allowedIndustries.includes(normalizedIndustry) ? normalizedIndustry : 'other';
 
         const allowedBudgets = ['essential', 'professional', 'custom'];
         const validatedBudget = allowedBudgets.includes(budget) ? budget : 'professional';
@@ -494,6 +527,10 @@ app.use((err, req, res, next) => {
 // ============================================================================ //
 // SERVER LAUNCH                                                                //
 // ============================================================================ //
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Velora Digital Production SSR running at http://0.0.0.0:${PORT}`);
-});
+if (require.main === module) {
+    app.listen(PORT, '0.0.0.0', () => {
+        console.log(`Velora Digital Production SSR running at http://0.0.0.0:${PORT}`);
+    });
+}
+
+module.exports = app;
