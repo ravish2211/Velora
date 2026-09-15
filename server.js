@@ -266,6 +266,48 @@ app.get('/robots.txt', (req, res) => {
 });
 
 // ============================================================================ //
+// VALIDATION HELPERS                                                           //
+// ============================================================================ //
+
+function validateWebUrl(input) {
+    if (!input || typeof input !== 'string') return null;
+    const trimmed = input.trim();
+    if (!trimmed || trimmed.length > 2000) return null;
+
+    // Check for explicit URI schemes (e.g. ftp:, javascript:, data:, file:, mailto:, tel:)
+    const schemeMatch = trimmed.match(/^([a-zA-Z][a-zA-Z0-9+.-]*):(?!\d)/);
+    let toParse = trimmed;
+    if (schemeMatch) {
+        const scheme = schemeMatch[1].toLowerCase();
+        if (scheme !== 'http' && scheme !== 'https') {
+            return null;
+        }
+    } else {
+        toParse = 'https://' + trimmed;
+    }
+
+    try {
+        const u = new URL(toParse);
+        if (u.protocol !== 'http:' && u.protocol !== 'https:') return null;
+        if (!u.hostname || (!u.hostname.includes('.') && u.hostname !== 'localhost')) return null;
+        if (u.hostname.startsWith('.') || u.hostname.endsWith('.')) return null;
+        return u.href;
+    } catch {
+        return null;
+    }
+}
+
+function validatePhone(input) {
+    if (!input || typeof input !== 'string') return null;
+    const trimmed = input.trim();
+    if (!trimmed) return null;
+    if (!/^[+\d\s\-().]{7,30}$/.test(trimmed)) return null;
+    const digits = trimmed.replace(/\D/g, '');
+    if (digits.length < 7 || digits.length > 16) return null;
+    return trimmed;
+}
+
+// ============================================================================ //
 // API ENDPOINTS                                                                //
 // ============================================================================ //
 
@@ -293,14 +335,13 @@ app.post('/api/audit', contactLimiter, async (req, res) => {
         }
 
         const rawWebsite = (typeof body.website === 'string' ? body.website.trim() : '') || (typeof body.url === 'string' ? body.url.trim() : '');
-        const website = rawWebsite;
         const source = typeof body.source === 'string' ? body.source.trim() : 'Homepage';
 
-        if (!website) {
+        if (!rawWebsite) {
             return res.status(400).json({ success: false, message: 'Please provide a website URL.' });
         }
 
-        if (website.length > 2000) {
+        if (rawWebsite.length > 2000) {
             return res.status(400).json({ success: false, message: 'Website URL is too long.' });
         }
 
@@ -308,17 +349,13 @@ app.post('/api/audit', contactLimiter, async (req, res) => {
             return res.status(400).json({ success: false, message: 'Source value is too long.' });
         }
 
-        let urlObj;
-        try {
-            urlObj = new URL(website.startsWith('http') ? website : 'https://' + website);
-            if (urlObj.protocol !== 'http:' && urlObj.protocol !== 'https:') {
-                throw new Error('Invalid protocol');
-            }
-        } catch(e) {
+        const validUrl = validateWebUrl(rawWebsite);
+        if (!validUrl) {
             return res.status(400).json({ success: false, message: 'Please provide a valid HTTP/HTTPS website URL.' });
         }
 
-        const safeUrl = urlObj.href;
+        const urlObj = new URL(validUrl);
+        const safeUrl = validUrl;
         const safeSource = escapeHTML(source);
         const emailText = `FREE WEBSITE AUDIT LEAD\n\nURL: ${safeUrl}\nSource: ${source}\nTimestamp: ${new Date().toISOString()}`;
         const emailHtml = `
@@ -395,12 +432,26 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
             return res.status(400).json({ success: false, message: 'Please provide a valid email address.' });
         }
 
-        if (phone && phone.length > 30) {
-            return res.status(400).json({ success: false, message: 'Phone number exceeds maximum length.' });
+        let validatedPhone = '';
+        if (phone) {
+            if (phone.length > 30) {
+                return res.status(400).json({ success: false, message: 'Phone number exceeds maximum length.' });
+            }
+            validatedPhone = validatePhone(phone);
+            if (!validatedPhone) {
+                return res.status(400).json({ success: false, message: 'Please provide a valid phone number (7-16 digits).' });
+            }
         }
 
-        if (website && website.length > 255) {
-            return res.status(400).json({ success: false, message: 'Website URL is too long.' });
+        let validatedWebsite = '';
+        if (website) {
+            if (website.length > 255) {
+                return res.status(400).json({ success: false, message: 'Website URL is too long.' });
+            }
+            validatedWebsite = validateWebUrl(website);
+            if (!validatedWebsite) {
+                return res.status(400).json({ success: false, message: 'Please provide a valid HTTP/HTTPS website URL.' });
+            }
         }
 
         if (location && location.length > 100) {
@@ -438,10 +489,10 @@ New Website Project Inquiry via Velora Digital:
 ----------------------------------------------
 Name: ${name}
 Business: ${business}
-Website: ${website || 'Not provided'}
+Website: ${validatedWebsite || 'Not provided'}
 Location: ${location || 'Not provided'}
 Email: ${email}
-Phone: ${phone || 'Not provided'}
+Phone: ${validatedPhone || 'Not provided'}
 Industry: ${validatedIndustry}
 Budget Tier: ${validatedBudget}
 Primary Goal: ${validatedGoal}
@@ -459,8 +510,8 @@ ${message || 'No additional details provided.'}
     <div style="padding: 24px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 8px 8px;">
         <p><strong>From:</strong> ${escapeHTML(name)} (${escapeHTML(business)})</p>
         <p><strong>Email:</strong> <a href="mailto:${escapeHTML(email)}">${escapeHTML(email)}</a></p>
-        <p><strong>Phone:</strong> ${escapeHTML(phone || 'Not provided')}</p>
-        <p><strong>Website:</strong> ${escapeHTML(website || 'Not provided')}</p>
+        <p><strong>Phone:</strong> ${escapeHTML(validatedPhone || 'Not provided')}</p>
+        <p><strong>Website:</strong> ${escapeHTML(validatedWebsite || 'Not provided')}</p>
         <p><strong>Location:</strong> ${escapeHTML(location || 'Not provided')}</p>
         <p><strong>Industry:</strong> ${escapeHTML(validatedIndustry)}</p>
         <p><strong>Budget Tier:</strong> ${escapeHTML(validatedBudget)}</p>
