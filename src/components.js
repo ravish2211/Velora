@@ -609,9 +609,11 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '', currentExp = 'ar
         .nav-glass { background: var(--color-nav-glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
         a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
         
-        .reveal { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+        .reveal, .arch-reveal, .classic-reveal, .classic-rule-reveal, .editorial-reveal, .modern-reveal, .noir-reveal { opacity: 0; transform: translateY(12px); transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active, .arch-reveal.active, .classic-reveal.active, .classic-rule-reveal.active, .editorial-reveal.active, .modern-reveal.active, .noir-reveal.active { opacity: 1; transform: translateY(0); }
+        @media (prefers-reduced-motion: reduce) { 
+            .reveal, .arch-reveal, .classic-reveal, .classic-rule-reveal, .editorial-reveal, .modern-reveal, .noir-reveal { opacity: 1 !important; transform: none !important; transition: none !important; } 
+        }
     
         /* Phase 2I Global Interactivity & Mobile Safe Area Fixes */
         .btn-luxury:active { transform: scale(0.97); }
@@ -718,21 +720,32 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '', currentExp = 'ar
             });
         }
 
-        // Scroll reveal
-        document.addEventListener("DOMContentLoaded", function() {
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        // Centralized Scroll Reveal System
+        window.__veloraInitReveals = function() {
+            const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const revealElements = document.querySelectorAll('.reveal, .arch-reveal, .classic-reveal, .classic-rule-reveal, .editorial-reveal, .modern-reveal, .noir-reveal');
+            
+            if (motionPreference) {
+                revealElements.forEach(el => el.classList.add('active'));
                 return;
             }
+            
             const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
-                    if(entry.isIntersecting) {
+                    if (entry.isIntersecting) {
                         entry.target.classList.add('active');
                         obs.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.08 });
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            
+            revealElements.forEach(el => observer.observe(el));
+        };
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            if (typeof window.__veloraInitReveals === 'function') {
+                window.__veloraInitReveals();
+            }
         });
 
         // Conversion tracking helper
