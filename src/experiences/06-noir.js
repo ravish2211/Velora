@@ -771,12 +771,12 @@ function renderNoirExperience() {
 
                     <div class="space-y-2">
                         <label for="noir-audit-url" class="block text-xs font-mono uppercase tracking-wider text-[#F5F5F7]">Website URL <span class="text-[#C8B28E]">*</span></label>
-                        <input type="url" id="noir-audit-url" name="url" required placeholder="https://yourbusiness.com" class="w-full px-4 py-3 rounded-lg bg-[#15151B] border border-white/[0.12] text-[#F5F5F7] text-sm focus:outline-none focus:border-[#C8B28E] transition-colors">
+                        <input type="url" id="noir-audit-url" name="url" required placeholder="https://yourbusiness.com" autocomplete="url" class="w-full px-4 py-3 rounded-lg bg-[#15151B] border border-white/[0.12] text-[#F5F5F7] text-sm focus:outline-none focus:border-[#C8B28E] transition-colors">
                     </div>
 
                     <div class="space-y-2">
                         <label for="noir-audit-email" class="block text-xs font-mono uppercase tracking-wider text-[#F5F5F7]">Your Business Email <span class="text-[#C8B28E]">*</span></label>
-                        <input type="email" id="noir-audit-email" name="email" required placeholder="director@yourbusiness.com" class="w-full px-4 py-3 rounded-lg bg-[#15151B] border border-white/[0.12] text-[#F5F5F7] text-sm focus:outline-none focus:border-[#C8B28E] transition-colors">
+                        <input type="email" id="noir-audit-email" name="email" required placeholder="director@yourbusiness.com" autocomplete="email" class="w-full px-4 py-3 rounded-lg bg-[#15151B] border border-white/[0.12] text-[#F5F5F7] text-sm focus:outline-none focus:border-[#C8B28E] transition-colors">
                     </div>
 
                     <div class="space-y-2">
@@ -1011,6 +1011,7 @@ function renderNoirExperience() {
                         if (!urlInput || !emailInput) return;
 
                         if (submitBtn) {
+                            if (submitBtn.disabled) return;
                             submitBtn.disabled = true;
                             submitBtn.textContent = 'Transmitting...';
                         }
@@ -1034,10 +1035,17 @@ function renderNoirExperience() {
                                 if (successDiv) successDiv.classList.remove('hidden');
                                 auditForm.reset();
                             } else {
-                                if (errorDiv) errorDiv.classList.remove('hidden');
+                                const data = await res.json().catch(() => ({}));
+                                if (errorDiv) {
+                                    errorDiv.textContent = data.message || 'Unable to process request right now. Please email us directly or connect via WhatsApp.';
+                                    errorDiv.classList.remove('hidden');
+                                }
                             }
                         } catch (err) {
-                            if (errorDiv) errorDiv.classList.remove('hidden');
+                            if (errorDiv) {
+                                errorDiv.textContent = err.message || 'Unable to process request right now. Please email us directly or connect via WhatsApp.';
+                                errorDiv.classList.remove('hidden');
+                            }
                         } finally {
                             if (submitBtn) {
                                 submitBtn.disabled = false;

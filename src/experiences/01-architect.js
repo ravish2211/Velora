@@ -862,6 +862,7 @@ function renderArchitectExperience() {
                                 if(window.veloraTrack) window.veloraTrack('audit_submit');
                                 const form = this;
                                 const submitBtn = form.querySelector('.audit-submit-btn');
+                                if (submitBtn && submitBtn.disabled) return;
                                 const errorDiv = form.querySelector('.audit-error');
                                 const successDiv = form.nextElementSibling;
                                 const website = form.querySelector('.audit-url').value;
@@ -891,7 +892,7 @@ function renderArchitectExperience() {
                                     errorDiv.innerText = err.message || 'Something went wrong. Please try again.';
                                     errorDiv.classList.remove('hidden');
                                     submitBtn.disabled = false;
-                                    submitBtn.innerHTML = 'Get Free Audit &rarr;';
+                                    submitBtn.innerHTML = 'Request Free Audit &rarr;';
                                 });
                             ">
                                 <div class="absolute -left-[9999px] top-auto w-1 h-1 overflow-hidden" aria-hidden="true">
@@ -899,7 +900,7 @@ function renderArchitectExperience() {
                                 </div>
                                 <div>
                                     <label for="audit-website-url" class="sr-only">Website URL</label>
-                                    <input type="url" id="audit-website-url" class="audit-url input-luxury w-full px-4 py-3 bg-velora-surface border-none rounded-xl text-base md:text-sm text-velora-text placeholder-velora-muted focus:outline-none focus:ring-1 focus:ring-velora-accent" name="website" placeholder="https://yourwebsite.com" required>
+                                    <input type="url" id="audit-website-url" class="audit-url input-luxury w-full px-4 py-3 bg-velora-surface border-none rounded-xl text-base md:text-sm text-velora-text placeholder-velora-muted focus:outline-none focus:ring-1 focus:ring-velora-accent" name="website" placeholder="https://yourwebsite.com" autocomplete="url" required>
                                 </div>
                                 <div class="audit-error hidden text-xs text-red-500 font-medium"></div>
                                 <button type="submit" class="audit-submit-btn btn-luxury w-full py-3.5 rounded-xl text-xs uppercase tracking-widest font-bold bg-velora-button text-velora-buttonText hover:opacity-95 transition-opacity shadow-md disabled:opacity-50 disabled:cursor-not-allowed">

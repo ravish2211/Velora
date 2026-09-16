@@ -763,6 +763,7 @@ function renderAtelierExperience() {
                                    id="atelier-audit-url" 
                                    required 
                                    placeholder="https://yourpractice.com" 
+                                   autocomplete="url" 
                                    class="w-full px-4 py-3 text-xs bg-velora-card border border-velora-border rounded-xl focus:border-velora-accent focus:outline-none text-velora-text">
                         </div>
                         <div class="space-y-1.5">
@@ -771,6 +772,7 @@ function renderAtelierExperience() {
                                    id="atelier-audit-email" 
                                    required 
                                    placeholder="founder@yourpractice.com" 
+                                   autocomplete="email" 
                                    class="w-full px-4 py-3 text-xs bg-velora-card border border-velora-border rounded-xl focus:border-velora-accent focus:outline-none text-velora-text">
                         </div>
                     </div>
@@ -921,6 +923,11 @@ function renderAtelierExperience() {
                     });
                     window.__veloraAtelierTriggers = [];
                 }
+                
+                if (window.__veloraAtelierSliderCleanup) {
+                    window.__veloraAtelierSliderCleanup();
+                    window.__veloraAtelierSliderCleanup = null;
+                }
             };
 
             window.initAtelierInteractions = function() {
@@ -1029,6 +1036,7 @@ function renderAtelierExperience() {
                             window.removeEventListener('touchend', stopDragging);
                         }
                     }
+                    window.__veloraAtelierSliderCleanup = stopDragging;
 
                     function startDragging(e) {
                         isDragging = true;
@@ -1106,6 +1114,7 @@ function renderAtelierExperience() {
                         if (!urlInput || !urlInput.value.trim() || !emailInput || !emailInput.value.trim()) return;
 
                         if (submitBtn) {
+                            if (submitBtn.disabled) return;
                             submitBtn.disabled = true;
                             submitBtn.textContent = 'Transmitting...';
                         }
@@ -1129,10 +1138,17 @@ function renderAtelierExperience() {
                                 if (successDiv) successDiv.classList.remove('hidden');
                                 auditForm.reset();
                             } else {
-                                if (errorDiv) errorDiv.classList.remove('hidden');
+                                const data = await res.json().catch(() => ({}));
+                                if (errorDiv) {
+                                    errorDiv.textContent = data.message || 'Unable to process your request. Please check your connection or contact us directly.';
+                                    errorDiv.classList.remove('hidden');
+                                }
                             }
                         } catch (err) {
-                            if (errorDiv) errorDiv.classList.remove('hidden');
+                            if (errorDiv) {
+                                errorDiv.textContent = err.message || 'Unable to process your request. Please check your connection or contact us directly.';
+                                errorDiv.classList.remove('hidden');
+                            }
                         } finally {
                             if (submitBtn) {
                                 submitBtn.disabled = false;

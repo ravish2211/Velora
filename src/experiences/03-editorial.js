@@ -788,6 +788,7 @@ function renderEditorialExperience() {
                                            id="editorial-audit-url" 
                                            name="website" 
                                            placeholder="https://yourwebsite.com" 
+                                           autocomplete="url" 
                                            required 
                                            class="w-full px-4 py-3 bg-velora-surface border border-velora-border text-xs text-velora-text placeholder-velora-muted focus:outline-none focus:ring-1 focus:ring-velora-accent">
                                 </div>
@@ -1067,6 +1068,7 @@ function renderEditorialExperience() {
                     if (typeof window.veloraTrack === 'function') window.veloraTrack('audit_submit');
                     
                     const submitBtn = document.getElementById('editorial-audit-submit-btn');
+                    if (submitBtn && submitBtn.disabled) return;
                     const errorDiv = document.getElementById('editorial-audit-error');
                     const successDiv = document.getElementById('editorial-audit-success');
                     const urlInput = document.getElementById('editorial-audit-url');

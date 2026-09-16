@@ -1039,33 +1039,33 @@ function renderContactPage() {
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                             <label for="name" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Your Name *</label>
-                            <input type="text" id="name" name="name" maxlength="100" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Rahul Sharma">
+                            <input type="text" id="name" name="name" maxlength="100" autocomplete="name" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Rahul Sharma">
                         </div>
                         <div>
                             <label for="business" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Business Name *</label>
-                            <input type="text" id="business" name="business" maxlength="100" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Apex Dental Studio">
+                            <input type="text" id="business" name="business" maxlength="100" autocomplete="organization" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Apex Dental Studio">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                             <label for="email" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Email Address *</label>
-                            <input type="email" id="email" name="email" maxlength="255" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. rahul@apexdental.com">
+                            <input type="email" id="email" name="email" maxlength="255" autocomplete="email" required class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. rahul@apexdental.com">
                         </div>
                         <div>
                             <label for="phone" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Phone / WhatsApp Number (Optional)</label>
-                            <input type="tel" id="phone" name="phone" maxlength="25" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. +91 98765 43210">
+                            <input type="tel" id="phone" name="phone" maxlength="25" autocomplete="tel" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. +91 98765 43210">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                             <label for="website" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Current Website URL (Optional)</label>
-                            <input type="url" id="website" name="website" maxlength="255" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. www.yourdomain.com">
+                            <input type="url" id="website" name="website" maxlength="255" autocomplete="url" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. www.yourdomain.com">
                         </div>
                         <div>
                             <label for="location" class="block text-[10px] font-bold uppercase tracking-widest text-velora-muted mb-2">Primary Target Location (Optional)</label>
-                            <input type="text" id="location" name="location" maxlength="100" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Gurugram, Sector 14">
+                            <input type="text" id="location" name="location" maxlength="100" autocomplete="address-level2" class="w-full bg-transparent border-b border-velora-borderStrong px-0 py-2.5 text-base md:text-sm text-velora-text focus:outline-none input-luxury" placeholder="e.g. Gurugram, Sector 14">
                         </div>
                     </div>
 
@@ -1216,9 +1216,12 @@ function renderContactPage() {
             });
         }
 
+        let isSubmitting = false;
         if (form) {
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
+                if (isSubmitting) return;
+                isSubmitting = true;
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = 'Sending...';
                 errorAlert.classList.add('hidden');
@@ -1232,7 +1235,12 @@ function renderContactPage() {
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                     });
-                    const data = await res.json();
+                    let data = {};
+                    try {
+                        data = await res.json();
+                    } catch (jsonErr) {
+                        data = {};
+                    }
 
                     if (res.ok && data.success) {
                         if (window.veloraTrack) {
@@ -1241,14 +1249,15 @@ function renderContactPage() {
                         successOverlay.classList.remove('hidden');
                         successOverlay.classList.add('flex');
                     } else {
-                        throw new Error(data.message || 'An error occurred while submitting your enquiry.');
+                        throw new Error(data.message || (res.status === 429 ? 'Too many requests. Please wait a moment and try again.' : 'An error occurred while submitting your enquiry.'));
                     }
                 } catch (err) {
                     errorAlert.innerText = err.message || 'Unable to submit enquiry. Please call or email us directly.';
                     errorAlert.classList.remove('hidden');
                 } finally {
+                    isSubmitting = false;
                     submitBtn.disabled = false;
-                    submitBtn.innerHTML = 'Send Request &rarr;';
+                    submitBtn.innerHTML = 'Send Quote Request &rarr;';
                 }
             });
         }

@@ -78,7 +78,8 @@ function getResend() {
 // Trailing-Slash URL Normalization (301 Permanent Redirect)
 app.use((req, res, next) => {
     if ((req.method === 'GET' || req.method === 'HEAD') && req.path && req.path.length > 1 && req.path.endsWith('/')) {
-        const cleanPath = req.path.replace(/\/+$/, '');
+        let cleanPath = req.path.replace(/\/+$/, '');
+        cleanPath = '/' + cleanPath.replace(/^\/+/, '');
         const query = req.url.slice(req.path.length);
         return res.redirect(301, cleanPath + query);
     }
@@ -98,7 +99,9 @@ app.get('/', (req, res) => {
         res.cookie('velora_exp', currentExp, {
             path: '/',
             maxAge: 365 * 24 * 60 * 60 * 1000,
-            sameSite: 'lax'
+            sameSite: 'lax',
+            secure: process.env.NODE_ENV === 'production',
+            httpOnly: true
         });
         return res.json({
             experience: currentExp,
@@ -116,7 +119,9 @@ app.get('/', (req, res) => {
     res.cookie('velora_exp', currentExp, {
         path: '/',
         maxAge: 365 * 24 * 60 * 60 * 1000,
-        sameSite: 'lax'
+        sameSite: 'lax',
+        secure: process.env.NODE_ENV === 'production',
+        httpOnly: true
     });
     res.send(BaseLayout(req, meta, content, script, currentExp));
 });
@@ -364,7 +369,7 @@ app.post('/api/audit', contactLimiter, async (req, res) => {
         <h2 style="margin: 0; font-size: 20px; color: #0f172a;">Velora Digital - FREE WEBSITE AUDIT LEAD</h2>
     </div>
     <div style="padding: 24px; border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 8px 8px;">
-        <p><strong>Website URL:</strong> <a href="${safeUrl}">${safeUrl}</a></p>
+        <p><strong>Website URL:</strong> <a href="${escapeHTML(safeUrl)}">${escapeHTML(safeUrl)}</a></p>
         <p><strong>Source:</strong> ${safeSource}</p>
         <p><strong>Timestamp:</strong> ${new Date().toISOString()}</p>
     </div>

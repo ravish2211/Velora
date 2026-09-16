@@ -113,11 +113,16 @@ function Header(currentPath) {
         return `<a href="${href}" class="px-3 py-2 min-h-[44px] flex items-center rounded-lg text-sm tracking-wide transition-all ${isActive ? 'text-velora-accent font-semibold bg-velora-faint' : 'text-velora-muted hover:text-velora-text hover:bg-velora-faint'}">${label}</a>`;
     };
 
+    const mobileNavItem = (href, label) => {
+        const isActive = currentPath === href || (href !== '/' && currentPath.startsWith(href));
+        return `<a href="${href}" class="mobile-nav-link block px-4 py-3 min-h-[44px] rounded-lg text-sm font-medium transition-colors ${isActive ? 'text-velora-accent font-semibold bg-velora-faint' : 'text-velora-muted hover:text-velora-text hover:bg-velora-faint'}">${label}</a>`;
+    };
+
     return `
     <header class="sticky top-0 z-50 bg-velora-bg/95 backdrop-blur-md transition-all duration-300 border-b border-velora-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <a href="/" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-velora-accent rounded-lg min-h-[44px] px-1" id="nav-brand-logo">
+                <a href="/" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent rounded-lg min-h-[44px] px-1" id="nav-brand-logo">
                     <img src="/logo.png" alt="Velora Digital Logo" width="36" height="36" class="w-9 h-9 rounded object-cover shadow-sm transition-transform duration-300 group-hover:scale-105 invert dark:invert-0">
                     <div class="flex flex-col">
                         <span class="font-display font-bold text-xl tracking-tight text-velora-text leading-none">VELORA</span>
@@ -135,27 +140,27 @@ function Header(currentPath) {
                     ${navItem('/locations', 'Locations')}
                 </nav>
                 <div class="hidden xl:flex items-center gap-4">
-                    <a href="/contact" id="header-cta-btn" class="btn-luxury px-6 py-2.5 min-h-[44px] flex items-center rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText focus:outline-none focus:ring-2 focus:ring-velora-accent shadow-sm hover:opacity-90 transition-opacity">
+                    <a href="/contact" id="header-cta-btn" class="btn-luxury px-6 py-2.5 min-h-[44px] flex items-center rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent shadow-sm hover:opacity-90 transition-opacity">
                         <span>Get a Quote</span>
                     </a>
                 </div>
                 <div class="flex items-center xl:hidden">
-                    <button id="mobile-menu-btn" aria-expanded="false" aria-label="Toggle Navigation Menu" class="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-velora-muted hover:text-velora-text hover:bg-velora-faint focus:outline-none focus:ring-2 focus:ring-velora-accent">
+                    <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle Navigation Menu" class="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-velora-muted hover:text-velora-text hover:bg-velora-faint focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                     </button>
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="mobile-nav-drawer xl:hidden bg-velora-surface border-b border-velora-border px-4 pt-2 pb-6 space-y-1 shadow-2xl" aria-hidden="true">
-            <a href="/services" class="block px-4 py-3 min-h-[44px] rounded-lg text-sm font-medium text-velora-muted hover:text-velora-text hover:bg-velora-faint transition-colors">Services</a>
-            <a href="/industries" class="block px-4 py-3 min-h-[44px] rounded-lg text-sm font-medium text-velora-muted hover:text-velora-text hover:bg-velora-faint transition-colors">Industries</a>
-            <a href="/portfolio" class="block px-4 py-3 min-h-[44px] rounded-lg text-sm font-medium text-velora-muted hover:text-velora-text hover:bg-velora-faint transition-colors">Portfolio</a>
-            <a href="/process" class="block px-4 py-3 min-h-[44px] rounded-lg text-sm font-medium text-velora-muted hover:text-velora-text hover:bg-velora-faint transition-colors">Process</a>
-            <a href="/pricing" class="block px-4 py-3 min-h-[44px] rounded-lg text-sm font-medium text-velora-muted hover:text-velora-text hover:bg-velora-faint transition-colors">Pricing</a>
-            <a href="/about" class="block px-4 py-3 min-h-[44px] rounded-lg text-sm font-medium text-velora-muted hover:text-velora-text hover:bg-velora-faint transition-colors">About</a>
-            <a href="/blog" class="block px-4 py-3 min-h-[44px] rounded-lg text-sm font-medium text-velora-muted hover:text-velora-text hover:bg-velora-faint transition-colors">Journal</a>
-            <a href="/locations" class="block px-4 py-3 min-h-[44px] rounded-lg text-sm font-medium text-velora-muted hover:text-velora-text hover:bg-velora-faint transition-colors">Locations</a>
-            <a href="/contact" class="btn-luxury block w-full text-center mt-6 px-5 py-3.5 min-h-[44px] flex items-center justify-center rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText">Get a Quote</a>
+        <div id="mobile-menu" class="mobile-nav-drawer xl:hidden bg-velora-surface border-b border-velora-border px-4 pt-2 pb-6 space-y-1 shadow-2xl" aria-hidden="true" role="region" aria-label="Mobile Navigation Drawer">
+            ${mobileNavItem('/services', 'Services')}
+            ${mobileNavItem('/industries', 'Industries')}
+            ${mobileNavItem('/portfolio', 'Portfolio')}
+            ${mobileNavItem('/process', 'Process')}
+            ${mobileNavItem('/pricing', 'Pricing')}
+            ${mobileNavItem('/about', 'About')}
+            ${mobileNavItem('/blog', 'Journal')}
+            ${mobileNavItem('/locations', 'Locations')}
+            <a href="/contact" class="mobile-nav-link btn-luxury block w-full text-center mt-6 px-5 py-3.5 min-h-[44px] flex items-center justify-center rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText">Get a Quote</a>
         </div>
     </header>`;
 }
@@ -236,7 +241,7 @@ function Footer() {
                     <div>&copy; ${new Date().getFullYear()} Velora Digital. All rights reserved.</div>
                     <span aria-hidden="true" class="hidden md:inline">&bull;</span>
                     <div class="relative group">
-                        <button id="studio-theme-btn" class="flex items-center gap-1.5 hover:text-velora-text transition-colors focus:outline-none" aria-haspopup="true" aria-expanded="false">
+                        <button id="studio-theme-btn" class="flex items-center gap-1.5 hover:text-velora-text transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent rounded px-1.5 py-0.5" aria-haspopup="true" aria-expanded="false">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
                             <span>Studio Themes</span>
                         </button>
@@ -276,7 +281,7 @@ function FloatingContact(currentPath = '') {
     return `
     <!-- Desktop Floating Quote Button -->
     <div class="fixed bottom-6 right-6 z-40 hidden sm:block">
-        <a href="/contact" id="desktop-floating-cta" onclick="if(window.veloraTrack) window.veloraTrack('cta_click', { button: 'desktop-floating-cta', location: '${currentPath}' })" class="flex items-center gap-3 px-5 py-3 bg-velora-button text-velora-buttonText rounded-full transition-transform duration-300 hover:scale-105 shadow-xl focus:outline-none focus:ring-2 focus:ring-velora-accent" aria-label="Get a Quote">
+        <a href="/contact" id="desktop-floating-cta" onclick="if(window.veloraTrack) window.veloraTrack('cta_click', { button: 'desktop-floating-cta', location: ${escapeHTML(JSON.stringify(currentPath))} })" class="flex items-center gap-3 px-5 py-3 bg-velora-button text-velora-buttonText rounded-full transition-transform duration-300 hover:scale-105 shadow-xl focus:outline-none focus:ring-2 focus:ring-velora-accent" aria-label="Get a Quote">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             <span class="text-xs font-bold uppercase tracking-[0.2em]">Get a Quote</span>
         </a>
@@ -285,11 +290,11 @@ function FloatingContact(currentPath = '') {
     <!-- Mobile Sticky Contact Bar -->
     <div class="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-velora-surface/95 backdrop-blur-xl border-t border-velora-border pb-safe">
         <div class="flex items-center justify-between px-3 py-2.5 gap-2">
-            <a href="https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(defaultMsg)}" id="mobile-whatsapp-btn" onclick="if(window.veloraTrack) window.veloraTrack('cta_click', { button: 'mobile-whatsapp-btn', location: '${currentPath}' })" class="flex-1 flex items-center justify-center gap-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 py-3 min-h-[44px] rounded-xl text-xs font-bold uppercase tracking-wider transition-colors active:scale-95">
+            <a href="https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(defaultMsg)}" id="mobile-whatsapp-btn" onclick="if(window.veloraTrack) window.veloraTrack('cta_click', { button: 'mobile-whatsapp-btn', location: ${escapeHTML(JSON.stringify(currentPath))} })" class="flex-1 flex items-center justify-center gap-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 py-3 min-h-[44px] rounded-xl text-xs font-bold uppercase tracking-wider transition-colors active:scale-95">
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.031 2c-5.514 0-9.998 4.484-9.998 9.998 0 1.983.58 3.829 1.58 5.385l-1.613 5.888 6.042-1.583c1.492.81 3.208 1.282 5.011 1.282 5.514 0 10.027-4.484 10.027-9.998 0-5.514-4.513-9.998-10.049-9.998zm5.958 14.158c-.247.693-1.229 1.299-1.999 1.464-.528.113-1.218.204-3.535-.758-2.962-1.229-4.869-4.249-5.018-4.448-.148-.198-1.213-1.613-1.213-3.076 0-1.463.766-2.183 1.038-2.48.272-.297.593-.371.791-.371.198 0 .396.002.569.01.183.008.43-.069.673.515.247.585.841 2.052.915 2.201.074.148.124.321.025.519-.099.198-.148.321-.297.495-.148.173-.313.387-.446.52-.148.148-.303.309-.13.606.173.297.771 1.272 1.657 2.062 1.139 1.015 2.1 1.328 2.397 1.476.297.148.47.124.643-.074.173-.198.742-.866.94-1.163.198-.297.396-.247.668-.148.272.099 1.73.816 2.027.965.297.148.495.223.569.346.074.124.074.718-.173 1.411z"/></svg>
                 WhatsApp
             </a>
-            <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" id="mobile-call-btn" onclick="if(window.veloraTrack) window.veloraTrack('cta_click', { button: 'mobile-call-btn', location: '${currentPath}' })" class="flex-1 flex items-center justify-center gap-2 bg-velora-faint hover:bg-velora-faintHover text-velora-text py-3 min-h-[44px] rounded-xl text-xs font-bold uppercase tracking-wider transition-colors active:scale-95">
+            <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" id="mobile-call-btn" onclick="if(window.veloraTrack) window.veloraTrack('cta_click', { button: 'mobile-call-btn', location: ${escapeHTML(JSON.stringify(currentPath))} })" class="flex-1 flex items-center justify-center gap-2 bg-velora-faint hover:bg-velora-faintHover text-velora-text py-3 min-h-[44px] rounded-xl text-xs font-bold uppercase tracking-wider transition-colors active:scale-95">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                 Call Us
             </a>
@@ -298,6 +303,20 @@ function FloatingContact(currentPath = '') {
             </a>
         </div>
     </div>`;
+}
+
+
+function ScrollToTop() {
+    return `
+    <!-- Scroll To Top Button -->
+    <button id="scroll-to-top" 
+        class="fixed bottom-24 right-4 sm:bottom-22 sm:right-6 z-40 p-3 min-w-[44px] min-h-[44px] rounded-full bg-velora-surface/90 hover:bg-velora-surface text-velora-muted hover:text-velora-text border border-velora-border shadow-lg backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent flex items-center justify-center cursor-pointer"
+        aria-label="Scroll to top of page"
+        title="Scroll to top">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>`;
 }
 
 function Breadcrumbs(items) {
@@ -319,8 +338,9 @@ function Breadcrumbs(items) {
     </nav>`;
 }
 
-function BaseLayout(req, meta, bodyContent, scriptContent = '', currentExp = 'architect') {
-    const { renderExperienceSelector } = require('./experience-engine');
+function BaseLayout(req, meta, bodyContent, scriptContent = '', providedExp = null) {
+    const { renderExperienceSelector, resolveExperience } = require('./experience-engine');
+    const currentExp = providedExp || resolveExperience(req);
     const canonical = `${CONFIG.baseUrl}${escapeHTML(req.path)}`;
     const schemaOrg = generateSchema('Organization');
     const schemaWebSite = generateSchema('WebSite');
@@ -392,7 +412,11 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '', currentExp = 'ar
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
-
+    ${currentExp === 'atelier' ? `
+    <script src="/vendor/gsap.min.js" defer></script>
+    <script src="/vendor/ScrollTrigger.min.js" defer></script>
+    <script src="/vendor/lenis.min.js" defer></script>
+    ` : ''}
     <script>
         const paramTheme = new URLSearchParams(window.location.search).get('theme');
         const storedTheme = paramTheme || localStorage.getItem('studio-theme') || 'onyx';
@@ -622,6 +646,31 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '', currentExp = 'ar
             body { padding-bottom: 74px; }
             .pb-safe { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
         }
+
+        /* Smooth Anchor Scroll Padding with Sticky Header Offset */
+        html {
+            scroll-padding-top: 5.5rem;
+        }
+        @media (min-width: 768px) {
+            html {
+                scroll-padding-top: 7rem;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html.scroll-smooth {
+                scroll-behavior: auto !important;
+            }
+            #scroll-to-top {
+                transition: none !important;
+            }
+        }
+
+        /* Form Controls Disabled & Loading State */
+        button:disabled, input:disabled, textarea:disabled, select:disabled {
+            opacity: 0.55 !important;
+            cursor: not-allowed !important;
+            pointer-events: none !important;
+        }
 </style>
     
     <script type="application/ld+json">
@@ -635,6 +684,7 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '', currentExp = 'ar
     </div>
     
     ${FloatingContact(req.path)}
+    ${ScrollToTop()}
     ${renderExperienceSelector(currentExp, req.path)}
     ${Header(req.path)}
     ${meta.breadcrumbs ? Breadcrumbs(meta.breadcrumbs) : ''}
@@ -681,11 +731,12 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '', currentExp = 'ar
         // Mobile menu
         const menuBtn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
-        if(menuBtn && menu) {
+        if (menuBtn && menu) {
             function openMenu() {
                 menu.classList.add('is-open');
                 menu.removeAttribute('aria-hidden');
                 menuBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
             }
 
             function closeMenu(restoreFocus = false) {
@@ -693,6 +744,7 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '', currentExp = 'ar
                 menu.classList.remove('is-open');
                 menu.setAttribute('aria-hidden', 'true');
                 menuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
                 if (restoreFocus) {
                     menuBtn.focus();
                 }
@@ -718,7 +770,75 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '', currentExp = 'ar
                     closeMenu(true);
                 }
             });
+
+            // Close when clicking any internal link inside mobile menu
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMenu();
+                });
+            });
+
+            // Auto-close if viewport resized to desktop breakpoint
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 1280 && menu.classList.contains('is-open')) {
+                    closeMenu();
+                }
+            });
         }
+
+        // Scroll To Top Button Logic
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+        if (scrollToTopBtn) {
+            let ticking = false;
+            const updateScrollBtn = () => {
+                const y = window.scrollY || document.documentElement.scrollTop;
+                if (y > 400) {
+                    scrollToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                    scrollToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
+                } else if (y < 320) {
+                    scrollToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
+                    scrollToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                }
+                ticking = false;
+            };
+
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateScrollBtn);
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            scrollToTopBtn.addEventListener('click', () => {
+                const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (prefersReduced) {
+                    window.scrollTo(0, 0);
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        }
+
+        // In-page Smooth Anchor Scrolling with Header Offset
+        document.addEventListener('click', function(e) {
+            const anchor = e.target.closest('a[href^="#"]');
+            if (!anchor) return;
+            const href = anchor.getAttribute('href');
+            if (!href || href === '#' || href.length < 2) return;
+            const targetId = href.slice(1);
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+                e.preventDefault();
+                const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                targetEl.scrollIntoView({
+                    behavior: prefersReduced ? 'auto' : 'smooth',
+                    block: 'start'
+                });
+                if (history.pushState) {
+                    history.pushState(null, '', '#' + targetId);
+                }
+            }
+        });
 
         // Centralized Scroll Reveal System
         window.__veloraInitReveals = function() {
@@ -786,6 +906,7 @@ module.exports = {
     Header,
     Footer,
     FloatingContact,
+    ScrollToTop,
     Breadcrumbs,
     BaseLayout
 };

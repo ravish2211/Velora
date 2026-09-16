@@ -43,7 +43,11 @@ function parseCookies(req) {
             if (parts.length >= 2) {
                 const key = parts[0].trim();
                 const val = parts.slice(1).join('=').trim();
-                list[key] = decodeURIComponent(val);
+                try {
+                    list[key] = decodeURIComponent(val);
+                } catch (e) {
+                    list[key] = val;
+                }
             }
         });
     }
@@ -106,7 +110,7 @@ function renderExperienceSelector(currentExp, currentPath = '/') {
 
         if (isActive) {
             return `
-            <a href="/?exp=${exp.id}" 
+            <a href="${currentPath}?exp=${exp.id}" 
                data-exp="${exp.id}" 
                aria-current="page" 
                class="experience-selector-link group relative flex items-center gap-1.5 px-3 py-1 rounded text-[11px] font-mono tracking-wider transition-all duration-200 bg-velora-accent text-[#070708] font-bold shadow-sm min-h-[36px] focus:outline-none focus:ring-2 focus:ring-velora-accent">
@@ -118,7 +122,7 @@ function renderExperienceSelector(currentExp, currentPath = '/') {
 
         if (isSpikeActive) {
             return `
-            <a href="/?exp=${exp.id}" 
+            <a href="${currentPath}?exp=${exp.id}" 
                data-exp="${exp.id}" 
                class="experience-selector-link group relative flex items-center gap-1.5 px-3 py-1 rounded text-[11px] font-mono tracking-wider transition-all duration-200 text-velora-muted hover:text-velora-text hover:bg-velora-faint min-h-[36px] focus:outline-none focus:ring-2 focus:ring-velora-accent">
                 <span class="text-velora-accent/70 font-medium text-[10px]">${exp.num}</span>
@@ -145,7 +149,7 @@ function renderExperienceSelector(currentExp, currentPath = '/') {
 
         if (isActive) {
             return `
-            <a href="/?exp=${exp.id}" 
+            <a href="${currentPath}?exp=${exp.id}" 
                data-exp="${exp.id}" 
                aria-current="page" 
                class="experience-selector-link flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-mono font-bold bg-velora-accent text-[#070708] min-h-[44px]">
@@ -159,7 +163,7 @@ function renderExperienceSelector(currentExp, currentPath = '/') {
 
         if (isSpikeActive) {
             return `
-            <a href="/?exp=${exp.id}" 
+            <a href="${currentPath}?exp=${exp.id}" 
                data-exp="${exp.id}" 
                class="experience-selector-link flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-mono text-velora-muted hover:text-velora-text hover:bg-velora-faint min-h-[44px]">
                 <div class="flex items-center gap-2">

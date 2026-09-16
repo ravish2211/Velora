@@ -699,7 +699,7 @@ function renderModernExperience() {
                 <form id="modern-audit-form" class="space-y-4">
                     <div class="relative">
                         <label for="modern-audit-url" class="sr-only">Website URL</label>
-                        <input type="url" id="modern-audit-url" name="url" required placeholder="https://yourbusiness.com" class="w-full px-4 py-3.5 bg-velora-bg border border-velora-border text-velora-text placeholder-velora-muted text-xs font-sans focus:outline-none focus:ring-2 focus:ring-velora-accent">
+                        <input type="url" id="modern-audit-url" name="url" required placeholder="https://yourbusiness.com" autocomplete="url" class="w-full px-4 py-3.5 bg-velora-bg border border-velora-border text-velora-text placeholder-velora-muted text-xs font-sans focus:outline-none focus:ring-2 focus:ring-velora-accent">
                     </div>
 
                     <!-- Honeypot Field for Spam Defense -->
@@ -912,6 +912,7 @@ function renderModernExperience() {
                         if (!urlInput || !urlInput.value.trim()) return;
 
                         if (submitBtn) {
+                            if (submitBtn.disabled) return;
                             submitBtn.disabled = true;
                             submitBtn.textContent = 'Analyzing...';
                         }
@@ -933,14 +934,21 @@ function renderModernExperience() {
                                 if (successDiv) successDiv.classList.remove('hidden');
                                 auditForm.reset();
                             } else {
-                                if (errorDiv) errorDiv.classList.remove('hidden');
+                                const data = await res.json().catch(() => ({}));
+                                if (errorDiv) {
+                                    errorDiv.textContent = data.message || 'Submission failed. Please check the URL and try again.';
+                                    errorDiv.classList.remove('hidden');
+                                }
                             }
                         } catch (err) {
-                            if (errorDiv) errorDiv.classList.remove('hidden');
+                            if (errorDiv) {
+                                errorDiv.textContent = err.message || 'Submission failed. Please check your connection and try again.';
+                                errorDiv.classList.remove('hidden');
+                            }
                         } finally {
                             if (submitBtn) {
                                 submitBtn.disabled = false;
-                                submitBtn.textContent = 'Request Technical Teardown \u2192';
+                                submitBtn.textContent = 'Request Technical Review \u2192';
                             }
                         }
                     });
