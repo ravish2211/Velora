@@ -338,7 +338,7 @@ function Breadcrumbs(items) {
     </nav>`;
 }
 
-function BaseLayout(req, meta, bodyContent, scriptContent = '', providedExp = null) {
+function BaseLayout(req, meta, contentSlots, scriptContent = '', providedExp = null) {
     const { renderExperienceSelector, resolveExperience } = require('./experience-engine');
     const currentExp = providedExp || resolveExperience(req);
     const canonical = `${CONFIG.baseUrl}${escapeHTML(req.path)}`;
@@ -346,6 +346,21 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '', providedExp = nu
     const schemaWebSite = generateSchema('WebSite');
     const pageSchema = meta.schema ? meta.schema : null;
     const breadcrumbSchema = meta.breadcrumbs ? generateSchema('BreadcrumbList', { items: meta.breadcrumbs }) : null;
+    
+    // Resolve Content Slots
+    let headerContent = '';
+    let mainContent = '';
+    let footerContent = '';
+    if (typeof contentSlots === 'string') {
+        // Fallback for static pages not yet migrated
+        headerContent = Header(req.path);
+        mainContent = contentSlots;
+        footerContent = Footer();
+    } else if (contentSlots) {
+        headerContent = contentSlots.headerContent || '';
+        mainContent = contentSlots.mainContent || '';
+        footerContent = contentSlots.footerContent || '';
+    }
     
     const schemas = [schemaOrg, schemaWebSite];
     if (pageSchema) {
@@ -686,16 +701,16 @@ function BaseLayout(req, meta, bodyContent, scriptContent = '', providedExp = nu
     ${FloatingContact(req.path)}
     ${ScrollToTop()}
     ${renderExperienceSelector(currentExp, req.path)}
-    ${Header(req.path)}
+    ${headerContent}
     ${meta.breadcrumbs ? Breadcrumbs(meta.breadcrumbs) : ''}
     
     <main class="flex-grow min-h-[70vh]">
           <div id="experience-container" class="overflow-x-hidden">
-              ${bodyContent}
+              ${mainContent}
           </div>
       </main>
     
-    ${Footer()}
+    ${footerContent}
 
     <script>
         // Theme switching logic

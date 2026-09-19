@@ -3,9 +3,176 @@
 // ============================================================================ //
 
 const { CONFIG, SERVICES, INDUSTRIES, LOCATIONS, PORTFOLIO, BLOG, FAQS } = require('../data');
-const { escapeHTML, generateSchema } = require('../components');
+const { escapeHTML, generateSchema } = require("../components");
 
-function renderArchitectExperience() {
+
+function ArchitectHeader(currentPath) {
+    const navItem = (href, label) => {
+        const isActive = currentPath === href || (href !== '/' && currentPath.startsWith(href));
+        return `<a href="${href}" class="px-3 py-2 min-h-[44px] flex items-center rounded-lg text-sm tracking-wide transition-all ${isActive ? 'text-velora-accent font-semibold bg-velora-faint' : 'text-velora-muted hover:text-velora-text hover:bg-velora-faint'}">${label}</a>`;
+    };
+
+    const mobileNavItem = (href, label) => {
+        const isActive = currentPath === href || (href !== '/' && currentPath.startsWith(href));
+        return `<a href="${href}" class="mobile-nav-link block px-4 py-3 min-h-[44px] rounded-lg text-sm font-medium transition-colors ${isActive ? 'text-velora-accent font-semibold bg-velora-faint' : 'text-velora-muted hover:text-velora-text hover:bg-velora-faint'}">${label}</a>`;
+    };
+
+    return `
+    <header class="sticky top-0 z-50 bg-velora-bg/95 backdrop-blur-md transition-all duration-300 border-b border-velora-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="/" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent rounded-lg min-h-[44px] px-1" id="nav-brand-logo">
+                    <img src="/logo.png" alt="Velora Digital Logo" width="36" height="36" class="w-9 h-9 rounded object-cover shadow-sm transition-transform duration-300 group-hover:scale-105 invert dark:invert-0">
+                    <div class="flex flex-col">
+                        <span class="font-display font-bold text-xl tracking-tight text-velora-text leading-none">VELORA</span>
+                        <span class="text-[9px] uppercase tracking-[0.25em] text-velora-muted font-medium mt-1">Digital Studio</span>
+                    </div>
+                </a>
+                <nav class="hidden xl:flex items-center gap-1" aria-label="Main Navigation">
+                    ${navItem('/services', 'Services')}
+                    ${navItem('/industries', 'Industries')}
+                    ${navItem('/portfolio', 'Portfolio')}
+                    ${navItem('/process', 'Process')}
+                    ${navItem('/pricing', 'Pricing')}
+                    ${navItem('/about', 'About')}
+                    ${navItem('/blog', 'Journal')}
+                    ${navItem('/locations', 'Locations')}
+                </nav>
+                <div class="hidden xl:flex items-center gap-4">
+                    <a href="/contact" id="header-cta-btn" class="btn-luxury px-6 py-2.5 min-h-[44px] flex items-center rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent shadow-sm hover:opacity-90 transition-opacity">
+                        <span>Get a Quote</span>
+                    </a>
+                </div>
+                <div class="flex items-center xl:hidden">
+                    <button id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle Navigation Menu" class="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-velora-muted hover:text-velora-text hover:bg-velora-faint focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-nav-drawer xl:hidden bg-velora-surface border-b border-velora-border px-4 pt-2 pb-6 space-y-1 shadow-2xl" aria-hidden="true" role="region" aria-label="Mobile Navigation Drawer">
+            ${mobileNavItem('/services', 'Services')}
+            ${mobileNavItem('/industries', 'Industries')}
+            ${mobileNavItem('/portfolio', 'Portfolio')}
+            ${mobileNavItem('/process', 'Process')}
+            ${mobileNavItem('/pricing', 'Pricing')}
+            ${mobileNavItem('/about', 'About')}
+            ${mobileNavItem('/blog', 'Journal')}
+            ${mobileNavItem('/locations', 'Locations')}
+            <a href="/contact" class="mobile-nav-link btn-luxury block w-full text-center mt-6 px-5 py-3.5 min-h-[44px] flex items-center justify-center rounded-full text-xs uppercase tracking-[0.2em] font-bold bg-velora-button text-velora-buttonText">Get a Quote</a>
+        </div>
+    </header>`;
+}
+
+function ArchitectFooter() {
+    return `
+    <footer class="relative bg-velora-bg pt-20 pb-28 sm:pb-24 mt-20 border-t border-velora-border overflow-hidden transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+                <div class="lg:col-span-3 space-y-5">
+                    <div class="flex items-center gap-3">
+                        <img src="/logo.png" alt="Velora Digital Logo" width="32" height="32" class="w-8 h-8 rounded object-cover invert dark:invert-0">
+                        <span class="font-display font-bold text-xl tracking-tight text-velora-text">VELORA DIGITAL</span>
+                    </div>
+                    <p class="text-sm text-velora-muted leading-relaxed max-w-sm text-pretty">
+                        A focused web design & local SEO studio. We build clean, fast-loading websites that make serious local businesses easy to discover, trust, and contact.
+                    </p>
+                    <div class="pt-2 text-xs text-velora-muted space-y-1.5">
+                        <div class="flex items-center gap-2">
+                            <span class="text-velora-accent">📍</span>
+                            <span>Serving Gurugram, Delhi NCR, Chandigarh & Bengaluru</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-velora-accent">✉️</span>
+                            <a href="mailto:${CONFIG.email}" onclick="if(window.veloraTrack) window.veloraTrack('email_click', { url: this.href })" class="hover:text-velora-accent transition-colors">${CONFIG.email}</a>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-velora-accent">📞</span>
+                            <a href="tel:${CONFIG.phone.replace(/\s/g, '')}" onclick="if(window.veloraTrack) window.veloraTrack('phone_click', { url: this.href })" class="hover:text-velora-accent transition-colors">${CONFIG.phone}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-2">
+                    <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Services</p>
+                    <ul class="space-y-2.5 text-sm text-velora-muted">
+                        <li><a href="/services/website-design" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Web Design</a></li>
+                        <li><a href="/services/local-seo" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Local SEO</a></li>
+                        <li><a href="/services/website-maintenance" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Maintenance Care</a></li>
+                        <li><a href="/services" class="flex items-center min-h-[44px] hover:text-velora-accent font-medium transition-colors">All Services &rarr;</a></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-2">
+                    <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Industries</p>
+                    <ul class="space-y-2.5 text-sm text-velora-muted">
+                        <li><a href="/industries/real-estate" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Real Estate</a></li>
+                        <li><a href="/industries/restaurants" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Restaurants</a></li>
+                        <li><a href="/industries/clinics" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Clinics & Dentists</a></li>
+                        <li><a href="/industries/salons" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Salons & Spas</a></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-2">
+                    <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Locations</p>
+                    <ul class="space-y-2.5 text-sm text-velora-muted">
+                        <li><a href="/locations/gurugram" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Gurugram</a></li>
+                        <li><a href="/locations/delhi-ncr" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Delhi NCR</a></li>
+                        <li><a href="/locations/chandigarh" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Chandigarh</a></li>
+                        <li><a href="/locations/bengaluru" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Bengaluru</a></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-3">
+                    <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-velora-text mb-5">Company & Exploration</p>
+                    <div class="grid grid-cols-2 gap-2 text-sm text-velora-muted mb-6">
+                        <a href="/about" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">About Studio</a>
+                        <a href="/portfolio" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Portfolio</a>
+                        <a href="/process" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Our Process</a>
+                        <a href="/pricing" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Pricing & Calculator</a>
+                        <a href="/blog" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Journal & Advice</a>
+                        <a href="/locations" class="flex items-center min-h-[44px] hover:text-velora-accent transition-colors">Service Areas</a>
+                    </div>
+                    <div class="p-4 rounded-xl bg-velora-surface border border-velora-border">
+                        <div class="text-xs font-semibold text-velora-text mb-1">Honest Studio Guarantee</div>
+                        <div class="text-xs text-gray-400 leading-relaxed">No fake metrics or inflated agency retainers. Clean code, clear pricing, and reliable delivery.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-velora-border text-xs text-gray-400">
+                <div class="flex items-center gap-4 flex-wrap justify-center">
+                    <div>&copy; ${new Date().getFullYear()} Velora Digital. All rights reserved.</div>
+                    <span aria-hidden="true" class="hidden md:inline">&bull;</span>
+                    <div class="relative group">
+                        <button id="studio-theme-btn" class="flex items-center gap-1.5 hover:text-velora-text transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent rounded px-1.5 py-0.5" aria-haspopup="true" aria-expanded="false">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                            <span>Studio Themes</span>
+                        </button>
+                        <div id="studio-theme-menu" class="absolute bottom-full left-0 mb-2 w-48 bg-velora-surface border border-velora-border rounded-xl shadow-xl p-2 hidden z-50">
+                            <button class="theme-option w-full flex items-center justify-between px-3 py-2 text-left text-sm rounded-lg hover:bg-velora-faint transition-colors text-velora-text" data-theme-value="onyx">
+                                <span>Onyx / Champagne</span>
+                                <span class="w-3 h-3 rounded-full bg-velora-accent"></span>
+                            </button>
+                            <button class="theme-option w-full flex items-center justify-between px-3 py-2 text-left text-sm rounded-lg hover:bg-velora-faint transition-colors text-velora-text" data-theme-value="obsidian">
+                                <span>Obsidian / Titanium</span>
+                                <span class="w-3 h-3 rounded-full bg-[#E2E8F0]"></span>
+                            </button>
+                            <button class="theme-option w-full flex items-center justify-between px-3 py-2 text-left text-sm rounded-lg hover:bg-velora-faint transition-colors text-velora-text" data-theme-value="midnight">
+                                <span>Midnight / Cobalt</span>
+                                <span class="w-3 h-3 rounded-full bg-[#0ea5e9]"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 flex-wrap justify-center md:justify-end md:pr-36">
+                    <a href="/privacy-policy" class="hover:text-velora-text transition-colors">Privacy Policy</a>
+                    <span aria-hidden="true">&bull;</span>
+                    <a href="/terms" class="hover:text-velora-text transition-colors">Terms of Service</a>
+                    <span aria-hidden="true">&bull;</span>
+                    <a href="/sitemap.xml" class="hover:text-velora-text transition-colors">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>`;
+}
+
+function renderArchitectExperience(currentPath = "/") {
     const meta = {
         title: 'Velora Digital | Web Design, Local SEO & Maintenance Studio',
         description: 'We engineer fast, mobile-first websites and local search foundations for serious businesses across India. Transparent pricing, clean code, no fluff.',
@@ -1138,7 +1305,7 @@ function renderArchitectExperience() {
         window.initArchitectInteractions();
     `;
 
-    return { meta, content, script };
+    return { meta, headerContent: ArchitectHeader(currentPath), mainContent: content, footerContent: ArchitectFooter(), script };
 }
 
 module.exports = {

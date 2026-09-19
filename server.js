@@ -95,7 +95,9 @@ app.get('/', (req, res) => {
 
     // Partial JSON response for seamless client-side crossfade DOM swaps
     if (req.query.partial === 'true') {
-        const { meta, content, script } = renderExperience(currentExp);
+        const { meta, headerContent, mainContent, footerContent, script } = renderExperience(currentExp, req.path);
+        // Concatenate for the legacy JSON `html` contract so frontend animations don't break
+        const content = headerContent + mainContent + footerContent;
         res.cookie('velora_exp', currentExp, {
             path: '/',
             maxAge: 365 * 24 * 60 * 60 * 1000,
@@ -115,7 +117,7 @@ app.get('/', (req, res) => {
     }
 
     // Full SSR
-    const { meta, content, script } = renderExperience(currentExp);
+    const { meta, headerContent, mainContent, footerContent, script } = renderExperience(currentExp, req.path);
     res.cookie('velora_exp', currentExp, {
         path: '/',
         maxAge: 365 * 24 * 60 * 60 * 1000,
@@ -123,7 +125,7 @@ app.get('/', (req, res) => {
         secure: process.env.NODE_ENV === 'production',
         httpOnly: true
     });
-    res.send(BaseLayout(req, meta, content, script, currentExp));
+    res.send(BaseLayout(req, meta, { headerContent, mainContent, footerContent }, script, currentExp));
 });
 
 app.get('/services', (req, res) => {

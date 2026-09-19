@@ -3,7 +3,7 @@
 // ============================================================================ //
 
 const { CONFIG, SERVICES, INDUSTRIES, PORTFOLIO, FAQS } = require('../data');
-const { escapeHTML, generateSchema } = require('../components');
+const { escapeHTML, generateSchema, Header, Footer } = require("../components");
 
 /**
  * Authoritative 03 Editorial Experience Presentation Renderer.
@@ -11,7 +11,7 @@ const { escapeHTML, generateSchema } = require('../components');
  * Features asymmetric broadsheet layouts, oversized editorial headlines,
  * disciplined hairline rules, and strict data integration from src/data.js.
  */
-function renderEditorialExperience() {
+function renderEditorialExperience(currentPath = "/") {
     const meta = {
         title: 'Velora Digital | Editorial Studio Architecture & Local Web Design',
         description: 'Independent design publication aesthetic for high-trust commercial practices. Typography-led layouts, lightweight mobile architecture, and complete asset ownership.',
@@ -1157,7 +1157,7 @@ function renderEditorialExperience() {
         }
     `;
 
-    return { meta, content, script };
+    return { meta, headerContent: Header(currentPath), mainContent: content, footerContent: Footer(), script };
 }
 
 module.exports = {

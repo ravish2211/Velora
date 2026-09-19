@@ -5,9 +5,9 @@
 // ============================================================================ //
 
 const { CONFIG, SERVICES, INDUSTRIES, PORTFOLIO, FAQS } = require('../data');
-const { escapeHTML, generateSchema } = require('../components');
+const { escapeHTML, generateSchema, Header, Footer } = require("../components");
 
-function renderAtelierExperience() {
+function renderAtelierExperience(currentPath = "/") {
     const aurora = PORTFOLIO.find(p => p.id === 'aurora-aesthetics' || p.id === 'aurora-clinic') || PORTFOLIO[0];
     const aarav = PORTFOLIO.find(p => p.id === 'aarav-estates' || p.id === 'aarav-properties') || PORTFOLIO[1];
     const spiceRoom = PORTFOLIO.find(p => p.id === 'the-spice-room') || PORTFOLIO[2];
@@ -1186,7 +1186,7 @@ function renderAtelierExperience() {
         })();
     `;
 
-    return { meta, content, script };
+    return { meta, headerContent: Header(currentPath), mainContent: content, footerContent: Footer(), script };
 }
 
 module.exports = {

@@ -238,23 +238,23 @@ function renderExperienceSelector(currentExp, currentPath = '/') {
  * Resolves and renders the requested experience presentation.
  * Authoritative presentation registry for Velora Digital.
  */
-function renderExperience(expId) {
+function renderExperience(expId, currentPath = '/') {
     if (expId === 'classic') {
-        return renderClassicExperience();
+        return renderClassicExperience(currentPath);
     }
     if (expId === 'editorial') {
-        return renderEditorialExperience();
+        return renderEditorialExperience(currentPath);
     }
     if (expId === 'modern') {
-        return renderModernExperience();
+        return renderModernExperience(currentPath);
     }
     if (expId === 'atelier') {
-        return renderAtelierExperience();
+        return renderAtelierExperience(currentPath);
     }
     if (expId === 'noir') {
-        return renderNoirExperience();
+        return renderNoirExperience(currentPath);
     }
-    return renderArchitectExperience();
+    return renderArchitectExperience(currentPath);
 }
 
 module.exports = {

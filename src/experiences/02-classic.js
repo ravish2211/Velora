@@ -3,7 +3,7 @@
 // ============================================================================ //
 
 const { CONFIG, SERVICES, INDUSTRIES, PORTFOLIO, FAQS } = require('../data');
-const { escapeHTML, generateSchema } = require('../components');
+const { escapeHTML, generateSchema, Header, Footer } = require("../components");
 
 /**
  * Authoritative 02 Classic Experience Presentation Renderer.
@@ -11,7 +11,7 @@ const { escapeHTML, generateSchema } = require('../components');
  * Features Cormorant Garamond serif headlines, classical rules, warm ivory paper canvas,
  * and strict factual data integration from src/data.js.
  */
-function renderClassicExperience() {
+function renderClassicExperience(currentPath = "/") {
     const meta = {
         title: 'Velora Digital | Classic Studio Architecture & Local Web Design',
         description: 'Boutique web design studio and technical local SEO for serious commercial practices. Timeless editorial craft, sub-second mobile speeds, and complete asset ownership.',
@@ -1156,7 +1156,7 @@ function renderClassicExperience() {
         }
     `;
 
-    return { meta, content, script };
+    return { meta, headerContent: Header(currentPath), mainContent: content, footerContent: Footer(), script };
 }
 
 module.exports = {
