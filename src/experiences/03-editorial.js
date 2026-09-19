@@ -1157,7 +1157,27 @@ function renderEditorialExperience(currentPath = "/") {
         }
     `;
 
-    return { meta, headerContent: Header(currentPath), mainContent: content, footerContent: Footer(), script };
+    const styles = `
+        html[data-experience="editorial"] {
+            --color-bg: #f9f9f9;
+            --color-surface: #ffffff;
+            --color-card: #f0f0f0;
+            --color-card-hover: #e5e5e5;
+            --color-border: rgba(17,17,17,0.15);
+            --color-border-strong: rgba(17,17,17,0.3);
+            --color-text-main: #111111;
+            --color-text-muted: #666666;
+            --color-faint: rgba(17,17,17,0.04);
+            --color-faint-hover: rgba(17,17,17,0.08);
+            --color-btn-bg: #111111;
+            --color-btn-text: #ffffff;
+            --color-btn-hover: #333333;
+            --color-nav-glass: rgba(249,249,249,0.95);
+            --color-accent: #cc0000;
+        }
+    `;
+
+    return { meta, headerContent: Header(currentPath), mainContent: content, footerContent: Footer(), styles, script };
 }
 
 module.exports = {

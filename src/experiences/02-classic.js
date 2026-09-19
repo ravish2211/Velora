@@ -1156,7 +1156,27 @@ function renderClassicExperience(currentPath = "/") {
         }
     `;
 
-    return { meta, headerContent: Header(currentPath), mainContent: content, footerContent: Footer(), script };
+    const styles = `
+        html[data-experience="classic"] {
+            --color-bg: #fdfbf7;
+            --color-surface: #ffffff;
+            --color-card: #f3f0e8;
+            --color-card-hover: #eae4d8;
+            --color-border: rgba(43,43,43,0.1);
+            --color-border-strong: rgba(43,43,43,0.2);
+            --color-text-main: #2b2b2b;
+            --color-text-muted: #57534e;
+            --color-faint: rgba(43,43,43,0.03);
+            --color-faint-hover: rgba(43,43,43,0.06);
+            --color-btn-bg: #1c1917;
+            --color-btn-text: #ffffff;
+            --color-btn-hover: #44403c;
+            --color-nav-glass: rgba(253,251,247,0.95);
+            --color-accent: #1c1917;
+        }
+    `;
+
+    return { meta, headerContent: Header(currentPath), mainContent: content, footerContent: Footer(), styles, script };
 }
 
 module.exports = {

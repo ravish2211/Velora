@@ -1186,7 +1186,27 @@ function renderAtelierExperience(currentPath = "/") {
         })();
     `;
 
-    return { meta, headerContent: Header(currentPath), mainContent: content, footerContent: Footer(), script };
+    const styles = `
+        html[data-experience="atelier"] {
+            --color-bg: #f4ede4;
+            --color-surface: #ece1d3;
+            --color-card: #e5d5c5;
+            --color-card-hover: #dcc8b6;
+            --color-border: rgba(74,60,49,0.15);
+            --color-border-strong: rgba(74,60,49,0.3);
+            --color-text-main: #4a3c31;
+            --color-text-muted: #8a7a6c;
+            --color-faint: rgba(74,60,49,0.05);
+            --color-faint-hover: rgba(74,60,49,0.08);
+            --color-btn-bg: #8c715c;
+            --color-btn-text: #ffffff;
+            --color-btn-hover: #735d4b;
+            --color-nav-glass: rgba(244,237,228,0.95);
+            --color-accent: #8c715c;
+        }
+    `;
+
+    return { meta, headerContent: Header(currentPath), mainContent: content, footerContent: Footer(), styles, script };
 }
 
 module.exports = {

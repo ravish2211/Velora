@@ -994,7 +994,27 @@ function renderModernExperience(currentPath = "/") {
         })();
     `;
 
-    return { meta, headerContent: Header(currentPath), mainContent: content, footerContent: Footer(), script };
+    const styles = `
+        html[data-experience="modern"] {
+            --color-bg: #ffffff;
+            --color-surface: #f8fafc;
+            --color-card: #f1f5f9;
+            --color-card-hover: #e2e8f0;
+            --color-border: rgba(15,23,42,0.1);
+            --color-border-strong: rgba(15,23,42,0.2);
+            --color-text-main: #0f172a;
+            --color-text-muted: #64748b;
+            --color-faint: rgba(15,23,42,0.03);
+            --color-faint-hover: rgba(15,23,42,0.06);
+            --color-btn-bg: #2563eb;
+            --color-btn-text: #ffffff;
+            --color-btn-hover: #1d4ed8;
+            --color-nav-glass: rgba(255,255,255,0.95);
+            --color-accent: #2563eb;
+        }
+    `;
+
+    return { meta, headerContent: Header(currentPath), mainContent: content, footerContent: Footer(), styles, script };
 }
 
 module.exports = {

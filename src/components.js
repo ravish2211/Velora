@@ -351,6 +351,7 @@ function BaseLayout(req, meta, contentSlots, scriptContent = '', providedExp = n
     let headerContent = '';
     let mainContent = '';
     let footerContent = '';
+    let styleContent = '';
     if (typeof contentSlots === 'string') {
         // Fallback for static pages not yet migrated
         headerContent = Header(req.path);
@@ -360,6 +361,7 @@ function BaseLayout(req, meta, contentSlots, scriptContent = '', providedExp = n
         headerContent = contentSlots.headerContent || '';
         mainContent = contentSlots.mainContent || '';
         footerContent = contentSlots.footerContent || '';
+        styleContent = contentSlots.styles || contentSlots.styleContent || '';
     }
     
     const schemas = [schemaOrg, schemaWebSite];
@@ -497,13 +499,7 @@ function BaseLayout(req, meta, contentSlots, scriptContent = '', providedExp = n
             --color-accent: #0ea5e9;
             --color-accent-light: #38bdf8;
         }
-        /* Phase 2I Group F - Experience Palettes */
-        html[data-experience="classic"] { --color-bg: #fdfbf7; --color-surface: #ffffff; --color-card: #f3f0e8; --color-card-hover: #eae4d8; --color-border: rgba(43,43,43,0.1); --color-border-strong: rgba(43,43,43,0.2); --color-text-main: #2b2b2b; --color-text-muted: #57534e; --color-faint: rgba(43,43,43,0.03); --color-faint-hover: rgba(43,43,43,0.06); --color-btn-bg: #1c1917; --color-btn-text: #ffffff; --color-btn-hover: #44403c; --color-nav-glass: rgba(253,251,247,0.95); --color-accent: #1c1917; }
-        html[data-experience="editorial"] { --color-bg: #f9f9f9; --color-surface: #ffffff; --color-card: #f0f0f0; --color-card-hover: #e5e5e5; --color-border: rgba(17,17,17,0.15); --color-border-strong: rgba(17,17,17,0.3); --color-text-main: #111111; --color-text-muted: #666666; --color-faint: rgba(17,17,17,0.04); --color-faint-hover: rgba(17,17,17,0.08); --color-btn-bg: #111111; --color-btn-text: #ffffff; --color-btn-hover: #333333; --color-nav-glass: rgba(249,249,249,0.95); --color-accent: #cc0000; }
-        html[data-experience="modern"] { --color-bg: #ffffff; --color-surface: #f8fafc; --color-card: #f1f5f9; --color-card-hover: #e2e8f0; --color-border: rgba(15,23,42,0.1); --color-border-strong: rgba(15,23,42,0.2); --color-text-main: #0f172a; --color-text-muted: #64748b; --color-faint: rgba(15,23,42,0.03); --color-faint-hover: rgba(15,23,42,0.06); --color-btn-bg: #2563eb; --color-btn-text: #ffffff; --color-btn-hover: #1d4ed8; --color-nav-glass: rgba(255,255,255,0.95); --color-accent: #2563eb; }
-        html[data-experience="atelier"] { --color-bg: #f4ede4; --color-surface: #ece1d3; --color-card: #e5d5c5; --color-card-hover: #dcc8b6; --color-border: rgba(74,60,49,0.15); --color-border-strong: rgba(74,60,49,0.3); --color-text-main: #4a3c31; --color-text-muted: #8a7a6c; --color-faint: rgba(74,60,49,0.05); --color-faint-hover: rgba(74,60,49,0.08); --color-btn-bg: #8c715c; --color-btn-text: #ffffff; --color-btn-hover: #735d4b; --color-nav-glass: rgba(244,237,228,0.95); --color-accent: #8c715c; }
-        html[data-experience="noir"] { --color-bg: #09090b; --color-surface: #18181b; --color-card: #27272a; --color-card-hover: #3f3f46; --color-border: rgba(250,250,250,0.1); --color-border-strong: rgba(250,250,250,0.2); --color-text-main: #fafafa; --color-text-muted: #a1a1aa; --color-faint: rgba(250,250,250,0.05); --color-faint-hover: rgba(250,250,250,0.08); --color-btn-bg: #fafafa; --color-btn-text: #09090b; --color-btn-hover: #e4e4e7; --color-nav-glass: rgba(9,9,11,0.95); --color-accent: #fafafa; }
-    
+
 
         body { 
             background-color: var(--color-bg); 
@@ -687,6 +683,10 @@ function BaseLayout(req, meta, contentSlots, scriptContent = '', providedExp = n
             pointer-events: none !important;
         }
 </style>
+    ${styleContent ? `
+    <style id="experience-styles">
+${styleContent}
+    </style>` : ''}
     
     <script type="application/ld+json">
     ${JSON.stringify(graphSchema, null, 2)}

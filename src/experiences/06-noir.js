@@ -1083,7 +1083,27 @@ function renderNoirExperience(currentPath = "/") {
         })();
     `;
 
-    return { meta, headerContent: Header(currentPath), mainContent: content, footerContent: Footer(), script };
+    const styles = `
+        html[data-experience="noir"] {
+            --color-bg: #09090b;
+            --color-surface: #18181b;
+            --color-card: #27272a;
+            --color-card-hover: #3f3f46;
+            --color-border: rgba(250,250,250,0.1);
+            --color-border-strong: rgba(250,250,250,0.2);
+            --color-text-main: #fafafa;
+            --color-text-muted: #a1a1aa;
+            --color-faint: rgba(250,250,250,0.05);
+            --color-faint-hover: rgba(250,250,250,0.08);
+            --color-btn-bg: #fafafa;
+            --color-btn-text: #09090b;
+            --color-btn-hover: #e4e4e7;
+            --color-nav-glass: rgba(9,9,11,0.95);
+            --color-accent: #fafafa;
+        }
+    `;
+
+    return { meta, headerContent: Header(currentPath), mainContent: content, footerContent: Footer(), styles, script };
 }
 
 module.exports = {
