@@ -743,17 +743,17 @@ function renderModernExperience(currentPath = "/") {
                                     </div>
 
                                     <div class="modern-phone-card p-3 space-y-2">
-                                        <span class="text-[9px] uppercase tracking-wider text-amber-400 font-mono font-bold block">Prime Residential Inventory</span>
-                                        <h4 class="text-sm font-bold text-white leading-tight">Golf Course Ext. · 3 &amp; 4 BHK Luxury Residences</h4>
+                                        <span class="text-[9px] uppercase tracking-wider text-amber-400 font-mono font-bold block">Property Showcase Features</span>
+                                        <h4 class="text-sm font-bold text-white leading-tight">Property Catalog &amp; Floor Plan Viewer</h4>
                                         <div class="grid grid-cols-2 gap-2 text-[10px] font-mono text-slate-300 pt-1">
-                                            <span class="bg-slate-900 p-1.5 rounded">2,450 Sq.Ft</span>
-                                            <span class="bg-slate-900 p-1.5 rounded">Ready Q4 2026</span>
+                                            <span class="bg-slate-900 p-1.5 rounded">RERA Display</span>
+                                            <span class="bg-slate-900 p-1.5 rounded">Schema.org</span>
                                         </div>
                                     </div>
 
                                     <div class="p-2.5 rounded-lg modern-phone-badge-amber space-y-1">
                                         <span class="text-[10px] font-bold text-amber-300">Direct Broker Channel</span>
-                                        <p class="text-[10px] text-slate-300">Zero portal aggregation fees · Exclusive inventory</p>
+                                        <p class="text-[10px] text-slate-300">Zero portal aggregation fees · Direct WhatsApp routing</p>
                                     </div>
 
                                     <div class="pt-2">
@@ -815,7 +815,7 @@ function renderModernExperience(currentPath = "/") {
                                     </p>
                                 </div>
                                 <div class="p-4 rounded-xl bg-velora-surface border border-velora-border/60 space-y-2">
-                                    <span class="text-[10px] font-mono uppercase text-velora-accent font-bold block">03 // Direct Inventory</span>
+                                    <span class="text-[10px] font-mono uppercase text-velora-accent font-bold block">03 // Direct Inquiries</span>
                                     <div class="text-xs font-bold text-velora-text">Zero-Portal Interception</div>
                                     <p class="text-[11px] text-velora-muted leading-relaxed font-sans">
                                         Direct WhatsApp inquiry routing that bypasses costly aggregator portal bidding and fake listings.
@@ -830,7 +830,7 @@ function renderModernExperience(currentPath = "/") {
                                     <div class="text-[11px] text-amber-600 dark:text-amber-400 font-mono">https://veloradigital.co.in/portfolio/aarav-estates</div>
                                     <div class="text-sm font-bold text-velora-text hover:underline cursor-pointer">Aarav Properties · RERA-Registered Luxury Advisory Gurugram</div>
                                     <div class="text-xs text-velora-muted leading-snug">
-                                        Verified inventory across Golf Course Extension &amp; DLF. Direct broker WhatsApp consultations, downloadable floor plans, and transparent square-footage pricing.
+                                        RERA-compliant property showcase with direct broker WhatsApp routing, downloadable floor plans, and transparent pricing structure.
                                     </div>
                                 </div>
                             </div>
@@ -1680,6 +1680,20 @@ function renderModernExperience(currentPath = "/") {
     const script = `
         (function() {
             window.initModernInteractions = function() {
+                // Clear any prior listeners or state before initializing
+                if (typeof window.cleanupModernInteractions === 'function') {
+                    window.cleanupModernInteractions();
+                }
+
+                window.__veloraModernCleanups = [];
+                function addListener(target, event, handler, options) {
+                    if (!target) return;
+                    target.addEventListener(event, handler, options);
+                    window.__veloraModernCleanups.push(function() {
+                        try { target.removeEventListener(event, handler, options); } catch (e) {}
+                    });
+                }
+
                 // 1. Mobile Menu Drawer Toggle with Accessible Hamburger / Close Icon Switch
                 const mobileBtn = document.getElementById('modern-mobile-menu-btn');
                 const mobileDrawer = document.getElementById('modern-mobile-dock');
@@ -1695,33 +1709,45 @@ function renderModernExperience(currentPath = "/") {
                         mobileDrawer.setAttribute('aria-hidden', 'false');
                         mobileBtn.setAttribute('aria-label', 'Close Modern Navigation Menu');
                         if (burgerIcon) burgerIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+                        document.body.style.overflow = 'hidden';
                     } else {
                         mobileDrawer.classList.add('hidden');
                         mobileDrawer.setAttribute('aria-hidden', 'true');
                         mobileBtn.setAttribute('aria-label', 'Open Modern Navigation Menu');
                         if (burgerIcon) burgerIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                        document.body.style.overflow = '';
                     }
                 }
 
                 if (mobileBtn && mobileDrawer) {
-                    mobileBtn.addEventListener('click', function(e) {
+                    addListener(mobileBtn, 'click', function(e) {
                         e.stopPropagation();
                         toggleMobileMenu();
                     });
 
                     // Close on link tap
                     mobileLinks.forEach(link => {
-                        link.addEventListener('click', () => toggleMobileMenu(false));
+                        addListener(link, 'click', () => toggleMobileMenu(false));
                     });
 
-                    // Close on Escape
-                    window.addEventListener('keydown', function(e) {
-                        if (e.key === 'Escape') toggleMobileMenu(false);
+                    // Close on Escape and restore focus
+                    addListener(window, 'keydown', function(e) {
+                        if (e.key === 'Escape' && mobileBtn.getAttribute('aria-expanded') === 'true') {
+                            toggleMobileMenu(false);
+                            try { mobileBtn.focus(); } catch (err) {}
+                        }
                     });
 
                     // Close on outside click
-                    document.addEventListener('click', function(e) {
-                        if (!mobileDrawer.contains(e.target) && !mobileBtn.contains(e.target)) {
+                    addListener(document, 'click', function(e) {
+                        if (mobileBtn.getAttribute('aria-expanded') === 'true' && !mobileDrawer.contains(e.target) && !mobileBtn.contains(e.target)) {
+                            toggleMobileMenu(false);
+                        }
+                    });
+
+                    // Close on resize to desktop breakpoint
+                    addListener(window, 'resize', function() {
+                        if (window.innerWidth >= 1024 && mobileBtn.getAttribute('aria-expanded') === 'true') {
                             toggleMobileMenu(false);
                         }
                     });
@@ -1757,8 +1783,8 @@ function renderModernExperience(currentPath = "/") {
                 }
 
                 capTabs.forEach((tab, index) => {
-                    tab.addEventListener('click', () => switchCapTab(index));
-                    tab.addEventListener('keydown', (e) => {
+                    addListener(tab, 'click', () => switchCapTab(index));
+                    addListener(tab, 'keydown', (e) => {
                         let target = -1;
                         if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
                             target = (index + 1) % capTabs.length;
@@ -1832,13 +1858,13 @@ function renderModernExperience(currentPath = "/") {
                 }
 
                 projBtns.forEach(btn => {
-                    btn.addEventListener('click', function() {
+                    addListener(btn, 'click', function() {
                         switchProject(this.getAttribute('data-proj'));
                     });
                 });
 
                 modeBtns.forEach(btn => {
-                    btn.addEventListener('click', function() {
+                    addListener(btn, 'click', function() {
                         switchMode(this.getAttribute('data-mode'));
                     });
                 });
@@ -1846,7 +1872,7 @@ function renderModernExperience(currentPath = "/") {
                 // Command Deck Quick-Jump Nodes
                 const quickJumpNodes = document.querySelectorAll('.modern-quick-jump-node');
                 quickJumpNodes.forEach(node => {
-                    node.addEventListener('click', function() {
+                    addListener(node, 'click', function() {
                         const targetId = this.getAttribute('data-project-id');
                         if (targetId) {
                             switchProject(targetId);
@@ -1888,8 +1914,8 @@ function renderModernExperience(currentPath = "/") {
                 }
 
                 sectorBtns.forEach((btn, idx) => {
-                    btn.addEventListener('click', () => switchSector(idx));
-                    btn.addEventListener('keydown', (e) => {
+                    addListener(btn, 'click', () => switchSector(idx));
+                    addListener(btn, 'keydown', (e) => {
                         let target = -1;
                         if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
                             target = (idx + 1) % sectorBtns.length;
@@ -1930,16 +1956,16 @@ function renderModernExperience(currentPath = "/") {
                         quoteBtn.href = '/contact?pages=' + pages + '&seo=' + (seoInput && seoInput.checked) + '&maint=' + (maintInput && maintInput.checked) + '&est=' + total;
                     }
 
-                    pagesInput.addEventListener('input', recalc);
-                    if (seoInput) seoInput.addEventListener('change', recalc);
-                    if (maintInput) maintInput.addEventListener('change', recalc);
+                    addListener(pagesInput, 'input', recalc);
+                    if (seoInput) addListener(seoInput, 'change', recalc);
+                    if (maintInput) addListener(maintInput, 'change', recalc);
                     recalc();
                 }
 
                 // 6. Diagnostic Intake Terminal Form
                 const auditForm = document.getElementById('modern-audit-form');
                 if (auditForm) {
-                    auditForm.addEventListener('submit', async function(e) {
+                    addListener(auditForm, 'submit', async function(e) {
                         e.preventDefault();
                         if (typeof window.veloraTrack === 'function') window.veloraTrack('audit_submit');
 
@@ -1995,7 +2021,23 @@ function renderModernExperience(currentPath = "/") {
             };
 
             window.cleanupModernInteractions = function() {
-                // Clear any lingering timeouts or global listeners if assigned
+                document.body.style.overflow = '';
+                const mobileBtn = document.getElementById('modern-mobile-menu-btn');
+                const mobileDrawer = document.getElementById('modern-mobile-dock');
+                const burgerIcon = document.getElementById('modern-burger-icon');
+                if (mobileBtn && mobileDrawer) {
+                    mobileBtn.setAttribute('aria-expanded', 'false');
+                    mobileBtn.setAttribute('aria-label', 'Open Modern Navigation Menu');
+                    mobileDrawer.classList.add('hidden');
+                    mobileDrawer.setAttribute('aria-hidden', 'true');
+                    if (burgerIcon) burgerIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                }
+                if (Array.isArray(window.__veloraModernCleanups)) {
+                    window.__veloraModernCleanups.forEach(function(cleanup) {
+                        try { cleanup(); } catch (e) {}
+                    });
+                    window.__veloraModernCleanups = [];
+                }
             };
 
             if (document.readyState === 'loading') {
