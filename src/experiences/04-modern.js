@@ -1,1523 +1,1356 @@
 // ============================================================================ //
 // VELORA DIGITAL — 04 MODERN EXPERIENCE PRESENTATION RENDERER                  //
-// Art Direction: Interactive Spatial Operating Canvas · Bento · Command Dock    //
+// Art Direction: Interactive Spatial Design Canvas · Visual Playground        //
 // ============================================================================ //
 
 const { CONFIG, SERVICES, INDUSTRIES, LOCATIONS, PORTFOLIO, FAQS } = require('../data');
 const { escapeHTML, generateSchema } = require("../components");
 
 /**
- * Modern-owned Persistent Floating Command Dock.
- * Replaces the conventional top agency header with an application-grade control surface.
+ * Modern Floating Island Command Dock
+ * Compact floating control capsule with direct section beacons
  */
 function ModernHeader(currentPath) {
-    const navItem = (href, label) => {
-        const isActive = currentPath === href || (href !== '/' && currentPath.startsWith(href));
-        return `<a href="${href}" class="modern-nav-item px-2.5 py-1.5 min-h-[36px] flex items-center rounded-lg text-[11px] font-mono tracking-wider transition-all ${isActive ? 'bg-velora-accent text-white font-bold' : 'text-velora-muted hover:text-velora-text hover:bg-velora-card'}">${label}</a>`;
-    };
-
-    const anchorItem = (hash, label, icon) => {
-        return `<a href="${hash}" class="modern-anchor-link px-2.5 py-1.5 min-h-[36px] flex items-center gap-1.5 rounded-lg text-[11px] font-mono tracking-wider text-velora-muted hover:text-velora-text hover:bg-velora-card transition-all">
-            ${icon ? `<span class="opacity-60 text-[10px]">${icon}</span>` : ''}
+    const dockLink = (hash, label, icon) => {
+        return `<a href="${hash}" class="modern-nav-pill px-3 py-1.5 min-h-[36px] flex items-center gap-1.5 rounded-xl text-xs font-mono tracking-wide text-slate-300 hover:text-white hover:bg-white/10 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+            <span class="text-[11px] text-blue-400">${icon}</span>
             <span>${label}</span>
         </a>`;
     };
 
-    const mobileNavItem = (href, label) => {
-        const isActive = currentPath === href || (href !== '/' && currentPath.startsWith(href));
-        return `<a href="${href}" class="modern-mobile-nav-link block px-4 py-3 min-h-[44px] rounded-xl text-xs font-mono tracking-wider transition-colors ${isActive ? 'bg-velora-accent text-white font-bold' : 'text-velora-muted hover:text-velora-text hover:bg-velora-card'}">${label}</a>`;
-    };
-
-    const mobileAnchorItem = (hash, label) => {
-        return `<a href="${hash}" class="modern-mobile-anchor-link block px-4 py-3 min-h-[44px] rounded-xl text-xs font-mono tracking-wider text-velora-muted hover:text-velora-text hover:bg-velora-card transition-colors">${label}</a>`;
+    const mobileLink = (hash, label, icon) => {
+        return `<a href="${hash}" class="modern-mobile-link flex items-center justify-between px-4 py-3 min-h-[44px] rounded-xl text-xs font-mono tracking-wider text-slate-200 hover:bg-white/10 transition-colors">
+            <span class="flex items-center gap-2.5">
+                <span class="text-blue-400 text-sm">${icon}</span>
+                <span>${label}</span>
+            </span>
+            <span class="text-[10px] text-slate-400 font-mono">→</span>
+        </a>`;
     };
 
     return `
-    <header class="modern-header sticky top-0 z-50 w-full transition-all duration-300" role="banner" aria-label="Modern Spatial Navigation">
+    <header class="modern-header sticky top-0 z-50 w-full transition-all duration-300" role="banner" aria-label="Modern Command Navigation">
         <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-3 pb-2">
-            <div class="modern-dock flex items-center justify-between px-3.5 py-2 rounded-2xl transition-all">
-                <!-- Brand Anchor & Monogram -->
-                <a href="/" class="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent rounded-lg min-h-[44px] px-1" id="modern-brand-logo" aria-label="Velora Digital Home">
-                    <div class="w-7 h-7 rounded-lg bg-velora-accent text-white flex items-center justify-center font-mono font-bold text-xs shadow-sm transition-transform duration-300 group-hover:scale-105">
+            <div class="modern-dock flex items-center justify-between px-3 py-1.5 rounded-2xl bg-slate-900/90 backdrop-blur-xl border border-white/10 shadow-2xl transition-all">
+                
+                <!-- Brand Capsule -->
+                <a href="/" class="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-xl min-h-[40px] px-1.5" id="modern-brand-logo" aria-label="Velora Digital Home">
+                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-500 to-purple-500 text-white flex items-center justify-center font-mono font-black text-xs shadow-lg shadow-blue-500/20 transition-transform duration-300 group-hover:scale-105">
                         VD
                     </div>
                     <div class="flex flex-col">
                         <div class="flex items-center gap-1.5">
-                            <span class="font-display font-bold text-sm tracking-tight text-velora-text leading-none">VELORA</span>
-                            <span class="px-1.5 py-0.5 rounded text-[8px] font-mono uppercase tracking-widest bg-velora-card border border-velora-border text-velora-accent font-semibold">04 // MODERN</span>
+                            <span class="font-display font-black text-sm tracking-tight text-white leading-none">VELORA</span>
+                            <span class="px-1.5 py-0.5 rounded text-[8px] font-mono uppercase tracking-widest bg-blue-500/20 border border-blue-500/30 text-blue-400 font-bold">04 // MODERN</span>
                         </div>
-                        <span class="text-[8px] font-mono uppercase tracking-[0.2em] text-emerald-500 font-semibold mt-0.5 flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                            OPERATING CANVAS
+                        <span class="text-[8px] font-mono uppercase tracking-[0.2em] text-emerald-400 font-semibold mt-0.5 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            INTERACTIVE CANVAS
                         </span>
                     </div>
                 </a>
 
-                <!-- Desktop Spatial Dock Navigation (Persistent Application Rail) -->
-                <nav class="hidden lg:flex items-center gap-1 bg-velora-bg/90 border border-velora-border rounded-xl px-2 py-1 shadow-inner" aria-label="Modern Command Rail">
-                    ${anchorItem('#modern-command', 'Canvas', '◈')}
-                    ${anchorItem('#modern-capabilities', 'Bento Specs', '▦')}
-                    ${anchorItem('#modern-workspace', 'Work Lab', '◎')}
-                    ${anchorItem('#modern-configurator', 'Configurator', '⚙')}
-                    ${anchorItem('#modern-intake', 'Dispatch', '↗')}
-                    ${anchorItem('#modern-knowledge', 'Knowledge', 'ℹ')}
-                    <span class="h-3.5 w-px bg-velora-border mx-1" aria-hidden="true"></span>
-                    ${navItem('/about', 'Studio')}
+                <!-- Desktop Navigation Beacons -->
+                <nav class="hidden lg:flex items-center gap-1 bg-black/40 border border-white/10 rounded-xl px-2 py-1 shadow-inner" aria-label="Modern Canvas Navigation">
+                    ${dockLink('#modern-canvas', 'Canvas', '◈')}
+                    ${dockLink('#modern-gallery', 'Work Gallery', '◎')}
+                    ${dockLink('#modern-field', 'Capabilities', '▦')}
+                    ${dockLink('#modern-continuum', 'Continuum', '◬')}
+                    ${dockLink('#modern-configurator', 'Configurator', '⚙')}
                 </nav>
 
-                <!-- Header Actions: Immediate Dispatch Trigger & Mobile Drawer Button -->
-                <div class="flex items-center gap-2.5">
-                    <a href="#modern-configurator" id="modern-dock-cta" class="modern-header-cta items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-velora-button text-velora-buttonText hover:bg-velora-buttonHover transition-colors shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent min-h-[38px]">
-                        <span>Configure</span>
-                        <span aria-hidden="true">&darr;</span>
+                <!-- Quick Action CTA & Mobile Trigger -->
+                <div class="flex items-center gap-2">
+                    <a href="#modern-configurator" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 min-h-[38px] rounded-xl text-xs font-mono font-bold bg-blue-600 hover:bg-blue-500 text-white transition-all shadow-md shadow-blue-600/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
+                        <span>Launch Scope</span>
+                        <span class="text-xs">→</span>
                     </a>
-
-                    <!-- Mobile Menu Hamburger / Close Button -->
-                    <button type="button" id="modern-mobile-menu-btn" aria-expanded="false" aria-controls="modern-mobile-dock" aria-label="Open Modern Navigation Menu" class="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-velora-muted hover:text-velora-text hover:bg-velora-card border border-velora-border transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent">
+                    <button type="button" id="modern-mobile-menu-btn" class="lg:hidden p-2 min-h-[44px] min-w-[44px] rounded-xl bg-white/10 border border-white/10 text-white flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="modern-mobile-drawer">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path id="modern-burger-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Drawer Navigation Overlay -->
-        <div id="modern-mobile-dock" class="modern-mobile-drawer lg:hidden hidden max-w-7xl mx-auto px-4 sm:px-6 mt-2" aria-label="Mobile Navigation Menu" aria-hidden="true">
-            <div class="p-4 rounded-2xl bg-velora-surface border border-velora-border shadow-2xl space-y-1.5">
-                <div class="pb-2 mb-2 border-b border-velora-border flex items-center justify-between text-[10px] font-mono text-velora-muted uppercase tracking-wider">
-                    <span>Spatial Command Rail</span>
-                    <span class="text-emerald-500 font-bold">● System Active</span>
-                </div>
-                ${mobileAnchorItem('#modern-command', '01 // System Boot Canvas')}
-                ${mobileAnchorItem('#modern-capabilities', '02 // Bento Capability Matrix')}
-                ${mobileAnchorItem('#modern-workspace', '03 // Work Lab & Sector Matrix')}
-                ${mobileAnchorItem('#modern-configurator', '04 // Scope & Pricing Configurator')}
-                ${mobileAnchorItem('#modern-intake', '05 // Technical Dispatch Terminal')}
-                ${mobileAnchorItem('#modern-knowledge', '06 // Contextual Knowledge Base')}
-                <div class="pt-2 border-t border-velora-border"></div>
-                ${mobileNavItem('/services', 'All Service Specifications')}
-                ${mobileNavItem('/portfolio', 'All Work Prototypes')}
-                ${mobileNavItem('/about', 'About Studio & Code Ownership')}
-                ${mobileNavItem('/contact', 'Direct Studio Contact &rarr;')}
+        <!-- Mobile Drawer Navigation -->
+        <div id="modern-mobile-drawer" class="hidden lg:hidden fixed inset-x-3 top-20 z-50 p-4 rounded-2xl bg-slate-900/98 backdrop-blur-2xl border border-white/15 shadow-2xl transition-all" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-white/10">
+                <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold">SPATIAL INDEX</span>
+                <button type="button" id="modern-mobile-close-btn" class="p-1 min-h-[36px] min-w-[36px] flex items-center justify-center rounded-lg text-slate-400 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" aria-label="Close menu">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col gap-1">
+                ${mobileLink('#modern-canvas', 'Interactive Design Canvas', '◈')}
+                ${mobileLink('#modern-gallery', 'Visual Work Gallery', '◎')}
+                ${mobileLink('#modern-field', 'Asymmetric Color Field', '▦')}
+                ${mobileLink('#modern-continuum', 'Delivery Continuum', '◬')}
+                ${mobileLink('#modern-configurator', 'Studio Configurator', '⚙')}
+                ${mobileLink('#modern-contact', 'Start Project Intake', '✉')}
+            </div>
+            <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
+                <span class="text-[10px] font-mono text-slate-400">VELORA DIGITAL // 2026</span>
+                <a href="#modern-configurator" class="text-xs font-mono font-bold text-blue-400 hover:underline">Estimate Scope →</a>
             </div>
         </div>
     </header>`;
 }
 
 /**
- * Modern-owned System Shutdown & Handoff Footer.
- * Replaces the conventional 4-column link directory with a compact operational conclusion.
+ * Modern Architectural Studio Footer
  */
 function ModernFooter() {
     return `
-    <footer class="modern-footer bg-velora-surface border-t border-velora-border pt-12 pb-16 text-velora-text transition-colors duration-300" role="contentinfo" aria-label="Modern System Handoff">
+    <footer class="modern-footer border-t border-white/10 bg-slate-950 text-slate-400 py-12" role="contentinfo">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Operational Status Strip -->
-            <div class="p-6 rounded-2xl bg-velora-bg border border-velora-border flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 shadow-sm mb-10">
-                <div class="space-y-1.5">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+                <div class="space-y-3">
                     <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                        <span class="font-mono text-xs uppercase font-bold text-velora-text tracking-wider">System Handoff Ready</span>
-                        <span class="text-velora-borderStrong" aria-hidden="true">&bull;</span>
-                        <span class="text-[10px] font-mono text-velora-muted uppercase">100% Client Code Ownership</span>
+                        <div class="w-6 h-6 rounded-lg bg-blue-600 text-white flex items-center justify-center font-mono font-bold text-xs">VD</div>
+                        <span class="font-display font-bold text-sm tracking-tight text-white">VELORA DIGITAL</span>
                     </div>
-                    <p class="text-xs text-velora-muted font-sans max-w-xl">
-                        Velora Digital builds fast, semantic websites with dedicated local search integration. Source code, production assets, and domains are delivered directly to your practice.
+                    <p class="text-xs text-slate-400 leading-relaxed font-mono">
+                        Boutique digital studio engineering high-conversion web architectures and structured local visibility.
                     </p>
-                </div>
-
-                <!-- Immediate Action Triggers -->
-                <div class="flex flex-wrap items-center gap-2.5 shrink-0">
-                    <a href="#modern-configurator" class="px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-velora-surface hover:bg-velora-card border border-velora-border text-velora-text transition-colors">
-                        Reconfigure Scope
-                    </a>
-                    <a href="#modern-intake" class="px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-velora-button text-velora-buttonText hover:bg-velora-buttonHover transition-colors shadow-sm">
-                        Dispatch Brief &rarr;
-                    </a>
-                </div>
-            </div>
-
-            <!-- Territory & Governance Matrix -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pb-8 border-b border-velora-border text-xs font-mono text-velora-muted">
-                <div>
-                    <span class="text-velora-text font-bold uppercase tracking-wider block mb-2 text-[10px]">Studio Operating Hub</span>
-                    <p class="text-velora-muted font-sans text-xs leading-relaxed">
-                        Gurugram, Haryana.<br>
-                        Serving Delhi NCR, Chandigarh &amp; Bengaluru commercial practices.
-                    </p>
+                    <div class="text-[10px] font-mono text-slate-400 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                        <span>04 // MODERN PLAYGROUND</span>
+                    </div>
                 </div>
 
                 <div>
-                    <span class="text-velora-text font-bold uppercase tracking-wider block mb-2 text-[10px]">Direct Channels</span>
-                    <ul class="space-y-1 font-sans text-xs">
-                        <li><a href="https://wa.me/${CONFIG.whatsapp}" class="text-velora-text hover:text-velora-accent transition-colors">WhatsApp: ${CONFIG.phone}</a></li>
-                        <li><a href="mailto:${CONFIG.email}" class="text-velora-text hover:text-velora-accent transition-colors">Studio: ${CONFIG.email}</a></li>
+                    <h3 class="text-xs font-mono font-bold uppercase tracking-widest text-slate-200 mb-3">CANVAS INDEX</h3>
+                    <ul class="space-y-2 text-xs font-mono text-slate-400">
+                        <li><a href="#modern-canvas" class="hover:text-blue-400 transition-colors">Opening Canvas</a></li>
+                        <li><a href="#modern-gallery" class="hover:text-blue-400 transition-colors">Visual Work Gallery</a></li>
+                        <li><a href="#modern-field" class="hover:text-blue-400 transition-colors">Asymmetric Capabilities</a></li>
+                        <li><a href="#modern-continuum" class="hover:text-blue-400 transition-colors">Delivery Continuum</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <span class="text-velora-text font-bold uppercase tracking-wider block mb-2 text-[10px]">Governance &amp; Specs</span>
-                    <ul class="space-y-1 font-sans text-xs">
-                        <li><a href="/privacy-policy" class="hover:text-velora-accent transition-colors">Privacy Policy</a></li>
-                        <li><a href="/terms" class="hover:text-velora-accent transition-colors">Terms of Service</a></li>
-                        <li><a href="/services" class="hover:text-velora-accent transition-colors">Service Specifications</a></li>
+                    <h3 class="text-xs font-mono font-bold uppercase tracking-widest text-slate-200 mb-3">PLATFORM TIERS</h3>
+                    <ul class="space-y-2 text-xs font-mono text-slate-400">
+                        <li><a href="#modern-configurator" class="hover:text-blue-400 transition-colors">Essential Web Build (₹14,999)</a></li>
+                        <li><a href="#modern-configurator" class="hover:text-blue-400 transition-colors">Professional Platform (₹34,999)</a></li>
+                        <li><a href="#modern-configurator" class="hover:text-blue-400 transition-colors">Structured Local SEO (+₹17,500)</a></li>
+                        <li><a href="#modern-configurator" class="hover:text-blue-400 transition-colors">Annual Site Care (+₹15,000)</a></li>
                     </ul>
                 </div>
 
-                <div>
-                    <span class="text-velora-text font-bold uppercase tracking-wider block mb-2 text-[10px]">Studio Theme Engine</span>
+                <div class="space-y-3">
+                    <h3 class="text-xs font-mono font-bold uppercase tracking-widest text-slate-200 mb-3">STUDIO PALETTE</h3>
+                    <p class="text-xs text-slate-400 font-mono">Switch semantic color space:</p>
                     <div class="relative">
-                        <button type="button" id="studio-theme-btn" class="flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 rounded-lg bg-velora-card border border-velora-border hover:border-velora-borderStrong text-velora-text transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent" aria-haspopup="true" aria-expanded="false">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
-                            <span>Studio Palette</span>
+                        <button type="button" id="modern-theme-selector-btn" class="w-full px-3 py-2 min-h-[40px] rounded-xl bg-slate-900 border border-white/15 text-xs font-mono text-slate-200 flex items-center justify-between hover:bg-slate-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" aria-haspopup="true" aria-expanded="false">
+                            <span class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                                <span id="modern-theme-label">Midnight / Cobalt</span>
+                            </span>
+                            <span class="text-[10px] text-slate-400">▼</span>
                         </button>
-                        <div id="studio-theme-menu" class="absolute bottom-full left-0 mb-2 w-48 bg-velora-surface border border-velora-border rounded-xl shadow-xl p-2 hidden z-50">
-                            <button type="button" class="theme-option w-full flex items-center justify-between px-3 py-2 text-left text-xs rounded-lg hover:bg-velora-card transition-colors text-velora-text" data-theme-value="onyx">
-                                <span>Onyx / Champagne</span>
-                                <span class="w-2.5 h-2.5 rounded-full bg-[#D4AF37]"></span>
+                        <div id="modern-theme-menu" class="hidden absolute left-0 right-0 bottom-full mb-1 z-50 p-1.5 rounded-xl bg-slate-900 border border-white/15 shadow-2xl space-y-1" role="menu">
+                            <button type="button" class="modern-theme-opt w-full text-left px-3 py-2 rounded-lg text-xs font-mono text-slate-400 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-2" data-theme-value="midnight" role="menuitem">
+                                <span class="w-2 h-2 rounded-full bg-blue-500"></span> Midnight / Cobalt
                             </button>
-                            <button type="button" class="theme-option w-full flex items-center justify-between px-3 py-2 text-left text-xs rounded-lg hover:bg-velora-card transition-colors text-velora-text" data-theme-value="obsidian">
-                                <span>Obsidian / Titanium</span>
-                                <span class="w-2.5 h-2.5 rounded-full bg-[#E2E8F0]"></span>
+                            <button type="button" class="modern-theme-opt w-full text-left px-3 py-2 rounded-lg text-xs font-mono text-slate-400 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-2" data-theme-value="onyx" role="menuitem">
+                                <span class="w-2 h-2 rounded-full bg-amber-500"></span> Onyx / Champagne
                             </button>
-                            <button type="button" class="theme-option w-full flex items-center justify-between px-3 py-2 text-left text-xs rounded-lg hover:bg-velora-card transition-colors text-velora-text" data-theme-value="midnight">
-                                <span>Midnight / Cobalt</span>
-                                <span class="w-2.5 h-2.5 rounded-full bg-[#0ea5e9]"></span>
+                            <button type="button" class="modern-theme-opt w-full text-left px-3 py-2 rounded-lg text-xs font-mono text-slate-400 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-2" data-theme-value="obsidian" role="menuitem">
+                                <span class="w-2 h-2 rounded-full bg-slate-400"></span> Obsidian / Titanium
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Colophon Copyright Line -->
-            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] font-mono text-velora-muted">
-                <div>
-                    &copy; ${new Date().getFullYear()} Velora Digital · Experience 04 Modern Spatial System.
+            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono text-slate-400">
+                <p>© 2026 Velora Digital. All Rights Reserved. Engineered Native SSR HTML/CSS.</p>
+                <div class="flex items-center gap-4">
+                    <a href="#modern-configurator" class="hover:text-white transition-colors">Scope Calculator</a>
+                    <span>·</span>
+                    <a href="#modern-contact" class="hover:text-white transition-colors">Technical Intake</a>
                 </div>
-                <a href="#modern-command" class="hover:text-velora-accent transition-colors flex items-center gap-1">
-                    <span>Return to Command Canvas</span>
-                    <span>&uarr;</span>
-                </a>
             </div>
         </div>
     </footer>`;
 }
 
 /**
- * Primary Modern Experience presentation renderer.
- * Composes the Interactive Spatial Operating Canvas across 6 radically distinct architectural zones.
+ * Main Experience 04 — Modern Presentation Renderer
  */
-function renderModernExperience(currentPath = "/") {
-    const aurora = PORTFOLIO.find(p => p.id === 'aurora-aesthetics') || PORTFOLIO[0];
-    const aarav = PORTFOLIO.find(p => p.id === 'aarav-estates') || PORTFOLIO[1];
-    const spiceRoom = PORTFOLIO.find(p => p.id === 'the-spice-room') || PORTFOLIO[2];
-
+function renderModernExperience(currentPath = '/') {
     const meta = {
-        title: 'Velora Digital | Modern Spatial Web Design & Local SEO Studio',
-        description: 'Velora Digital engineers fast, mobile-first websites with clean semantic SSR architecture and dedicated local search discovery for high-trust commercial practices.',
-        schema: generateSchema('Organization'),
-        breadcrumbs: currentPath === '/' || currentPath === '' ? null : [{ title: 'Home', link: '/?exp=modern' }]
+        title: "Velora Digital | Modern Interactive Digital Studio & Visual Canvas",
+        description: "Explore the Modern interactive design canvas: living website specimens, tactile configurator, and structured local visibility engineering for high-trust commercial practices.",
+        canonicalUrl: "https://veloradigital.com/",
+        ogImage: "https://veloradigital.com/og-image.jpg"
     };
 
     const content = `
-    <!-- ================================================================= -->
-    <!-- ZONE 1: SYSTEM BOOT / COMMAND CANVAS (MULTI-ZONE OPENING)          -->
-    <!-- ================================================================= -->
-    <section class="relative pt-4 pb-12 sm:pt-6 sm:pb-16 overflow-hidden bg-velora-bg text-velora-text border-b border-velora-border" id="modern-command">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Studio Telemetry Strip: Immediately signals live system environment -->
-            <div class="flex flex-wrap items-center justify-between gap-2.5 py-2 px-3.5 mb-6 rounded-xl bg-velora-surface border border-velora-border/80 text-[10px] font-mono text-velora-muted">
-                <div class="flex items-center gap-3">
-                    <span class="flex items-center gap-1.5 text-emerald-500 font-bold">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        SYSTEM: OPERATIONAL
-                    </span>
-                    <span class="text-velora-borderStrong" aria-hidden="true">&bull;</span>
-                    <span>ENGINE: SEMANTIC SSR</span>
-                    <span class="text-velora-borderStrong" aria-hidden="true">&bull;</span>
-                    <span class="hidden sm:inline">PERFORMANCE: LIGHTWEIGHT SSR</span>
-                </div>
-                <div class="flex items-center gap-3">
-                    <span>SCHEMA: VERIFIED LOCAL</span>
-                    <span class="text-velora-borderStrong" aria-hidden="true">&bull;</span>
-                    <span class="text-velora-accent font-bold">OWNERSHIP: 100% CLIENT</span>
-                </div>
+    <div class="modern-playground-root w-full overflow-hidden bg-[#0a0b12] text-slate-100 selection:bg-blue-500 selection:text-white font-sans">
+
+        <!-- =================================================================== -->
+        <!-- ENVIRONMENT 01: THE OPENING CANVAS (#modern-canvas)                 -->
+        <!-- Spatial Poster Canvas: NOT 50/50 hero! Layered, full-bleed & interactive -->
+        <!-- =================================================================== -->
+        <section id="modern-canvas" class="relative pt-6 pb-16 md:pt-10 md:pb-24 border-b border-white/10 bg-gradient-to-b from-slate-950 via-[#0d0f1a] to-[#0a0b12]">
+            
+            <!-- Ambient Background Mesh Glows -->
+            <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+                <div class="absolute -top-32 left-1/4 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl"></div>
+                <div class="absolute top-48 right-1/4 w-96 h-96 bg-purple-600/15 rounded-full blur-3xl"></div>
             </div>
 
-            <!-- Command Center Two-Column Canvas -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-                <!-- Left Column (7 cols): System Declaration & Action Hub -->
-                <div class="lg:col-span-7 flex flex-col justify-between p-6 sm:p-8 rounded-2xl bg-velora-surface border border-velora-border shadow-sm space-y-6">
-                    <div class="space-y-4">
-                        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-velora-card border border-velora-border text-[10px] font-mono uppercase tracking-wider text-velora-accent font-semibold">
-                            <span>◈ STUDIO COMMAND CANVAS</span>
-                        </div>
-
-                        <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-velora-text leading-[1.08] text-balance">
-                            High-Precision Web Systems for Local Commercial Practices
-                        </h1>
-
-                        <p class="text-sm sm:text-base text-velora-muted leading-relaxed max-w-2xl font-sans text-pretty">
-                            We build fast, mobile-first websites and verified local search discovery foundations for clinics, real estate advisory firms, restaurants, and professional practices. Clean semantic SSR code, zero runtime framework bloat, and direct patient/client inquiry routing.
-                        </p>
-                    </div>
-
-                    <!-- Direct Operating Triggers -->
-                    <div class="pt-4 border-t border-velora-border flex flex-wrap items-center gap-3">
-                        <a href="#modern-configurator" class="px-5 py-3 rounded-xl text-xs font-mono uppercase tracking-wider font-bold bg-velora-button text-velora-buttonText hover:bg-velora-buttonHover transition-colors shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent">
-                            Open Scope Configurator &darr;
-                        </a>
-                        <a href="#modern-workspace" class="px-4 py-3 rounded-xl text-xs font-mono uppercase tracking-wider font-semibold bg-velora-bg hover:bg-velora-card text-velora-text border border-velora-border transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent">
-                            Enter Work Lab &darr;
-                        </a>
-                        <a href="#modern-intake" class="px-4 py-3 rounded-xl text-xs font-mono uppercase tracking-wider font-semibold text-velora-muted hover:text-velora-accent transition-colors">
-                            Technical Dispatch &rarr;
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Right Column (5 cols): Live Interactive Concept Station -->
-                <div class="lg:col-span-5 flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-velora-surface border border-velora-border shadow-sm space-y-6">
-                    <div>
-                        <div class="flex items-center justify-between pb-3 mb-4 border-b border-velora-border">
-                            <span class="text-xs font-mono font-bold uppercase tracking-wider text-velora-text">Studio Concept Station</span>
-                            <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-semibold">Live Testing Nodes</span>
-                        </div>
-
-                        <p class="text-xs text-velora-muted font-sans leading-relaxed mb-4">
-                            Select any sector node below to instantly inspect its conversion architecture in the Work Lab:
-                        </p>
-
-                        <!-- Concept Quick Nodes -->
-                        <div class="space-y-2.5">
-                            <button type="button" class="modern-quick-jump-node w-full text-left p-3 rounded-xl bg-velora-bg border border-velora-border hover:border-velora-accent transition-all group" data-project-id="aurora-aesthetics">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-5 h-5 rounded bg-emerald-500/10 text-emerald-600 flex items-center justify-center font-mono text-[9px] font-bold">01</span>
-                                        <span class="text-xs font-bold text-velora-text group-hover:text-velora-accent transition-colors">Aurora Aesthetic Clinic</span>
-                                    </div>
-                                    <span class="text-[10px] font-mono text-velora-muted group-hover:translate-x-0.5 transition-transform">&rarr;</span>
-                                </div>
-                                <div class="text-[10px] text-velora-muted font-sans mt-1 pl-7">Healthcare · Doctor credentials &amp; 1-tap consultation booking</div>
-                            </button>
-
-                            <button type="button" class="modern-quick-jump-node w-full text-left p-3 rounded-xl bg-velora-bg border border-velora-border hover:border-velora-accent transition-all group" data-project-id="aarav-estates">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-5 h-5 rounded bg-amber-500/10 text-amber-600 flex items-center justify-center font-mono text-[9px] font-bold">02</span>
-                                        <span class="text-xs font-bold text-velora-text group-hover:text-velora-accent transition-colors">Aarav Properties</span>
-                                    </div>
-                                    <span class="text-[10px] font-mono text-velora-muted group-hover:translate-x-0.5 transition-transform">&rarr;</span>
-                                </div>
-                                <div class="text-[10px] text-velora-muted font-sans mt-1 pl-7">Real Estate · Floor plan downloads &amp; broker WhatsApp routing</div>
-                            </button>
-
-                            <button type="button" class="modern-quick-jump-node w-full text-left p-3 rounded-xl bg-velora-bg border border-velora-border hover:border-velora-accent transition-all group" data-project-id="the-spice-room">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-5 h-5 rounded bg-orange-500/10 text-orange-600 flex items-center justify-center font-mono text-[9px] font-bold">03</span>
-                                        <span class="text-xs font-bold text-velora-text group-hover:text-velora-accent transition-colors">The Spice Room</span>
-                                    </div>
-                                    <span class="text-[10px] font-mono text-velora-muted group-hover:translate-x-0.5 transition-transform">&rarr;</span>
-                                </div>
-                                <div class="text-[10px] text-velora-muted font-sans mt-1 pl-7">Hospitality · Instant HTML menu &amp; direct table reservation</div>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Base Investment Metric Card -->
-                    <div class="pt-3 border-t border-velora-border flex items-center justify-between text-xs font-mono">
-                        <span class="text-velora-muted">Starting Studio Investment:</span>
-                        <span class="font-bold text-velora-text text-sm modern-tabular">₹${CONFIG.pricing.essential.toLocaleString('en-IN')}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================================================================= -->
-    <!-- ZONE 2: MODULAR CAPABILITY BENTO CANVAS (ASYMMETRIC GRID)          -->
-    <!-- ================================================================= -->
-    <section class="py-14 sm:py-20 bg-velora-surface border-b border-velora-border" id="modern-capabilities">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-5 border-b border-velora-border gap-4">
-                <div>
-                    <span class="text-[10px] font-mono uppercase tracking-widest text-velora-accent block mb-1.5">Bento Specification Canvas</span>
-                    <h2 class="font-display text-2xl sm:text-4xl font-bold text-velora-text tracking-tight">
-                        Modular Architecture, Explicit Scope
-                    </h2>
-                </div>
-                <p class="text-xs text-velora-muted max-w-sm font-sans leading-relaxed">
-                    Four engineered capability modules with distinct spatial roles, explicit deliverables, and zero third-party lock-in.
-                </p>
-            </div>
-
-            <!-- Asymmetric Bento Grid (Replaces uniform 3-card grid) -->
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
-                <!-- Module 1: Large Anchor Module (Span 8) — Semantic SSR & Speed -->
-                <div class="md:col-span-8 p-6 sm:p-8 rounded-2xl bg-velora-bg border border-velora-border flex flex-col justify-between space-y-6 shadow-sm">
-                    <div class="space-y-4">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-velora-accent px-2 py-0.5 rounded bg-velora-surface border border-velora-border">
-                                MODULE 01 // CORE ARCHITECTURE
-                            </span>
-                            <span class="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-semibold">Mobile-First SSR Performance</span>
-                        </div>
-
-                        <h3 class="font-display text-xl sm:text-3xl font-bold text-velora-text">
-                            Semantic SSR Engineering &amp; Complete Asset Independence
-                        </h3>
-
-                        <p class="text-xs sm:text-sm text-velora-muted font-sans leading-relaxed max-w-2xl">
-                            We build without heavy visual page-builder plugins, proprietary SaaS platforms, or ongoing template fees. Your website executes on clean, server-rendered Node.js HTML with atomic Tailwind CSS. All code, design files, and domain keys belong 100% to your business.
-                        </p>
-
-                        <!-- Deliverables Checklist -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs font-sans text-velora-text">
-                            <div class="p-3 rounded-xl bg-velora-surface border border-velora-border/60 flex items-start gap-2">
-                                <span class="text-emerald-500 font-bold">&check;</span>
-                                <span>Mobile-first responsive architecture</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-velora-surface border border-velora-border/60 flex items-start gap-2">
-                                <span class="text-emerald-500 font-bold">&check;</span>
-                                <span>Zero runtime UI framework bloat</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-velora-surface border border-velora-border/60 flex items-start gap-2">
-                                <span class="text-emerald-500 font-bold">&check;</span>
-                                <span>100% Source code &amp; domain ownership</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-velora-surface border border-velora-border/60 flex items-start gap-2">
-                                <span class="text-emerald-500 font-bold">&check;</span>
-                                <span>Secure contact forms &amp; instant notifications</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pt-4 border-t border-velora-border flex items-center justify-between text-[11px] font-mono text-velora-muted">
-                        <span>Turnaround: 2–4 Weeks</span>
-                        <a href="/services/website-design" class="text-velora-accent hover:underline font-bold">Detailed Web Specs &rarr;</a>
-                    </div>
-                </div>
-
-                <!-- Module 2: Compact Module (Span 4) — Local Search & Schema Authority -->
-                <div class="md:col-span-4 p-6 sm:p-7 rounded-2xl bg-velora-bg border border-velora-border flex flex-col justify-between space-y-4 shadow-sm">
-                    <div class="space-y-3">
-                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-velora-accent px-2 py-0.5 rounded bg-velora-surface border border-velora-border inline-block">
-                            MODULE 02 // LOCAL SEO
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                
+                <!-- 1. Oversized Kinetic Headline Band -->
+                <div class="mb-6 md:mb-8">
+                    <div class="flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono text-slate-400 mb-3">
+                        <span class="flex items-center gap-2 px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-blue-400 font-bold">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+                            STUDIO SPECIMEN 2026
                         </span>
-
-                        <h3 class="font-display text-lg sm:text-xl font-bold text-velora-text">
-                            Schema.org &amp; Map Search Synchronization
-                        </h3>
-
-                        <p class="text-xs text-velora-muted font-sans leading-relaxed">
-                            Structured data codified for Google search engines: exact geo-coordinates, verified practice credentials, and NAP consistency across directories.
-                        </p>
-
-                        <div class="space-y-2 pt-2">
-                            <div class="p-2.5 rounded-lg bg-velora-surface border border-velora-border/60 text-xs font-sans text-velora-text flex items-center gap-2">
-                                <span class="text-velora-accent">&bull;</span>
-                                <span>MedicalBusiness / RealEstate Schema</span>
-                            </div>
-                            <div class="p-2.5 rounded-lg bg-velora-surface border border-velora-border/60 text-xs font-sans text-velora-text flex items-center gap-2">
-                                <span class="text-velora-accent">&bull;</span>
-                                <span>Google Business Profile alignment</span>
-                            </div>
-                        </div>
+                        <span class="hidden sm:inline">HIGH-CONVERSION ARCHITECTURE // ZERO FRAMEWORK TAX</span>
+                        <span class="text-emerald-400 font-bold">100% OWNED CODE</span>
                     </div>
 
-                    <div class="pt-3 border-t border-velora-border text-[11px] font-mono">
-                        <a href="/services/local-seo" class="text-velora-accent hover:underline font-bold block">Local SEO Specs &rarr;</a>
-                    </div>
+                    <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[0.98] uppercase">
+                        DIGITAL SPACES <br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400">THAT MOVE</span>
+                        <span class="font-serif italic font-normal text-slate-400 lowercase"> clients.</span>
+                    </h1>
                 </div>
 
-                <!-- Module 3: Compact Module (Span 4) — Cloud Care & Maintenance -->
-                <div class="md:col-span-4 p-6 sm:p-7 rounded-2xl bg-velora-bg border border-velora-border flex flex-col justify-between space-y-4 shadow-sm">
-                    <div class="space-y-3">
-                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-velora-accent px-2 py-0.5 rounded bg-velora-surface border border-velora-border inline-block">
-                            MODULE 03 // MAINTENANCE
-                        </span>
-
-                        <h3 class="font-display text-lg sm:text-xl font-bold text-velora-text">
-                            Continuous Care &amp; Uptime Assurance
-                        </h3>
-
-                        <p class="text-xs text-velora-muted font-sans leading-relaxed">
-                            Ongoing peace of mind: automated cloud backups, SSL certificate renewals, monthly content edits, and prompt technical response.
-                        </p>
-
-                        <div class="space-y-2 pt-2">
-                            <div class="p-2.5 rounded-lg bg-velora-surface border border-velora-border/60 text-xs font-sans text-velora-text flex items-center gap-2">
-                                <span class="text-emerald-500 font-bold">&check;</span>
-                                <span>Monthly content updates included</span>
-                            </div>
-                            <div class="p-2.5 rounded-lg bg-velora-surface border border-velora-border/60 text-xs font-sans text-velora-text flex items-center gap-2">
-                                <span class="text-emerald-500 font-bold">&check;</span>
-                                <span>High-availability cloud hosting management</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pt-3 border-t border-velora-border text-[11px] font-mono">
-                        <a href="/services/website-maintenance" class="text-velora-accent hover:underline font-bold block">Maintenance Specs &rarr;</a>
-                    </div>
-                </div>
-
-                <!-- Module 4: Wide Panoramic Module (Span 8) — Instant Lead Pathways -->
-                <div class="md:col-span-8 p-6 sm:p-8 rounded-2xl bg-velora-bg border border-velora-border flex flex-col justify-between space-y-4 shadow-sm">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-velora-accent px-2 py-0.5 rounded bg-velora-surface border border-velora-border">
-                                MODULE 04 // CONVERSION CHANNELS
-                            </span>
-                            <span class="text-xs font-mono text-velora-muted">Frictionless Pathways</span>
-                        </div>
-
-                        <h3 class="font-display text-xl sm:text-2xl font-bold text-velora-text">
-                            Direct Inquiry Architecture Built for High-Intent Mobile Users
-                        </h3>
-
-                        <p class="text-xs sm:text-sm text-velora-muted font-sans leading-relaxed">
-                            Local customers do not want multi-step signup walls or broken PDF downloads. Every interface we engineer features immediate 1-tap WhatsApp triggers, direct click-to-call routing, and verified practitioner credentials positioned above the mobile fold.
-                        </p>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                            <div class="p-3 rounded-xl bg-velora-surface border border-velora-border/60 space-y-1 text-xs font-sans">
-                                <span class="font-mono font-bold text-[10px] text-velora-accent block uppercase">Channel 01</span>
-                                <span class="font-bold text-velora-text block">1-Tap WhatsApp</span>
-                                <span class="text-velora-muted text-[11px]">Instant customer bridge bypassing aggregators</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-velora-surface border border-velora-border/60 space-y-1 text-xs font-sans">
-                                <span class="font-mono font-bold text-velora-accent block uppercase">Channel 02</span>
-                                <span class="font-bold text-velora-text block">Verified Credentials</span>
-                                <span class="text-velora-muted text-[11px]">Doctor, broker &amp; chef credentials upfront</span>
-                            </div>
-                            <div class="p-3 rounded-xl bg-velora-surface border border-velora-border/60 space-y-1 text-xs font-sans">
-                                <span class="font-mono font-bold text-velora-accent block uppercase">Channel 03</span>
-                                <span class="font-bold text-velora-text block">Native HTML Data</span>
-                                <span class="text-velora-muted text-[11px]">Zero PDF menus or complex floor plan apps</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================================================================= -->
-    <!-- ZONE 3: LIVE PROJECT WORKSPACE + INTEGRATED SECTOR MATRIX          -->
-    <!-- (Merges Portfolio & Sectors: Eliminates standalone 4-card grid)    -->
-    <!-- ================================================================= -->
-    <section class="py-14 sm:py-20 bg-velora-bg border-b border-velora-border" id="modern-workspace">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-5 border-b border-velora-border gap-4">
-                <div>
-                    <div class="flex items-center gap-2 mb-1.5">
-                        <span class="text-[10px] font-mono uppercase tracking-widest text-velora-accent">Work Lab // Unified Sector Workspace</span>
-                        <span class="px-2 py-0.5 rounded text-[9px] font-mono uppercase bg-velora-surface border border-velora-border text-velora-muted font-semibold">Concept Prototypes</span>
-                    </div>
-                    <h2 class="font-display text-2xl sm:text-4xl font-bold text-velora-text tracking-tight">
-                        Live Project Workspace &amp; Sector Solutions
-                    </h2>
-                </div>
-                <div class="p-3 rounded-xl bg-velora-surface border border-velora-border max-w-sm text-[11px] font-sans text-velora-muted leading-relaxed">
-                    <strong class="text-velora-text block font-mono uppercase text-[9px] mb-0.5">Truthful Concept Disclosure:</strong>
-                    Showcase studies below are custom-engineered design concepts demonstrating mobile ergonomics, schema integration, and direct lead capture for commercial practices.
-                </div>
-            </div>
-
-            <!-- Integrated Sector Operating Matrix (Segmented Control) -->
-            <div class="mb-6 p-2 rounded-2xl bg-velora-surface border border-velora-border">
-                <div class="text-[10px] font-mono uppercase tracking-wider text-velora-muted px-2 py-1 mb-1">
-                    Select Commercial Sector to Contextualize Workspace:
-                </div>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" role="tablist" aria-label="Commercial Sectors">
-                    ${INDUSTRIES.map((ind, idx) => `
-                    <button type="button"
-                            role="tab"
-                            id="modern-sector-tab-${idx}"
-                            aria-selected="${idx === 0 ? 'true' : 'false'}"
-                            aria-controls="modern-sector-desc-${idx}"
-                            data-sector-index="${idx}"
-                            class="modern-sector-btn p-3 rounded-xl border text-left transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent ${idx === 0 ? 'bg-velora-bg border-velora-accent shadow-sm' : 'bg-velora-card/60 border-velora-border hover:bg-velora-card'}">
+                <!-- 2. The Living Interactive Stage Canvas (Centerpiece Workspace) -->
+                <div class="rounded-3xl border border-white/15 bg-slate-900/80 shadow-2xl overflow-hidden backdrop-blur-xl relative">
+                    
+                    <!-- Top Floating Control Ribbon -->
+                    <div class="px-4 sm:px-6 py-3 border-b border-white/10 bg-black/40 flex flex-wrap items-center justify-between gap-3">
                         <div class="flex items-center gap-2">
-                            <span class="text-base" aria-hidden="true">${ind.icon}</span>
-                            <span class="text-xs font-bold text-velora-text block leading-tight truncate">${escapeHTML(ind.shortName)}</span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-rose-500/90 inline-block"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-amber-500/90 inline-block"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/90 inline-block"></span>
+                            <span class="text-xs font-mono text-slate-400 ml-2 hidden sm:inline">interactive_specimen.view</span>
                         </div>
-                        <span class="text-[9px] font-mono text-velora-muted mt-1 block truncate">${idx === 0 ? 'Aurora Prototype' : (idx === 1 ? 'Aarav Prototype' : (idx === 2 ? 'Spice Room' : 'Consulting Specs'))}</span>
-                    </button>
-                    `).join('')}
-                </div>
-            </div>
 
-            <!-- Contextual Sector Strategy Banner -->
-            <div class="mb-8">
-                ${INDUSTRIES.map((ind, idx) => `
-                <div id="modern-sector-desc-${idx}" class="modern-sector-desc ${idx === 0 ? 'block' : 'hidden'} p-4 rounded-xl bg-velora-surface border border-velora-border text-xs font-sans space-y-2">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-velora-border/60 pb-2">
-                        <span class="font-bold text-velora-text text-sm">${escapeHTML(ind.name)} Operational Strategy</span>
-                        <a href="/industries/${escapeHTML(ind.slug)}" class="text-velora-accent font-mono text-[11px] hover:underline">Full Sector Blueprint &rarr;</a>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-velora-muted">
-                        <div><strong class="text-velora-text">Common Local Bottleneck:</strong> ${escapeHTML(ind.challenges)}</div>
-                        <div><strong class="text-velora-text">The Velora Architecture:</strong> ${escapeHTML(ind.solutions)}</div>
-                    </div>
-                </div>
-                `).join('')}
-            </div>
-
-            <!-- Workspace Viewport Controls Deck: Project Switcher + Inspection Mode Switcher -->
-            <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 p-3 rounded-2xl bg-velora-surface border border-velora-border mb-6 shadow-sm">
-                <!-- Project Selector Buttons -->
-                <div class="flex items-center gap-2 overflow-x-auto pb-1 lg:pb-0" role="tablist" aria-label="Portfolio Projects">
-                    <button type="button"
-                            id="modern-proj-btn-aurora"
-                            role="tab"
-                            aria-selected="true"
-                            aria-controls="modern-viewport-canvas"
-                            data-proj="aurora-aesthetics"
-                            class="modern-proj-btn px-3.5 py-2 rounded-xl text-xs font-mono font-bold tracking-wider transition-all bg-velora-accent text-white shadow-sm shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent">
-                        01 // Aurora Clinic
-                    </button>
-                    <button type="button"
-                            id="modern-proj-btn-aarav"
-                            role="tab"
-                            aria-selected="false"
-                            aria-controls="modern-viewport-canvas"
-                            data-proj="aarav-estates"
-                            class="modern-proj-btn px-3.5 py-2 rounded-xl text-xs font-mono tracking-wider transition-all text-velora-muted hover:text-velora-text hover:bg-velora-card shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent">
-                        02 // Aarav Properties
-                    </button>
-                    <button type="button"
-                            id="modern-proj-btn-spice"
-                            role="tab"
-                            aria-selected="false"
-                            aria-controls="modern-viewport-canvas"
-                            data-proj="the-spice-room"
-                            class="modern-proj-btn px-3.5 py-2 rounded-xl text-xs font-mono tracking-wider transition-all text-velora-muted hover:text-velora-text hover:bg-velora-card shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent">
-                        03 // The Spice Room
-                    </button>
-                </div>
-
-                <!-- Inspection Mode Switcher -->
-                <div class="flex items-center gap-1.5 bg-velora-bg p-1 rounded-xl border border-velora-border self-start lg:self-auto shrink-0" role="group" aria-label="Viewport Inspection Mode">
-                    <button type="button"
-                            id="modern-mode-sim"
-                            data-mode="sim"
-                            class="modern-mode-btn px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold uppercase transition-all bg-velora-card text-velora-accent border border-velora-border">
-                        [Mobile Sim]
-                    </button>
-                    <button type="button"
-                            id="modern-mode-arch"
-                            data-mode="arch"
-                            class="modern-mode-btn px-3 py-1.5 rounded-lg text-[10px] font-mono uppercase text-velora-muted hover:text-velora-text transition-all">
-                        [Search Blueprint]
-                    </button>
-                    <button type="button"
-                            id="modern-mode-conv"
-                            data-mode="conv"
-                            class="modern-mode-btn px-3 py-1.5 rounded-lg text-[10px] font-mono uppercase text-velora-muted hover:text-velora-text transition-all">
-                        [Deliverables]
-                    </button>
-                </div>
-            </div>
-
-            <!-- Viewport Stage Canvas -->
-            <div id="modern-viewport-canvas" class="bg-velora-surface border border-velora-border rounded-2xl p-6 sm:p-8 transition-all min-h-[480px]">
-
-                <!-- PROJECT 1: AURORA CLINIC -->
-                <div id="modern-proj-aurora-aesthetics" class="modern-proj-view block space-y-6">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-velora-border gap-2">
-                        <div>
-                            <div class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-bold mb-0.5">
-                                HEALTHCARE &amp; DENTAL · GURUGRAM &amp; CHANDIGARH
-                            </div>
-                            <h3 class="font-display text-2xl sm:text-3xl font-bold text-velora-text">${escapeHTML(aurora.title)}</h3>
+                        <!-- Interactive Sector Pills -->
+                        <div class="flex items-center gap-1.5 bg-white/5 p-1 rounded-xl border border-white/10" role="tablist" aria-label="Interactive Canvas Sector Selector">
+                            <button type="button" class="modern-canvas-sector-tab px-3 py-1 rounded-lg text-xs font-mono font-bold transition-all bg-blue-600 text-white shadow-sm" data-canvas-sector="clinic" role="tab" aria-selected="true" aria-controls="canvas-panel-clinic">
+                                01 CLINIC
+                            </button>
+                            <button type="button" class="modern-canvas-sector-tab px-3 py-1 rounded-lg text-xs font-mono font-semibold transition-all text-slate-400 hover:text-white" data-canvas-sector="realty" role="tab" aria-selected="false" aria-controls="canvas-panel-realty">
+                                02 REALTY
+                            </button>
+                            <button type="button" class="modern-canvas-sector-tab px-3 py-1 rounded-lg text-xs font-mono font-semibold transition-all text-slate-400 hover:text-white" data-canvas-sector="dining" role="tab" aria-selected="false" aria-controls="canvas-panel-dining">
+                                03 DINING
+                            </button>
                         </div>
-                        <span class="text-xs font-mono text-velora-muted bg-velora-card px-2.5 py-1 rounded-lg border border-velora-border self-start sm:self-auto">
-                            ${escapeHTML(aurora.type)}
-                        </span>
+
+                        <div class="text-[11px] font-mono text-blue-400 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
+                            <span>LIVE SPECIMEN</span>
+                        </div>
                     </div>
 
-                    <!-- State A: Mobile Simulation View -->
-                    <div class="modern-view-sim block">
-                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                            <div class="lg:col-span-5 flex justify-center">
-                                <div class="modern-phone-frame w-full max-w-[300px] p-3.5 space-y-3 font-sans">
-                                    <div class="flex justify-between items-center text-[10px] text-slate-400 px-1 pt-1 font-mono">
-                                        <span>09:41</span>
-                                        <span>5G</span>
-                                    </div>
-                                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                                        <span class="font-bold text-xs tracking-wider text-emerald-400 font-mono">AURORA CLINIC</span>
-                                        <span class="text-[9px] text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded">Sector 43</span>
-                                    </div>
-                                    <div class="modern-phone-card p-3 space-y-1.5">
-                                        <span class="text-[8px] uppercase tracking-wider text-emerald-400 font-mono font-bold block">Certified Aesthetic Practice</span>
-                                        <h4 class="text-xs font-bold text-white leading-tight">Advanced Dermatology &amp; Cosmetic Dental Care</h4>
-                                        <p class="text-[10px] text-slate-300 leading-snug">Evidence-based procedures with transparent fees.</p>
-                                    </div>
-                                    <div class="p-2 rounded-lg modern-phone-badge-emerald space-y-0.5">
-                                        <div class="text-[10px] font-bold text-emerald-300">Dr. Sunita Sharma, MD</div>
-                                        <p class="text-[9px] text-slate-300">AIIMS Fellow · 14+ Years Clinical Experience</p>
-                                    </div>
-                                    <div class="pt-1">
-                                        <a href="/contact" class="block w-full py-2 rounded-lg modern-phone-btn-emerald text-center font-bold text-[11px] tracking-wide transition-colors">
-                                            Book Consultation (1-Tap) &rarr;
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="lg:col-span-7 space-y-4">
+                    <!-- Canvas Interactive Surface Area -->
+                    <div class="p-6 sm:p-8 lg:p-10 min-h-[380px] sm:min-h-[420px] flex flex-col justify-between relative bg-gradient-to-br from-slate-900/90 via-slate-950 to-slate-900">
+                        
+                        <!-- CLINIC SPECIMEN -->
+                        <div id="canvas-panel-clinic" class="modern-canvas-panel space-y-6" role="tabpanel">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
                                 <div>
-                                    <span class="text-xs font-mono uppercase tracking-wider text-emerald-600 dark:text-emerald-400 font-bold block mb-1">Conversion Architecture</span>
-                                    <h4 class="font-display text-xl font-bold text-velora-text">Ergonomic Trust on Smartphone Screens</h4>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+                                        HEALTHCARE CONVERSION ENGINE
+                                    </span>
+                                    <h2 class="font-display text-2xl sm:text-3xl font-black text-white mt-1">
+                                        Aurora Aesthetic & Dermatology Studio
+                                    </h2>
+                                    <p class="text-xs sm:text-sm font-mono text-slate-400 mt-0.5">High-trust patient appointment scheduling with direct WhatsApp concierge sync.</p>
                                 </div>
-                                <p class="text-xs text-velora-muted leading-relaxed font-sans">
-                                    ${escapeHTML(aurora.keyUxDecisions)}
-                                </p>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                                    <div class="p-3 rounded-xl bg-velora-bg border border-velora-border space-y-1">
-                                        <span class="text-[9px] font-mono uppercase text-emerald-600 dark:text-emerald-400 font-bold block">Patient Trust Trigger</span>
-                                        <span class="text-xs font-bold text-velora-text block">Credentials Pre-Fold</span>
-                                        <p class="text-[10px] text-velora-muted">Doctor qualifications, board certifications, and clinic previews placed above the fold.</p>
+                                <div class="text-right hidden sm:block">
+                                    <div class="text-xs font-mono text-emerald-400 font-bold">✓ Pure Native SSR</div>
+                                    <div class="text-[10px] font-mono text-slate-400">Zero Framework Overhead</div>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Mini Procedure Grid -->
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <div class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/50 transition-all cursor-pointer">
+                                    <div class="text-[10px] font-mono text-blue-400 font-bold">01 // FACIAL AESTHETICS</div>
+                                    <div class="text-sm font-bold text-white mt-1">Micro-Needling & PRP</div>
+                                    <div class="text-xs text-slate-400 font-mono mt-2 flex items-center justify-between">
+                                        <span>45 Min Session</span>
+                                        <span class="text-emerald-400">Slots Open</span>
                                     </div>
-                                    <div class="p-3 rounded-xl bg-velora-bg border border-velora-border space-y-1">
-                                        <span class="text-[9px] font-mono uppercase text-emerald-600 dark:text-emerald-400 font-bold block">Speed Architecture</span>
-                                        <span class="text-xs font-bold text-velora-text block">Fast Mobile-First Load</span>
-                                        <p class="text-[10px] text-velora-muted">Lightweight semantic HTML consultation requests without forced account creation.</p>
+                                </div>
+
+                                <div class="p-4 rounded-2xl bg-white/5 border border-blue-500/40 bg-blue-500/10 transition-all cursor-pointer">
+                                    <div class="text-[10px] font-mono text-blue-400 font-bold">02 // DERMATOLOGY</div>
+                                    <div class="text-sm font-bold text-white mt-1">Laser Skin Rejuvenation</div>
+                                    <div class="text-xs text-slate-400 font-mono mt-2 flex items-center justify-between">
+                                        <span>Dr. Sen Attending</span>
+                                        <span class="text-blue-400 font-bold">Selected</span>
                                     </div>
+                                </div>
+
+                                <div class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/50 transition-all cursor-pointer">
+                                    <div class="text-[10px] font-mono text-blue-400 font-bold">03 // CLINIC VERIFICATION</div>
+                                    <div class="text-sm font-bold text-white mt-1">Verified Schema & Hours</div>
+                                    <div class="text-xs text-slate-400 font-mono mt-2 flex items-center justify-between">
+                                        <span>Park Street, Kolkata</span>
+                                        <span class="text-purple-400">Medical Entity</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Booking Rail -->
+                            <div class="p-4 rounded-2xl bg-blue-950/40 border border-blue-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-xs font-mono text-slate-300 font-bold">SELECT CONSULTATION SLOT:</span>
+                                    <div class="flex items-center gap-2">
+                                        <button type="button" class="modern-slot-btn px-2.5 py-1 rounded-lg text-xs font-mono border border-white/20 hover:border-blue-400 transition-colors">10:30 AM</button>
+                                        <button type="button" class="modern-slot-btn px-2.5 py-1 rounded-lg text-xs font-mono bg-blue-600 text-white font-bold border border-blue-500">02:15 PM</button>
+                                        <button type="button" class="modern-slot-btn px-2.5 py-1 rounded-lg text-xs font-mono border border-white/20 hover:border-blue-400 transition-colors">04:45 PM</button>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="text-[11px] font-mono text-emerald-400 flex items-center gap-1">
+                                        <span>🔒</span> Encrypted Intake
+                                    </span>
+                                    <a href="#modern-gallery" class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-mono font-bold shadow-sm transition-all">
+                                        Inspect Full Case →
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- State B: Search Discovery Blueprint View -->
-                    <div class="modern-view-arch hidden space-y-4">
-                        <div class="p-5 rounded-xl bg-velora-bg border border-velora-border space-y-4">
-                            <div class="flex items-center justify-between pb-3 border-b border-velora-border">
-                                <span class="text-xs font-mono font-bold uppercase text-velora-text">Schema.org MedicalBusiness · Concept Blueprint</span>
-                                <span class="text-[9px] font-mono text-emerald-600 dark:text-emerald-400 font-bold">SECTOR 43 GURUGRAM</span>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-sans">
-                                <div class="p-3 rounded-lg bg-velora-surface border border-velora-border/60 space-y-1">
-                                    <span class="text-[9px] font-mono text-velora-accent font-bold block">01 // Entity Profile</span>
-                                    <div class="font-bold text-velora-text">Verified Clinical Specialty</div>
-                                    <p class="text-[11px] text-velora-muted">AIIMS credentials codified for Google local search indexing.</p>
-                                </div>
-                                <div class="p-3 rounded-lg bg-velora-surface border border-velora-border/60 space-y-1">
-                                    <span class="text-[9px] font-mono text-velora-accent font-bold block">02 // NAP Synchronization</span>
-                                    <div class="font-bold text-velora-text">Exact Geo-Coordinates</div>
-                                    <p class="text-[11px] text-velora-muted">Sector 43, Gurugram aligned across structured data and map citations.</p>
-                                </div>
-                                <div class="p-3 rounded-lg bg-velora-surface border border-velora-border/60 space-y-1">
-                                    <span class="text-[9px] font-mono text-velora-accent font-bold block">03 // Intent Pathways</span>
-                                    <div class="font-bold text-velora-text">Direct Routing</div>
-                                    <p class="text-[11px] text-velora-muted">Direct click-to-consultation and WhatsApp triggers integrated.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- State C: Deliverables View -->
-                    <div class="modern-view-conv hidden space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                            ${aurora.deliverables.map(del => `
-                            <div class="p-3 rounded-xl bg-velora-bg border border-velora-border text-xs font-sans flex items-start gap-2">
-                                <span class="text-emerald-500 font-bold">&check;</span>
-                                <span class="font-bold text-velora-text">${escapeHTML(del)}</span>
-                            </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PROJECT 2: AARAV PROPERTIES (100% CANONICAL TRUTH — ZERO FABRICATED SPECS) -->
-                <div id="modern-proj-aarav-estates" class="modern-proj-view hidden space-y-6">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-velora-border gap-2">
-                        <div>
-                            <div class="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-bold mb-0.5">
-                                REAL ESTATE &amp; ADVISORY · DELHI NCR &amp; NOIDA
-                            </div>
-                            <h3 class="font-display text-2xl sm:text-3xl font-bold text-velora-text">${escapeHTML(aarav.title)}</h3>
-                        </div>
-                        <span class="text-xs font-mono text-velora-muted bg-velora-card px-2.5 py-1 rounded-lg border border-velora-border self-start sm:self-auto">
-                            ${escapeHTML(aarav.type)}
-                        </span>
-                    </div>
-
-                    <!-- State A: Mobile Simulation View -->
-                    <div class="modern-view-sim block">
-                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                            <div class="lg:col-span-5 flex justify-center">
-                                <div class="modern-phone-frame w-full max-w-[300px] p-3.5 space-y-3 font-sans">
-                                    <div class="flex justify-between items-center text-[10px] text-slate-400 px-1 pt-1 font-mono">
-                                        <span>09:41</span>
-                                        <span>5G</span>
-                                    </div>
-                                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                                        <span class="font-bold text-xs tracking-wider text-amber-400 font-mono">AARAV ESTATES</span>
-                                        <span class="text-[9px] text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded">RERA Registered</span>
-                                    </div>
-                                    <div class="modern-phone-card p-3 space-y-1.5">
-                                        <span class="text-[8px] uppercase tracking-wider text-amber-400 font-mono font-bold block">Commercial Catalog</span>
-                                        <h4 class="text-xs font-bold text-white leading-tight">Property Catalog &amp; Floor Plan Viewer</h4>
-                                        <p class="text-[10px] text-slate-300 leading-snug">Verified residential &amp; commercial property listings.</p>
-                                    </div>
-                                    <div class="p-2 rounded-lg modern-phone-badge-amber space-y-0.5">
-                                        <div class="text-[10px] font-bold text-amber-300">RERA Verified Advisory</div>
-                                        <p class="text-[9px] text-slate-300">Direct WhatsApp floor plan dispatches</p>
-                                    </div>
-                                    <div class="pt-1">
-                                        <a href="/contact" class="block w-full py-2 rounded-lg modern-phone-btn-amber text-center font-bold text-[11px] tracking-wide transition-colors">
-                                            WhatsApp Floor Plans &rarr;
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="lg:col-span-7 space-y-4">
+                        <!-- REALTY SPECIMEN -->
+                        <div id="canvas-panel-realty" class="modern-canvas-panel hidden space-y-6" role="tabpanel">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
                                 <div>
-                                    <span class="text-xs font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-bold block mb-1">Advisory Architecture</span>
-                                    <h4 class="font-display text-xl font-bold text-velora-text">Instant WhatsApp Lead Routing for High-Ticket Buyers</h4>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                                        BOUTIQUE REAL ESTATE PORTAL
+                                    </span>
+                                    <h2 class="font-display text-2xl sm:text-3xl font-black text-white mt-1">
+                                        Aarav Luxury Properties & Advisory
+                                    </h2>
+                                    <p class="text-xs sm:text-sm font-mono text-slate-400 mt-0.5">Confidential asset dossiers and direct partner inquiry for high-value commercial acquisitions.</p>
                                 </div>
-                                <p class="text-xs text-velora-muted leading-relaxed font-sans">
-                                    ${escapeHTML(aarav.keyUxDecisions)}
-                                </p>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                                    <div class="p-3 rounded-xl bg-velora-bg border border-velora-border space-y-1">
-                                        <span class="text-[9px] font-mono uppercase text-amber-600 dark:text-amber-400 font-bold block">Compliance Marker</span>
-                                        <span class="text-xs font-bold text-velora-text block">Prominent RERA ID</span>
-                                        <p class="text-[10px] text-velora-muted">Registration numbers displayed prominently across all mobile property headers.</p>
-                                    </div>
-                                    <div class="p-3 rounded-xl bg-velora-bg border border-velora-border space-y-1">
-                                        <span class="text-[9px] font-mono uppercase text-amber-600 dark:text-amber-400 font-bold block">Lead Acceleration</span>
-                                        <span class="text-xs font-bold text-velora-text block">1-Tap Document Dispatch</span>
-                                        <p class="text-[10px] text-velora-muted">Direct PDF and brochure requests routed to senior advisory desks.</p>
-                                    </div>
+                                <div class="text-right hidden sm:block">
+                                    <div class="text-xs font-mono text-amber-400 font-bold">BKC & South Mumbai</div>
+                                    <div class="text-[10px] font-mono text-slate-400">Zero Portal Intermediaries</div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                                    <div class="text-[10px] font-mono text-amber-400 font-bold">ASSET 01 // PENTHOUSE</div>
+                                    <div class="text-sm font-bold text-white mt-1">Worli Seaface Triplex</div>
+                                    <div class="text-xs text-slate-400 font-mono mt-2">Private Architectural Plan</div>
+                                </div>
+                                <div class="p-4 rounded-2xl bg-white/5 border border-amber-500/40 bg-amber-500/10">
+                                    <div class="text-[10px] font-mono text-amber-400 font-bold">ASSET 02 // COMMERCIAL</div>
+                                    <div class="text-sm font-bold text-white mt-1">BKC Prime Office Floor</div>
+                                    <div class="text-xs text-amber-400 font-mono mt-2 font-bold">Direct Partner Lead</div>
+                                </div>
+                                <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                                    <div class="text-[10px] font-mono text-amber-400 font-bold">ASSET 03 // DISCOVERY</div>
+                                    <div class="text-sm font-bold text-white mt-1">RealEstateAgent Schema</div>
+                                    <div class="text-xs text-slate-400 font-mono mt-2">Verified GeoRadius</div>
+                                </div>
+                            </div>
+
+                            <div class="p-4 rounded-2xl bg-amber-950/30 border border-amber-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                <span class="text-xs font-mono text-slate-300">REQUEST CONFIDENTIAL DOSSIER // DIRECT ADVISOR LINE:</span>
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-mono text-amber-400 font-bold">+91 92791 80000</span>
+                                    <a href="#modern-gallery" class="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-mono font-bold shadow-sm transition-all">
+                                        Inspect Full Case →
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- State B: Search Blueprint View -->
-                    <div class="modern-view-arch hidden space-y-4">
-                        <div class="p-5 rounded-xl bg-velora-bg border border-velora-border space-y-4">
-                            <div class="flex items-center justify-between pb-3 border-b border-velora-border">
-                                <span class="text-xs font-mono font-bold uppercase text-velora-text">Schema.org RealEstateAgent · Concept Blueprint</span>
-                                <span class="text-[9px] font-mono text-amber-600 dark:text-amber-400 font-bold">DELHI NCR &amp; NOIDA</span>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-sans">
-                                <div class="p-3 rounded-lg bg-velora-surface border border-velora-border/60 space-y-1">
-                                    <span class="text-[9px] font-mono text-velora-accent font-bold block">01 // Advisory Entity</span>
-                                    <div class="font-bold text-velora-text">RealEstateAgent Schema</div>
-                                    <p class="text-[11px] text-velora-muted">RERA registration metadata and area specializations codified.</p>
-                                </div>
-                                <div class="p-3 rounded-lg bg-velora-surface border border-velora-border/60 space-y-1">
-                                    <span class="text-[9px] font-mono text-velora-accent font-bold block">02 // Local Geo Mapping</span>
-                                    <div class="font-bold text-velora-text">Locality Indexing</div>
-                                    <p class="text-[11px] text-velora-muted">Noida and Delhi NCR sector boundaries mapped for high-intent search.</p>
-                                </div>
-                                <div class="p-3 rounded-lg bg-velora-surface border border-velora-border/60 space-y-1">
-                                    <span class="text-[9px] font-mono text-velora-accent font-bold block">03 // Document Bridge</span>
-                                    <div class="font-bold text-velora-text">Direct Brochure Link</div>
-                                    <p class="text-[11px] text-velora-muted">Frictionless WhatsApp document routing for verified property enquiries.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- State C: Deliverables View -->
-                    <div class="modern-view-conv hidden space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                            ${aarav.deliverables.map(del => `
-                            <div class="p-3 rounded-xl bg-velora-bg border border-velora-border text-xs font-sans flex items-start gap-2">
-                                <span class="text-amber-500 font-bold">&check;</span>
-                                <span class="font-bold text-velora-text">${escapeHTML(del)}</span>
-                            </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PROJECT 3: THE SPICE ROOM -->
-                <div id="modern-proj-the-spice-room" class="modern-proj-view hidden space-y-6">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-velora-border gap-2">
-                        <div>
-                            <div class="text-[11px] font-mono text-orange-600 dark:text-orange-400 font-bold mb-0.5">
-                                DINING &amp; HOSPITALITY · GURUGRAM SECTOR 29
-                            </div>
-                            <h3 class="font-display text-2xl sm:text-3xl font-bold text-velora-text">${escapeHTML(spiceRoom.title)}</h3>
-                        </div>
-                        <span class="text-xs font-mono text-velora-muted bg-velora-card px-2.5 py-1 rounded-lg border border-velora-border self-start sm:self-auto">
-                            ${escapeHTML(spiceRoom.type)}
-                        </span>
-                    </div>
-
-                    <!-- State A: Mobile Simulation View -->
-                    <div class="modern-view-sim block">
-                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                            <div class="lg:col-span-5 flex justify-center">
-                                <div class="modern-phone-frame w-full max-w-[300px] p-3.5 space-y-3 font-sans">
-                                    <div class="flex justify-between items-center text-[10px] text-slate-400 px-1 pt-1 font-mono">
-                                        <span>09:41</span>
-                                        <span>5G</span>
-                                    </div>
-                                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                                        <span class="font-bold text-xs tracking-wider text-orange-400 font-mono">THE SPICE ROOM</span>
-                                        <span class="text-[9px] text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded">Sector 29</span>
-                                    </div>
-                                    <div class="modern-phone-card p-3 space-y-1.5">
-                                        <span class="text-[8px] uppercase tracking-wider text-orange-400 font-mono font-bold block">Culinary Experience</span>
-                                        <h4 class="text-xs font-bold text-white leading-tight">Progressive Indian Dining &amp; Valet Parking</h4>
-                                        <p class="text-[10px] text-slate-300 leading-snug">Instant mobile menu &amp; direct table reservation.</p>
-                                    </div>
-                                    <div class="p-2 rounded-lg modern-phone-badge-orange space-y-0.5">
-                                        <div class="text-[10px] font-bold text-orange-300">Live Table Reservations</div>
-                                        <p class="text-[9px] text-slate-300">Direct booking bypassing high-commission apps</p>
-                                    </div>
-                                    <div class="pt-1">
-                                        <a href="/contact" class="block w-full py-2 rounded-lg modern-phone-btn-orange text-center font-bold text-[11px] tracking-wide transition-colors">
-                                            Reserve Table &rarr;
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="lg:col-span-7 space-y-4">
+                        <!-- DINING SPECIMEN -->
+                        <div id="canvas-panel-dining" class="modern-canvas-panel hidden space-y-6" role="tabpanel">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
                                 <div>
-                                    <span class="text-xs font-mono uppercase tracking-wider text-orange-600 dark:text-orange-400 font-bold block mb-1">Hospitality Architecture</span>
-                                    <h4 class="font-display text-xl font-bold text-velora-text">Zero-PDF Instant HTML Menus on Smartphone 4G</h4>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-purple-500/20 text-purple-400 border border-purple-500/30">
+                                        PROGRESSIVE HOSPITALITY ENGINE
+                                    </span>
+                                    <h2 class="font-display text-2xl sm:text-3xl font-black text-white mt-1">
+                                        The Spice Room & Botanical Lounge
+                                    </h2>
+                                    <p class="text-xs sm:text-sm font-mono text-slate-400 mt-0.5">Sensory evening tasting menus and direct seat reservations eliminating commission portals.</p>
                                 </div>
-                                <p class="text-xs text-velora-muted leading-relaxed font-sans">
-                                    ${escapeHTML(spiceRoom.keyUxDecisions)}
-                                </p>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                                    <div class="p-3 rounded-xl bg-velora-bg border border-velora-border space-y-1">
-                                        <span class="text-[9px] font-mono uppercase text-orange-600 dark:text-orange-400 font-bold block">Mobile Experience</span>
-                                        <span class="text-xs font-bold text-velora-text block">Zero PDF Downloads</span>
-                                        <p class="text-[10px] text-velora-muted">Dishes, allergens, and prices load immediately in readable HTML without pinching or zooming.</p>
-                                    </div>
-                                    <div class="p-3 rounded-xl bg-velora-bg border border-velora-border space-y-1">
-                                        <span class="text-[9px] font-mono uppercase text-orange-600 dark:text-orange-400 font-bold block">Commission Protection</span>
-                                        <span class="text-xs font-bold text-velora-text block">Direct Booking Bridge</span>
-                                        <p class="text-[10px] text-velora-muted">Table reservations flow directly into the restaurant manager's WhatsApp phone.</p>
-                                    </div>
+                                <div class="text-right hidden sm:block">
+                                    <div class="text-xs font-mono text-purple-400 font-bold">Bangalore, Indiranagar</div>
+                                    <div class="text-[10px] font-mono text-slate-400">100% Direct Table Holds</div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- State B: Search Blueprint View -->
-                    <div class="modern-view-arch hidden space-y-4">
-                        <div class="p-5 rounded-xl bg-velora-bg border border-velora-border space-y-4">
-                            <div class="flex items-center justify-between pb-3 border-b border-velora-border">
-                                <span class="text-xs font-mono font-bold uppercase text-velora-text">Schema.org Restaurant · Concept Blueprint</span>
-                                <span class="text-[9px] font-mono text-orange-600 dark:text-orange-400 font-bold">SECTOR 29 GURUGRAM</span>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-sans">
-                                <div class="p-3 rounded-lg bg-velora-surface border border-velora-border/60 space-y-1">
-                                    <span class="text-[9px] font-mono text-velora-accent font-bold block">01 // Culinary Entity</span>
-                                    <div class="font-bold text-velora-text">Restaurant Schema</div>
-                                    <p class="text-[11px] text-velora-muted">Cuisine types, price range, and structured HTML menu URLs codified.</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                                    <div class="text-[10px] font-mono text-purple-400 font-bold">MENU 01 // BOTANICAL</div>
+                                    <div class="text-sm font-bold text-white mt-1">7-Course Tasting Journey</div>
+                                    <div class="text-xs text-slate-400 font-mono mt-2">Cardamom Gin Pairing</div>
                                 </div>
-                                <div class="p-3 rounded-lg bg-velora-surface border border-velora-border/60 space-y-1">
-                                    <span class="text-[9px] font-mono text-velora-accent font-bold block">02 // Direct Table Link</span>
-                                    <div class="font-bold text-velora-text">Google Maps Sync</div>
-                                    <p class="text-[11px] text-velora-muted">Direct reservation trigger integrated into Google Maps profile.</p>
+                                <div class="p-4 rounded-2xl bg-white/5 border border-purple-500/40 bg-purple-500/10">
+                                    <div class="text-[10px] font-mono text-purple-400 font-bold">SEATING // INTIMATE</div>
+                                    <div class="text-sm font-bold text-white mt-1">Chef's Cellar Counter</div>
+                                    <div class="text-xs text-purple-400 font-mono mt-2 font-bold">12 Covers Max</div>
                                 </div>
-                                <div class="p-3 rounded-lg bg-velora-surface border border-velora-border/60 space-y-1">
-                                    <span class="text-[9px] font-mono text-velora-accent font-bold block">03 // Service Hours</span>
-                                    <div class="font-bold text-velora-text">Operating Synchrony</div>
-                                    <p class="text-[11px] text-velora-muted">Lunch/dinner timings and valet parking status synchronized.</p>
+                                <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                                    <div class="text-[10px] font-mono text-purple-400 font-bold">SCHEMA // DISCOVERY</div>
+                                    <div class="text-sm font-bold text-white mt-1">Restaurant Rich Snippets</div>
+                                    <div class="text-xs text-slate-400 font-mono mt-2">Accepted Currencies & Hours</div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- State C: Deliverables View -->
-                    <div class="modern-view-conv hidden space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                            ${spiceRoom.deliverables.map(del => `
-                            <div class="p-3 rounded-xl bg-velora-bg border border-velora-border text-xs font-sans flex items-start gap-2">
-                                <span class="text-orange-500 font-bold">&check;</span>
-                                <span class="font-bold text-velora-text">${escapeHTML(del)}</span>
+                            <div class="p-4 rounded-2xl bg-purple-950/30 border border-purple-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                <span class="text-xs font-mono text-slate-300">SELECT PARTY SIZE FOR DIRECT HOLD:</span>
+                                <div class="flex items-center gap-2">
+                                    <button type="button" class="modern-slot-btn px-2.5 py-1 rounded-lg text-xs font-mono border border-white/20 hover:border-purple-400">2 Guests</button>
+                                    <button type="button" class="modern-slot-btn px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-600 text-white font-bold border border-purple-500">4 Guests</button>
+                                    <button type="button" class="modern-slot-btn px-2.5 py-1 rounded-lg text-xs font-mono border border-white/20 hover:border-purple-400">Private Dining</button>
+                                </div>
                             </div>
-                            `).join('')}
                         </div>
+
                     </div>
                 </div>
+
+                <!-- 3. Bottom Spatial Action Ribbons -->
+                <div class="mt-6 flex flex-wrap items-center justify-between gap-4 pt-2">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <a href="#modern-gallery" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-bold shadow-lg shadow-blue-600/30 transition-all flex items-center gap-2">
+                            <span>Inspect Visual Work Gallery</span>
+                            <span>↓</span>
+                        </a>
+                        <a href="#modern-configurator" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white font-mono text-xs font-bold transition-all flex items-center gap-2">
+                            <span>Open Studio Configurator</span>
+                            <span>⚙</span>
+                        </a>
+                    </div>
+                    <div class="text-xs font-mono text-slate-400 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                        <span>Touch or click interactive controls to test living behaviors</span>
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ================================================================= -->
-    <!-- ZONE 4: UNIFIED PROJECT CONFIGURATION CANVAS                      -->
-    <!-- (Merges Process + Scope + Pricing: Eliminates 3 separate blocks)   -->
-    <!-- ================================================================= -->
-    <section class="py-14 sm:py-20 bg-velora-surface border-b border-velora-border" id="modern-configurator">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-5 border-b border-velora-border gap-4">
-                <div>
-                    <span class="text-[10px] font-mono uppercase tracking-widest text-velora-accent block mb-1.5">Unified Configuration Engine</span>
-                    <h2 class="font-display text-2xl sm:text-4xl font-bold text-velora-text tracking-tight">
-                        Interactive Project Scope, Timeline &amp; Pricing
+        <!-- =================================================================== -->
+        <!-- ENVIRONMENT 02: THE VISUAL WORK GALLERY (#modern-gallery)           -->
+        <!-- Authentic rendered website compositions, NOT bullet cards!          -->
+        <!-- =================================================================== -->
+        <section id="modern-gallery" class="py-16 md:py-24 border-b border-white/10 bg-[#0c0d16] relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Gallery Header -->
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-4">
+                    <div>
+                        <span class="text-xs font-mono text-blue-400 uppercase tracking-widest font-bold">02 // COMMISSIONED WORK</span>
+                        <h2 class="font-display text-3xl sm:text-5xl font-black text-white tracking-tight mt-1">
+                            VISUAL WORK GALLERY
+                        </h2>
+                    </div>
+
+                    <!-- Dual Interactive Controllers (Project & Mode) -->
+                    <div class="flex flex-wrap items-center gap-3">
+                        <!-- Project Selector -->
+                        <div class="flex items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/10" role="tablist" aria-label="Work Project Selector">
+                            <button type="button" class="modern-gallery-proj-btn px-3 py-1.5 rounded-lg text-xs font-mono font-bold bg-blue-600 text-white transition-all" data-proj="aurora" role="tab" aria-selected="true">
+                                01 AURORA CLINIC
+                            </button>
+                            <button type="button" class="modern-gallery-proj-btn px-3 py-1.5 rounded-lg text-xs font-mono font-semibold text-slate-400 hover:text-white transition-all" data-proj="aarav" role="tab" aria-selected="false">
+                                02 AARAV PROPERTIES
+                            </button>
+                            <button type="button" class="modern-gallery-proj-btn px-3 py-1.5 rounded-lg text-xs font-mono font-semibold text-slate-400 hover:text-white transition-all" data-proj="spice" role="tab" aria-selected="false">
+                                03 THE SPICE ROOM
+                            </button>
+                        </div>
+
+                        <!-- Mode Selector -->
+                        <div class="flex items-center gap-1 bg-black/60 p-1 rounded-xl border border-white/10" role="tablist" aria-label="Inspection Mode">
+                            <button type="button" class="modern-gallery-mode-btn px-2.5 py-1.5 rounded-lg text-xs font-mono font-bold bg-white/15 text-white transition-all" data-mode="desktop" role="tab" aria-selected="true">
+                                Desktop
+                            </button>
+                            <button type="button" class="modern-gallery-mode-btn px-2.5 py-1.5 rounded-lg text-xs font-mono font-semibold text-slate-400 hover:text-white transition-all" data-mode="mobile" role="tab" aria-selected="false">
+                                Mobile
+                            </button>
+                            <button type="button" class="modern-gallery-mode-btn px-2.5 py-1.5 rounded-lg text-xs font-mono font-semibold text-slate-400 hover:text-white transition-all" data-mode="funnel" role="tab" aria-selected="false">
+                                Funnel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- High-Fidelity Website Specimen Container -->
+                <div id="modern-work-specimen-root" class="rounded-3xl border border-white/15 bg-slate-900/90 shadow-2xl p-4 sm:p-8 backdrop-blur-xl transition-all duration-300">
+                    
+                    <!-- 1. AURORA CLINIC SPECIMEN -->
+                    <div id="specimen-aurora" class="modern-project-specimen space-y-6">
+                        
+                        <!-- Desktop Viewport Composition -->
+                        <div class="modern-view-desktop rounded-2xl border border-white/15 bg-slate-950 overflow-hidden shadow-inner">
+                            <!-- Mini Browser Top Bar -->
+                            <div class="px-4 py-2.5 bg-slate-900 border-b border-white/10 flex items-center justify-between text-xs font-mono">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                                    <span class="text-slate-400 ml-2">https://auroraaesthetics.in</span>
+                                </div>
+                                <span class="text-blue-400 font-bold">KOLKATA // DERMATOLOGY</span>
+                            </div>
+
+                            <!-- Rendered Website Composition -->
+                            <div class="p-6 sm:p-10 space-y-8 bg-gradient-to-br from-slate-950 via-[#0e101c] to-slate-950">
+                                <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                                    <div class="font-serif italic text-xl sm:text-2xl text-white tracking-wide">AURORA CLINIC</div>
+                                    <div class="hidden sm:flex items-center gap-6 text-xs font-mono text-slate-300">
+                                        <span>Treatments</span>
+                                        <span>Physicians</span>
+                                        <span>Results</span>
+                                        <span class="px-3 py-1 rounded-lg bg-blue-600 text-white font-bold">Book Consult</span>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                                    <div class="lg:col-span-7 space-y-4">
+                                        <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20 font-bold uppercase">
+                                            AESTHETIC DERMATOLOGY & SURGICAL PRECISION
+                                        </span>
+                                        <h3 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-white leading-tight">
+                                            Restoring balance with <span class="italic text-blue-300">clinical restraint</span>.
+                                        </h3>
+                                        <p class="text-xs sm:text-sm font-mono text-slate-400 max-w-lg leading-relaxed">
+                                            Board-certified cosmetic dermatologists delivering bespoke facial rejuvenation, laser protocols, and non-surgical body contouring in Park Street.
+                                        </p>
+                                        <div class="flex items-center gap-3 pt-2">
+                                            <button type="button" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-bold">Reserve Appointment</button>
+                                            <button type="button" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-white font-mono text-xs">View Credentials</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Visual Treatment Specimen Card -->
+                                    <div class="lg:col-span-5 rounded-2xl border border-blue-500/30 bg-blue-950/20 p-5 space-y-3">
+                                        <div class="text-[10px] font-mono text-blue-400 font-bold uppercase tracking-widest">TREATMENT ARCHITECTURE</div>
+                                        <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                                            <span class="text-xs font-bold text-white">Full-Face Micro-Sculpting</span>
+                                            <span class="text-xs font-mono text-blue-400">Dr. Sen, MD</span>
+                                        </div>
+                                        <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                                            <span class="text-xs font-bold text-white">Targeted Pigmentation Laser</span>
+                                            <span class="text-xs font-mono text-emerald-400">Slots Open</span>
+                                        </div>
+                                        <div class="p-2.5 rounded-xl bg-blue-500/20 text-center text-xs font-mono text-blue-300 font-bold">
+                                            WhatsApp Concierge Synchronized
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mobile Viewport Composition (Hidden by default, shown in Mobile mode) -->
+                        <div class="modern-view-mobile hidden flex justify-center py-4">
+                            <div class="w-full max-w-[340px] rounded-3xl border-4 border-slate-700 bg-slate-950 p-4 shadow-2xl space-y-4">
+                                <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 border-b border-white/10 pb-2">
+                                    <span>09:41</span>
+                                    <span class="w-16 h-3.5 rounded-full bg-slate-800 inline-block"></span>
+                                    <span>5G 100%</span>
+                                </div>
+                                <div class="font-serif italic text-lg text-white">AURORA CLINIC</div>
+                                <div class="p-3 rounded-xl bg-blue-950/40 border border-blue-500/30 space-y-2">
+                                    <div class="text-xs font-bold text-white">Cosmetic Consultation</div>
+                                    <div class="text-[10px] font-mono text-blue-400">Direct Doctor WhatsApp Routing</div>
+                                    <button type="button" class="w-full py-2 rounded-lg bg-blue-600 text-white font-mono text-xs font-bold">Instant Booking →</button>
+                                </div>
+                                <div class="p-3 rounded-xl bg-white/5 border border-white/10 text-[11px] font-mono text-slate-300">
+                                    Park Street Commercial Hub, Kolkata
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Funnel Diagram (Hidden by default, shown in Funnel mode) -->
+                        <div class="modern-view-funnel hidden p-6 rounded-2xl border border-white/15 bg-slate-950 font-mono text-xs space-y-4">
+                            <div class="text-sm font-bold text-blue-400">// AURORA CONVERSION FUNNEL ARCHITECTURE</div>
+                            <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                                    <div class="text-blue-400 font-bold">01 INTENT SEARCH</div>
+                                    <div class="text-slate-300 mt-1">"Aesthetic clinic Park Street" high-intent Google query.</div>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                                    <div class="text-purple-400 font-bold">02 SCHEMA RICH CARD</div>
+                                    <div class="text-slate-300 mt-1">MedicalBusiness JSON-LD reveals verified hours and telephone.</div>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                                    <div class="text-indigo-400 font-bold">03 NATIVE SSR LANDING</div>
+                                    <div class="text-slate-300 mt-1">Lightweight server-rendered mobile experience with instant access.</div>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-500/40">
+                                    <div class="text-emerald-400 font-bold">04 1-TAP INTAKE</div>
+                                    <div class="text-slate-200 mt-1">Direct slot hold synced directly to clinic receptionist.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 2. AARAV PROPERTIES SPECIMEN -->
+                    <div id="specimen-aarav" class="modern-project-specimen hidden space-y-6">
+                        
+                        <div class="modern-view-desktop rounded-2xl border border-white/15 bg-slate-950 overflow-hidden shadow-inner">
+                            <div class="px-4 py-2.5 bg-slate-900 border-b border-white/10 flex items-center justify-between text-xs font-mono">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                                    <span class="text-slate-400 ml-2">https://aaravproperties.com</span>
+                                </div>
+                                <span class="text-amber-400 font-bold">MUMBAI // REAL ESTATE ADVISORY</span>
+                            </div>
+
+                            <div class="p-6 sm:p-10 space-y-8 bg-gradient-to-br from-slate-950 via-[#18140c] to-slate-950">
+                                <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                                    <div class="font-display font-black text-xl text-white tracking-widest uppercase">AARAV ADVISORY</div>
+                                    <div class="hidden sm:flex items-center gap-6 text-xs font-mono text-slate-300">
+                                        <span>Private Folio</span>
+                                        <span>BKC Commercial</span>
+                                        <span>Worli Villas</span>
+                                        <span class="px-3 py-1 rounded-lg bg-amber-500 text-black font-bold">Private Dossier</span>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                                    <div class="lg:col-span-7 space-y-4">
+                                        <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-amber-500/10 text-amber-400 border border-amber-500/20 font-bold uppercase">
+                                            HIGH-VALUE RESIDENTIAL & COMMERCIAL ACQUISITIONS
+                                        </span>
+                                        <h3 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                                            Private dossiers for <span class="text-amber-400">discerning investors</span>.
+                                        </h3>
+                                        <p class="text-xs sm:text-sm font-mono text-slate-400 max-w-lg leading-relaxed">
+                                            Advising family offices and corporate leaders on prime Mumbai freehold real estate. Zero public aggregator clutter, 100% confidential.
+                                        </p>
+                                        <div class="flex items-center gap-3 pt-2">
+                                            <button type="button" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-mono text-xs font-bold">Request Asset Dossier</button>
+                                            <button type="button" class="px-4 py-2 rounded-xl bg-white/10 text-white font-mono text-xs">Direct Advisor Line</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="lg:col-span-5 rounded-2xl border border-amber-500/30 bg-amber-950/20 p-5 space-y-3">
+                                        <div class="text-[10px] font-mono text-amber-400 font-bold uppercase tracking-widest">CURATED ASSETS</div>
+                                        <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                                            <span class="text-xs font-bold text-white">Worli Seaface Penthouse</span>
+                                            <span class="text-xs font-mono text-amber-400">Exclusive</span>
+                                        </div>
+                                        <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                                            <span class="text-xs font-bold text-white">BKC Commercial Office Wing</span>
+                                            <span class="text-xs font-mono text-emerald-400">Clear Title</span>
+                                        </div>
+                                        <div class="p-2.5 rounded-xl bg-amber-500/20 text-center text-xs font-mono text-amber-300 font-bold">
+                                            RealEstateAgent Schema Active
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modern-view-mobile hidden flex justify-center py-4">
+                            <div class="w-full max-w-[340px] rounded-3xl border-4 border-slate-700 bg-slate-950 p-4 shadow-2xl space-y-4">
+                                <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 border-b border-white/10 pb-2">
+                                    <span>09:41</span>
+                                    <span class="w-16 h-3.5 rounded-full bg-slate-800 inline-block"></span>
+                                    <span>5G 100%</span>
+                                </div>
+                                <div class="font-display font-black text-base text-white">AARAV ADVISORY</div>
+                                <div class="p-3 rounded-xl bg-amber-950/40 border border-amber-500/30 space-y-2">
+                                    <div class="text-xs font-bold text-white">Confidential Asset Dossier</div>
+                                    <div class="text-[10px] font-mono text-amber-400">Verified WhatsApp Inquiry</div>
+                                    <button type="button" class="w-full py-2 rounded-lg bg-amber-500 text-black font-mono text-xs font-bold">Access Dossier →</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modern-view-funnel hidden p-6 rounded-2xl border border-white/15 bg-slate-950 font-mono text-xs space-y-4">
+                            <div class="text-sm font-bold text-amber-400">// AARAV PROPERTY CONVERSION FUNNEL</div>
+                            <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                                    <div class="text-amber-400 font-bold">01 HNWI INQUIRY</div>
+                                    <div class="text-slate-300 mt-1">Targeted investor search for Bandra & Worli assets.</div>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                                    <div class="text-amber-300 font-bold">02 ZERO PORTALS</div>
+                                    <div class="text-slate-300 mt-1">Direct private site avoids broker spam and fake listings.</div>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                                    <div class="text-emerald-400 font-bold">03 VERIFIED BLUEPRINTS</div>
+                                    <div class="text-slate-300 mt-1">Floor plans and regulatory clearances presented cleanly.</div>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-amber-950/40 border border-amber-500/40">
+                                    <div class="text-amber-400 font-bold">04 PARTNER DISPATCH</div>
+                                    <div class="text-slate-200 mt-1">Direct private appointment set with founding partner.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 3. THE SPICE ROOM SPECIMEN -->
+                    <div id="specimen-spice" class="modern-project-specimen hidden space-y-6">
+                        
+                        <div class="modern-view-desktop rounded-2xl border border-white/15 bg-slate-950 overflow-hidden shadow-inner">
+                            <div class="px-4 py-2.5 bg-slate-900 border-b border-white/10 flex items-center justify-between text-xs font-mono">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                                    <span class="text-slate-400 ml-2">https://thespiceroom.in</span>
+                                </div>
+                                <span class="text-purple-400 font-bold">BANGALORE // PROGRESSIVE DINING</span>
+                            </div>
+
+                            <div class="p-6 sm:p-10 space-y-8 bg-gradient-to-br from-slate-950 via-[#140c1a] to-slate-950">
+                                <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                                    <div class="font-serif text-xl sm:text-2xl text-white tracking-wider">THE SPICE ROOM</div>
+                                    <div class="hidden sm:flex items-center gap-6 text-xs font-mono text-slate-300">
+                                        <span>Tasting Menu</span>
+                                        <span>Cellar</span>
+                                        <span>Chef's Counter</span>
+                                        <span class="px-3 py-1 rounded-lg bg-purple-600 text-white font-bold">Hold Table</span>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                                    <div class="lg:col-span-7 space-y-4">
+                                        <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-500/10 text-purple-400 border border-purple-500/20 font-bold uppercase">
+                                            PROGRESSIVE BOTANICAL CUISINE & COCKTAILS
+                                        </span>
+                                        <h3 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-white leading-tight">
+                                            Sensory Indian dining with <span class="italic text-purple-300">zero commissions</span>.
+                                        </h3>
+                                        <p class="text-xs sm:text-sm font-mono text-slate-400 max-w-lg leading-relaxed">
+                                            A 7-course seasonal tasting menu celebrating indigenous coastal botanicals. Direct table reservations eliminating aggregator cuts.
+                                        </p>
+                                        <div class="flex items-center gap-3 pt-2">
+                                            <button type="button" class="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-mono text-xs font-bold">Reserve Evening Service</button>
+                                            <button type="button" class="px-4 py-2 rounded-xl bg-white/10 text-white font-mono text-xs">Explore Cellar</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="lg:col-span-5 rounded-2xl border border-purple-500/30 bg-purple-950/20 p-5 space-y-3">
+                                        <div class="text-[10px] font-mono text-purple-400 font-bold uppercase tracking-widest">EVENING TASTING</div>
+                                        <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                                            <span class="text-xs font-bold text-white">Cardamom Botanical Duck</span>
+                                            <span class="text-xs font-mono text-purple-400">Course 04</span>
+                                        </div>
+                                        <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                                            <span class="text-xs font-bold text-white">Cellar Seating (12 Covers)</span>
+                                            <span class="text-xs font-mono text-emerald-400">Tables Left</span>
+                                        </div>
+                                        <div class="p-2.5 rounded-xl bg-purple-500/20 text-center text-xs font-mono text-purple-300 font-bold">
+                                            Restaurant Schema & Direct SMS Sync
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modern-view-mobile hidden flex justify-center py-4">
+                            <div class="w-full max-w-[340px] rounded-3xl border-4 border-slate-700 bg-slate-950 p-4 shadow-2xl space-y-4">
+                                <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 border-b border-white/10 pb-2">
+                                    <span>09:41</span>
+                                    <span class="w-16 h-3.5 rounded-full bg-slate-800 inline-block"></span>
+                                    <span>5G 100%</span>
+                                </div>
+                                <div class="font-serif text-base text-white">THE SPICE ROOM</div>
+                                <div class="p-3 rounded-xl bg-purple-950/40 border border-purple-500/30 space-y-2">
+                                    <div class="text-xs font-bold text-white">Table Reservation</div>
+                                    <div class="text-[10px] font-mono text-purple-400">Direct Hold • Zero Cut</div>
+                                    <button type="button" class="w-full py-2 rounded-lg bg-purple-600 text-white font-mono text-xs font-bold">Confirm Seating →</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modern-view-funnel hidden p-6 rounded-2xl border border-white/15 bg-slate-950 font-mono text-xs space-y-4">
+                            <div class="text-sm font-bold text-purple-400">// THE SPICE ROOM HOSPITALITY CONVERSION</div>
+                            <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                                    <div class="text-purple-400 font-bold">01 LOCAL DINING</div>
+                                    <div class="text-slate-300 mt-1">High-intent searches for degustation dining in Indiranagar.</div>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                                    <div class="text-purple-300 font-bold">02 VISUAL MENU</div>
+                                    <div class="text-slate-300 mt-1">Sensory dish presentation and sommelier pairings.</div>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                                    <div class="text-emerald-400 font-bold">03 DIRECT HOLD</div>
+                                    <div class="text-slate-300 mt-1">Immediate SMS/WhatsApp booking confirmation.</div>
+                                </div>
+                                <div class="p-3.5 rounded-xl bg-purple-950/40 border border-purple-500/40">
+                                    <div class="text-purple-400 font-bold">04 ZERO AGGREGATOR</div>
+                                    <div class="text-slate-200 mt-1">Eliminates 15-25% table commission taxes forever.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- ENVIRONMENT 03: THE ASYMMETRIC COLOR FIELD (#modern-field)          -->
+        <!-- Large non-uniform spatial blocks with bold colored surfaces         -->
+        <!-- =================================================================== -->
+        <section id="modern-field" class="py-16 md:py-24 border-b border-white/10 bg-[#0a0b12]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="mb-10">
+                    <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest font-bold">03 // ENGINEERING CAPABILITIES</span>
+                    <h2 class="font-display text-3xl sm:text-5xl font-black text-white tracking-tight mt-1">
+                        ASYMMETRIC COLOR FIELD
                     </h2>
+                    <p class="text-xs sm:text-sm font-mono text-slate-400 mt-1 max-w-xl">
+                        Five core engineering disciplines engineered as an asymmetric physical surface. No repetitive card templates.
+                    </p>
                 </div>
-                <div class="text-xs text-velora-muted max-w-sm font-sans leading-relaxed">
-                    Manipulate scope parameters below to immediately observe delivery stages, timeline milestones, and fixed canonical investment totals.
+
+                <!-- Asymmetric Multi-Scale Grid (Not uniform cards!) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                    
+                    <!-- BLOCK 1: Native SSR (MASSIVE Electric Blue Block - Cols 8) -->
+                    <div class="lg:col-span-8 rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-blue-900/60 via-blue-950/80 to-slate-900 border border-blue-500/40 shadow-xl flex flex-col justify-between space-y-6">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                                    01 // WEB ARCHITECTURE
+                                </span>
+                                <span class="text-xs font-mono text-blue-300 font-semibold">ZERO RUNTIME FRAMEWORKS</span>
+                            </div>
+                            <h3 class="font-display text-2xl sm:text-4xl font-black text-white">
+                                Pure Server-Side Rendering
+                            </h3>
+                            <p class="text-xs sm:text-sm font-mono text-blue-100/80 max-w-2xl leading-relaxed">
+                                We eliminate client-side UI frameworks entirely. Clean, semantic HTML parses instantly in the browser engine without hydration lag, heavy CPU drain, or third-party bundle vulnerabilities.
+                            </p>
+                        </div>
+
+                        <!-- Interactive Performance Simulator Widget -->
+                        <div class="p-4 rounded-2xl bg-black/50 border border-blue-500/30 font-mono text-xs space-y-3">
+                            <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                                <span class="text-[11px] text-slate-400">ARCHITECTURE COMPARISON</span>
+                                <div class="flex items-center gap-1.5">
+                                    <button type="button" class="modern-field-ssr-toggle px-2.5 py-0.5 rounded text-[10px] font-bold bg-blue-600 text-white" data-arch="velora">VELORA SSR</button>
+                                    <button type="button" class="modern-field-ssr-toggle px-2.5 py-0.5 rounded text-[10px] text-slate-400 hover:text-white" data-arch="spa">TYPICAL SPA</button>
+                                </div>
+                            </div>
+                            <div id="field-perf-velora" class="space-y-1.5 text-[11px] text-emerald-400">
+                                <div class="flex items-center justify-between">
+                                    <span>HTML Stream Ready:</span>
+                                    <span class="font-bold">Stream-Rendered HTML (Zero Client Hydration)</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-emerald-400 h-full w-[95%]"></div>
+                                </div>
+                                <div class="text-[10px] text-slate-400 pt-1">Zero framework overhead • Minimal layout shifts • Clean native browser rendering</div>
+                            </div>
+                            <div id="field-perf-spa" class="hidden space-y-1.5 text-[11px] text-rose-400">
+                                <div class="flex items-center justify-between">
+                                    <span>Hydration Delay:</span>
+                                    <span class="font-bold">Heavy Client Runtime Blocking</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-rose-500 h-full w-[35%]"></div>
+                                </div>
+                                <div class="text-[10px] text-slate-400 pt-1">Heavy client CPU consumption • Mobile frame drops • Plugin bloat</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BLOCK 2: Structured Discovery (Vivid Violet Block - Cols 4) -->
+                    <div class="lg:col-span-4 rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-purple-900/60 via-purple-950/80 to-slate-900 border border-purple-500/40 shadow-xl flex flex-col justify-between space-y-6">
+                        <div class="space-y-3">
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                                02 // LOCAL DISCOVERY
+                            </span>
+                            <h3 class="font-display text-2xl font-bold text-white">
+                                Schema.org Graph
+                            </h3>
+                            <p class="text-xs font-mono text-purple-100/80 leading-relaxed">
+                                Entity-level JSON-LD schema linking physical address, operating hours, physician/agent credentials, and service areas directly to search engine crawlers.
+                            </p>
+                        </div>
+
+                        <!-- Visual Entity Node Graph -->
+                        <div class="p-3.5 rounded-2xl bg-black/50 border border-purple-500/30 font-mono text-xs space-y-2">
+                            <div class="text-[10px] text-purple-400 font-bold uppercase">ENTITY TOPOLOGY</div>
+                            <div class="flex items-center gap-2 text-slate-300 text-[11px]">
+                                <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                                <span>Entity: Commercial Practice</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-300 text-[11px] pl-3 border-l border-purple-500/40">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                                <span>GeoCoordinates [Lat/Long]</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-300 text-[11px] pl-3 border-l border-purple-500/40">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                <span>Verified Opening Hours</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BLOCK 3: Lead Conversion (Emerald Green Block - Cols 4) -->
+                    <div class="lg:col-span-4 rounded-3xl p-6 bg-gradient-to-br from-emerald-900/60 via-emerald-950/80 to-slate-900 border border-emerald-500/40 shadow-xl flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                                03 // CONVERSION
+                            </span>
+                            <h3 class="font-display text-xl font-bold text-white mt-2">
+                                Frictionless Lead Engine
+                            </h3>
+                            <p class="text-xs font-mono text-emerald-100/80 mt-1 leading-relaxed">
+                                1-touch WhatsApp routing and confidential consultation dispatch that turns visitors into booked commercial clients.
+                            </p>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-black/40 border border-emerald-500/30 font-mono text-[11px] text-emerald-300 flex items-center justify-between">
+                            <span>Direct Pathway:</span>
+                            <span class="font-bold">1-Touch WhatsApp & Lead Sync</span>
+                        </div>
+                    </div>
+
+                    <!-- BLOCK 4: Annual Site Care (Warm Amber Block - Cols 4) -->
+                    <div class="lg:col-span-4 rounded-3xl p-6 bg-gradient-to-br from-amber-900/60 via-amber-950/80 to-slate-900 border border-amber-500/40 shadow-xl flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                                04 // SITE CARE
+                            </span>
+                            <h3 class="font-display text-xl font-bold text-white mt-2">
+                                Annual Maintenance
+                            </h3>
+                            <p class="text-xs font-mono text-amber-100/80 mt-1 leading-relaxed">
+                                High-availability cloud hosting management, SSL certificate renewals, monthly content updates, and continuous uptime monitoring.
+                            </p>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-black/40 border border-amber-500/30 font-mono text-[11px] text-amber-300 flex items-center justify-between">
+                            <span>Inclusions:</span>
+                            <span class="font-bold">Hosting + SSL + Monthly Edits</span>
+                        </div>
+                    </div>
+
+                    <!-- BLOCK 5: 100% Asset Ownership (Coral/Rose Block - Cols 4) -->
+                    <div class="lg:col-span-4 rounded-3xl p-6 bg-gradient-to-br from-rose-900/60 via-rose-950/80 to-slate-900 border border-rose-500/40 shadow-xl flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">
+                                05 // ASSET RIGHTS
+                            </span>
+                            <h3 class="font-display text-xl font-bold text-white mt-2">
+                                Complete Ownership
+                            </h3>
+                            <p class="text-xs font-mono text-rose-100/80 mt-1 leading-relaxed">
+                                100% client code ownership. Complete Git repository handover with zero proprietary website-builder lock-in or recurring template taxes.
+                            </p>
+                        </div>
+                        <div class="p-3 rounded-2xl bg-black/40 border border-rose-500/30 font-mono text-[11px] text-rose-300 flex items-center justify-between">
+                            <span>Repository:</span>
+                            <span class="font-bold">Full Git Transfer</span>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
+        </section>
 
-            <!-- Main Interactive Canvas -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                <!-- Left Column (7 cols): Configuration Controls -->
-                <div class="lg:col-span-7 space-y-6">
-                    <!-- Base Tier Selector (3 Canonical Plans) -->
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between text-xs font-mono">
-                            <span class="text-velora-text font-bold uppercase">1. Select Base Scope Architecture:</span>
-                            <span class="text-velora-muted text-[10px]">Fixed Milestone Pricing</span>
+        <!-- =================================================================== -->
+        <!-- ENVIRONMENT 04: THE INTERACTIVE DELIVERY CONTINUUM (#modern-continuum) -->
+        <!-- Horizontal visual system with expanding artifact panes              -->
+        <!-- =================================================================== -->
+        <section id="modern-continuum" class="py-16 md:py-24 border-b border-white/10 bg-[#0c0e18]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                    <div>
+                        <span class="text-xs font-mono text-indigo-400 uppercase tracking-widest font-bold">04 // SPRINT EXECUTION</span>
+                        <h2 class="font-display text-3xl sm:text-5xl font-black text-white tracking-tight mt-1">
+                            DELIVERY CONTINUUM
+                        </h2>
+                    </div>
+                    <p class="text-xs sm:text-sm font-mono text-slate-400 max-w-md">
+                        18-day commercial sprint. Select any milestone below to inspect its delivered technical artifacts.
+                    </p>
+                </div>
+
+                <!-- Horizontal Ribbon Controller (Horizontal scroll on mobile, flex on desktop) -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-6 scrollbar-none" role="tablist" aria-label="Delivery Continuum Milestones">
+                    <button type="button" class="modern-continuum-tab shrink-0 px-4 py-3 rounded-2xl border border-blue-500 bg-blue-600 text-white font-mono text-xs font-bold transition-all text-left shadow-md" data-stage="0" role="tab" aria-selected="true">
+                        <div class="text-[10px] text-blue-200 uppercase">DAYS 01–03</div>
+                        <div class="text-sm font-bold mt-0.5">01 DISCOVER</div>
+                    </button>
+                    <button type="button" class="modern-continuum-tab shrink-0 px-4 py-3 rounded-2xl border border-white/10 bg-slate-900 text-slate-400 hover:text-white font-mono text-xs font-semibold transition-all text-left" data-stage="1" role="tab" aria-selected="false">
+                        <div class="text-[10px] uppercase">DAYS 04–07</div>
+                        <div class="text-sm font-bold mt-0.5">02 DESIGN</div>
+                    </button>
+                    <button type="button" class="modern-continuum-tab shrink-0 px-4 py-3 rounded-2xl border border-white/10 bg-slate-900 text-slate-400 hover:text-white font-mono text-xs font-semibold transition-all text-left" data-stage="2" role="tab" aria-selected="false">
+                        <div class="text-[10px] uppercase">DAYS 08–12</div>
+                        <div class="text-sm font-bold mt-0.5">03 SSR BUILD</div>
+                    </button>
+                    <button type="button" class="modern-continuum-tab shrink-0 px-4 py-3 rounded-2xl border border-white/10 bg-slate-900 text-slate-400 hover:text-white font-mono text-xs font-semibold transition-all text-left" data-stage="3" role="tab" aria-selected="false">
+                        <div class="text-[10px] uppercase">DAYS 13–15</div>
+                        <div class="text-sm font-bold mt-0.5">04 SCHEMA</div>
+                    </button>
+                    <button type="button" class="modern-continuum-tab shrink-0 px-4 py-3 rounded-2xl border border-white/10 bg-slate-900 text-slate-400 hover:text-white font-mono text-xs font-semibold transition-all text-left" data-stage="4" role="tab" aria-selected="false">
+                        <div class="text-[10px] uppercase">DAYS 16–18</div>
+                        <div class="text-sm font-bold mt-0.5">05 LAUNCH</div>
+                    </button>
+                </div>
+
+                <!-- Expanded Visual Artifact Stage -->
+                <div id="modern-continuum-stage" class="rounded-3xl border border-white/15 bg-slate-900/90 p-6 sm:p-8 backdrop-blur-xl space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-white/10 gap-2">
+                        <div>
+                            <span id="stage-badge" class="text-xs font-mono uppercase tracking-widest text-blue-400 font-bold">MILESTONE 01 // ARCHITECTURE</span>
+                            <h3 id="stage-title" class="font-display text-xl sm:text-2xl font-bold text-white mt-1">
+                                Commercial Discovery & Spatial Sizing
+                            </h3>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" role="radiogroup" aria-label="Base Scope Tiers">
-                            <!-- Tier 1: Essential -->
-                            <button type="button"
-                                    class="modern-tier-btn p-4 rounded-xl border text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent bg-velora-bg border-velora-border hover:border-velora-borderStrong"
-                                    data-tier-id="essential"
-                                    data-base-price="${CONFIG.pricing.essential}"
-                                    data-timeline="2–3 Weeks"
-                                    data-max-pages="5">
-                                <div class="flex items-center justify-between text-[10px] font-mono text-velora-muted pb-1">
-                                    <span>TIER 01</span>
-                                    <span>2–3 WEEKS</span>
-                                </div>
-                                <div class="font-display font-bold text-base text-velora-text">Essential</div>
-                                <div class="text-xs font-mono font-bold text-velora-accent mt-1 modern-tabular">₹${CONFIG.pricing.essential.toLocaleString('en-IN')}</div>
-                                <div class="text-[10px] text-velora-muted font-sans mt-1">Up to 5 pages, SSR, direct WhatsApp</div>
-                            </button>
-
-                            <!-- Tier 2: Professional (Active Default) -->
-                            <button type="button"
-                                    class="modern-tier-btn p-4 rounded-xl border text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent bg-velora-bg border-velora-accent ring-1 ring-velora-accent shadow-sm"
-                                    data-tier-id="professional"
-                                    data-base-price="${CONFIG.pricing.professional}"
-                                    data-timeline="3–4 Weeks"
-                                    data-max-pages="10">
-                                <div class="flex items-center justify-between text-[10px] font-mono text-velora-accent font-bold pb-1">
-                                    <span>TIER 02</span>
-                                    <span>3–4 WEEKS</span>
-                                </div>
-                                <div class="font-display font-bold text-base text-velora-text">Professional</div>
-                                <div class="text-xs font-mono font-bold text-velora-accent mt-1 modern-tabular">₹${CONFIG.pricing.professional.toLocaleString('en-IN')}</div>
-                                <div class="text-[10px] text-velora-muted font-sans mt-1">Up to 10 pages + Full Local SEO</div>
-                            </button>
-
-                            <!-- Tier 3: Custom -->
-                            <button type="button"
-                                    class="modern-tier-btn p-4 rounded-xl border text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent bg-velora-bg border-velora-border hover:border-velora-borderStrong"
-                                    data-tier-id="custom"
-                                    data-base-price="${CONFIG.pricing.customBase}"
-                                    data-timeline="4–6 Weeks"
-                                    data-max-pages="15">
-                                <div class="flex items-center justify-between text-[10px] font-mono text-velora-muted pb-1">
-                                    <span>TIER 03</span>
-                                    <span>4–6 WEEKS</span>
-                                </div>
-                                <div class="font-display font-bold text-base text-velora-text">Custom</div>
-                                <div class="text-xs font-mono font-bold text-velora-accent mt-1 modern-tabular">₹${CONFIG.pricing.customBase.toLocaleString('en-IN')}+</div>
-                                <div class="text-[10px] text-velora-muted font-sans mt-1">Multi-location &amp; CRM integration</div>
-                            </button>
-                        </div>
+                        <span id="stage-timeline" class="px-3 py-1 rounded-lg text-xs font-mono bg-white/5 border border-white/10 text-slate-300">
+                            Window: Days 01–03
+                        </span>
                     </div>
 
-                    <!-- Scope Add-ons & Modifiers -->
-                    <div class="p-5 rounded-2xl bg-velora-bg border border-velora-border space-y-4 shadow-sm">
-                        <span class="text-xs font-mono font-bold uppercase text-velora-text block">2. Fine-Tune Scope Parameters:</span>
-
-                        <!-- Page Count Slider -->
-                        <div class="space-y-1.5">
-                            <div class="flex justify-between text-xs font-mono">
-                                <label for="modern-calc-pages" class="text-velora-muted">Total Unique Responsive Pages:</label>
-                                <span id="modern-calc-pages-val" class="text-velora-accent font-bold modern-tabular">5 Pages</span>
-                            </div>
-                            <input type="range" id="modern-calc-pages" min="1" max="20" value="5" class="w-full h-2 bg-velora-surface rounded-lg appearance-none cursor-pointer accent-velora-accent border border-velora-border" aria-label="Total Unique Responsive Pages">
-                            <div class="flex justify-between text-[10px] font-mono text-velora-muted">
-                                <span>1 Page</span>
-                                <span>10 Pages</span>
-                                <span>20 Pages</span>
-                            </div>
+                    <!-- Visual Artifact Specimens Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="stage-artifacts-container">
+                        <div class="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-1.5">
+                            <div class="text-[10px] font-mono text-blue-400 font-bold uppercase">ARTIFACT 01</div>
+                            <div class="text-xs font-bold text-white" id="art-1-title">Site Hierarchy & Sizing Spec</div>
+                            <p class="text-[11px] font-mono text-slate-400 leading-relaxed" id="art-1-desc">Complete tree of commercial conversion routes and lead capture pathways.</p>
                         </div>
-
-                        <!-- Checkbox Add-ons -->
-                        <div class="space-y-2.5 pt-1">
-                            <label class="flex items-center justify-between p-3 rounded-xl bg-velora-surface border border-velora-border/70 hover:border-velora-borderStrong cursor-pointer transition-colors">
-                                <div class="flex items-center gap-2.5">
-                                    <input type="checkbox" id="modern-calc-seo" class="w-4 h-4 rounded text-velora-accent focus:ring-velora-accent accent-velora-accent">
-                                    <div>
-                                        <span class="text-xs font-bold text-velora-text block font-sans">Add Local SEO Foundation Package</span>
-                                        <span class="text-[10px] text-velora-muted block font-sans">Schema markup, Google Profile alignment &amp; sitemap indexing</span>
-                                    </div>
-                                </div>
-                                <span class="text-xs font-mono font-bold text-velora-text shrink-0 modern-tabular">+₹${CONFIG.pricing.seoAddon.toLocaleString('en-IN')}</span>
-                            </label>
-
-                            <label class="flex items-center justify-between p-3 rounded-xl bg-velora-surface border border-velora-border/70 hover:border-velora-borderStrong cursor-pointer transition-colors">
-                                <div class="flex items-center gap-2.5">
-                                    <input type="checkbox" id="modern-calc-maint" class="w-4 h-4 rounded text-velora-accent focus:ring-velora-accent accent-velora-accent">
-                                    <div>
-                                        <span class="text-xs font-bold text-velora-text block font-sans">Add Annual Website Maintenance &amp; Care</span>
-                                        <span class="text-[10px] text-velora-muted block font-sans">Cloud hosting, SSL renewals, monthly content updates &amp; uptime monitoring</span>
-                                    </div>
-                                </div>
-                                <span class="text-xs font-mono font-bold text-velora-text shrink-0 modern-tabular">+₹${CONFIG.pricing.maintenanceAddon.toLocaleString('en-IN')}</span>
-                            </label>
+                        <div class="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-1.5">
+                            <div class="text-[10px] font-mono text-purple-400 font-bold uppercase">ARTIFACT 02</div>
+                            <div class="text-xs font-bold text-white" id="art-2-title">Service Inventory & Offers</div>
+                            <p class="text-[11px] font-mono text-slate-400 leading-relaxed" id="art-2-desc">Structured catalog of treatments, properties, or culinary menus.</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-black/40 border border-white/10 space-y-1.5">
+                            <div class="text-[10px] font-mono text-emerald-400 font-bold uppercase">ARTIFACT 03</div>
+                            <div class="text-xs font-bold text-white" id="art-3-title">Technical Hosting Strategy</div>
+                            <p class="text-[11px] font-mono text-slate-400 leading-relaxed" id="art-3-desc">Node.js SSR server-side routing specification and edge caching plan.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Column (5 cols): Dynamic Output & 5-Stage Delivery Timeline -->
-                <div class="lg:col-span-5 space-y-5">
-                    <!-- Calculated Investment Summary Box -->
-                    <div class="p-6 rounded-2xl bg-velora-bg border border-velora-border text-center space-y-3 shadow-sm">
-                        <span class="text-[10px] font-mono uppercase tracking-wider text-velora-muted block">Estimated Indicative Scope</span>
-                        <div id="modern-calc-total" class="font-display text-4xl sm:text-5xl font-bold text-velora-text modern-tabular">
-                            ₹${(CONFIG.pricing.baseCalculator + (5 * CONFIG.pricing.perPage)).toLocaleString('en-IN')}
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- ENVIRONMENT 05: THE PHYSICAL CONTROL CONFIGURATOR (#modern-configurator) -->
+        <!-- Instrument console aesthetic with live animated tabular calculations  -->
+        <!-- =================================================================== -->
+        <section id="modern-configurator" class="py-16 md:py-24 border-b border-white/10 bg-[#0a0b12]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                    <div>
+                        <span class="text-xs font-mono text-blue-400 uppercase tracking-widest font-bold">05 // COMMERCIAL INSTRUMENT</span>
+                        <h2 class="font-display text-3xl sm:text-5xl font-black text-white tracking-tight mt-1">
+                            STUDIO CONFIGURATOR
+                        </h2>
+                    </div>
+                    <p class="text-xs sm:text-sm font-mono text-slate-400 max-w-md">
+                        Configure scope parameters in real time. Transparent canonical rates with zero recurring percentage commissions.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Left: Control Panels (Cols 7) -->
+                    <div class="lg:col-span-7 space-y-6">
+                        
+                        <!-- 1. Tier Selection Tablets -->
+                        <div class="space-y-3">
+                            <label class="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold block">
+                                STEP 01 // PLATFORM TIER
+                            </label>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" role="radiogroup" aria-label="Platform Tier">
+                                
+                                <button type="button" class="modern-cfg-tier-btn p-4 rounded-2xl border border-white/10 bg-slate-900/90 text-left transition-all hover:border-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" data-tier="essential" data-price="14999" data-base-pages="5" role="radio" aria-checked="false">
+                                    <div class="text-[10px] font-mono text-slate-400 uppercase font-bold">ESSENTIAL</div>
+                                    <div class="text-2xl font-mono font-black text-white mt-1">₹14,999</div>
+                                    <div class="text-[11px] font-mono text-slate-400 mt-2">Up to 5 pages. Native SSR, mobile responsive, core schema.</div>
+                                </button>
+
+                                <button type="button" class="modern-cfg-tier-btn p-4 rounded-2xl border-2 border-blue-500 bg-blue-950/40 text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" data-tier="professional" data-price="34999" data-base-pages="10" role="radio" aria-checked="true">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-[10px] font-mono text-blue-400 uppercase font-bold">STUDIO CHOICE</span>
+                                        <span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
+                                    </div>
+                                    <div class="text-2xl font-mono font-black text-white mt-1">₹34,999</div>
+                                    <div class="text-[11px] font-mono text-slate-300 mt-2">Up to 10 pages. Bespoke UI, local SEO engine, conversion rail.</div>
+                                </button>
+
+                                <button type="button" class="modern-cfg-tier-btn p-4 rounded-2xl border border-white/10 bg-slate-900/90 text-left transition-all hover:border-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" data-tier="custom" data-price="69999" data-base-pages="15" role="radio" aria-checked="false">
+                                    <div class="text-[10px] font-mono text-slate-400 uppercase font-bold">ENTERPRISE</div>
+                                    <div class="text-2xl font-mono font-black text-white mt-1">₹69,999+</div>
+                                    <div class="text-[11px] font-mono text-slate-400 mt-2">15+ pages. Multi-location system, dedicated engineering.</div>
+                                </button>
+
+                            </div>
                         </div>
-                        <div id="modern-active-timeline" class="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-bold">
-                            Estimated Turnaround: 2–4 Weeks
+
+                        <!-- 2. Page Count Slider -->
+                        <div class="p-6 rounded-2xl border border-white/10 bg-slate-900/90 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <label for="modern-cfg-slider" class="text-xs font-mono uppercase tracking-wider text-slate-200 font-bold">
+                                    STEP 02 // PAGE COUNT SCOPE
+                                </label>
+                                <span class="text-sm font-mono font-bold text-blue-400">
+                                    <span id="cfg-page-count" style="font-variant-numeric: tabular-nums;">10</span> Pages Scope
+                                </span>
+                            </div>
+                            <input type="range" id="modern-cfg-slider" min="5" max="25" value="10" step="1" class="w-full accent-blue-500 cursor-pointer h-2 bg-slate-800 rounded-lg" aria-label="Select total pages" />
+                            <div class="flex items-center justify-between text-[10px] font-mono text-slate-400">
+                                <span>5 Pages (Core Baseline)</span>
+                                <span>+₹1,500 / additional page</span>
+                                <span>25 Pages (Expanded)</span>
+                            </div>
                         </div>
-                        <p class="text-[11px] text-velora-muted font-sans max-w-xs mx-auto">
-                            Indicative investment based on chosen parameters. Zero ongoing template royalties or platform commissions.
-                        </p>
-                        <div class="pt-2">
-                            <a href="#modern-intake" id="modern-calc-quote-btn" class="block w-full py-3 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-velora-button text-velora-buttonText hover:bg-velora-buttonHover transition-colors shadow-sm">
-                                Lock Scope &amp; Dispatch Brief &rarr;
+
+                        <!-- 3. Add-on Modules -->
+                        <div class="space-y-3">
+                            <label class="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold block">
+                                STEP 03 // OPTIONAL SERVICE MODULES
+                            </label>
+                            <div class="space-y-2">
+                                <label class="flex items-center justify-between p-4 rounded-2xl border border-white/10 bg-slate-900/90 hover:bg-slate-800/90 cursor-pointer transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="cfg-addon-seo" class="modern-cfg-addon w-4 h-4 rounded border-white/20 text-blue-600 focus:ring-blue-500" data-price="17500" checked />
+                                        <div>
+                                            <div class="text-xs font-bold text-white">Advanced Local SEO & Schema Graph</div>
+                                            <div class="text-[10px] font-mono text-slate-400">Schema.org entity topology, local citations, NAP validation</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-mono font-bold text-blue-400">+₹17,500</span>
+                                </label>
+
+                                <label class="flex items-center justify-between p-4 rounded-2xl border border-white/10 bg-slate-900/90 hover:bg-slate-800/90 cursor-pointer transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="cfg-addon-care" class="modern-cfg-addon w-4 h-4 rounded border-white/20 text-blue-600 focus:ring-blue-500" data-price="15000" />
+                                        <div>
+                                            <div class="text-xs font-bold text-white">Annual Maintenance & Site Care</div>
+                                            <div class="text-[10px] font-mono text-slate-400">Cloud hosting, SSL automation, monthly content edits, uptime checks</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-mono font-bold text-emerald-400">+₹15,000/yr</span>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right: Instrument LED Total Console (Cols 5) -->
+                    <div class="lg:col-span-5 sticky top-24">
+                        <div class="rounded-3xl border-2 border-blue-500/50 bg-slate-950 p-6 sm:p-8 shadow-2xl space-y-6">
+                            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                                <div>
+                                    <span class="text-[10px] font-mono text-blue-400 uppercase tracking-widest font-bold">CALCULATED COMMITMENT</span>
+                                    <h3 class="font-display text-xl font-black text-white">ESTIMATED INVESTMENT</h3>
+                                </div>
+                                <div class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></div>
+                            </div>
+
+                            <!-- Line Item Breakdown -->
+                            <div class="space-y-3 font-mono text-xs text-slate-400">
+                                <div class="flex items-center justify-between">
+                                    <span>Base Tier (<span id="cfg-summary-tier">Professional</span>):</span>
+                                    <span class="text-white font-bold" id="cfg-summary-tier-cost" style="font-variant-numeric: tabular-nums;">₹34,999</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span>Extra Pages (<span id="cfg-summary-extra-count">0</span>):</span>
+                                    <span class="text-white font-bold" id="cfg-summary-page-cost" style="font-variant-numeric: tabular-nums;">₹0</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span>Selected Modules:</span>
+                                    <span class="text-white font-bold" id="cfg-summary-addon-cost" style="font-variant-numeric: tabular-nums;">₹17,500</span>
+                                </div>
+                            </div>
+
+                            <!-- Giant LED Numerical Display -->
+                            <div class="pt-4 border-t border-white/10">
+                                <div class="text-[10px] font-mono text-slate-400 uppercase font-bold">TOTAL FIXED RATE ESTIMATE</div>
+                                <div class="text-4xl sm:text-5xl font-mono font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 mt-2" id="cfg-grand-total" style="font-variant-numeric: tabular-nums;">
+                                    ₹52,499
+                                </div>
+                                <div class="text-[10px] font-mono text-slate-400 mt-2">Zero recurring platform taxes. Full code ownership upon settlement.</div>
+                            </div>
+
+                            <!-- Lock Scope & Inquire Button -->
+                            <div class="pt-2">
+                                <button type="button" id="modern-cfg-lock-btn" class="w-full py-4 px-4 min-h-[48px] rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-bold transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
+                                    <span>Lock Scope & Open Intake</span>
+                                    <span>→</span>
+                                </button>
+                                <p class="text-[10px] font-mono text-center text-slate-400 mt-2">
+                                    Auto-synchronizes the technical brief below.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- ENVIRONMENT 06: PROGRESSIVE INTAKE & HANDOFF (#modern-contact)      -->
+        <!-- Minimal initial prompt expanding into clean direct intake           -->
+        <!-- =================================================================== -->
+        <section id="modern-contact" class="py-16 md:py-24 bg-[#0a0b12]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                    
+                    <!-- Direct Studio Channels -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <div>
+                            <span class="text-xs font-mono text-blue-400 uppercase tracking-widest font-bold">06 // DIRECT HANDOFF</span>
+                            <h2 class="font-display text-3xl sm:text-4xl font-black text-white tracking-tight mt-1">
+                                START YOUR PROJECT
+                            </h2>
+                            <p class="text-xs sm:text-sm font-mono text-slate-400 mt-2 leading-relaxed">
+                                Connect directly with our lead architectural engineer. We review your requirements and provide an exact fixed-price contract.
+                            </p>
+                        </div>
+
+                        <!-- Direct Communication Channels -->
+                        <div class="space-y-3">
+                            <a href="https://wa.me/919279180000" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-4 rounded-2xl border border-emerald-500/40 bg-emerald-950/20 hover:border-emerald-500 transition-all">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-mono text-lg">💬</div>
+                                <div>
+                                    <div class="text-[10px] font-mono text-emerald-400 uppercase font-bold">WHATSAPP DIRECT CONCIERGE</div>
+                                    <div class="text-xs font-mono font-bold text-white">+91 92791 80000</div>
+                                </div>
+                            </a>
+
+                            <a href="tel:+919279180000" class="flex items-center gap-3 p-4 rounded-2xl border border-white/10 bg-slate-900/90 hover:border-blue-500 transition-all">
+                                <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-lg">☎</div>
+                                <div>
+                                    <div class="text-[10px] font-mono text-slate-400 uppercase font-bold">DIRECT TELEPHONE</div>
+                                    <div class="text-xs font-mono font-bold text-white">+91 92791 80000</div>
+                                </div>
+                            </a>
+
+                            <a href="mailto:hello@veloradigital.com" class="flex items-center gap-3 p-4 rounded-2xl border border-white/10 bg-slate-900/90 hover:border-purple-500 transition-all">
+                                <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-mono text-lg">✉</div>
+                                <div>
+                                    <div class="text-[10px] font-mono text-slate-400 uppercase font-bold">STUDIO EMAIL</div>
+                                    <div class="text-xs font-mono font-bold text-white">hello@veloradigital.com</div>
+                                </div>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Synchronized 5-Stage Delivery Continuum (Replaces separate Process section) -->
-                    <div class="p-5 rounded-2xl bg-velora-bg border border-velora-border space-y-3 shadow-sm">
-                        <div class="flex items-center justify-between pb-2 border-b border-velora-border text-[10px] font-mono text-velora-muted uppercase">
-                            <span>Delivery Continuum</span>
-                            <span class="text-velora-accent font-bold">5 Fixed Stages</span>
-                        </div>
-                        <div class="space-y-2 text-xs font-sans">
-                            <div class="flex items-start gap-2.5 p-2 rounded-lg bg-velora-surface border border-velora-border/60">
-                                <span class="w-5 h-5 rounded bg-velora-accent text-white flex items-center justify-center font-mono text-[10px] font-bold shrink-0">01</span>
+                    <!-- Intake Console Form -->
+                    <div class="lg:col-span-7">
+                        <div class="rounded-3xl border border-white/15 bg-slate-900/90 p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
+                            
+                            <!-- Synchronized Scope Badge -->
+                            <div class="p-3.5 rounded-2xl bg-blue-950/40 border border-blue-500/30 mb-6 flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                                    <span class="text-xs font-mono text-slate-300">Configured Scope:</span>
+                                    <span id="intake-scope-label" class="text-xs font-mono font-bold text-white">Professional Tier (10 Pages) + SEO</span>
+                                </div>
+                                <span id="intake-scope-price" class="text-xs font-mono font-bold text-blue-400" style="font-variant-numeric: tabular-nums;">₹52,499</span>
+                            </div>
+
+                            <form id="modern-contact-form" class="space-y-4" novalidate>
+                                <input type="hidden" id="modern-scope-payload" name="configured_scope" value="Professional Tier (10 Pages) + SEO (₹52,499)" />
+                                
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="contact-name" class="block text-xs font-mono text-slate-400 mb-1 font-semibold">YOUR NAME *</label>
+                                        <input type="text" id="contact-name" name="name" required class="w-full px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/15 text-xs font-mono text-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Dr. Aditi Sen" />
+                                    </div>
+                                    <div>
+                                        <label for="contact-business" class="block text-xs font-mono text-slate-400 mb-1 font-semibold">BUSINESS / PRACTICE *</label>
+                                        <input type="text" id="contact-business" name="business" required class="w-full px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/15 text-xs font-mono text-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Sen Aesthetics Clinic" />
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="contact-email" class="block text-xs font-mono text-slate-400 mb-1 font-semibold">EMAIL ADDRESS *</label>
+                                        <input type="email" id="contact-email" name="email" required class="w-full px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/15 text-xs font-mono text-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="aditi@senaesthetics.com" />
+                                    </div>
+                                    <div>
+                                        <label for="contact-phone" class="block text-xs font-mono text-slate-400 mb-1 font-semibold">TELEPHONE / WHATSAPP *</label>
+                                        <input type="tel" id="contact-phone" name="phone" required class="w-full px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/15 text-xs font-mono text-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="+91 98300 00000" />
+                                    </div>
+                                </div>
+
                                 <div>
-                                    <strong class="text-velora-text block leading-tight">Discovery &amp; Intent Mapping</strong>
-                                    <span class="text-[11px] text-velora-muted">Customer search queries &amp; competitor benchmarks</span>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-2.5 p-2 rounded-lg bg-velora-surface border border-velora-border/60">
-                                <span class="w-5 h-5 rounded bg-velora-accent text-white flex items-center justify-center font-mono text-[10px] font-bold shrink-0">02</span>
-                                <div>
-                                    <strong class="text-velora-text block leading-tight">Content &amp; Visual Design</strong>
-                                    <span class="text-[11px] text-velora-muted">Readable typography, conversion triggers &amp; verified copy</span>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-2.5 p-2 rounded-lg bg-velora-surface border border-velora-border/60">
-                                <span class="w-5 h-5 rounded bg-velora-accent text-white flex items-center justify-center font-mono text-[10px] font-bold shrink-0">03</span>
-                                <div>
-                                    <strong class="text-velora-text block leading-tight">Lightweight Semantic SSR Code</strong>
-                                    <span class="text-[11px] text-velora-muted">Node.js SSR, Tailwind CSS, zero runtime bloated plugins</span>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-2.5 p-2 rounded-lg bg-velora-surface border border-velora-border/60">
-                                <span class="w-5 h-5 rounded bg-velora-accent text-white flex items-center justify-center font-mono text-[10px] font-bold shrink-0">04</span>
-                                <div>
-                                    <strong class="text-velora-text block leading-tight">Mobile &amp; Form QA Testing</strong>
-                                    <span class="text-[11px] text-velora-muted">Real device testing, SSL verification, click-to-call tests</span>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-2.5 p-2 rounded-lg bg-velora-surface border border-velora-border/60">
-                                <span class="w-5 h-5 rounded bg-velora-accent text-white flex items-center justify-center font-mono text-[10px] font-bold shrink-0">05</span>
-                                <div>
-                                    <strong class="text-velora-text block leading-tight">Cloud Launch &amp; Asset Handoff</strong>
-                                    <span class="text-[11px] text-velora-muted">Production DNS, domain configuration &amp; 100% asset handover</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================================================================= -->
-    <!-- ZONE 5: COMMAND DISPATCH CONSOLE (INTEGRATED INTAKE TERMINAL)      -->
-    <!-- (Replaces the generic 2-column agency form)                       -->
-    <!-- ================================================================= -->
-    <section class="py-14 sm:py-20 bg-velora-bg border-b border-velora-border" id="modern-intake">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                <!-- Left: Terminal Directives -->
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-velora-surface border border-velora-border text-[10px] font-mono text-velora-muted uppercase tracking-wider">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span>05 Instant Technical Dispatch</span>
-                    </div>
-
-                    <h2 class="font-display text-2xl sm:text-4xl font-bold text-velora-text tracking-tight">
-                        Initiate Project Brief or Architecture Review
-                    </h2>
-
-                    <p class="text-xs sm:text-sm text-velora-muted leading-relaxed font-sans text-pretty">
-                        Submit your practice details below. We review your current digital footprint, verify local search discoverability, and dispatch an actionable architecture proposal within 24 business hours.
-                    </p>
-
-                    <!-- Direct Technical Channels -->
-                    <div class="p-5 rounded-2xl bg-velora-surface border border-velora-border space-y-3 text-xs font-mono">
-                        <span class="text-[10px] text-velora-muted uppercase font-bold block pb-1 border-b border-velora-border">Direct Communication Lines:</span>
-                        <div class="flex items-center justify-between">
-                            <span class="text-velora-muted">WHATSAPP:</span>
-                            <a href="https://wa.me/${CONFIG.whatsapp}" class="text-velora-text hover:text-velora-accent font-bold transition-colors">${CONFIG.phone}</a>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-velora-muted">STUDIO EMAIL:</span>
-                            <a href="mailto:${CONFIG.email}" class="text-velora-text hover:text-velora-accent font-bold transition-colors">${CONFIG.email}</a>
-                        </div>
-                        <div class="flex items-center justify-between text-[11px]">
-                            <span class="text-velora-muted">TURNAROUND:</span>
-                            <span class="text-emerald-600 dark:text-emerald-400 font-bold">&le; 24 Business Hours Response</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: High-Precision Dispatch Terminal Form -->
-                <div class="lg:col-span-7">
-                    <div class="bg-velora-surface border border-velora-border rounded-2xl p-6 sm:p-8 shadow-sm space-y-5">
-                        <div class="flex items-center justify-between pb-3 border-b border-velora-border text-xs font-mono">
-                            <span class="text-velora-text font-bold uppercase">Project Dispatch Terminal</span>
-                            <span class="text-[10px] text-velora-accent font-mono">SECURE DIRECT INTAKE</span>
-                        </div>
-
-                        <!-- Real Technical Form Connected to Existing Backend -->
-                        <form id="modern-dispatch-form" class="space-y-4" novalidate>
-                            <!-- Honeypot -->
-                            <div class="hidden" aria-hidden="true">
-                                <label for="modern-gotcha">Do not fill this</label>
-                                <input type="text" id="modern-gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
-                            </div>
-
-                            <!-- Pre-populated Scope Indicator -->
-                            <div class="p-3 rounded-xl bg-velora-bg border border-velora-border/80 flex items-center justify-between text-xs font-mono">
-                                <span class="text-velora-muted">Target Scope:</span>
-                                <span id="modern-form-scope-badge" class="font-bold text-velora-accent">Professional Scope (~₹34,999)</span>
-                                <input type="hidden" id="modern-form-scope-input" name="scope" value="Professional">
-                            </div>
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="space-y-1">
-                                    <label for="modern-form-name" class="block text-[11px] font-mono text-velora-text uppercase font-bold">
-                                        Your Name / Principal <span class="text-velora-accent">*</span>
-                                    </label>
-                                    <input type="text"
-                                           id="modern-form-name"
-                                           name="name"
-                                           required
-                                           placeholder="Dr. Rajesh / Sunita Sharma"
-                                           class="w-full px-3.5 py-2.5 text-xs font-mono bg-velora-bg border border-velora-border rounded-xl text-velora-text placeholder-velora-muted/60 focus:outline-none focus:border-velora-accent transition-colors">
+                                    <label for="contact-notes" class="block text-xs font-mono text-slate-400 mb-1 font-semibold">PROJECT REQUIREMENTS / TIMELINE</label>
+                                    <textarea id="contact-notes" name="notes" rows="3" class="w-full px-3.5 py-2.5 rounded-xl bg-black/40 border border-white/15 text-xs font-mono text-white focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Briefly describe your objectives, target launch date, or current website URL..."></textarea>
                                 </div>
 
-                                <div class="space-y-1">
-                                    <label for="modern-form-phone" class="block text-[11px] font-mono text-velora-text uppercase font-bold">
-                                        Direct Phone / WhatsApp <span class="text-velora-accent">*</span>
-                                    </label>
-                                    <input type="tel"
-                                           id="modern-form-phone"
-                                           name="phone"
-                                           required
-                                           placeholder="+91 98765 43210"
-                                           class="w-full px-3.5 py-2.5 text-xs font-mono bg-velora-bg border border-velora-border rounded-xl text-velora-text placeholder-velora-muted/60 focus:outline-none focus:border-velora-accent transition-colors">
-                                </div>
-                            </div>
+                                <div id="modern-form-status" class="hidden p-3 rounded-xl text-xs font-mono" role="status" aria-live="polite"></div>
 
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="space-y-1">
-                                    <label for="modern-form-email" class="block text-[11px] font-mono text-velora-text uppercase font-bold">
-                                        Work Email Address <span class="text-velora-accent">*</span>
-                                    </label>
-                                    <input type="email"
-                                           id="modern-form-email"
-                                           name="email"
-                                           required
-                                           placeholder="director@yourpractice.com"
-                                           class="w-full px-3.5 py-2.5 text-xs font-mono bg-velora-bg border border-velora-border rounded-xl text-velora-text placeholder-velora-muted/60 focus:outline-none focus:border-velora-accent transition-colors">
-                                </div>
-
-                                <div class="space-y-1">
-                                    <label for="modern-form-website" class="block text-[11px] font-mono text-velora-text uppercase font-bold">
-                                        Current Website or Practice Name
-                                    </label>
-                                    <input type="text"
-                                           id="modern-form-website"
-                                           name="website"
-                                           placeholder="https://yourpractice.com"
-                                           class="w-full px-3.5 py-2.5 text-xs font-mono bg-velora-bg border border-velora-border rounded-xl text-velora-text placeholder-velora-muted/60 focus:outline-none focus:border-velora-accent transition-colors">
-                                </div>
-                            </div>
-
-                            <div class="space-y-1">
-                                <label for="modern-form-message" class="block text-[11px] font-mono text-velora-text uppercase font-bold">
-                                    Primary Objective or Challenge
-                                </label>
-                                <textarea id="modern-form-message"
-                                          name="message"
-                                          rows="2"
-                                          placeholder="e.g. Existing clinic website is slow on mobile; want more local booking calls from Gurugram."
-                                          class="w-full px-3.5 py-2.5 text-xs font-mono bg-velora-bg border border-velora-border rounded-xl text-velora-text placeholder-velora-muted/60 focus:outline-none focus:border-velora-accent transition-colors resize-none"></textarea>
-                            </div>
-
-                            <div class="pt-1">
-                                <button type="submit"
-                                        id="modern-dispatch-submit-btn"
-                                        class="w-full py-3.5 text-xs font-mono uppercase tracking-wider font-bold bg-velora-button text-velora-buttonText hover:bg-velora-buttonHover transition-colors rounded-xl shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent flex items-center justify-center gap-2">
-                                    <span>Transmit Dispatch Brief</span>
-                                    <span aria-hidden="true">&rarr;</span>
+                                <button type="submit" id="modern-submit-btn" class="w-full py-4 px-4 min-h-[48px] rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-bold transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
+                                    <span>Transmit Project Scoping Brief</span>
+                                    <span>→</span>
                                 </button>
-                            </div>
+                            </form>
 
-                            <!-- Success / Error Feedback Containers -->
-                            <div id="modern-dispatch-success" class="hidden p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-xs font-mono">
-                                &check; Dispatch received. We have logged your project scope and will transmit an architecture review within 24 business hours.
-                            </div>
-                            <div id="modern-dispatch-error" class="hidden p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-700 dark:text-red-400 text-xs font-mono">
-                                Transmission failed. Please verify your contact details and try again.
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================================================================= -->
-    <!-- ZONE 6: CONTEXTUAL KNOWLEDGE INTERFACE (REPLACES 8-ROW ACCORDION)  -->
-    <!-- ================================================================= -->
-    <section class="py-14 sm:py-20 bg-velora-surface" id="modern-knowledge">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-5 border-b border-velora-border gap-4">
-                <div>
-                    <span class="text-[10px] font-mono uppercase tracking-widest text-velora-accent block mb-1.5">Contextual Knowledge Console</span>
-                    <h2 class="font-display text-2xl sm:text-4xl font-bold text-velora-text tracking-tight">
-                        Operating Standards &amp; Inquiries
-                    </h2>
-                </div>
-                <div class="text-xs text-velora-muted max-w-sm font-sans leading-relaxed">
-                    Direct technical parameters, complete code ownership, and delivery governance. Select any topic to inspect its authoritative answer.
-                </div>
-            </div>
-
-            <!-- Two-Dimensional Knowledge Browser (Replaces uniform 8-row accordion) -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                <!-- Left: Question Rail (Chips & Categorized Index) -->
-                <div class="lg:col-span-5 space-y-2" role="tablist" aria-label="Knowledge Topics">
-                    ${FAQS.map((faq, idx) => `
-                    <button type="button"
-                            role="tab"
-                            id="modern-faq-tab-${idx}"
-                            aria-selected="${idx === 0 ? 'true' : 'false'}"
-                            aria-controls="modern-faq-panel-${idx}"
-                            data-faq-index="${idx}"
-                            class="modern-faq-btn w-full text-left p-3 rounded-xl border text-xs font-sans transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent flex items-center justify-between gap-3 ${idx === 0 ? 'bg-velora-bg border-velora-accent shadow-sm' : 'bg-velora-card/60 border-velora-border hover:bg-velora-card'}">
-                        <div class="flex items-center gap-2.5 truncate">
-                            <span class="w-5 h-5 rounded bg-velora-surface border border-velora-border text-velora-accent flex items-center justify-center font-mono text-[9px] font-bold shrink-0">
-                                0${idx + 1}
-                            </span>
-                            <span class="font-bold text-velora-text truncate">${escapeHTML(faq.q)}</span>
                         </div>
-                        <span class="text-[10px] font-mono text-velora-muted shrink-0">&rarr;</span>
-                    </button>
-                    `).join('')}
+                    </div>
+
                 </div>
 
-                <!-- Right: Active Knowledge Display Console -->
-                <div class="lg:col-span-7 bg-velora-bg border border-velora-border rounded-2xl p-6 sm:p-8 shadow-sm min-h-[300px] flex flex-col justify-between">
-                    ${FAQS.map((faq, idx) => `
-                    <div id="modern-faq-panel-${idx}"
-                         role="tabpanel"
-                         aria-labelledby="modern-faq-tab-${idx}"
-                         class="modern-faq-panel ${idx === 0 ? 'block' : 'hidden'} space-y-4">
-                        <div class="flex items-center justify-between pb-3 border-b border-velora-border text-xs font-mono">
-                            <span class="text-velora-accent font-bold">KNOWLEDGE DISCLOSURE 0${idx + 1} // AUTHENTICATED</span>
-                            <span class="text-velora-muted text-[10px]">CANONICAL SPECIFICATION</span>
-                        </div>
-                        <h3 class="font-display text-xl sm:text-2xl font-bold text-velora-text">${escapeHTML(faq.q)}</h3>
-                        <p class="text-xs sm:text-sm text-velora-muted leading-relaxed font-sans">
-                            ${escapeHTML(faq.a)}
-                        </p>
-                    </div>
-                    `).join('')}
-
-                    <div class="pt-6 border-t border-velora-border flex items-center justify-between text-[11px] font-mono text-velora-muted">
-                        <span>Have a custom technical question?</span>
-                        <a href="https://wa.me/${CONFIG.whatsapp}" class="text-velora-accent hover:underline font-bold">Chat on WhatsApp &rarr;</a>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+    </div>
     `;
 
     const styles = `
-        /* Hide global floating quote button specifically on Modern */
-        html[data-experience="modern"] #desktop-floating-cta {
-            display: none !important;
+        /* Modern Experience Living Interactive Playground Scoped Styles */
+        .modern-playground-root {
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+        }
+        
+        .modern-playground-root * {
+            box-sizing: border-box;
         }
 
-        html[data-experience="modern"] {
-            --color-bg: #ffffff;
-            --color-surface: #f8fafc;
-            --color-card: #f1f5f9;
-            --color-card-hover: #e2e8f0;
-            --color-border: rgba(15, 23, 42, 0.08);
-            --color-border-strong: rgba(15, 23, 42, 0.18);
-            --color-text-main: #0f172a;
-            --color-text-muted: #64748b;
-            --color-faint: rgba(15, 23, 42, 0.03);
-            --color-faint-hover: rgba(15, 23, 42, 0.06);
-            --color-btn-bg: #2563eb;
-            --color-btn-text: #ffffff;
-            --color-btn-hover: #1d4ed8;
-            --color-nav-glass: rgba(255, 255, 255, 0.98);
-            --color-accent: #2563eb;
-            --color-accent-light: #60a5fa;
-        }
-
-        html[data-experience="modern"][data-theme="obsidian"] {
-            --color-bg: #0b0f19;
-            --color-surface: #111827;
-            --color-card: #1f2937;
-            --color-card-hover: #374151;
-            --color-border: rgba(255, 255, 255, 0.08);
-            --color-border-strong: rgba(255, 255, 255, 0.18);
-            --color-text-main: #f9fafb;
-            --color-text-muted: #9ca3af;
-            --color-faint: rgba(255, 255, 255, 0.03);
-            --color-faint-hover: rgba(255, 255, 255, 0.06);
-            --color-btn-bg: #3b82f6;
-            --color-btn-text: #ffffff;
-            --color-btn-hover: #2563eb;
-            --color-nav-glass: rgba(17, 24, 39, 0.98);
-            --color-accent: #3b82f6;
-            --color-accent-light: #93c5fd;
-        }
-
-        html[data-experience="modern"][data-theme="midnight"] {
-            --color-bg: #030712;
-            --color-surface: #0b132b;
-            --color-card: #1c2541;
-            --color-card-hover: #263352;
-            --color-border: rgba(56, 189, 248, 0.12);
-            --color-border-strong: rgba(56, 189, 248, 0.25);
-            --color-text-main: #f0f9ff;
-            --color-text-muted: #7dd3fc;
-            --color-faint: rgba(56, 189, 248, 0.04);
-            --color-faint-hover: rgba(56, 189, 248, 0.08);
-            --color-btn-bg: #0284c7;
-            --color-btn-text: #ffffff;
-            --color-btn-hover: #0369a1;
-            --color-nav-glass: rgba(11, 19, 43, 0.98);
-            --color-accent: #0284c7;
-            --color-accent-light: #38bdf8;
-        }
-
-        /* Modern Spatial Dock */
-        html[data-experience="modern"] .modern-dock {
-            background-color: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(15, 23, 42, 0.10);
-            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
-        }
-        html[data-experience="modern"][data-theme="obsidian"] .modern-dock {
-            background-color: rgba(17, 24, 39, 0.98);
-            border-color: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
-        }
-        html[data-experience="modern"][data-theme="midnight"] .modern-dock {
-            background-color: rgba(11, 19, 43, 0.98);
-            border-color: rgba(56, 189, 248, 0.2);
-            box-shadow: 0 4px 20px -2px rgba(3, 7, 18, 0.5);
-        }
-
-        /* Mobile Drawer */
-        .modern-mobile-drawer {
-            transform-origin: top center;
-            transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        /* Simulated Mobile Phone Frame */
-        .modern-phone-frame {
-            background-color: #0b0f19 !important;
-            border: 4px solid #334155 !important;
-            color: #f1f5f9 !important;
-            border-radius: 28px !important;
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4) !important;
-        }
-        .modern-phone-card {
-            background-color: #1e293b !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            color: #ffffff !important;
-            border-radius: 12px !important;
-        }
-        .modern-phone-badge-emerald {
-            background-color: rgba(6, 78, 59, 0.5) !important;
-            border: 1px solid rgba(16, 185, 129, 0.3) !important;
-            color: #6ee7b7 !important;
-        }
-        .modern-phone-badge-amber {
-            background-color: rgba(120, 53, 15, 0.5) !important;
-            border: 1px solid rgba(245, 158, 11, 0.3) !important;
-            color: #fde68a !important;
-        }
-        .modern-phone-badge-orange {
-            background-color: rgba(124, 45, 18, 0.5) !important;
-            border: 1px solid rgba(249, 115, 22, 0.3) !important;
-            color: #fdba74 !important;
-        }
-        .modern-phone-btn-emerald {
-            background-color: #10b981 !important;
-            color: #022c22 !important;
-        }
-        .modern-phone-btn-amber {
-            background-color: #f59e0b !important;
-            color: #451a03 !important;
-        }
-        .modern-phone-btn-orange {
-            background-color: #f97316 !important;
-            color: #431407 !important;
-        }
-
-        /* Tabular numerics */
-        .modern-tabular {
+        .modern-playground-root [style*="tabular-nums"] {
             font-variant-numeric: tabular-nums;
         }
 
-        html[data-experience="modern"] .font-display {
-            font-family: 'Space Grotesk', sans-serif;
+        .modern-slot-btn:hover {
+            transform: translateY(-1px);
         }
-        html[data-experience="modern"] .font-mono {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-none {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .modern-dock,
-            .modern-mobile-drawer,
-            .modern-proj-view,
-            .modern-sector-desc,
-            .modern-faq-panel {
-                transition: none !important;
-                animation: none !important;
-            }
-            html[data-experience="modern"] *,
-            html[data-experience="modern"] *::before,
-            html[data-experience="modern"] *::after {
+            .modern-playground-root * {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
@@ -1527,381 +1360,450 @@ function renderModernExperience(currentPath = "/") {
 
     const script = `
         (function() {
+            window.__veloraModernCleanups = window.__veloraModernCleanups || [];
+
+            function addListener(element, event, handler) {
+                if (!element) return;
+                element.addEventListener(event, handler);
+                window.__veloraModernCleanups.push(function() {
+                    element.removeEventListener(event, handler);
+                });
+            }
+
             window.initModernInteractions = function() {
-                // Clear any prior listeners before initializing
                 if (typeof window.cleanupModernInteractions === 'function') {
                     window.cleanupModernInteractions();
                 }
 
-                window.__veloraModernCleanups = [];
-                function addListener(target, event, handler, options) {
-                    if (!target) return;
-                    target.addEventListener(event, handler, options);
-                    window.__veloraModernCleanups.push(function() {
-                        try { target.removeEventListener(event, handler, options); } catch (e) {}
-                    });
-                }
-
-                // 1. Mobile Menu Drawer Toggle
+                // -------------------------------------------------------------
+                // 1. Mobile Menu Drawer Navigation
+                // -------------------------------------------------------------
                 const mobileBtn = document.getElementById('modern-mobile-menu-btn');
-                const mobileDrawer = document.getElementById('modern-mobile-dock');
-                const mobileLinks = document.querySelectorAll('.modern-mobile-anchor-link, .modern-mobile-nav-link');
-                const burgerIcon = document.getElementById('modern-burger-icon');
+                const closeBtn = document.getElementById('modern-mobile-close-btn');
+                const drawer = document.getElementById('modern-mobile-drawer');
 
-                function toggleMobileMenu(open) {
-                    if (!mobileBtn || !mobileDrawer) return;
-                    const isOpen = typeof open === 'boolean' ? open : (mobileBtn.getAttribute('aria-expanded') !== 'true');
-                    mobileBtn.setAttribute('aria-expanded', isOpen);
-                    if (isOpen) {
-                        mobileDrawer.classList.remove('hidden');
-                        mobileDrawer.setAttribute('aria-hidden', 'false');
-                        mobileBtn.setAttribute('aria-label', 'Close Modern Navigation Menu');
-                        if (burgerIcon) burgerIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
-                        document.body.style.overflow = 'hidden';
-                    } else {
-                        mobileDrawer.classList.add('hidden');
-                        mobileDrawer.setAttribute('aria-hidden', 'true');
-                        mobileBtn.setAttribute('aria-label', 'Open Modern Navigation Menu');
-                        if (burgerIcon) burgerIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-                        document.body.style.overflow = '';
+                if (mobileBtn && drawer) {
+                    addListener(mobileBtn, 'click', function() {
+                        const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+                        if (isExpanded) {
+                            drawer.classList.add('hidden');
+                            mobileBtn.setAttribute('aria-expanded', 'false');
+                        } else {
+                            drawer.classList.remove('hidden');
+                            mobileBtn.setAttribute('aria-expanded', 'true');
+                            if (closeBtn) closeBtn.focus();
+                        }
+                    });
+
+                    if (closeBtn) {
+                        addListener(closeBtn, 'click', function() {
+                            drawer.classList.add('hidden');
+                            mobileBtn.setAttribute('aria-expanded', 'false');
+                            mobileBtn.focus();
+                        });
                     }
-                }
 
-                if (mobileBtn && mobileDrawer) {
-                    addListener(mobileBtn, 'click', function(e) {
-                        e.stopPropagation();
-                        toggleMobileMenu();
+                    drawer.querySelectorAll('a').forEach(link => {
+                        addListener(link, 'click', function() {
+                            drawer.classList.add('hidden');
+                            mobileBtn.setAttribute('aria-expanded', 'false');
+                        });
                     });
 
-                    mobileLinks.forEach(link => {
-                        addListener(link, 'click', () => toggleMobileMenu(false));
-                    });
-
-                    addListener(window, 'keydown', function(e) {
-                        if (e.key === 'Escape' && mobileBtn.getAttribute('aria-expanded') === 'true') {
-                            toggleMobileMenu(false);
-                            try { mobileBtn.focus(); } catch (err) {}
-                        }
-                    });
-
-                    addListener(document, 'click', function(e) {
-                        if (mobileBtn.getAttribute('aria-expanded') === 'true' && !mobileDrawer.contains(e.target) && !mobileBtn.contains(e.target)) {
-                            toggleMobileMenu(false);
-                        }
-                    });
-
-                    addListener(window, 'resize', function() {
-                        if (window.innerWidth >= 1024 && mobileBtn.getAttribute('aria-expanded') === 'true') {
-                            toggleMobileMenu(false);
+                    addListener(document, 'keydown', function(e) {
+                        if (e.key === 'Escape' && !drawer.classList.contains('hidden')) {
+                            drawer.classList.add('hidden');
+                            mobileBtn.setAttribute('aria-expanded', 'false');
+                            mobileBtn.focus();
                         }
                     });
                 }
 
-                // 2. Project Workspace Viewport & Mode Controller
-                const projBtns = document.querySelectorAll('.modern-proj-btn');
-                const projViews = document.querySelectorAll('.modern-proj-view');
-                const modeBtns = document.querySelectorAll('.modern-mode-btn');
+                // -------------------------------------------------------------
+                // 2. Opening Canvas Sector Switcher
+                // -------------------------------------------------------------
+                const canvasTabs = document.querySelectorAll('.modern-canvas-sector-tab');
+                const canvasPanels = document.querySelectorAll('.modern-canvas-panel');
 
-                function switchProject(projId) {
-                    projBtns.forEach(btn => {
-                        const isMatch = btn.getAttribute('data-proj') === projId;
-                        btn.setAttribute('aria-selected', isMatch);
-                        if (isMatch) {
-                            btn.className = 'modern-proj-btn px-3.5 py-2 rounded-xl text-xs font-mono font-bold tracking-wider transition-all bg-velora-accent text-white shadow-sm shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent';
-                        } else {
-                            btn.className = 'modern-proj-btn px-3.5 py-2 rounded-xl text-xs font-mono tracking-wider transition-all text-velora-muted hover:text-velora-text hover:bg-velora-card shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-velora-accent';
+                canvasTabs.forEach(tab => {
+                    addListener(tab, 'click', function() {
+                        const target = this.getAttribute('data-canvas-sector');
+                        canvasTabs.forEach(t => {
+                            t.classList.remove('bg-blue-600', 'text-white', 'shadow-sm');
+                            t.classList.add('text-slate-400');
+                            t.setAttribute('aria-selected', 'false');
+                        });
+                        this.classList.add('bg-blue-600', 'text-white', 'shadow-sm');
+                        this.classList.remove('text-slate-400');
+                        this.setAttribute('aria-selected', 'true');
+
+                        canvasPanels.forEach(p => {
+                            if (p.id === 'canvas-panel-' + target) {
+                                p.classList.remove('hidden');
+                            } else {
+                                p.classList.add('hidden');
+                            }
+                        });
+                    });
+                });
+
+                // Slot selection simulation
+                document.querySelectorAll('.modern-slot-btn').forEach(slot => {
+                    addListener(slot, 'click', function() {
+                        const parent = this.parentElement;
+                        if (parent) {
+                            parent.querySelectorAll('.modern-slot-btn').forEach(s => {
+                                s.classList.remove('bg-blue-600', 'bg-purple-600', 'text-white', 'font-bold');
+                            });
+                            this.classList.add('bg-blue-600', 'text-white', 'font-bold');
                         }
                     });
+                });
 
-                    projViews.forEach(view => {
-                        if (view.id === 'modern-proj-' + projId) {
-                            view.classList.remove('hidden');
-                            view.classList.add('block');
-                        } else {
-                            view.classList.add('hidden');
-                            view.classList.remove('block');
+                // -------------------------------------------------------------
+                // 3. Visual Work Gallery Controllers (Projects & Modes)
+                // -------------------------------------------------------------
+                const projBtns = document.querySelectorAll('.modern-gallery-proj-btn');
+                const modeBtns = document.querySelectorAll('.modern-gallery-mode-btn');
+                let currentProject = 'aurora';
+                let currentMode = 'desktop';
+
+                function updateGalleryView() {
+                    document.querySelectorAll('.modern-project-specimen').forEach(spec => {
+                        const isTarget = spec.id === 'specimen-' + currentProject;
+                        spec.classList.toggle('hidden', !isTarget);
+                        if (isTarget) {
+                            const desktopView = spec.querySelector('.modern-view-desktop');
+                            const mobileView = spec.querySelector('.modern-view-mobile');
+                            const funnelView = spec.querySelector('.modern-view-funnel');
+                            if (desktopView) desktopView.classList.toggle('hidden', currentMode !== 'desktop');
+                            if (mobileView) mobileView.classList.toggle('hidden', currentMode !== 'mobile');
+                            if (funnelView) funnelView.classList.toggle('hidden', currentMode !== 'funnel');
                         }
                     });
                 }
 
                 projBtns.forEach(btn => {
                     addListener(btn, 'click', function() {
-                        const pid = this.getAttribute('data-proj');
-                        if (pid) switchProject(pid);
+                        currentProject = this.getAttribute('data-proj');
+                        projBtns.forEach(b => {
+                            b.classList.remove('bg-blue-600', 'text-white');
+                            b.classList.add('text-slate-400');
+                            b.setAttribute('aria-selected', 'false');
+                        });
+                        this.classList.add('bg-blue-600', 'text-white');
+                        this.classList.remove('text-slate-400');
+                        this.setAttribute('aria-selected', 'true');
+                        updateGalleryView();
                     });
                 });
-
-                // Quick jump buttons in Hero
-                const quickNodes = document.querySelectorAll('.modern-quick-jump-node');
-                quickNodes.forEach(node => {
-                    addListener(node, 'click', function() {
-                        const pid = this.getAttribute('data-project-id');
-                        if (pid) {
-                            switchProject(pid);
-                            const ws = document.getElementById('modern-workspace');
-                            if (ws) ws.scrollIntoView({ behavior: 'smooth' });
-                        }
-                    });
-                });
-
-                // Inspection Mode Switcher
-                function switchMode(mode) {
-                    modeBtns.forEach(btn => {
-                        const isMatch = btn.getAttribute('data-mode') === mode;
-                        if (isMatch) {
-                            btn.className = 'modern-mode-btn px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold uppercase transition-all bg-velora-card text-velora-accent border border-velora-border';
-                        } else {
-                            btn.className = 'modern-mode-btn px-3 py-1.5 rounded-lg text-[10px] font-mono uppercase text-velora-muted hover:text-velora-text transition-all';
-                        }
-                    });
-
-                    const simViews = document.querySelectorAll('.modern-view-sim');
-                    const archViews = document.querySelectorAll('.modern-view-arch');
-                    const convViews = document.querySelectorAll('.modern-view-conv');
-
-                    simViews.forEach(v => {
-                        if (mode === 'sim') { v.classList.remove('hidden'); v.classList.add('block'); }
-                        else { v.classList.add('hidden'); v.classList.remove('block'); }
-                    });
-                    archViews.forEach(v => {
-                        if (mode === 'arch') { v.classList.remove('hidden'); v.classList.add('block'); }
-                        else { v.classList.add('hidden'); v.classList.remove('block'); }
-                    });
-                    convViews.forEach(v => {
-                        if (mode === 'conv') { v.classList.remove('hidden'); v.classList.add('block'); }
-                        else { v.classList.add('hidden'); v.classList.remove('block'); }
-                    });
-                }
 
                 modeBtns.forEach(btn => {
                     addListener(btn, 'click', function() {
-                        const mode = this.getAttribute('data-mode');
-                        if (mode) switchMode(mode);
+                        currentMode = this.getAttribute('data-mode');
+                        modeBtns.forEach(b => {
+                            b.classList.remove('bg-white/15', 'text-white');
+                            b.classList.add('text-slate-400');
+                            b.setAttribute('aria-selected', 'false');
+                        });
+                        this.classList.add('bg-white/15', 'text-white');
+                        this.classList.remove('text-slate-400');
+                        this.setAttribute('aria-selected', 'true');
+                        updateGalleryView();
                     });
                 });
 
-                // 3. Integrated Sector Matrix Switcher
-                const sectorBtns = document.querySelectorAll('.modern-sector-btn');
-                const sectorDescs = document.querySelectorAll('.modern-sector-desc');
-
-                sectorBtns.forEach(btn => {
-                    addListener(btn, 'click', function() {
-                        const idx = this.getAttribute('data-sector-index');
-                        sectorBtns.forEach(b => {
-                            const match = b.getAttribute('data-sector-index') === idx;
-                            b.setAttribute('aria-selected', match);
-                            if (match) {
-                                b.classList.add('bg-velora-bg', 'border-velora-accent', 'shadow-sm');
-                                b.classList.remove('bg-velora-card/60', 'border-velora-border');
-                            } else {
-                                b.classList.remove('bg-velora-bg', 'border-velora-accent', 'shadow-sm');
-                                b.classList.add('bg-velora-card/60', 'border-velora-border');
-                            }
+                // -------------------------------------------------------------
+                // 4. Asymmetric Color Field: Architecture Toggle
+                // -------------------------------------------------------------
+                const archToggles = document.querySelectorAll('.modern-field-ssr-toggle');
+                archToggles.forEach(t => {
+                    addListener(t, 'click', function() {
+                        const arch = this.getAttribute('data-arch');
+                        archToggles.forEach(b => {
+                            b.classList.remove('bg-blue-600', 'text-white');
+                            b.classList.add('text-slate-400');
                         });
+                        this.classList.add('bg-blue-600', 'text-white');
+                        this.classList.remove('text-slate-400');
 
-                        sectorDescs.forEach((d, i) => {
-                            if (String(i) === idx) {
-                                d.classList.remove('hidden');
-                                d.classList.add('block');
-                            } else {
-                                d.classList.add('hidden');
-                                d.classList.remove('block');
-                            }
-                        });
-
-                        // Optionally map sector to corresponding project
-                        if (idx === '0') switchProject('aurora-aesthetics');
-                        else if (idx === '1') switchProject('aarav-estates');
-                        else if (idx === '2') switchProject('the-spice-room');
+                        const veloraPerf = document.getElementById('field-perf-velora');
+                        const spaPerf = document.getElementById('field-perf-spa');
+                        if (veloraPerf) veloraPerf.classList.toggle('hidden', arch !== 'velora');
+                        if (spaPerf) spaPerf.classList.toggle('hidden', arch !== 'spa');
                     });
                 });
 
-                // 4. Unified Scope & Pricing Configurator
-                const tierBtns = document.querySelectorAll('.modern-tier-btn');
-                const pageSlider = document.getElementById('modern-calc-pages');
-                const pageDisplay = document.getElementById('modern-calc-pages-val');
-                const seoCheck = document.getElementById('modern-calc-seo');
-                const maintCheck = document.getElementById('modern-calc-maint');
-                const totalDisplay = document.getElementById('modern-calc-total');
-                const timelineDisplay = document.getElementById('modern-active-timeline');
-                const formScopeBadge = document.getElementById('modern-form-scope-badge');
-                const formScopeInput = document.getElementById('modern-form-scope-input');
+                // -------------------------------------------------------------
+                // 5. Delivery Continuum Milestone Controller
+                // -------------------------------------------------------------
+                const continuumData = [
+                    {
+                        badge: "MILESTONE 01 // ARCHITECTURE",
+                        title: "Commercial Discovery & Spatial Sizing",
+                        timeline: "Window: Days 01–03",
+                        a1T: "Site Hierarchy & Sizing Spec",
+                        a1D: "Complete tree of commercial conversion routes and lead capture pathways.",
+                        a2T: "Service Inventory & Offers",
+                        a2D: "Structured catalog of treatments, properties, or culinary menus.",
+                        a3T: "Technical Hosting Strategy",
+                        a3D: "Node.js SSR server-side routing specification and edge caching plan."
+                    },
+                    {
+                        badge: "MILESTONE 02 // VISUAL DESIGN",
+                        title: "Bespoke Interface Design & Interaction Prototyping",
+                        timeline: "Window: Days 04–07",
+                        a1T: "Editorial Font & Visual Hierarchy",
+                        a1D: "Type pairing, color tokens, and accessible WCAG 2.1 AA contrast specs.",
+                        a2T: "Desktop & Mobile Canvas Prototypes",
+                        a2D: "Interactive viewport models for core conversion flows.",
+                        a3T: "Visual Asset Preparation",
+                        a3D: "Responsive WebP image optimization and vector iconography."
+                    },
+                    {
+                        badge: "MILESTONE 03 // SSR IMPLEMENTATION",
+                        title: "High-Performance Native SSR Engine",
+                        timeline: "Window: Days 08–12",
+                        a1T: "Semantic HTML5 Pre-Render Engine",
+                        a1D: "Zero client-side UI framework overhead for instant browser parsing.",
+                        a2T: "Multi-Viewport Layout Integrity",
+                        a2D: "Zero-overflow verification across 375px, 390px, 1280px, and 1440px.",
+                        a3T: "Keyboard & Focus Trapping",
+                        a3D: "Full accessibility navigation, ARIA controls, and escape handling."
+                    },
+                    {
+                        badge: "MILESTONE 04 // LOCAL DISCOVERY",
+                        title: "Structured Schema Graph & Citation Alignment",
+                        timeline: "Window: Days 13–15",
+                        a1T: "JSON-LD Entity Graph",
+                        a1D: "Schema.org validation for MedicalBusiness, RealEstateAgent, or Restaurant.",
+                        a2T: "Canonical Robots & Sitemap Sync",
+                        a2D: "Automated XML sitemaps and OpenGraph social metadata.",
+                        a3T: "Local Directory Alignment",
+                        a3D: "Name, address, telephone consistency across Indian digital directories."
+                    },
+                    {
+                        badge: "MILESTONE 05 // LAUNCH & HANDOVER",
+                        title: "Production Deployment & Complete Asset Sovereignty",
+                        timeline: "Window: Days 16–18",
+                        a1T: "Cloud Edge Provisioning",
+                        a1D: "Global CDN distribution with automated SSL certificates.",
+                        a2T: "Full Git Repository Handover",
+                        a2D: "100% source code ownership transferred to client account.",
+                        a3T: "Studio Operations Briefing",
+                        a3D: "Live orientation on content editing and direct inquiry routing."
+                    }
+                ];
 
-                let currentBasePrice = ${CONFIG.pricing.professional};
-                let currentTierName = 'Professional';
-                let currentTimeline = '3–4 Weeks';
+                const continuumTabs = document.querySelectorAll('.modern-continuum-tab');
+                continuumTabs.forEach(tab => {
+                    addListener(tab, 'click', function() {
+                        const stageIdx = parseInt(this.getAttribute('data-stage'), 10);
+                        const data = continuumData[stageIdx];
+                        if (!data) return;
+
+                        continuumTabs.forEach(t => {
+                            t.classList.remove('border-blue-500', 'bg-blue-600', 'text-white', 'shadow-md');
+                            t.classList.add('border-white/10', 'bg-slate-900', 'text-slate-400');
+                            t.setAttribute('aria-selected', 'false');
+                        });
+                        this.classList.add('border-blue-500', 'bg-blue-600', 'text-white', 'shadow-md');
+                        this.classList.remove('border-white/10', 'bg-slate-900', 'text-slate-400');
+                        this.setAttribute('aria-selected', 'true');
+
+                        const badge = document.getElementById('stage-badge');
+                        const title = document.getElementById('stage-title');
+                        const timeline = document.getElementById('stage-timeline');
+                        const a1T = document.getElementById('art-1-title');
+                        const a1D = document.getElementById('art-1-desc');
+                        const a2T = document.getElementById('art-2-title');
+                        const a2D = document.getElementById('art-2-desc');
+                        const a3T = document.getElementById('art-3-title');
+                        const a3D = document.getElementById('art-3-desc');
+
+                        if (badge) badge.textContent = data.badge;
+                        if (title) title.textContent = data.title;
+                        if (timeline) timeline.textContent = data.timeline;
+                        if (a1T) a1T.textContent = data.a1T;
+                        if (a1D) a1D.textContent = data.a1D;
+                        if (a2T) a2T.textContent = data.a2T;
+                        if (a2D) a2D.textContent = data.a2D;
+                        if (a3T) a3T.textContent = data.a3T;
+                        if (a3D) a3D.textContent = data.a3D;
+                    });
+                });
+
+                // -------------------------------------------------------------
+                // 6. Physical Control Surface Configurator Math
+                // -------------------------------------------------------------
+                let tierKey = 'professional';
+                let basePrice = 34999;
+                let basePages = 10;
+                const cfgSlider = document.getElementById('modern-cfg-slider');
+                const cfgPageCount = document.getElementById('cfg-page-count');
+                const cfgAddons = document.querySelectorAll('.modern-cfg-addon');
+                const cfgTotalDisplay = document.getElementById('cfg-grand-total');
+                const cfgTierName = document.getElementById('cfg-summary-tier');
+                const cfgTierCost = document.getElementById('cfg-summary-tier-cost');
+                const cfgExtraCount = document.getElementById('cfg-summary-extra-count');
+                const cfgPageCost = document.getElementById('cfg-summary-page-cost');
+                const cfgAddonCost = document.getElementById('cfg-summary-addon-cost');
+                const cfgLockBtn = document.getElementById('modern-cfg-lock-btn');
+                const intakeLabel = document.getElementById('intake-scope-label');
+                const intakePrice = document.getElementById('intake-scope-price');
+                const intakePayload = document.getElementById('modern-scope-payload');
 
                 function updateConfigurator() {
-                    const pages = parseInt(pageSlider ? pageSlider.value : 5, 10);
-                    if (pageDisplay) pageDisplay.textContent = pages + (pages === 1 ? ' Page' : ' Pages');
+                    const pages = cfgSlider ? parseInt(cfgSlider.value, 10) : 10;
+                    if (cfgPageCount) cfgPageCount.textContent = pages;
 
-                    let total = currentBasePrice;
-                    // Add pages beyond base if applicable
-                    if (pages > 5) {
-                        total += (pages - 5) * ${CONFIG.pricing.perPage};
-                    }
-                    if (seoCheck && seoCheck.checked) total += ${CONFIG.pricing.seoAddon};
-                    if (maintCheck && maintCheck.checked) total += ${CONFIG.pricing.maintenanceAddon};
+                    const extra = Math.max(0, pages - basePages);
+                    const pageCost = extra * 1500;
 
-                    if (totalDisplay) totalDisplay.textContent = '₹' + total.toLocaleString('en-IN') + (currentTierName === 'Custom' ? '+' : '');
-                    if (timelineDisplay) timelineDisplay.textContent = 'Estimated Turnaround: ' + currentTimeline;
+                    let addonsSum = 0;
+                    let addonTags = [];
+                    cfgAddons.forEach(cb => {
+                        if (cb.checked) {
+                            const p = parseInt(cb.getAttribute('data-price'), 10) || 0;
+                            addonsSum += p;
+                            if (cb.id === 'cfg-addon-seo') addonTags.push('SEO');
+                            if (cb.id === 'cfg-addon-care') addonTags.push('Care');
+                        }
+                    });
 
-                    const scopeSummary = currentTierName + ' Scope (' + pages + ' Pages' + (seoCheck && seoCheck.checked ? ' + SEO' : '') + (maintCheck && maintCheck.checked ? ' + Maint' : '') + ') ~ ₹' + total.toLocaleString('en-IN');
-                    if (formScopeBadge) formScopeBadge.textContent = scopeSummary;
-                    if (formScopeInput) formScopeInput.value = scopeSummary;
+                    const total = basePrice + pageCost + addonsSum;
+                    const formatted = '₹' + total.toLocaleString('en-IN');
+
+                    if (cfgTotalDisplay) cfgTotalDisplay.textContent = formatted;
+                    if (cfgTierCost) cfgTierCost.textContent = '₹' + basePrice.toLocaleString('en-IN');
+                    if (cfgExtraCount) cfgExtraCount.textContent = extra;
+                    if (cfgPageCost) cfgPageCost.textContent = '₹' + pageCost.toLocaleString('en-IN');
+                    if (cfgAddonCost) cfgAddonCost.textContent = '₹' + addonsSum.toLocaleString('en-IN');
+
+                    const capTier = tierKey.charAt(0).toUpperCase() + tierKey.slice(1);
+                    if (cfgTierName) cfgTierName.textContent = capTier;
+
+                    const addonStr = addonTags.length > 0 ? ' + ' + addonTags.join(', ') : '';
+                    const fullSummary = capTier + ' Tier (' + pages + ' Pages)' + addonStr;
+
+                    if (intakeLabel) intakeLabel.textContent = fullSummary;
+                    if (intakePrice) intakePrice.textContent = formatted;
+                    if (intakePayload) intakePayload.value = fullSummary + ' (' + formatted + ')';
                 }
 
+                const tierBtns = document.querySelectorAll('.modern-cfg-tier-btn');
                 tierBtns.forEach(btn => {
                     addListener(btn, 'click', function() {
                         tierBtns.forEach(b => {
-                            b.classList.remove('border-velora-accent', 'ring-1', 'ring-velora-accent', 'shadow-sm');
-                            b.classList.add('border-velora-border');
+                            b.classList.remove('border-2', 'border-blue-500', 'bg-blue-950/40');
+                            b.classList.add('border', 'border-white/10', 'bg-slate-900/90');
+                            b.setAttribute('aria-checked', 'false');
                         });
-                        this.classList.add('border-velora-accent', 'ring-1', 'ring-velora-accent', 'shadow-sm');
-                        this.classList.remove('border-velora-border');
+                        this.classList.add('border-2', 'border-blue-500', 'bg-blue-950/40');
+                        this.classList.remove('border-white/10', 'bg-slate-900/90');
+                        this.setAttribute('aria-checked', 'true');
 
-                        currentBasePrice = parseInt(this.getAttribute('data-base-price'), 10) || ${CONFIG.pricing.professional};
-                        currentTimeline = this.getAttribute('data-timeline') || '3–4 Weeks';
-                        const tid = this.getAttribute('data-tier-id');
-                        currentTierName = tid === 'essential' ? 'Essential' : (tid === 'custom' ? 'Custom' : 'Professional');
+                        tierKey = this.getAttribute('data-tier');
+                        basePrice = parseInt(this.getAttribute('data-price'), 10);
+                        basePages = parseInt(this.getAttribute('data-base-pages'), 10);
 
-                        if (pageSlider) {
-                            pageSlider.value = this.getAttribute('data-max-pages') || 5;
+                        if (cfgSlider && basePages > parseInt(cfgSlider.value, 10)) {
+                            cfgSlider.value = basePages;
                         }
                         updateConfigurator();
                     });
                 });
 
-                if (pageSlider) addListener(pageSlider, 'input', updateConfigurator);
-                if (seoCheck) addListener(seoCheck, 'change', updateConfigurator);
-                if (maintCheck) addListener(maintCheck, 'change', updateConfigurator);
+                if (cfgSlider) addListener(cfgSlider, 'input', updateConfigurator);
+                cfgAddons.forEach(cb => addListener(cb, 'change', updateConfigurator));
 
-                // Initial calculation
-                updateConfigurator();
-
-                // 5. Contextual Knowledge Console Switcher
-                const faqBtns = document.querySelectorAll('.modern-faq-btn');
-                const faqPanels = document.querySelectorAll('.modern-faq-panel');
-
-                faqBtns.forEach(btn => {
-                    addListener(btn, 'click', function() {
-                        const idx = this.getAttribute('data-faq-index');
-                        faqBtns.forEach(b => {
-                            const match = b.getAttribute('data-faq-index') === idx;
-                            b.setAttribute('aria-selected', match);
-                            if (match) {
-                                b.classList.add('bg-velora-bg', 'border-velora-accent', 'shadow-sm');
-                                b.classList.remove('bg-velora-card/60', 'border-velora-border');
-                            } else {
-                                b.classList.remove('bg-velora-bg', 'border-velora-accent', 'shadow-sm');
-                                b.classList.add('bg-velora-card/60', 'border-velora-border');
-                            }
-                        });
-
-                        faqPanels.forEach((p, i) => {
-                            if (String(i) === idx) {
-                                p.classList.remove('hidden');
-                                p.classList.add('block');
-                            } else {
-                                p.classList.add('hidden');
-                                p.classList.remove('block');
-                            }
-                        });
-                    });
-                });
-
-                // 6. Command Dispatch Form Submission Handler
-                const dispatchForm = document.getElementById('modern-dispatch-form');
-                const dispatchSuccess = document.getElementById('modern-dispatch-success');
-                const dispatchError = document.getElementById('modern-dispatch-error');
-                const dispatchSubmitBtn = document.getElementById('modern-dispatch-submit-btn');
-
-                if (dispatchForm) {
-                    addListener(dispatchForm, 'submit', async function(e) {
-                        e.preventDefault();
-                        if (dispatchSuccess) dispatchSuccess.classList.add('hidden');
-                        if (dispatchError) dispatchError.classList.add('hidden');
-
-                        const nameInput = document.getElementById('modern-form-name');
-                        const phoneInput = document.getElementById('modern-form-phone');
-                        const emailInput = document.getElementById('modern-form-email');
-                        const websiteInput = document.getElementById('modern-form-website');
-                        const messageInput = document.getElementById('modern-form-message');
-                        const gotchaInput = document.getElementById('modern-gotcha');
-
-                        // Honeypot check
-                        if (gotchaInput && gotchaInput.value.trim().length > 0) {
-                            return;
-                        }
-
-                        if (!nameInput || !nameInput.value.trim() || !phoneInput || !phoneInput.value.trim() || !emailInput || !emailInput.value.trim()) {
-                            if (dispatchError) {
-                                dispatchError.textContent = 'Please provide your name, direct phone/WhatsApp number, and email address.';
-                                dispatchError.classList.remove('hidden');
-                            }
-                            return;
-                        }
-
-                        const payload = {
-                            name: nameInput.value.trim(),
-                            phone: phoneInput.value.trim(),
-                            email: emailInput.value.trim(),
-                            website: websiteInput ? websiteInput.value.trim() : '',
-                            service: formScopeInput ? formScopeInput.value : 'Professional Plan',
-                            message: messageInput ? messageInput.value.trim() : 'Modern Experience Dispatch'
-                        };
-
-                        if (dispatchSubmitBtn) {
-                            dispatchSubmitBtn.disabled = true;
-                            dispatchSubmitBtn.innerHTML = '<span>Transmitting...</span>';
-                        }
-
-                        try {
-                            const res = await fetch('/api/contact', {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify(payload)
-                            });
-
-                            if (res.ok) {
-                                if (dispatchSuccess) dispatchSuccess.classList.remove('hidden');
-                                dispatchForm.reset();
-                                updateConfigurator();
-                            } else {
-                                const data = await res.json().catch(() => ({}));
-                                if (dispatchError) {
-                                    dispatchError.textContent = data.error || 'Submission failed. Please message us directly on WhatsApp.';
-                                    dispatchError.classList.remove('hidden');
-                                }
-                            }
-                        } catch (err) {
-                            if (dispatchError) {
-                                dispatchError.textContent = 'Network connection interrupted. Please contact us via WhatsApp directly.';
-                                dispatchError.classList.remove('hidden');
-                            }
-                        } finally {
-                            if (dispatchSubmitBtn) {
-                                dispatchSubmitBtn.disabled = false;
-                                dispatchSubmitBtn.innerHTML = '<span>Transmit Dispatch Brief</span><span aria-hidden="true">&rarr;</span>';
-                            }
+                if (cfgLockBtn) {
+                    addListener(cfgLockBtn, 'click', function() {
+                        const contactSec = document.getElementById('modern-contact');
+                        if (contactSec) {
+                            contactSec.scrollIntoView({ behavior: 'smooth' });
+                            const nameEl = document.getElementById('contact-name');
+                            if (nameEl) setTimeout(() => nameEl.focus(), 500);
                         }
                     });
                 }
 
-                // 7. Studio Theme Menu Toggle & Handler
-                const themeBtn = document.getElementById('studio-theme-btn');
-                const themeMenu = document.getElementById('studio-theme-menu');
+                updateConfigurator();
+
+                // -------------------------------------------------------------
+                // 7. Contact Form Submission
+                // -------------------------------------------------------------
+                const form = document.getElementById('modern-contact-form');
+                const formStatus = document.getElementById('modern-form-status');
+                const submitBtn = document.getElementById('modern-submit-btn');
+
+                if (form) {
+                    addListener(form, 'submit', function(e) {
+                        e.preventDefault();
+                        if (!form.checkValidity()) {
+                            form.reportValidity();
+                            return;
+                        }
+
+                        if (submitBtn) {
+                            submitBtn.disabled = true;
+                            submitBtn.innerHTML = '<span>Transmitting...</span>';
+                        }
+
+                        const fd = new FormData(form);
+                        const payload = {
+                            name: fd.get('name'),
+                            business: fd.get('business'),
+                            email: fd.get('email'),
+                            phone: fd.get('phone'),
+                            notes: fd.get('notes'),
+                            configured_scope: fd.get('configured_scope')
+                        };
+
+                        fetch('/api/contact', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        })
+                        .then(r => r.json())
+                        .then(() => {
+                            if (formStatus) {
+                                formStatus.classList.remove('hidden', 'bg-rose-500/10', 'text-rose-400');
+                                formStatus.classList.add('bg-emerald-500/20', 'text-emerald-300', 'border', 'border-emerald-500/30');
+                                formStatus.textContent = '✓ Scoping inquiry received. Our lead architectural engineer will connect within 24 hours.';
+                            }
+                            form.reset();
+                            updateConfigurator();
+                        })
+                        .catch(() => {
+                            if (formStatus) {
+                                formStatus.classList.remove('hidden', 'bg-emerald-500/20', 'text-emerald-300');
+                                formStatus.classList.add('bg-rose-500/20', 'text-rose-400', 'border', 'border-rose-500/30');
+                                formStatus.textContent = 'Direct transmission delayed. Connect immediately via WhatsApp or direct phone.';
+                            }
+                        })
+                        .finally(() => {
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.innerHTML = '<span>Transmit Project Scoping Brief</span> <span>→</span>';
+                            }
+                        });
+                    });
+                }
+
+                // -------------------------------------------------------------
+                // 8. Studio Palette Theme Selector
+                // -------------------------------------------------------------
+                const themeBtn = document.getElementById('modern-theme-selector-btn');
+                const themeMenu = document.getElementById('modern-theme-menu');
+                const themeLabel = document.getElementById('modern-theme-label');
+
                 if (themeBtn && themeMenu) {
                     addListener(themeBtn, 'click', function(e) {
                         e.stopPropagation();
-                        const isHidden = themeMenu.classList.contains('hidden');
-                        if (isHidden) {
-                            themeMenu.classList.remove('hidden');
-                            themeBtn.setAttribute('aria-expanded', 'true');
-                        } else {
-                            themeMenu.classList.add('hidden');
-                            themeBtn.setAttribute('aria-expanded', 'false');
-                        }
+                        const isOpen = themeBtn.getAttribute('aria-expanded') === 'true';
+                        themeMenu.classList.toggle('hidden', isOpen);
+                        themeBtn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
                     });
 
                     addListener(document, 'click', function(e) {
@@ -1911,13 +1813,17 @@ function renderModernExperience(currentPath = "/") {
                         }
                     });
 
-                    const themeOpts = themeMenu.querySelectorAll('.theme-option');
-                    themeOpts.forEach(opt => {
+                    themeMenu.querySelectorAll('.modern-theme-opt').forEach(opt => {
                         addListener(opt, 'click', function() {
                             const val = this.getAttribute('data-theme-value');
                             if (val) {
                                 document.documentElement.setAttribute('data-theme', val);
                                 try { localStorage.setItem('velora_theme', val); } catch (e) {}
+                                if (themeLabel) {
+                                    if (val === 'midnight') themeLabel.textContent = 'Midnight / Cobalt';
+                                    if (val === 'onyx') themeLabel.textContent = 'Onyx / Champagne';
+                                    if (val === 'obsidian') themeLabel.textContent = 'Obsidian / Titanium';
+                                }
                                 themeMenu.classList.add('hidden');
                                 themeBtn.setAttribute('aria-expanded', 'false');
                             }
@@ -1928,12 +1834,11 @@ function renderModernExperience(currentPath = "/") {
 
             window.cleanupModernInteractions = function() {
                 if (Array.isArray(window.__veloraModernCleanups)) {
-                    window.__veloraModernCleanups.forEach(function(fn) {
+                    window.__veloraModernCleanups.forEach(fn => {
                         try { fn(); } catch (e) {}
                     });
                     window.__veloraModernCleanups = [];
                 }
-                document.body.style.overflow = '';
             };
 
             if (document.readyState === 'loading') {
