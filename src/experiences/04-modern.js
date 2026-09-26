@@ -968,7 +968,6 @@ function renderModernExperience(currentPath) {
     const footerContent = renderModernFooter();
 
     const styles = `
-        <style id="modern-v7-styles">
             /* V7 Tactile Physical Controls */
             .tactile-control {
                 transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.18s, border-color 0.18s, box-shadow 0.18s;
@@ -1167,7 +1166,6 @@ function renderModernExperience(currentPath) {
                     transform: none !important;
                 }
             }
-        </style>
     `;
 
     const script = `
