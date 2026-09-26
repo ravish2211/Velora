@@ -102,27 +102,28 @@ function renderAuroraWorld() {
     <div id="world-aurora" class="website-world active transition-all duration-700 w-full" data-world="aurora" aria-label="Aurora Clinic Signature Design Concept">
         <div class="relative bg-[#F8F5EE] text-[#1A2E23] rounded-2xl sm:rounded-[2.5rem] border border-[#D5DFD7] shadow-2xl overflow-hidden transition-all duration-500">
 
-            <!-- Aurora Internal Masthead -->
-            <div class="px-5 sm:px-10 py-4 sm:py-5 border-b border-[#D5DFD7] flex items-center justify-between bg-[#F8F5EE]/95">
+            <!-- 1. Aurora Clinic Masthead & Direct Appointment Trigger -->
+            <div class="px-5 sm:px-10 py-4 sm:py-5 border-b border-[#D5DFD7] flex items-center justify-between bg-[#F8F5EE]/95 sticky top-0 z-20 backdrop-blur-md">
                 <div class="flex items-center gap-2 sm:gap-3">
-                    <span class="font-serif text-lg sm:text-xl font-normal tracking-wide text-[#1A2E23]">AURORA</span>
+                    <span class="font-serif text-lg sm:text-2xl font-normal tracking-wide text-[#1A2E23]">AURORA</span>
                     <span class="text-[10px] uppercase tracking-widest text-[#2D5A46] font-semibold hidden sm:inline-block">· Clinic of Aesthetic Medicine</span>
                 </div>
                 <div class="flex items-center gap-3 sm:gap-6 text-xs text-[#456353] font-medium">
                     <span class="hidden md:inline-block hover:text-[#1A2E23] transition-colors cursor-pointer">Treatments</span>
-                    <span class="hover:text-[#1A2E23] transition-colors cursor-pointer">Practitioners</span>
-                    <span class="hidden sm:inline-block hover:text-[#1A2E23] transition-colors cursor-pointer">Philosophy</span>
-                    <span class="hover:text-[#1A2E23] transition-colors cursor-pointer">Consultation</span>
+                    <span class="hidden sm:inline-block hover:text-[#1A2E23] transition-colors cursor-pointer">Practitioners</span>
+                    <span class="hidden lg:inline-block hover:text-[#1A2E23] transition-colors cursor-pointer">Philosophy</span>
+                    <button type="button" id="aurora-nav-cta" class="tactile-control px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#2D5A46] text-[#F8F5EE] hover:bg-[#1B3B2B] transition-colors shadow-xs">
+                        Book Consultation
+                    </button>
                     <span class="px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider font-semibold bg-[#2D5A46]/10 text-[#2D5A46] border border-[#2D5A46]/20">Concept</span>
                 </div>
             </div>
 
-            <!-- Aurora Hero Stage: Asymmetric Organic Flow -->
-            <div class="p-5 sm:p-10 lg:p-12 relative">
+            <!-- 2. Aurora Hero Stage: Organic Composition & High-Trust Statement -->
+            <div class="p-6 sm:p-10 lg:p-12 relative overflow-hidden">
                 
-                <!-- Curatorial Design Lens Overlay Layer (Collision-Free Responsive Anchoring) -->
+                <!-- Curatorial Design Lens Overlay Layer -->
                 <div class="design-lens-layer absolute inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-300">
-                    <!-- Desktop/Tablet Upper Cluster: Anchored in Hero Stage Top-Right Negative Space -->
                     <div class="absolute top-4 sm:top-6 right-4 sm:right-8 flex flex-col items-end gap-2 max-w-[280px] sm:max-w-xs text-right hidden sm:flex">
                         <div class="bg-[#1A2E23]/90 text-white text-[10px] sm:text-[11px] font-mono px-3 py-1.5 rounded-md backdrop-blur-sm shadow-md">
                             <span>LENS: BOTANICAL CLINICAL HARMONY</span>
@@ -131,39 +132,46 @@ function renderAuroraWorld() {
                             <span>[TYPOGRAPHIC HIERARCHY: High-Contrast Display Serif + Restrained Clinical Sans]</span>
                         </div>
                     </div>
-                    <!-- Lower annotations tucked into stable hero bottom margins -->
                     <div class="absolute bottom-3 sm:bottom-4 left-4 sm:left-8 border border-dashed border-emerald-700 p-1.5 sm:p-2 rounded-lg bg-[#F8F5EE]/95 backdrop-blur-sm text-[9px] sm:text-[10px] text-emerald-900 font-mono hidden lg:block">
                         <span>[SPATIAL BREATHING: 60% Negative Space Builds Patient Confidence]</span>
                     </div>
-                    <div class="absolute bottom-3 sm:bottom-4 right-4 sm:right-8 border border-dashed border-[#C88A75] p-1.5 sm:p-2 rounded-lg bg-[#F8F5EE]/95 backdrop-blur-sm text-[9px] sm:text-[10px] text-[#C88A75] font-mono hidden sm:block">
-                        <span>[CONVERSION PATHWAY: Frictionless Low-Anxiety Consultation Trigger]</span>
-                    </div>
                 </div>
 
-                <!-- Background Botanical Flow Art (SVG) with Native Interaction Motion -->
-                <div id="aurora-botanical-art" class="absolute top-0 right-0 w-1/2 sm:w-7/12 h-full opacity-40 sm:opacity-55 pointer-events-none overflow-hidden transition-all duration-700 ease-out" aria-hidden="true">
-                    <svg viewBox="0 0 500 500" class="w-full h-full object-cover">
+                <!-- Substantial Bespoke Botanical SVG Artwork -->
+                <div id="aurora-botanical-art" class="aurora-hero-visual absolute top-0 right-0 w-full sm:w-7/12 h-full opacity-45 sm:opacity-75 pointer-events-none overflow-hidden transition-all duration-700 ease-out" aria-hidden="true">
+                    <svg viewBox="0 0 600 600" class="w-full h-full object-cover">
                         <defs>
-                            <linearGradient id="aurora-grad-v7" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#2D5A46" stop-opacity="0.35"/>
-                                <stop offset="60%" stop-color="#E4EDE6" stop-opacity="0.6"/>
-                                <stop offset="100%" stop-color="#DCA896" stop-opacity="0.25"/>
+                            <linearGradient id="aurora-grad-v8" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#2D5A46" stop-opacity="0.30"/>
+                                <stop offset="50%" stop-color="#E4EDE6" stop-opacity="0.65"/>
+                                <stop offset="100%" stop-color="#DCA896" stop-opacity="0.28"/>
                             </linearGradient>
+                            <radialGradient id="aurora-node-glow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#C88A75" stop-opacity="0.6"/>
+                                <stop offset="100%" stop-color="#C88A75" stop-opacity="0"/>
+                            </radialGradient>
                         </defs>
-                        <path d="M 300,50 C 420,80 480,200 450,320 C 420,440 280,480 180,450 C 80,420 50,300 80,180 C 110,60 200,20 300,50 Z" fill="url(#aurora-grad-v7)"/>
-                        <path d="M 350,120 Q 420,220 360,350 T 200,380" fill="none" stroke="#2D5A46" stroke-width="1.5" stroke-dasharray="4 4"/>
-                        <circle cx="360" cy="220" r="4" fill="#C88A75"/>
-                        <circle cx="200" cy="380" r="3.5" fill="#2D5A46"/>
+                        <!-- Organic Petal Curvature Layers -->
+                        <g id="aurora-svg-group" class="transition-transform duration-700 ease-out">
+                            <path d="M 360,70 C 490,100 550,220 520,360 C 490,490 340,540 220,500 C 100,460 70,320 110,190 C 150,70 250,40 360,70 Z" fill="url(#aurora-grad-v8)"/>
+                            <path id="aurora-contour-line" d="M 400,140 Q 500,260 410,400 T 240,430" fill="none" stroke="#2D5A46" stroke-width="1.75" stroke-dasharray="5 5" class="transition-all duration-700"/>
+                            <path d="M 330,110 Q 420,200 370,320 T 200,340" fill="none" stroke="#C88A75" stroke-width="1" stroke-opacity="0.5"/>
+                            <circle cx="410" cy="260" r="18" fill="url(#aurora-node-glow)"/>
+                            <circle id="aurora-pulse-node" cx="410" cy="260" r="5" fill="#C88A75" class="transition-all duration-500"/>
+                            <circle cx="240" cy="430" r="4.5" fill="#2D5A46"/>
+                            <circle cx="360" cy="120" r="3.5" fill="#2D5A46" opacity="0.6"/>
+                        </g>
                     </svg>
                 </div>
 
+                <!-- Hero Content Structure -->
                 <div class="relative z-10 max-w-2xl">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E4EDE6] text-[#2D5A46] text-[10px] font-semibold tracking-wider uppercase mb-4 sm:mb-5 border border-[#C8DACF]">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#2D5A46]"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#2D5A46] animate-pulse"></span>
                         <span>Signature Design Concept · Aesthetic Medicine</span>
                     </div>
 
-                    <h3 class="font-serif text-2xl sm:text-4xl lg:text-5xl font-light tracking-tight text-[#1A2E23] leading-[1.15] max-w-lg mb-4 sm:mb-6">
+                    <h3 class="font-serif text-3xl sm:text-5xl font-light tracking-tight text-[#1A2E23] leading-[1.12] max-w-xl mb-4 sm:mb-6">
                         Restoring Natural Harmony Through Medical Precision &amp; Unhurried Care.
                     </h3>
 
@@ -171,50 +179,125 @@ function renderAuroraWorld() {
                         Bespoke clinical protocols designed for subtle facial rejuvenation and restorative skin health. Doctor-led assessments, transparent treatment pricing, and dedicated 45-minute consultation windows.
                     </p>
 
-                    <!-- Mobile In-Flow Curatorial Callout (<sm screens only, zero overlap) -->
-                    <div class="mobile-lens-callout hidden sm:hidden mb-4 p-2.5 rounded-lg border border-dashed border-[#2D5A46] bg-[#F8F5EE]/95 text-[10px] font-mono text-[#2D5A46] flex items-center justify-between gap-2">
-                        <span class="font-bold">[LENS: BOTANICAL CLINICAL]</span>
-                        <span class="text-[9px] text-[#C88A75] text-right">[Serif + Clinical Sans]</span>
-                    </div>
-
-                    <!-- Aurora Interactive Status Notification (Expands on Trigger Interaction) -->
-                    <div id="aurora-interactive-status" class="overflow-hidden transition-all duration-500 max-h-0 opacity-0 mb-4 sm:mb-6 text-[10px] sm:text-[11px] font-mono text-[#2D5A46] bg-[#2D5A46]/10 border border-[#2D5A46]/30 rounded-lg px-3 py-2 flex items-center justify-between">
-                        <span>[CLINICAL PROTOCOL: Detailed Assessment Pathways &amp; Barrier Renewal Unfolded]</span>
-                        <span class="text-[9px] font-bold uppercase tracking-wider bg-[#2D5A46] text-white px-1.5 py-0.5 rounded">Active</span>
-                    </div>
-
-                    <!-- Aurora Clinical Treatment Protocols (Substantial Sage/Botanical Surfaces) -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
-                        <div id="aurora-pillar-1" class="aurora-pillar p-3.5 sm:p-4 rounded-xl bg-[#E4EDE6]/90 border border-[#C8DACF] backdrop-blur-xs transition-all duration-500">
-                            <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#2D5A46] block mb-1">01 / Aesthetics</span>
-                            <span class="text-xs font-semibold text-[#1A2E23] block">Facial Rejuvenation</span>
-                            <span class="text-[10px] sm:text-[11px] text-[#456353] block mt-0.5">Subtle volumetric balance</span>
-                        </div>
-                        <div id="aurora-pillar-2" class="aurora-pillar p-3.5 sm:p-4 rounded-xl bg-[#F4EBE8]/90 border border-[#E2CCC4] backdrop-blur-xs transition-all duration-500">
-                            <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#C88A75] block mb-1">02 / Dermatology</span>
-                            <span class="text-xs font-semibold text-[#1A2E23] block">Restorative Care</span>
-                            <span class="text-[10px] sm:text-[11px] text-[#456353] block mt-0.5">Cellular barrier renewal</span>
-                        </div>
-                        <div id="aurora-pillar-3" class="aurora-pillar p-3.5 sm:p-4 rounded-xl bg-[#E4EDE6]/90 border border-[#C8DACF] backdrop-blur-xs transition-all duration-500">
-                            <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#2D5A46] block mb-1">03 / Prevention</span>
-                            <span class="text-xs font-semibold text-[#1A2E23] block">Clinical Skin Health</span>
-                            <span class="text-[10px] sm:text-[11px] text-[#456353] block mt-0.5">Targeted hydration peels</span>
-                        </div>
-                    </div>
-
-                    <!-- Aurora Action Row with Tactile Trigger Control -->
-                    <div class="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
-                        <button type="button" id="aurora-interaction-trigger" class="tactile-control px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#2D5A46] text-[#F8F5EE] text-xs font-semibold tracking-wider hover:bg-[#1B3B2B] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2D5A46] flex items-center gap-2 shadow-sm">
-                            <span class="btn-label">Explore Clinical Protocols</span>
-                            <span class="interaction-arrow inline-block transition-transform duration-300">→</span>
+                    <!-- Dual Action CTAs -->
+                    <div class="flex flex-wrap items-center gap-3 sm:gap-4 mb-6">
+                        <button type="button" id="aurora-primary-cta" class="tactile-control px-6 py-3 rounded-full bg-[#2D5A46] text-[#F8F5EE] text-xs font-semibold tracking-wider hover:bg-[#1B3B2B] transition-colors shadow-sm flex items-center gap-2">
+                            <span>Request Consultation</span>
+                            <span>→</span>
                         </button>
-                        <span class="text-[11px] sm:text-xs text-[#456353] italic">Physician-led assessment · Transparent fees · Zero rush</span>
+                        <button type="button" id="aurora-interaction-trigger" class="tactile-control px-5 py-3 rounded-full bg-white border border-[#D5DFD7] text-[#2D5A46] text-xs font-semibold tracking-wider hover:bg-[#E4EDE6] transition-colors flex items-center gap-2">
+                            <span class="btn-label">Explore Clinical Protocols</span>
+                            <span class="interaction-arrow inline-block transition-transform duration-300">↓</span>
+                        </button>
+                    </div>
+
+                    <!-- Trust Strip -->
+                    <div class="flex items-center gap-4 sm:gap-6 pt-2 border-t border-[#D5DFD7]/80 text-[10px] sm:text-[11px] text-[#456353]">
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-[#2D5A46]">✓</span>
+                            <span>Physician-Led Assessments</span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-[#2D5A46]">✓</span>
+                            <span>45-Min Dedicated Windows</span>
+                        </div>
+                        <div class="hidden sm:flex items-center gap-1.5">
+                            <span class="text-[#2D5A46]">✓</span>
+                            <span>Transparent Fees</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Aurora Bottom Colophon Bar -->
-            <div class="px-5 sm:px-10 py-3 bg-[#E4EDE6]/80 border-t border-[#D5DFD7] flex items-center justify-between text-[10px] sm:text-[11px] text-[#456353]">
+            <!-- 3. Interactive Aesthetic Approach Selector -->
+            <div class="px-6 sm:px-10 py-6 bg-[#E4EDE6]/60 border-t border-[#D5DFD7] relative z-10">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                    <div>
+                        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-[#2D5A46] block">Interactive Assessment Explorer</span>
+                        <h4 class="font-serif text-lg sm:text-xl font-normal text-[#1A2E23]">Select an Aesthetic Principle to Inspect Clinical Protocol</h4>
+                    </div>
+                    <span id="aurora-approach-status" class="text-[10px] font-mono text-[#2D5A46] bg-[#2D5A46]/10 px-2.5 py-1 rounded-full border border-[#2D5A46]/20 self-start sm:self-auto">
+                        [ACTIVE: HARMONIZATION]
+                    </span>
+                </div>
+
+                <!-- 3 Selectable Principle Tabs -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" role="tablist" aria-label="Aesthetic Approaches">
+                    <button type="button" id="aurora-tab-harmonization" class="aurora-approach-tab active tactile-control p-4 rounded-xl text-left transition-all duration-300 bg-white border border-[#2D5A46] shadow-xs">
+                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#2D5A46] block mb-1">01 / Harmonization</span>
+                        <span class="text-sm font-semibold text-[#1A2E23] block">Facial Proportions</span>
+                        <p class="text-[11px] text-[#456353] mt-1 leading-normal">Subtle volumetric balance restoring natural profile contours without exaggerated fullness.</p>
+                    </button>
+                    <button type="button" id="aurora-tab-restoration" class="aurora-approach-tab tactile-control p-4 rounded-xl text-left transition-all duration-300 bg-white/70 hover:bg-white border border-[#D5DFD7] hover:border-[#2D5A46]">
+                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#C88A75] block mb-1">02 / Restoration</span>
+                        <span class="text-sm font-semibold text-[#1A2E23] block">Cellular Barrier Renewal</span>
+                        <p class="text-[11px] text-[#456353] mt-1 leading-normal">Deep dermal hydration, collagen induction, and texture refining for resilient skin health.</p>
+                    </button>
+                    <button type="button" id="aurora-tab-preservation" class="aurora-approach-tab tactile-control p-4 rounded-xl text-left transition-all duration-300 bg-white/70 hover:bg-white border border-[#D5DFD7] hover:border-[#2D5A46]">
+                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#2D5A46] block mb-1">03 / Preservation</span>
+                        <span class="text-sm font-semibold text-[#1A2E23] block">Clinical Skin Longevity</span>
+                        <p class="text-[11px] text-[#456353] mt-1 leading-normal">Targeted medical peels, antioxidant infusions, and structured preventative maintenance.</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 4. Clinical Offering: Asymmetric Editorial Index -->
+            <div id="aurora-protocols-section" class="px-6 sm:px-10 py-8 border-t border-[#D5DFD7] bg-[#F8F5EE]">
+                <div class="flex items-center justify-between mb-6 pb-2 border-b border-[#D5DFD7]">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#456353]">Core Clinical Pathways</span>
+                    <span class="text-[11px] text-[#2D5A46] font-medium">Transparent Procedures · Zero Hidden Add-ons</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-5 rounded-2xl bg-white border border-[#D5DFD7] shadow-xs flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-mono font-bold text-[#2D5A46] block mb-2">[PATH 01]</span>
+                            <h5 class="font-serif text-lg font-normal text-[#1A2E23] mb-2">Micro-Volumetric Profiling</h5>
+                            <p class="text-xs text-[#456353] leading-relaxed mb-4">Precision anatomical placement addressing subtle volume loss with natural tissue integration.</p>
+                        </div>
+                        <div class="pt-3 border-t border-[#E4EDE6] flex items-center justify-between text-[11px]">
+                            <span class="text-[#456353]">Recovery: Minimal (24-48h)</span>
+                            <span class="font-semibold text-[#2D5A46]">Physician Review</span>
+                        </div>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-white border border-[#D5DFD7] shadow-xs flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-mono font-bold text-[#C88A75] block mb-2">[PATH 02]</span>
+                            <h5 class="font-serif text-lg font-normal text-[#1A2E23] mb-2">Dermal Barrier Infusion</h5>
+                            <p class="text-xs text-[#456353] leading-relaxed mb-4">Cellular micro-needling and pure hyaluronic infusions designed to rebuild resilient dermal thickness.</p>
+                        </div>
+                        <div class="pt-3 border-t border-[#E4EDE6] flex items-center justify-between text-[11px]">
+                            <span class="text-[#456353]">Recovery: Same-day glow</span>
+                            <span class="font-semibold text-[#C88A75]">Clinical Peels</span>
+                        </div>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-white border border-[#D5DFD7] shadow-xs flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-mono font-bold text-[#2D5A46] block mb-2">[PATH 03]</span>
+                            <h5 class="font-serif text-lg font-normal text-[#1A2E23] mb-2">Targeted Texture Renewal</h5>
+                            <p class="text-xs text-[#456353] leading-relaxed mb-4">Evidence-based enzyme exfoliation and medical light therapies formulated for sensitive complexions.</p>
+                        </div>
+                        <div class="pt-3 border-t border-[#E4EDE6] flex items-center justify-between text-[11px]">
+                            <span class="text-[#456353]">Recovery: Zero downtime</span>
+                            <span class="font-semibold text-[#2D5A46]">Custom Regimen</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Calming High-Trust Consultation Conversion Strip -->
+            <div class="px-6 sm:px-10 py-8 bg-[#1A2E23] text-[#F8F5EE] flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div>
+                    <h5 class="font-serif text-xl sm:text-2xl font-light text-white mb-1">Begin With an Unhurried Assessment</h5>
+                    <p class="text-xs text-[#E4EDE6] opacity-80 max-w-md">No pressure, no hurried 5-minute consultations. Meet directly with a doctor to discuss your skin and treatment goals.</p>
+                </div>
+                <button type="button" class="tactile-control shrink-0 px-6 py-3 rounded-full bg-[#E4EDE6] text-[#1A2E23] text-xs font-semibold hover:bg-white transition-colors shadow-sm">
+                    Schedule 45-Min Intake →
+                </button>
+            </div>
+
+            <!-- 6. Aurora Colophon Bar -->
+            <div class="px-5 sm:px-10 py-3 bg-[#E4EDE6] border-t border-[#D5DFD7] flex items-center justify-between text-[10px] sm:text-[11px] text-[#456353]">
                 <span>Medical Practice Architecture · WCAG 2.1 AA Accessible · MedicalBusiness Schema</span>
                 <span class="font-mono text-[9px] sm:text-[10px] font-bold text-[#2D5A46]">AURORA-CLINICAL-01</span>
             </div>
@@ -222,30 +305,25 @@ function renderAuroraWorld() {
     </div>`;
 }
 
-/**
- * Aarav Properties Website World
- * Visual Grammar: Monumental / Geometric / Architectural / Directional
- * Geometry: Sharp right-angles (rounded-none), Architectural Grid, Axonometric Elevation Blueprint, Cobalt & Amber surfaces
- */
 function renderAaravWorld() {
     return `
     <div id="world-aarav" class="website-world hidden transition-all duration-700 w-full" data-world="aarav" aria-label="Aarav Properties Signature Design Concept">
-        <div class="relative bg-[#0E1724] text-[#ECE7DF] rounded-none border-2 border-[#1E3048] shadow-2xl overflow-hidden transition-all duration-500">
+        <div class="relative bg-[#0A1320] text-[#ECE7DF] rounded-none border-2 border-[#1E3048] shadow-2xl overflow-hidden transition-all duration-500">
 
             <!-- Architectural Linework Background Grid (SVG) -->
             <div id="aarav-grid-bg" class="absolute inset-0 opacity-20 pointer-events-none transition-all duration-700 ease-out" aria-hidden="true">
                 <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                     <defs>
-                        <pattern id="aarav-grid-v7" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <pattern id="aarav-grid-v8" width="40" height="40" patternUnits="userSpaceOnUse">
                             <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#D4A853" stroke-width="0.75" stroke-opacity="0.35"/>
                         </pattern>
                     </defs>
-                    <rect width="100%" height="100%" fill="url(#aarav-grid-v7)"/>
+                    <rect width="100%" height="100%" fill="url(#aarav-grid-v8)"/>
                 </svg>
             </div>
 
-            <!-- Aarav Masthead: Heavy Monolith Axis -->
-            <div class="px-5 sm:px-10 py-4 sm:py-5 border-b border-[#1E3048] flex items-center justify-between bg-[#0E1724]/95 relative z-10">
+            <!-- 1. Aarav Masthead: Monolith Axis & Direct Broker Action -->
+            <div class="px-5 sm:px-10 py-4 sm:py-5 border-b border-[#1E3048] flex items-center justify-between bg-[#0A1320]/95 relative z-10 sticky top-0 backdrop-blur-md">
                 <div class="flex items-center gap-2 sm:gap-3">
                     <span class="font-mono text-xs text-[#D4A853] font-bold tracking-widest">+</span>
                     <span class="font-sans font-black text-base sm:text-xl tracking-wider text-white">AARAV PROPERTIES</span>
@@ -253,37 +331,31 @@ function renderAaravWorld() {
                 </div>
                 <div class="flex items-center gap-3 sm:gap-6 text-xs text-[#8EADC4] font-mono">
                     <span class="hidden md:inline-block hover:text-white transition-colors cursor-pointer">[01] Inventory</span>
-                    <span class="hover:text-white transition-colors cursor-pointer">[02] Typologies</span>
-                    <span class="hidden sm:inline-block hover:text-white transition-colors cursor-pointer">[03] Floor Plans</span>
-                    <span class="hover:text-white transition-colors cursor-pointer">[04] Private Viewing</span>
+                    <span class="hidden sm:inline-block hover:text-white transition-colors cursor-pointer">[02] Typologies</span>
+                    <span class="hidden lg:inline-block hover:text-white transition-colors cursor-pointer">[03] Floor Plans</span>
+                    <button type="button" id="aarav-nav-cta" class="tactile-control px-3.5 py-1.5 rounded-none text-xs font-bold font-mono bg-[#D4A853] text-[#0A1320] hover:bg-white transition-colors shadow-xs">
+                        Broker WhatsApp →
+                    </button>
                     <span class="px-2 py-0.5 text-[9px] uppercase tracking-wider font-bold bg-[#D4A853]/20 text-[#D4A853] border border-[#D4A853]/40">Concept</span>
                 </div>
             </div>
 
-            <!-- Aarav Architectural Body -->
-            <div class="p-5 sm:p-10 lg:p-12 relative z-10">
+            <!-- 2. Aarav Hero Stage: Monumental Statement & Axonometric Elevation -->
+            <div class="p-6 sm:p-10 lg:p-12 relative z-10">
                 
-                <!-- Curatorial Design Lens Overlay Layer (Collision-Free Responsive Anchoring) -->
+                <!-- Curatorial Design Lens Overlay Layer -->
                 <div class="design-lens-layer absolute inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-300">
-                    <!-- Desktop/Tablet Upper Cluster: Anchored in Hero Stage Top-Right Negative Space -->
                     <div class="absolute top-4 sm:top-6 right-4 sm:right-8 flex flex-col items-end gap-2 max-w-[280px] sm:max-w-xs text-right hidden sm:flex">
                         <div class="bg-[#D4A853] text-slate-950 text-[10px] sm:text-[11px] font-mono px-3 py-1.5 font-bold shadow-md">
                             <span>LENS: MONUMENTAL ARCHITECTURAL GRID</span>
                         </div>
-                        <div class="border border-dashed border-[#D4A853] p-1.5 sm:p-2 bg-[#0E1724]/95 text-[9px] sm:text-[10px] text-[#D4A853] font-mono">
+                        <div class="border border-dashed border-[#D4A853] p-1.5 sm:p-2 bg-[#0A1320]/95 text-[9px] sm:text-[10px] text-[#D4A853] font-mono">
                             <span>[STRUCTURAL RATIO: Strict Modular Axes with Monospaced Coordinates]</span>
                         </div>
                     </div>
-                    <!-- Lower annotations tucked into stable hero bottom margins -->
-                    <div class="absolute bottom-3 sm:bottom-4 left-4 sm:left-8 border border-dashed border-[#8EADC4] p-1.5 sm:p-2 bg-[#0E1724]/95 text-[9px] sm:text-[10px] text-[#ECE7DF] font-mono hidden sm:block">
-                        <span>[INFORMATION DENSITY: Direct Broker WhatsApp Capture · Zero Portal Spam]</span>
-                    </div>
-                    <div class="absolute bottom-3 sm:bottom-4 right-4 sm:right-8 border border-dashed border-[#D4A853]/60 p-1.5 sm:p-2 bg-[#0E1724]/95 text-[9px] sm:text-[10px] text-[#8EADC4] font-mono hidden lg:block">
-                        <span>[AXONOMETRIC SPEC: Modular Z-Axis Depth Mapping &amp; RERA Data]</span>
-                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                     
                     <!-- Left: Monumental Typography & Overview -->
                     <div class="lg:col-span-7">
@@ -299,81 +371,161 @@ function renderAaravWorld() {
                             Direct developer representation for high-value residential acquisitions. Verified RERA documentation, high-resolution architectural floor plans, and direct broker WhatsApp routing without intermediary portal bloat.
                         </p>
 
-                        <!-- Mobile In-Flow Curatorial Callout (<sm screens only, zero overlap) -->
-                        <div class="mobile-lens-callout hidden sm:hidden mb-4 p-2.5 rounded border border-dashed border-[#D4A853] bg-[#142236] text-[10px] font-mono text-[#D4A853] flex items-center justify-between gap-2">
-                            <span class="font-bold">[LENS: MONUMENTAL ARCHITECTURAL]</span>
-                            <span class="text-[9px] text-[#ECE7DF] text-right">[Modular Axes + Cobalt Grid]</span>
-                        </div>
-
-                        <!-- Aarav Interactive Status Notification (Expands on Trigger Interaction) -->
-                        <div id="aarav-interactive-status" class="overflow-hidden transition-all duration-500 max-h-0 opacity-0 mb-4 sm:mb-6 text-[10px] sm:text-[11px] font-mono text-[#D4A853] bg-[#D4A853]/10 border border-[#D4A853]/30 rounded px-3 py-2 flex items-center justify-between">
-                            <span>[AXONOMETRIC BLUEPRINT: Spatial Elevations &amp; Floor-Plate Metrics Active]</span>
-                            <span class="text-[9px] font-bold uppercase tracking-wider bg-[#D4A853] text-slate-950 px-1.5 py-0.5 rounded-none font-sans">Active</span>
-                        </div>
-
-                        <!-- Architectural Typology Specs (Substantial Architectural Cobalt & Amber Planes) -->
-                        <div id="aarav-spec-boxes" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3 font-mono mb-6 sm:mb-8">
-                            <div class="p-2.5 sm:p-3 bg-[#142236] border border-[#223854] transition-all duration-300">
-                                <span class="text-[9px] text-[#8EADC4] block uppercase">Typology 01</span>
-                                <span class="text-xs font-bold text-[#ECE7DF] block mt-0.5">Architectural Villas</span>
-                                <span class="text-[9px] text-[#D4A853] block mt-0.5">Private Courtyards</span>
-                            </div>
-                            <div class="p-2.5 sm:p-3 bg-[#142236] border border-[#223854] transition-all duration-300">
-                                <span class="text-[9px] text-[#8EADC4] block uppercase">Typology 02</span>
-                                <span class="text-xs font-bold text-[#D4A853] block mt-0.5">Penthouse Enclaves</span>
-                                <span class="text-[9px] text-[#8EADC4] block mt-0.5">Terrace Panoramas</span>
-                            </div>
-                            <div class="p-2.5 sm:p-3 bg-[#142236] border border-[#223854] col-span-2 sm:col-span-1 transition-all duration-300">
-                                <span class="text-[9px] text-[#8EADC4] block uppercase">Typology 03</span>
-                                <span class="text-xs font-bold text-[#ECE7DF] block mt-0.5">Garden Estates</span>
-                                <span class="text-[9px] text-[#D4A853] block mt-0.5">Stone Facades</span>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap items-center gap-3 sm:gap-4">
-                            <button type="button" id="aarav-interaction-trigger" class="tactile-control px-5 sm:px-6 py-2.5 sm:py-3 rounded-none bg-[#D4A853] text-slate-950 text-xs font-bold font-mono tracking-wider hover:bg-[#ECE7DF] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A853] flex items-center gap-2">
-                                <span class="btn-label">EXPLORE ELEVATION &amp; SPECS</span>
-                                <span class="interaction-arrow inline-block transition-transform duration-300">→</span>
+                        <!-- Action Controls -->
+                        <div class="flex flex-wrap items-center gap-3 sm:gap-4 mb-6">
+                            <button type="button" id="aarav-primary-cta" class="tactile-control px-6 py-3 rounded-none bg-[#D4A853] text-slate-950 text-xs font-bold font-mono tracking-wider hover:bg-white transition-colors flex items-center gap-2 shadow-sm">
+                                <span>REQUEST PROPERTY DOSSIER</span>
+                                <span>→</span>
                             </button>
-                            <span class="text-[11px] sm:text-xs font-mono text-[#8EADC4]">Direct Principal WhatsApp Consultation</span>
+                            <button type="button" id="aarav-interaction-trigger" class="tactile-control px-5 py-3 rounded-none bg-[#142236] border border-[#223854] text-[#ECE7DF] text-xs font-bold font-mono tracking-wider hover:bg-[#1E3048] transition-colors flex items-center gap-2">
+                                <span class="btn-label">EXPLORE ELEVATION &amp; SPECS</span>
+                                <span class="interaction-arrow inline-block transition-transform duration-300">↓</span>
+                            </button>
+                        </div>
+
+                        <!-- Trust Fact Strip -->
+                        <div class="flex items-center gap-4 sm:gap-6 pt-2 border-t border-[#1E3048] text-[10px] sm:text-[11px] font-mono text-[#8EADC4]">
+                            <span>[RERA TITLE-VETTED]</span>
+                            <span>[ZERO PORTAL BLOAT]</span>
+                            <span class="hidden sm:inline">[DIRECT DEVELOPER MANDATE]</span>
                         </div>
                     </div>
 
-                    <!-- Right: Architectural Isometric Elevation Diagram (SVG) -->
+                    <!-- Right: Large Bespoke Axonometric Blueprint Composition (SVG) -->
                     <div class="lg:col-span-5 bg-[#142236] p-4 sm:p-6 border border-[#223854] relative overflow-hidden">
                         <div class="flex items-center justify-between text-[10px] font-mono text-[#8EADC4] mb-3 pb-2 border-b border-[#223854]">
-                            <span>AXONOMETRIC SPECIFICATION</span>
-                            <span id="aarav-fig-label" class="text-[#D4A853] transition-colors duration-300 font-bold">[FIG. 04-A]</span>
+                            <span>AXONOMETRIC STRUCTURAL ELEVATION</span>
+                            <span id="aarav-fig-label" class="text-[#D4A853] transition-colors duration-300 font-bold">[FIG. 04-A // ACTIVE]</span>
                         </div>
-                        <div class="h-44 sm:h-52 flex items-center justify-center">
-                            <svg viewBox="0 0 240 180" class="w-full h-full max-h-48">
-                                <g transform="translate(120, 95)">
-                                    <g id="aarav-elevation-poly" class="transition-transform duration-500 ease-out">
-                                        <polygon points="0,-55 55,-22 0,10 -55,-22" fill="#1E3048" stroke="#D4A853" stroke-width="1.5"/>
-                                        <circle cx="0" cy="-55" r="3" fill="#D4A853"/>
-                                        <circle cx="55" cy="-22" r="3" fill="#ECE7DF"/>
-                                        <circle cx="-55" cy="-22" r="3" fill="#ECE7DF"/>
+                        <div class="h-48 sm:h-60 flex items-center justify-center">
+                            <svg viewBox="0 0 280 220" class="w-full h-full max-h-56">
+                                <g transform="translate(140, 110)">
+                                    <g id="aarav-elevation-poly" class="transition-transform duration-700 ease-out">
+                                        <!-- Top Roof Plane -->
+                                        <polygon points="0,-65 65,-26 0,12 -65,-26" fill="#1E3048" stroke="#D4A853" stroke-width="1.75"/>
+                                        <circle cx="0" cy="-65" r="3.5" fill="#D4A853"/>
+                                        <circle cx="65" cy="-26" r="3.5" fill="#ECE7DF"/>
+                                        <circle cx="-65" cy="-26" r="3.5" fill="#ECE7DF"/>
+                                        <circle cx="0" cy="12" r="3.5" fill="#D4A853"/>
                                     </g>
-                                    <polygon points="-55,-22 0,10 0,55 -55,22" fill="#0E1724" stroke="#223854" stroke-width="1"/>
-                                    <polygon points="0,10 55,-22 55,22 0,55" fill="#142236" stroke="#223854" stroke-width="1"/>
-                                    <line x1="-55" y1="-5" x2="0" y2="28" stroke="#D4A853" stroke-width="0.75" stroke-dasharray="2 2"/>
-                                    <line x1="0" y1="28" x2="55" y2="-5" stroke="#D4A853" stroke-width="0.75" stroke-dasharray="2 2"/>
-                                    <line x1="-55" y1="10" x2="0" y2="42" stroke="#D4A853" stroke-width="0.75"/>
-                                    <line x1="0" y1="42" x2="55" y2="10" stroke="#D4A853" stroke-width="0.75"/>
+                                    <!-- Left Facade Mass -->
+                                    <polygon points="-65,-26 0,12 0,65 -65,26" fill="#0A1320" stroke="#223854" stroke-width="1.25"/>
+                                    <!-- Right Facade Mass -->
+                                    <polygon points="0,12 65,-26 65,26 0,65" fill="#142236" stroke="#223854" stroke-width="1.25"/>
+                                    <!-- Architectural Dimension Guides -->
+                                    <line x1="-65" y1="-5" x2="0" y2="33" stroke="#D4A853" stroke-width="0.75" stroke-dasharray="3 3"/>
+                                    <line x1="0" y1="33" x2="65" y2="-5" stroke="#D4A853" stroke-width="0.75" stroke-dasharray="3 3"/>
+                                    <line x1="-65" y1="12" x2="0" y2="50" stroke="#D4A853" stroke-width="0.75"/>
+                                    <line x1="0" y1="50" x2="65" y2="12" stroke="#D4A853" stroke-width="0.75"/>
+                                    <!-- Coordinate Callout -->
+                                    <text x="70" y="-20" fill="#8EADC4" font-size="7" font-family="monospace">+48.5m DATUM</text>
+                                    <text x="-120" y="30" fill="#D4A853" font-size="7" font-family="monospace">AXIS Z-01</text>
                                 </g>
                             </svg>
                         </div>
                         <div class="flex items-center justify-between text-[9px] font-mono text-[#8EADC4] mt-2 pt-2 border-t border-[#223854]">
                             <span>GRID: 28.4595° N, 77.0266° E</span>
-                            <span class="text-[#D4A853]">RERA TITLE-VETTED INVENTORY</span>
+                            <span class="text-[#D4A853]">MODULAR Z-AXIS DEPTH</span>
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            <!-- Aarav Bottom Colophon -->
-            <div class="px-5 sm:px-10 py-3 bg-[#080D14] border-t border-[#1E3048] flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-[#8EADC4]">
+            <!-- 3. Interactive Architectural Property Explorer -->
+            <div class="px-6 sm:px-10 py-6 bg-[#0E1A2C] border-t border-[#1E3048] relative z-10">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                    <div>
+                        <span class="text-[9px] font-mono uppercase tracking-widest text-[#D4A853] block">Spatial Configuration Explorer</span>
+                        <h4 class="font-sans text-base sm:text-lg font-bold text-white uppercase tracking-wider">Select Structural Perspective to Inspect Specifications</h4>
+                    </div>
+                    <span id="aarav-mode-status" class="text-[10px] font-mono text-[#D4A853] bg-[#D4A853]/10 px-2.5 py-1 border border-[#D4A853]/30 self-start sm:self-auto">
+                        [MODE 01 // ELEVATION &amp; MASSING]
+                    </span>
+                </div>
+
+                <!-- 4 Interactive Mode Buttons -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 font-mono" role="tablist" aria-label="Property Explorer">
+                    <button type="button" id="aarav-tab-elevation" class="aarav-explorer-tab active tactile-control p-3.5 bg-[#142236] border-2 border-[#D4A853] text-left">
+                        <span class="text-[9px] text-[#D4A853] block font-bold">MODE 01</span>
+                        <span class="text-xs font-bold text-white block mt-0.5">Elevation &amp; Massing</span>
+                        <span class="text-[10px] text-[#8EADC4] block mt-1">3.4m floor-to-ceiling volume</span>
+                    </button>
+                    <button type="button" id="aarav-tab-plan" class="aarav-explorer-tab tactile-control p-3.5 bg-[#142236]/70 hover:bg-[#142236] border border-[#223854] text-left">
+                        <span class="text-[9px] text-[#8EADC4] block font-bold">MODE 02</span>
+                        <span class="text-xs font-bold text-white block mt-0.5">Spatial Floor Plan</span>
+                        <span class="text-[10px] text-[#8EADC4] block mt-1">Direct private elevator lobby</span>
+                    </button>
+                    <button type="button" id="aarav-tab-materials" class="aarav-explorer-tab tactile-control p-3.5 bg-[#142236]/70 hover:bg-[#142236] border border-[#223854] text-left">
+                        <span class="text-[9px] text-[#8EADC4] block font-bold">MODE 03</span>
+                        <span class="text-xs font-bold text-white block mt-0.5">Materials &amp; Facade</span>
+                        <span class="text-[10px] text-[#8EADC4] block mt-1">Natural quarry stone &amp; bronze</span>
+                    </button>
+                    <button type="button" id="aarav-tab-connectivity" class="aarav-explorer-tab tactile-control p-3.5 bg-[#142236]/70 hover:bg-[#142236] border border-[#223854] text-left">
+                        <span class="text-[9px] text-[#8EADC4] block font-bold">MODE 04</span>
+                        <span class="text-xs font-bold text-white block mt-0.5">Locality &amp; Access</span>
+                        <span class="text-[10px] text-[#8EADC4] block mt-1">Direct arterial access buffers</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 4. Architectural Typology Portfolio -->
+            <div id="aarav-typology-section" class="px-6 sm:px-10 py-8 border-t border-[#1E3048] bg-[#0A1320] font-mono">
+                <div class="flex items-center justify-between mb-6 pb-2 border-b border-[#1E3048]">
+                    <span class="text-[10px] uppercase tracking-widest text-[#8EADC4]">Curated Residential Inventory</span>
+                    <span class="text-[11px] text-[#D4A853]">Direct Developer Representation</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-5 bg-[#142236] border border-[#223854] flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] text-[#D4A853] block mb-1">TYPOLOGY 01</span>
+                            <h5 class="text-sm font-bold text-white uppercase mb-2">Architectural Villas</h5>
+                            <p class="text-xs text-[#8EADC4] leading-relaxed mb-4 font-sans">Private inner courtyards, triple-height atrium light-wells, and monolithic exterior masonry.</p>
+                        </div>
+                        <div class="pt-3 border-t border-[#1E3048] flex items-center justify-between text-[10px] text-[#8EADC4]">
+                            <span>STATUS: VETTED</span>
+                            <span class="text-[#D4A853]">DOSSIER AVAILABLE</span>
+                        </div>
+                    </div>
+                    <div class="p-5 bg-[#142236] border border-[#223854] flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] text-[#D4A853] block mb-1">TYPOLOGY 02</span>
+                            <h5 class="text-sm font-bold text-white uppercase mb-2">Penthouse Enclaves</h5>
+                            <p class="text-xs text-[#8EADC4] leading-relaxed mb-4 font-sans">Full-floor panoramic terrace residences with cantilevered private pools and 360-degree skyline exposure.</p>
+                        </div>
+                        <div class="pt-3 border-t border-[#1E3048] flex items-center justify-between text-[10px] text-[#8EADC4]">
+                            <span>STATUS: VETTED</span>
+                            <span class="text-[#D4A853]">DOSSIER AVAILABLE</span>
+                        </div>
+                    </div>
+                    <div class="p-5 bg-[#142236] border border-[#223854] flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] text-[#D4A853] block mb-1">TYPOLOGY 03</span>
+                            <h5 class="text-sm font-bold text-white uppercase mb-2">Garden Estates</h5>
+                            <p class="text-xs text-[#8EADC4] leading-relaxed mb-4 font-sans">Substantial perimeter landscaping, acoustic privacy buffers, and multi-car underground gallery parking.</p>
+                        </div>
+                        <div class="pt-3 border-t border-[#1E3048] flex items-center justify-between text-[10px] text-[#8EADC4]">
+                            <span>STATUS: VETTED</span>
+                            <span class="text-[#D4A853]">DOSSIER AVAILABLE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Serious Acquisition Advisory Conversion Panel -->
+            <div class="px-6 sm:px-10 py-8 bg-[#142236] border-t border-[#1E3048] flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div>
+                    <h5 class="font-sans text-lg sm:text-xl font-black text-white uppercase tracking-wider mb-1">INITIATE PRIVATE ACQUISITION ENQUIRY</h5>
+                    <p class="text-xs text-[#8EADC4] font-mono max-w-lg">Direct broker consultation with verified architectural floor plans, developer pricing structures, and RERA title documentation.</p>
+                </div>
+                <button type="button" class="tactile-control shrink-0 px-6 py-3 rounded-none bg-[#D4A853] text-[#0A1320] text-xs font-bold font-mono tracking-wider hover:bg-white transition-colors shadow-sm">
+                    DIRECT BROKER ROUTING →
+                </button>
+            </div>
+
+            <!-- 6. Aarav Bottom Colophon -->
+            <div class="px-5 sm:px-10 py-3 bg-[#070C14] border-t border-[#1E3048] flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-[#8EADC4]">
                 <span>REAL ESTATE ADVISORY ARCHITECTURE · REALESTATEAGENT SCHEMA</span>
                 <span class="text-[#D4A853] font-bold">AARAV-SPECIMEN-02</span>
             </div>
@@ -381,116 +533,208 @@ function renderAaravWorld() {
     </div>`;
 }
 
-/**
- * The Spice Room Website World
- * Visual Grammar: Sensory / Warm / Expressive / Layered / Typographic Hospitality
- * Geometry: Layered Asymmetric Arch (rounded-t-[3rem] rounded-b-xl), Radiating Terracotta & Saffron Halo
- */
 function renderSpiceWorld() {
     return `
     <div id="world-spice" class="website-world hidden transition-all duration-700 w-full" data-world="spice" aria-label="The Spice Room Signature Design Concept">
-        <div class="relative bg-[#260810] text-[#FAF2EA] rounded-2xl sm:rounded-t-[3rem] sm:rounded-b-xl border border-[#521624] shadow-2xl overflow-hidden transition-all duration-500">
+        <div class="relative bg-[#22070E] text-[#FAF2EA] rounded-2xl sm:rounded-t-[3rem] sm:rounded-b-2xl border border-[#521624] shadow-2xl overflow-hidden transition-all duration-500">
 
             <!-- Warm Terracotta & Saffron Radial Ambient Halos (SVG) -->
             <div id="spice-halo-1" class="spice-ambient-halo absolute top-0 right-0 w-80 sm:w-96 h-80 sm:h-96 bg-[#C24628]/25 rounded-full blur-3xl pointer-events-none transition-all duration-700 ease-out" aria-hidden="true"></div>
             <div id="spice-halo-2" class="spice-ambient-halo absolute bottom-0 left-0 w-64 sm:w-80 h-64 sm:h-80 bg-[#E59124]/20 rounded-full blur-3xl pointer-events-none transition-all duration-700 ease-out" aria-hidden="true"></div>
 
-            <!-- Spice Masthead: Classical Dining Balance -->
-            <div class="px-5 sm:px-10 py-4 sm:py-5 border-b border-[#521624] flex items-center justify-between bg-[#260810]/95 relative z-10">
+            <!-- 1. Spice Room Masthead & Instant Reservation Action -->
+            <div class="px-5 sm:px-10 py-4 sm:py-5 border-b border-[#521624] flex items-center justify-between bg-[#22070E]/95 relative z-10 sticky top-0 backdrop-blur-md">
                 <div class="flex items-center gap-2 sm:gap-3">
-                    <span class="font-serif italic text-base sm:text-xl font-normal text-[#FAF2EA]">The Spice Room</span>
-                    <span class="text-[9px] uppercase tracking-widest text-[#E59124] font-bold hidden sm:inline-block">· Regional Culinary Atelier</span>
+                    <span class="font-serif italic text-lg sm:text-2xl text-[#FAF2EA] font-normal tracking-wide">The Spice Room</span>
+                    <span class="text-[10px] uppercase tracking-widest text-[#E59124] font-semibold hidden sm:inline-block">· REGIONAL CULINARY ATELIER</span>
                 </div>
-                <div class="flex items-center gap-3 sm:gap-6 text-xs text-[#DFBEB4] font-sans">
+                <div class="flex items-center gap-3 sm:gap-6 text-xs text-[#DFBEB4] font-medium">
                     <span class="hidden md:inline-block hover:text-white transition-colors cursor-pointer">The Hearth</span>
-                    <span class="hover:text-white transition-colors cursor-pointer">Tasting Menu</span>
-                    <span class="hidden sm:inline-block hover:text-white transition-colors cursor-pointer">Cellar</span>
-                    <span class="hover:text-white transition-colors cursor-pointer">Reservations</span>
-                    <span class="px-2 py-0.5 text-[9px] uppercase tracking-wider font-bold bg-[#C24628]/25 text-[#E59124] border border-[#C24628]/40 rounded-full">Concept</span>
+                    <span class="hidden sm:inline-block hover:text-white transition-colors cursor-pointer">Tasting Menu</span>
+                    <span class="hidden lg:inline-block hover:text-white transition-colors cursor-pointer">Cellar</span>
+                    <button type="button" id="spice-nav-cta" class="tactile-control px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#C24628] text-white hover:bg-[#D95332] transition-colors shadow-xs">
+                        Reserve Table →
+                    </button>
+                    <span class="px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider font-semibold bg-[#C24628]/25 text-[#E59124] border border-[#C24628]/40">Concept</span>
                 </div>
             </div>
 
-            <!-- Spice Hero Body -->
-            <div class="p-5 sm:p-10 lg:p-12 relative z-10">
+            <!-- 2. Spice Hero Stage: Sensory Feast & Radiating Artwork -->
+            <div class="p-6 sm:p-10 lg:p-12 relative z-10">
                 
-                <!-- Curatorial Design Lens Overlay Layer (Collision-Free Responsive Anchoring) -->
+                <!-- Curatorial Design Lens Overlay Layer -->
                 <div class="design-lens-layer absolute inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-300">
-                    <!-- Desktop/Tablet Upper Cluster: Anchored in Hero Stage Top-Right Negative Space -->
                     <div class="absolute top-4 sm:top-6 right-4 sm:right-8 flex flex-col items-end gap-2 max-w-[280px] sm:max-w-xs text-right hidden sm:flex">
-                        <div class="bg-[#C24628] text-white text-[10px] sm:text-[11px] font-mono px-3 py-1.5 font-bold shadow-md">
+                        <div class="bg-[#C24628] text-white text-[10px] sm:text-[11px] font-mono px-3 py-1.5 rounded-md shadow-md">
                             <span>LENS: SENSORY HOSPITALITY TYPOGRAPHY</span>
                         </div>
-                        <div class="border border-dashed border-[#E59124] p-1.5 sm:p-2 bg-[#260810]/95 text-[9px] sm:text-[10px] text-[#FAF2EA] font-mono">
-                            <span>[ATMOSPHERIC EMOTION: Radial Warm Ambient Halos Drive Dining Appetite]</span>
+                        <div class="border border-dashed border-[#E59124] p-1.5 sm:p-2 rounded-lg bg-[#22070E]/95 text-[9px] sm:text-[10px] text-[#FAF2EA] font-mono">
+                            <span>[ATMOSPHERIC EMOTION: Radial Warmth with Layered Tasting Narratives]</span>
                         </div>
-                    </div>
-                    <!-- Lower annotations tucked into stable hero bottom margins -->
-                    <div class="absolute bottom-3 sm:bottom-4 left-4 sm:left-8 border border-dashed border-[#C24628] p-1.5 sm:p-2 bg-[#260810]/95 text-[9px] sm:text-[10px] text-[#DFBEB4] font-mono hidden lg:block">
-                        <span>[SENSORY TAXONOMY: Native Fast HTML Tasting Menu Sequence · Zero PDF Drops]</span>
-                    </div>
-                    <div class="absolute bottom-3 sm:bottom-4 right-4 sm:right-8 border border-dashed border-[#FAF2EA]/80 p-1.5 sm:p-2 bg-[#260810]/95 text-[9px] sm:text-[10px] text-[#FAF2EA] font-mono hidden sm:block">
-                        <span>[CONVERSION PATHWAY: One-Tap High-Intent Dining Reservation &amp; Google Maps]</span>
                     </div>
                 </div>
 
-                <div class="max-w-2xl">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3D0E1A] text-[#E59124] text-[9px] sm:text-[10px] font-semibold tracking-wider uppercase mb-4 sm:mb-5 border border-[#5E1A29]">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#E59124]"></span>
-                        <span>Signature Design Concept · Regional Cuisine</span>
-                    </div>
-
-                    <h3 class="font-serif text-2xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-[#FAF2EA] leading-[1.18] max-w-lg mb-4 sm:mb-6">
-                        An Unhurried Feast of Fire, Slow Embers &amp; Heritage Spices.
-                    </h3>
-
-                    <p class="text-xs sm:text-base text-[#DFBEB4] font-normal leading-relaxed max-w-lg mb-6 sm:mb-8">
-                        Elevating regional Indian recipes into an immersive sequenced culinary journey. Fast, native HTML tasting menus eliminate cumbersome PDF downloads, connecting diners directly to evening reservations and one-tap maps routing.
-                    </p>
-
-                    <!-- Mobile In-Flow Curatorial Callout (<sm screens only, zero overlap) -->
-                    <div class="mobile-lens-callout hidden sm:hidden mb-4 p-2.5 rounded-xl border border-dashed border-[#C24628] bg-[#3D0E1A] text-[10px] font-mono text-[#E59124] flex items-center justify-between gap-2">
-                        <span class="font-bold">[LENS: SENSORY HOSPITALITY]</span>
-                        <span class="text-[9px] text-[#FAF2EA] text-right">[Warm Terracotta &amp; Saffron]</span>
-                    </div>
-
-                    <!-- Spice Interactive Status Notification (Expands on Trigger Interaction) -->
-                    <div id="spice-interactive-status" class="overflow-hidden transition-all duration-500 max-h-0 opacity-0 mb-4 sm:mb-6 text-[10px] sm:text-[11px] font-mono text-[#E59124] bg-[#3D0E1A] border border-[#E59124]/40 rounded-xl px-3 py-2 flex items-center justify-between">
-                        <span>[TASTING MENU: Hearth Sequences &amp; Slow-Braised Heritage Courses Expanded]</span>
-                        <span class="text-[9px] font-bold uppercase tracking-wider bg-[#E59124] text-slate-950 px-1.5 py-0.5 rounded-full font-sans font-bold">Active</span>
-                    </div>
-
-                    <!-- Culinary Tasting Sequences (Substantial Terracotta & Roasted Ember Panels) -->
-                    <div id="spice-layers" class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
-                        <div id="spice-layer-1" class="spice-layer p-3.5 sm:p-4 rounded-xl bg-[#3D0E1A]/80 border border-[#5E1A29] transition-all duration-500">
-                            <span class="text-[9px] sm:text-[10px] font-serif italic text-[#E59124] block mb-1">Sequence I</span>
-                            <span class="text-xs font-semibold text-[#FAF2EA] block">The Hearth &amp; Small Plates</span>
-                            <span class="text-[10px] sm:text-[11px] text-[#DFBEB4] block mt-0.5">Fire-roasted claypot crisps</span>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Left: Culinary Statement & Headline -->
+                    <div class="lg:col-span-7">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C24628]/25 text-[#E59124] text-[10px] font-semibold tracking-wider uppercase mb-4 sm:mb-5 border border-[#C24628]/40">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#E59124] animate-ping"></span>
+                            <span>SIGNATURE DESIGN CONCEPT · REGIONAL CUISINE</span>
                         </div>
-                        <div id="spice-layer-2" class="spice-layer p-3.5 sm:p-4 rounded-xl bg-[#360C17]/80 border border-[#521624] transition-all duration-500">
-                            <span class="text-[9px] sm:text-[10px] font-serif italic text-[#E59124] block mb-1">Sequence II</span>
-                            <span class="text-xs font-semibold text-[#FAF2EA] block">Slow-Braised Heritage</span>
-                            <span class="text-[10px] sm:text-[11px] text-[#DFBEB4] block mt-0.5">Tempered simmering broths</span>
+
+                        <h3 class="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-[#FAF2EA] leading-[1.12] max-w-xl mb-4 sm:mb-6">
+                            An Unhurried Feast of Fire, Slow Embers &amp; Heritage Spices.
+                        </h3>
+
+                        <p class="text-xs sm:text-base text-[#DFBEB4] font-normal leading-relaxed max-w-lg mb-6 sm:mb-8">
+                            Elevating regional Indian recipes into an immersive sequenced culinary journey. Fast, native HTML tasting menus eliminate cumbersome PDF downloads, connecting diners directly to evening reservations and one-tap maps routing.
+                        </p>
+
+                        <!-- Dual CTAs -->
+                        <div class="flex flex-wrap items-center gap-3 sm:gap-4 mb-6">
+                            <button type="button" id="spice-primary-cta" class="tactile-control px-6 py-3 rounded-full bg-[#C24628] text-[#FAF2EA] text-xs font-semibold tracking-wider hover:bg-[#D95332] transition-colors shadow-sm flex items-center gap-2">
+                                <span>Reserve Dinner Seating</span>
+                                <span>→</span>
+                            </button>
+                            <button type="button" id="spice-interaction-trigger" class="tactile-control px-5 py-3 rounded-full bg-[#360C17] border border-[#521624] text-[#E59124] text-xs font-semibold tracking-wider hover:bg-[#521624] transition-colors flex items-center gap-2">
+                                <span class="btn-label">Explore Tasting Sequences</span>
+                                <span class="interaction-arrow inline-block transition-transform duration-300">↓</span>
+                            </button>
                         </div>
-                        <div id="spice-layer-3" class="spice-layer p-3.5 sm:p-4 rounded-xl bg-[#3D0E1A]/80 border border-[#5E1A29] transition-all duration-500">
-                            <span class="text-[9px] sm:text-[10px] font-serif italic text-[#E59124] block mb-1">Sequence III</span>
-                            <span class="text-xs font-semibold text-[#FAF2EA] block">Botanical Sorbets</span>
-                            <span class="text-[10px] sm:text-[11px] text-[#DFBEB4] block mt-0.5">Cardamom &amp; pistachio sweets</span>
+
+                        <!-- Dining Details Strip -->
+                        <div class="flex items-center gap-4 sm:gap-6 pt-2 border-t border-[#521624] text-[10px] sm:text-[11px] text-[#DFBEB4]">
+                            <span>Dinner Wed–Sun 18:30–23:00</span>
+                            <span>Valet Parking</span>
+                            <span class="hidden sm:inline">Fire-Roasted Claypot</span>
                         </div>
                     </div>
 
-                    <!-- Action Row with Tactile Trigger Control -->
-                    <div class="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
-                        <button type="button" id="spice-interaction-trigger" class="tactile-control px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#C24628] text-white text-xs font-bold tracking-wider hover:bg-[#9E351C] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E59124] flex items-center gap-2 shadow-sm">
-                            <span class="btn-label">Explore Tasting Sequences</span>
-                            <span class="interaction-arrow inline-block transition-transform duration-300">→</span>
-                        </button>
-                        <span class="text-[11px] sm:text-xs text-[#C49B90] italic">Dinner Wed–Sun 18:30–23:00 · Valet Available</span>
+                    <!-- Right: Concentric Ember & Botanical Spice SVG Composition -->
+                    <div class="lg:col-span-5 bg-[#360C17]/80 p-6 rounded-2xl border border-[#521624] relative overflow-hidden flex flex-col items-center justify-center">
+                        <div class="w-full flex items-center justify-between text-[10px] font-mono text-[#DFBEB4] mb-3 pb-2 border-b border-[#521624]">
+                            <span>HEARTH ROTATION SPEC</span>
+                            <span id="spice-fig-label" class="text-[#E59124] font-bold">[SEQUENCE I ACTIVE]</span>
+                        </div>
+                        <div class="w-48 sm:w-56 h-48 sm:h-56 relative flex items-center justify-center">
+                            <svg viewBox="0 0 200 200" class="w-full h-full">
+                                <defs>
+                                    <linearGradient id="spice-ember-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#E59124"/>
+                                        <stop offset="60%" stop-color="#C24628"/>
+                                        <stop offset="100%" stop-color="#360C17"/>
+                                    </linearGradient>
+                                </defs>
+                                <g id="spice-rotating-ember" class="transition-transform duration-700 ease-out origin-center">
+                                    <circle cx="100" cy="100" r="85" fill="none" stroke="#E59124" stroke-width="1" stroke-dasharray="4 6" opacity="0.6"/>
+                                    <circle cx="100" cy="100" r="65" fill="none" stroke="#C24628" stroke-width="1.5" stroke-dasharray="8 4"/>
+                                    <circle cx="100" cy="100" r="45" fill="url(#spice-ember-grad)" opacity="0.85"/>
+                                    <!-- Star Anise Botanical Silhouette -->
+                                    <path d="M 100,70 Q 105,85 100,100 Q 95,85 100,70 Z" fill="#FAF2EA" opacity="0.8"/>
+                                    <path d="M 100,130 Q 105,115 100,100 Q 95,115 100,130 Z" fill="#FAF2EA" opacity="0.8"/>
+                                    <path d="M 70,100 Q 85,105 100,100 Q 85,95 70,100 Z" fill="#FAF2EA" opacity="0.8"/>
+                                    <path d="M 130,100 Q 115,105 100,100 Q 115,95 130,100 Z" fill="#FAF2EA" opacity="0.8"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="text-[10px] text-[#E59124] font-serif italic mt-3">Heritage Fire &amp; Claypot Steeping</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 3. Interactive Tasting Sequence Journey -->
+            <div class="px-6 sm:px-10 py-6 bg-[#1C060C] border-t border-[#521624] relative z-10">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                    <div>
+                        <span class="text-[9px] uppercase tracking-widest text-[#E59124] font-semibold block">Sensory Tasting Sequence</span>
+                        <h4 class="font-serif text-lg sm:text-xl font-normal text-white">Select a Course to Reveal Regional Culinary Notes</h4>
+                    </div>
+                    <span id="spice-course-status" class="text-[10px] font-mono text-[#E59124] bg-[#E59124]/10 px-2.5 py-1 rounded-full border border-[#E59124]/30 self-start sm:self-auto">
+                        [COURSE: CLAYPOT EMBER CRISPS]
+                    </span>
+                </div>
+
+                <!-- 3 Sequence Tabs -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" role="tablist" aria-label="Tasting Sequences">
+                    <button type="button" id="spice-tab-seq1" class="spice-sequence-tab active tactile-control p-4 rounded-xl text-left transition-all duration-300 bg-[#360C17] border-2 border-[#C24628]">
+                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#E59124] block mb-1">Sequence I</span>
+                        <span class="text-sm font-semibold text-[#FAF2EA] block">The Hearth &amp; Small Plates</span>
+                        <p class="text-[11px] text-[#DFBEB4] mt-1 leading-normal">Fire-roasted claypot crisps, smoked mustard tempered greens, and slow embers.</p>
+                    </button>
+                    <button type="button" id="spice-tab-seq2" class="spice-sequence-tab tactile-control p-4 rounded-xl text-left transition-all duration-300 bg-[#260810] hover:bg-[#360C17] border border-[#521624]">
+                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#E59124] block mb-1">Sequence II</span>
+                        <span class="text-sm font-semibold text-[#FAF2EA] block">Slow-Braised Heritage</span>
+                        <p class="text-[11px] text-[#DFBEB4] mt-1 leading-normal">Tempered simmering broths, hand-ground Kashmiri chilies, and clay oven breads.</p>
+                    </button>
+                    <button type="button" id="spice-tab-seq3" class="spice-sequence-tab tactile-control p-4 rounded-xl text-left transition-all duration-300 bg-[#260810] hover:bg-[#360C17] border border-[#521624]">
+                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#E59124] block mb-1">Sequence III</span>
+                        <span class="text-sm font-semibold text-[#FAF2EA] block">Botanical Sorbets</span>
+                        <p class="text-[11px] text-[#DFBEB4] mt-1 leading-normal">Green cardamom &amp; pistachio sweets infused with cold-pressed rose-water syrup.</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 4. Native HTML Menu & Culinary Philosophy (Zero PDF!) -->
+            <div id="spice-menu-section" class="px-6 sm:px-10 py-8 border-t border-[#521624] bg-[#22070E]">
+                <div class="flex items-center justify-between mb-6 pb-2 border-b border-[#521624]">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#E59124]">Native HTML Tasting Menu</span>
+                    <span class="text-[11px] text-[#DFBEB4]">Fast 4G Delivery · Zero PDF Download Friction</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-5 rounded-xl bg-[#360C17] border border-[#521624] flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-serif italic text-[#E59124] block mb-1">Wood-Fired Hearth</span>
+                            <h5 class="font-serif text-base text-[#FAF2EA] mb-2">Claypot Roasted Crisps</h5>
+                            <p class="text-xs text-[#DFBEB4] leading-relaxed mb-4">Tempered with cumin seed and mountain rock salt, served with cold tamarind reduction.</p>
+                        </div>
+                        <div class="pt-3 border-t border-[#521624] text-[11px] text-[#E59124]">
+                            Technique: Direct Charcoal Embers
+                        </div>
+                    </div>
+                    <div class="p-5 rounded-xl bg-[#360C17] border border-[#521624] flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-serif italic text-[#E59124] block mb-1">Copper Vessel Braise</span>
+                            <h5 class="font-serif text-base text-[#FAF2EA] mb-2">Simmered Heritage Broth</h5>
+                            <p class="text-xs text-[#DFBEB4] leading-relaxed mb-4">Eight-hour gentle simmer with cracked peppercorns, star anise, and fresh ginger slivers.</p>
+                        </div>
+                        <div class="pt-3 border-t border-[#521624] text-[11px] text-[#E59124]">
+                            Technique: Slow Low-Flame Copper
+                        </div>
+                    </div>
+                    <div class="p-5 rounded-xl bg-[#360C17] border border-[#521624] flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-serif italic text-[#E59124] block mb-1">Botanical Infusion</span>
+                            <h5 class="font-serif text-base text-[#FAF2EA] mb-2">Cardamom Pistachio Sorbet</h5>
+                            <p class="text-xs text-[#DFBEB4] leading-relaxed mb-4">Churned fresh daily with crushed green cardamom pods, toasted pistachios, and saffron veil.</p>
+                        </div>
+                        <div class="pt-3 border-t border-[#521624] text-[11px] text-[#E59124]">
+                            Technique: Hand-Churned Ice Well
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Spice Bottom Colophon -->
-            <div class="px-5 sm:px-10 py-3 bg-[#18040A] border-t border-[#521624] flex items-center justify-between text-[10px] sm:text-[11px] text-[#A67E75]">
+            <!-- 5. Table Reservation Conversion & Tap-to-Route -->
+            <div class="px-6 sm:px-10 py-8 bg-[#360C17] border-t border-[#521624] flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div>
+                    <h5 class="font-serif text-xl sm:text-2xl font-normal text-white mb-1">Reserve Your Evening at The Hearth</h5>
+                    <p class="text-xs text-[#DFBEB4] max-w-md">Intimate dinner seatings Wednesday through Sunday. Valet parking on arrival. Instant Google Maps tap-to-route directions.</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button type="button" class="tactile-control px-6 py-3 rounded-full bg-[#C24628] text-[#FAF2EA] text-xs font-semibold hover:bg-[#D95332] transition-colors shadow-sm">
+                        Reserve Dinner Seating →
+                    </button>
+                    <button type="button" class="tactile-control px-4 py-3 rounded-full bg-[#260810] border border-[#521624] text-[#E59124] text-xs font-semibold hover:bg-[#521624] transition-colors">
+                        Map Route ↗
+                    </button>
+                </div>
+            </div>
+
+            <!-- 6. Spice Bottom Colophon -->
+            <div class="px-5 sm:px-10 py-3 bg-[#1C060C] border-t border-[#521624] flex items-center justify-between text-[10px] sm:text-[11px] text-[#A67E75]">
                 <span>HOSPITALITY DIGITAL ARCHITECTURE · RESTAURANT SCHEMA · TAP-TO-ROUTE</span>
                 <span class="text-[#E59124] font-bold">SPICE-SPECIMEN-03</span>
             </div>
@@ -498,10 +742,6 @@ function renderSpiceWorld() {
     </div>`;
 }
 
-/**
- * Zone 1: Spatial Exhibition Canvas (Dominant First Viewport on Desktop & Mobile!)
- * Mobile Art-Direction: Artwork appears immediately below a sleek horizontal selector rail!
- */
 function renderSpatialExhibition() {
     return `
     <section id="exhibition-stage" class="spatial-exhibition-stage relative w-full pt-2 sm:pt-4 pb-16 lg:pb-24 overflow-hidden" aria-label="Velora Digital Website Worlds Exhibition">
@@ -1138,7 +1378,67 @@ function renderModernExperience(currentPath) {
             }
 
             /* Reduced Motion Accessibility Respect */
+            
+            /* Modern V8 Specimen Distinct Motion Systems */
+            /* Aurora Organic Breathing */
+            @keyframes auroraBreathe {
+                0%, 100% { transform: scale(1) rotate(0deg); }
+                50% { transform: scale(1.03) rotate(2deg); }
+            }
+            .aurora-hero-visual svg {
+                animation: auroraBreathe 18s ease-in-out infinite;
+                transform-origin: center center;
+            }
+
+            /* Aarav Blueprint Elevation Drawing */
+            @keyframes aaravLineScan {
+                0%, 100% { opacity: 0.18; }
+                50% { opacity: 0.32; }
+            }
+            #aarav-grid-bg {
+                animation: aaravLineScan 10s ease-in-out infinite;
+            }
+
+            /* Spice Sensory Ember Rotation */
+            @keyframes spiceHaloRotate {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+            #spice-rotating-ember {
+                animation: spiceHaloRotate 35s linear infinite;
+                transform-origin: 100px 100px;
+            }
+
+            /* Specimen Interactive Tabs Active States */
+            .aurora-approach-tab.active {
+                border-color: #2D5A46 !important;
+                background-color: #FFFFFF !important;
+                box-shadow: 0 4px 12px -2px rgba(45, 90, 70, 0.15);
+            }
+            .aarav-explorer-tab.active {
+                border-color: #D4A853 !important;
+                background-color: #1E3048 !important;
+                box-shadow: 0 4px 12px -2px rgba(212, 168, 83, 0.2);
+            }
+            .spice-sequence-tab.active {
+                border-color: #C24628 !important;
+                background-color: #360C17 !important;
+                box-shadow: 0 4px 12px -2px rgba(194, 70, 40, 0.3);
+            }
+
             @media (prefers-reduced-motion: reduce) {
+                .aurora-hero-visual svg,
+                #aarav-grid-bg,
+                #spice-rotating-ember,
+                #aurora-svg-group,
+                #aarav-elevation-poly {
+                    animation: none !important;
+                    transition: none !important;
+                    transform: none !important;
+                }
+            }
+
+@media (prefers-reduced-motion: reduce) {
                 .website-world,
                 .transition-all,
                 .transition-colors,
@@ -1402,7 +1702,116 @@ function renderModernExperience(currentPath) {
                     });
                 }
 
-                // 3. Curatorial Design Lens Toggle
+                
+                // 2B. Aurora Approach Selector Wiring
+                const auroraTabs = {
+                    harmonization: document.getElementById('aurora-tab-harmonization'),
+                    restoration: document.getElementById('aurora-tab-restoration'),
+                    preservation: document.getElementById('aurora-tab-preservation')
+                };
+                const auroraStatus = document.getElementById('aurora-approach-status');
+                const auroraGroup = document.getElementById('aurora-svg-group');
+                const auroraNode = document.getElementById('aurora-pulse-node');
+
+                function setAuroraApproach(approachKey) {
+                    Object.keys(auroraTabs).forEach(k => {
+                        const tab = auroraTabs[k];
+                        if (tab) tab.classList.toggle('active', k === approachKey);
+                    });
+                    if (auroraStatus) {
+                        auroraStatus.textContent = '[ACTIVE: ' + approachKey.toUpperCase() + ']';
+                    }
+                    if (auroraGroup) {
+                        if (approachKey === 'harmonization') {
+                            auroraGroup.style.transform = 'scale(1) rotate(0deg)';
+                            if (auroraNode) auroraNode.setAttribute('fill', '#C88A75');
+                        } else if (approachKey === 'restoration') {
+                            auroraGroup.style.transform = 'scale(1.08) rotate(12deg)';
+                            if (auroraNode) auroraNode.setAttribute('fill', '#2D5A46');
+                        } else if (approachKey === 'preservation') {
+                            auroraGroup.style.transform = 'scale(0.95) rotate(-8deg)';
+                            if (auroraNode) auroraNode.setAttribute('fill', '#D4AF37');
+                        }
+                    }
+                }
+                if (auroraTabs.harmonization) addListener(auroraTabs.harmonization, 'click', () => setAuroraApproach('harmonization'));
+                if (auroraTabs.restoration) addListener(auroraTabs.restoration, 'click', () => setAuroraApproach('restoration'));
+                if (auroraTabs.preservation) addListener(auroraTabs.preservation, 'click', () => setAuroraApproach('preservation'));
+
+                // 2C. Aarav Property Explorer Wiring
+                const aaravTabs = {
+                    elevation: document.getElementById('aarav-tab-elevation'),
+                    plan: document.getElementById('aarav-tab-plan'),
+                    materials: document.getElementById('aarav-tab-materials'),
+                    connectivity: document.getElementById('aarav-tab-connectivity')
+                };
+                const aaravStatus = document.getElementById('aarav-mode-status');
+                const aaravPoly = document.getElementById('aarav-elevation-poly');
+
+                function setAaravMode(modeKey) {
+                    Object.keys(aaravTabs).forEach(k => {
+                        const tab = aaravTabs[k];
+                        if (tab) tab.classList.toggle('active', k === modeKey);
+                    });
+                    if (aaravStatus) {
+                        const labels = {
+                            elevation: '[MODE 01 // ELEVATION & MASSING]',
+                            plan: '[MODE 02 // SPATIAL FLOOR PLAN]',
+                            materials: '[MODE 03 // MATERIALS & FACADE]',
+                            connectivity: '[MODE 04 // LOCALITY & ACCESS]'
+                        };
+                        aaravStatus.textContent = labels[modeKey] || modeKey;
+                    }
+                    if (aaravPoly) {
+                        if (modeKey === 'elevation') aaravPoly.style.transform = 'translateY(0) scale(1)';
+                        else if (modeKey === 'plan') aaravPoly.style.transform = 'translateY(-14px) scale(1.06)';
+                        else if (modeKey === 'materials') aaravPoly.style.transform = 'translateY(8px) scale(0.96)';
+                        else if (modeKey === 'connectivity') aaravPoly.style.transform = 'translateX(-12px) scale(1.02)';
+                    }
+                }
+                if (aaravTabs.elevation) addListener(aaravTabs.elevation, 'click', () => setAaravMode('elevation'));
+                if (aaravTabs.plan) addListener(aaravTabs.plan, 'click', () => setAaravMode('plan'));
+                if (aaravTabs.materials) addListener(aaravTabs.materials, 'click', () => setAaravMode('materials'));
+                if (aaravTabs.connectivity) addListener(aaravTabs.connectivity, 'click', () => setAaravMode('connectivity'));
+
+                // 2D. Spice Tasting Sequence Wiring
+                const spiceTabs = {
+                    seq1: document.getElementById('spice-tab-seq1'),
+                    seq2: document.getElementById('spice-tab-seq2'),
+                    seq3: document.getElementById('spice-tab-seq3')
+                };
+                const spiceCourseStatus = document.getElementById('spice-course-status');
+                const spiceRotatingEmber = document.getElementById('spice-rotating-ember');
+                const spiceFigLabel = document.getElementById('spice-fig-label');
+
+                function setSpiceSequence(seqKey) {
+                    Object.keys(spiceTabs).forEach(k => {
+                        const tab = spiceTabs[k];
+                        if (tab) tab.classList.toggle('active', k === seqKey);
+                    });
+                    const descriptions = {
+                        seq1: '[COURSE: CLAYPOT EMBER CRISPS]',
+                        seq2: '[COURSE: SLOW COPPER BRAISE]',
+                        seq3: '[COURSE: BOTANICAL PISTACHIO SORBET]'
+                    };
+                    const figLabels = {
+                        seq1: '[SEQUENCE I ACTIVE]',
+                        seq2: '[SEQUENCE II ACTIVE]',
+                        seq3: '[SEQUENCE III ACTIVE]'
+                    };
+                    if (spiceCourseStatus) spiceCourseStatus.textContent = descriptions[seqKey] || seqKey;
+                    if (spiceFigLabel) spiceFigLabel.textContent = figLabels[seqKey] || seqKey;
+                    if (spiceRotatingEmber) {
+                        if (seqKey === 'seq1') spiceRotatingEmber.style.filter = 'brightness(1)';
+                        else if (seqKey === 'seq2') spiceRotatingEmber.style.filter = 'brightness(1.35) contrast(1.2)';
+                        else if (seqKey === 'seq3') spiceRotatingEmber.style.filter = 'brightness(0.9) hue-rotate(-20deg)';
+                    }
+                }
+                if (spiceTabs.seq1) addListener(spiceTabs.seq1, 'click', () => setSpiceSequence('seq1'));
+                if (spiceTabs.seq2) addListener(spiceTabs.seq2, 'click', () => setSpiceSequence('seq2'));
+                if (spiceTabs.seq3) addListener(spiceTabs.seq3, 'click', () => setSpiceSequence('seq3'));
+
+// 3. Curatorial Design Lens Toggle
                 const lensBtn = document.getElementById('design-lens-toggle');
                 const mobileLensBtn = document.getElementById('mobile-design-lens-toggle');
                 const stageContainer = document.getElementById('artwork-stage-container');
