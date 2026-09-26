@@ -101,24 +101,6 @@ function renderAuroraWorld() {
     return `
     <div id="world-aurora" class="website-world active transition-all duration-700 w-full" data-world="aurora" aria-label="Aurora Clinic Signature Design Concept">
         <div class="relative bg-[#FAF7F2] text-[#1F2421] rounded-2xl sm:rounded-[2.5rem] border border-[#E8E2D8] shadow-2xl overflow-hidden transition-all duration-500">
-            
-            <!-- Curatorial Design Lens Overlay Layer (Collision-Free Responsive Anchoring) -->
-            <div class="design-lens-layer absolute inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-300">
-                <div class="absolute top-3 right-3 sm:top-4 sm:right-4 bg-[#1F2421]/90 text-white text-[10px] sm:text-[11px] font-mono px-3 py-1.5 rounded-md backdrop-blur-sm shadow-md">
-                    <span>LENS: ORGANIC EDITORIAL COMPOSITION</span>
-                </div>
-                <!-- Non-colliding top-right annotation anchored over the negative botanical zone -->
-                <div class="absolute top-14 sm:top-16 right-4 sm:right-8 max-w-[240px] sm:max-w-xs text-right border border-dashed border-[#4A6B5D] p-1.5 sm:p-2 rounded-lg bg-[#FAF7F2]/90 backdrop-blur-sm text-[9px] sm:text-[10px] text-[#4A6B5D] font-mono hidden sm:block">
-                    <span>[TYPOGRAPHIC HIERARCHY: High-Contrast Display Serif + Restrained Sans]</span>
-                </div>
-                <!-- Lower annotations tucked into stable margins -->
-                <div class="absolute bottom-12 sm:bottom-14 left-4 sm:left-8 border border-dashed border-emerald-600 p-1.5 sm:p-2 rounded-lg bg-[#FAF7F2]/90 backdrop-blur-sm text-[9px] sm:text-[10px] text-emerald-800 font-mono hidden lg:block">
-                    <span>[SPATIAL BREATHING: 60% Negative Space Builds Clinical Trust]</span>
-                </div>
-                <div class="absolute bottom-12 sm:bottom-14 right-4 sm:right-8 border border-dashed border-[#C28D75] p-1.5 sm:p-2 rounded-lg bg-[#FAF7F2]/90 backdrop-blur-sm text-[9px] sm:text-[10px] text-[#C28D75] font-mono hidden sm:block">
-                    <span>[CONVERSION PATHWAY: Frictionless Low-Anxiety Intake Trigger]</span>
-                </div>
-            </div>
 
             <!-- Aurora Internal Masthead -->
             <div class="px-5 sm:px-10 py-4 sm:py-5 border-b border-[#E8E2D8]/80 flex items-center justify-between bg-[#FAF7F2]/90">
@@ -138,6 +120,26 @@ function renderAuroraWorld() {
             <!-- Aurora Hero Stage: Asymmetric Organic Flow -->
             <div class="p-5 sm:p-10 lg:p-12 relative">
                 
+                <!-- Curatorial Design Lens Overlay Layer (Collision-Free Responsive Anchoring) -->
+                <div class="design-lens-layer absolute inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-300">
+                    <!-- Desktop/Tablet Upper Cluster: Anchored in Hero Stage Top-Right Negative Space -->
+                    <div class="absolute top-4 sm:top-6 right-4 sm:right-8 flex flex-col items-end gap-2 max-w-[280px] sm:max-w-xs text-right hidden sm:flex">
+                        <div class="bg-[#1F2421]/90 text-white text-[10px] sm:text-[11px] font-mono px-3 py-1.5 rounded-md backdrop-blur-sm shadow-md">
+                            <span>LENS: ORGANIC EDITORIAL COMPOSITION</span>
+                        </div>
+                        <div class="border border-dashed border-[#4A6B5D] p-1.5 sm:p-2 rounded-lg bg-[#FAF7F2]/95 backdrop-blur-sm text-[9px] sm:text-[10px] text-[#4A6B5D] font-mono">
+                            <span>[TYPOGRAPHIC HIERARCHY: High-Contrast Display Serif + Restrained Sans]</span>
+                        </div>
+                    </div>
+                    <!-- Lower annotations tucked into stable hero bottom margins -->
+                    <div class="absolute bottom-3 sm:bottom-4 left-4 sm:left-8 border border-dashed border-emerald-600 p-1.5 sm:p-2 rounded-lg bg-[#FAF7F2]/95 backdrop-blur-sm text-[9px] sm:text-[10px] text-emerald-800 font-mono hidden lg:block">
+                        <span>[SPATIAL BREATHING: 60% Negative Space Builds Clinical Trust]</span>
+                    </div>
+                    <div class="absolute bottom-3 sm:bottom-4 right-4 sm:right-8 border border-dashed border-[#C28D75] p-1.5 sm:p-2 rounded-lg bg-[#FAF7F2]/95 backdrop-blur-sm text-[9px] sm:text-[10px] text-[#C28D75] font-mono hidden sm:block">
+                        <span>[CONVERSION PATHWAY: Frictionless Low-Anxiety Intake Trigger]</span>
+                    </div>
+                </div>
+
                 <!-- Background Botanical Flow Art (SVG) with Native Interaction Motion -->
                 <div id="aurora-botanical-art" class="absolute top-0 right-0 w-1/2 sm:w-7/12 h-full opacity-35 sm:opacity-50 pointer-events-none overflow-hidden transition-all duration-700 ease-out" aria-hidden="true">
                     <svg viewBox="0 0 500 500" class="w-full h-full object-cover">
@@ -160,13 +162,19 @@ function renderAuroraWorld() {
                         <span>Signature Design Concept</span>
                     </div>
 
-                    <h3 class="font-serif text-2xl sm:text-4xl lg:text-5xl font-light tracking-tight text-[#1F2421] leading-[1.15] mb-4 sm:mb-6">
+                    <h3 class="font-serif text-2xl sm:text-4xl lg:text-5xl font-light tracking-tight text-[#1F2421] leading-[1.15] max-w-lg mb-4 sm:mb-6">
                         Architectural Spatial Balance &amp; Interface Typography.
                     </h3>
 
                     <p class="text-xs sm:text-base text-[#525E57] font-normal leading-relaxed max-w-lg mb-6 sm:mb-8">
                         A bespoke digital experience designed for understated elegance. Every user pathway is calibrated for frictionless routing, visual clarity, and unhurried interaction.
                     </p>
+
+                    <!-- Mobile In-Flow Curatorial Callout (<sm screens only, zero overlap) -->
+                    <div class="mobile-lens-callout hidden sm:hidden mb-4 p-2.5 rounded-lg border border-dashed border-[#4A6B5D] bg-[#FAF7F2]/95 text-[10px] font-mono text-[#4A6B5D] flex items-center justify-between gap-2">
+                        <span class="font-bold">[LENS: ORGANIC EDITORIAL]</span>
+                        <span class="text-[9px] text-[#C28D75] text-right">[Display Serif + Sans]</span>
+                    </div>
 
                     <!-- Aurora Interactive Status Notification (Expands on Trigger Interaction) -->
                     <div id="aurora-interactive-status" class="overflow-hidden transition-all duration-500 max-h-0 opacity-0 mb-4 sm:mb-6 text-[10px] sm:text-[11px] font-mono text-[#4A6B5D] bg-[#4A6B5D]/10 border border-[#4A6B5D]/30 rounded-lg px-3 py-2 flex items-center justify-between">
@@ -222,24 +230,6 @@ function renderAaravWorld() {
     return `
     <div id="world-aarav" class="website-world hidden transition-all duration-700 w-full" data-world="aarav" aria-label="Aarav Properties Signature Design Concept">
         <div class="relative bg-[#12161A] text-[#E5DECE] rounded-none border-2 border-[#2A323D] shadow-2xl overflow-hidden transition-all duration-500">
-            
-            <!-- Curatorial Design Lens Overlay Layer (Collision-Free Responsive Anchoring) -->
-            <div class="design-lens-layer absolute inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-300">
-                <div class="absolute top-3 right-3 sm:top-4 sm:right-4 bg-[#C5A059] text-slate-950 text-[10px] sm:text-[11px] font-mono px-3 py-1.5 font-bold shadow-md">
-                    <span>LENS: MONUMENTAL ARCHITECTURAL GRID</span>
-                </div>
-                <!-- Non-colliding top-right annotation anchored over the right axonometric sector -->
-                <div class="absolute top-14 sm:top-16 right-4 sm:right-8 max-w-[260px] text-right border border-dashed border-[#C5A059] p-1.5 sm:p-2 bg-[#12161A]/95 text-[9px] sm:text-[10px] text-[#C5A059] font-mono hidden sm:block">
-                    <span>[STRUCTURAL RATIO: Strict Modular Axes with Monospaced Coordinates]</span>
-                </div>
-                <!-- Lower annotations tucked into stable margins -->
-                <div class="absolute bottom-12 sm:bottom-14 left-4 sm:left-8 border border-dashed border-[#E5DECE] p-1.5 sm:p-2 bg-[#12161A]/95 text-[9px] sm:text-[10px] text-[#E5DECE] font-mono hidden sm:block">
-                    <span>[INFORMATION DENSITY: High Scannability for Ultra-High-Net-Worth Inquiries]</span>
-                </div>
-                <div class="absolute bottom-12 sm:bottom-14 right-4 sm:right-8 border border-dashed border-[#C5A059]/60 p-1.5 sm:p-2 bg-[#12161A]/95 text-[9px] sm:text-[10px] text-[#9EACB5] font-mono hidden lg:block">
-                    <span>[AXONOMETRIC SPEC: Modular Z-Axis Depth Mapping]</span>
-                </div>
-            </div>
 
             <!-- Architectural Linework Background Grid (SVG) -->
             <div id="aarav-grid-bg" class="absolute inset-0 opacity-15 pointer-events-none transition-all duration-700 ease-out" aria-hidden="true">
@@ -270,6 +260,27 @@ function renderAaravWorld() {
 
             <!-- Aarav Architectural Body -->
             <div class="p-5 sm:p-10 lg:p-12 relative z-10">
+                
+                <!-- Curatorial Design Lens Overlay Layer (Collision-Free Responsive Anchoring) -->
+                <div class="design-lens-layer absolute inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-300">
+                    <!-- Desktop/Tablet Upper Cluster: Anchored in Hero Stage Top-Right Negative Space -->
+                    <div class="absolute top-4 sm:top-6 right-4 sm:right-8 flex flex-col items-end gap-2 max-w-[280px] sm:max-w-xs text-right hidden sm:flex">
+                        <div class="bg-[#C5A059] text-slate-950 text-[10px] sm:text-[11px] font-mono px-3 py-1.5 font-bold shadow-md">
+                            <span>LENS: MONUMENTAL ARCHITECTURAL GRID</span>
+                        </div>
+                        <div class="border border-dashed border-[#C5A059] p-1.5 sm:p-2 bg-[#12161A]/95 text-[9px] sm:text-[10px] text-[#C5A059] font-mono">
+                            <span>[STRUCTURAL RATIO: Strict Modular Axes with Monospaced Coordinates]</span>
+                        </div>
+                    </div>
+                    <!-- Lower annotations tucked into stable hero bottom margins -->
+                    <div class="absolute bottom-3 sm:bottom-4 left-4 sm:left-8 border border-dashed border-[#E5DECE] p-1.5 sm:p-2 bg-[#12161A]/95 text-[9px] sm:text-[10px] text-[#E5DECE] font-mono hidden sm:block">
+                        <span>[INFORMATION DENSITY: High Scannability for Ultra-High-Net-Worth Inquiries]</span>
+                    </div>
+                    <div class="absolute bottom-3 sm:bottom-4 right-4 sm:right-8 border border-dashed border-[#C5A059]/60 p-1.5 sm:p-2 bg-[#12161A]/95 text-[9px] sm:text-[10px] text-[#9EACB5] font-mono hidden lg:block">
+                        <span>[AXONOMETRIC SPEC: Modular Z-Axis Depth Mapping]</span>
+                    </div>
+                </div>
+
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
                     
                     <!-- Left: Monumental Typography & Overview -->
@@ -285,6 +296,12 @@ function renderAaravWorld() {
                         <p class="text-xs sm:text-base text-[#9EACB5] font-normal leading-relaxed max-w-lg mb-6 sm:mb-8">
                             Curated spatial portfolios designed for visual clarity. Uncompromising structural elegance, direct conversion routing, and zero third-party framework bloat.
                         </p>
+
+                        <!-- Mobile In-Flow Curatorial Callout (<sm screens only, zero overlap) -->
+                        <div class="mobile-lens-callout hidden sm:hidden mb-4 p-2.5 rounded border border-dashed border-[#C5A059] bg-[#181F26] text-[10px] font-mono text-[#C5A059] flex items-center justify-between gap-2">
+                            <span class="font-bold">[LENS: MONUMENTAL ARCHITECTURAL]</span>
+                            <span class="text-[9px] text-[#E5DECE] text-right">[Modular Axes + Grid]</span>
+                        </div>
 
                         <!-- Aarav Interactive Status Notification (Expands on Trigger Interaction) -->
                         <div id="aarav-interactive-status" class="overflow-hidden transition-all duration-500 max-h-0 opacity-0 mb-4 sm:mb-6 text-[10px] sm:text-[11px] font-mono text-[#C5A059] bg-[#C5A059]/10 border border-[#C5A059]/30 rounded px-3 py-2 flex items-center justify-between">
@@ -368,24 +385,6 @@ function renderSpiceWorld() {
     return `
     <div id="world-spice" class="website-world hidden transition-all duration-700 w-full" data-world="spice" aria-label="The Spice Room Signature Design Concept">
         <div class="relative bg-[#2B0E14] text-[#F7EBE1] rounded-2xl sm:rounded-t-[3rem] sm:rounded-b-xl border border-[#4A1D27] shadow-2xl overflow-hidden transition-all duration-500">
-            
-            <!-- Curatorial Design Lens Overlay Layer (Collision-Free Responsive Anchoring) -->
-            <div class="design-lens-layer absolute inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-300">
-                <div class="absolute top-3 right-3 sm:top-4 sm:right-4 bg-[#D9532F] text-white text-[10px] sm:text-[11px] font-mono px-3 py-1.5 font-bold shadow-md">
-                    <span>LENS: SENSORY HOSPITALITY TYPOGRAPHY</span>
-                </div>
-                <!-- Non-colliding top-right annotation anchored over the right halo margin -->
-                <div class="absolute top-14 sm:top-16 right-4 sm:right-8 max-w-[260px] text-right border border-dashed border-[#D9532F] p-1.5 sm:p-2 bg-[#2B0E14]/95 text-[9px] sm:text-[10px] text-[#F7EBE1] font-mono hidden sm:block">
-                    <span>[ATMOSPHERIC EMOTION: Radial Warm Ambient Halos Drive Dining Appetite]</span>
-                </div>
-                <!-- Lower annotations tucked into stable margins -->
-                <div class="absolute bottom-12 sm:bottom-14 left-4 sm:left-8 border border-dashed border-[#D9532F] p-1.5 sm:p-2 bg-[#2B0E14]/95 text-[9px] sm:text-[10px] text-[#D8B9B0] font-mono hidden lg:block">
-                    <span>[SENSORY TAXONOMY: Layered Terracotta Terroir System]</span>
-                </div>
-                <div class="absolute bottom-12 sm:bottom-14 right-4 sm:right-8 border border-dashed border-[#F7EBE1]/80 p-1.5 sm:p-2 bg-[#2B0E14]/95 text-[9px] sm:text-[10px] text-[#F7EBE1] font-mono hidden sm:block">
-                    <span>[DIRECT RESERVATION VECTOR: One-Tap High-Intent Dining Booking]</span>
-                </div>
-            </div>
 
             <!-- Warm Terracotta Radial Ambient Halo (SVG) -->
             <div id="spice-halo-1" class="spice-ambient-halo absolute top-0 right-0 w-80 sm:w-96 h-80 sm:h-96 bg-[#D9532F]/20 rounded-full blur-3xl pointer-events-none transition-all duration-700 ease-out" aria-hidden="true"></div>
@@ -408,19 +407,46 @@ function renderSpiceWorld() {
 
             <!-- Spice Hero Body -->
             <div class="p-5 sm:p-10 lg:p-12 relative z-10">
+                
+                <!-- Curatorial Design Lens Overlay Layer (Collision-Free Responsive Anchoring) -->
+                <div class="design-lens-layer absolute inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-300">
+                    <!-- Desktop/Tablet Upper Cluster: Anchored in Hero Stage Top-Right Negative Space -->
+                    <div class="absolute top-4 sm:top-6 right-4 sm:right-8 flex flex-col items-end gap-2 max-w-[280px] sm:max-w-xs text-right hidden sm:flex">
+                        <div class="bg-[#D9532F] text-white text-[10px] sm:text-[11px] font-mono px-3 py-1.5 font-bold shadow-md">
+                            <span>LENS: SENSORY HOSPITALITY TYPOGRAPHY</span>
+                        </div>
+                        <div class="border border-dashed border-[#D9532F] p-1.5 sm:p-2 bg-[#2B0E14]/95 text-[9px] sm:text-[10px] text-[#F7EBE1] font-mono">
+                            <span>[ATMOSPHERIC EMOTION: Radial Warm Ambient Halos Drive Dining Appetite]</span>
+                        </div>
+                    </div>
+                    <!-- Lower annotations tucked into stable hero bottom margins -->
+                    <div class="absolute bottom-3 sm:bottom-4 left-4 sm:left-8 border border-dashed border-[#D9532F] p-1.5 sm:p-2 bg-[#2B0E14]/95 text-[9px] sm:text-[10px] text-[#D8B9B0] font-mono hidden lg:block">
+                        <span>[SENSORY TAXONOMY: Layered Terracotta Terroir System]</span>
+                    </div>
+                    <div class="absolute bottom-3 sm:bottom-4 right-4 sm:right-8 border border-dashed border-[#F7EBE1]/80 p-1.5 sm:p-2 bg-[#2B0E14]/95 text-[9px] sm:text-[10px] text-[#F7EBE1] font-mono hidden sm:block">
+                        <span>[DIRECT RESERVATION VECTOR: One-Tap High-Intent Dining Booking]</span>
+                    </div>
+                </div>
+
                 <div class="max-w-2xl">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3D1820] text-[#D9532F] text-[9px] sm:text-[10px] font-semibold tracking-wider uppercase mb-4 sm:mb-5 border border-[#4A1D27]">
                         <span class="w-1.5 h-1.5 rounded-full bg-[#D9532F]"></span>
                         <span>Signature Design Concept · Regional Cuisine</span>
                     </div>
 
-                    <h3 class="font-serif text-2xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-[#F7EBE1] leading-[1.18] mb-4 sm:mb-6">
+                    <h3 class="font-serif text-2xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-[#F7EBE1] leading-[1.18] max-w-lg mb-4 sm:mb-6">
                         An Expressive Sequence of Warmth &amp; Typographic Terroir.
                     </h3>
 
                     <p class="text-xs sm:text-base text-[#D8B9B0] font-normal leading-relaxed max-w-lg mb-6 sm:mb-8">
                         Elevating regional hospitality into an immersive digital sequence. Fast, lightweight HTML presentations eliminate cumbersome loading times, allowing visual craftsmanship to shine.
                     </p>
+
+                    <!-- Mobile In-Flow Curatorial Callout (<sm screens only, zero overlap) -->
+                    <div class="mobile-lens-callout hidden sm:hidden mb-4 p-2.5 rounded-xl border border-dashed border-[#D9532F] bg-[#3D1820] text-[10px] font-mono text-[#D9532F] flex items-center justify-between gap-2">
+                        <span class="font-bold">[LENS: SENSORY HOSPITALITY]</span>
+                        <span class="text-[9px] text-[#F7EBE1] text-right">[Warm Ambient Terroir]</span>
+                    </div>
 
                     <!-- Spice Interactive Status Notification (Expands on Trigger Interaction) -->
                     <div id="spice-interactive-status" class="overflow-hidden transition-all duration-500 max-h-0 opacity-0 mb-4 sm:mb-6 text-[10px] sm:text-[11px] font-mono text-[#D9532F] bg-[#3D1820] border border-[#D9532F]/40 rounded-xl px-3 py-2 flex items-center justify-between">
@@ -804,15 +830,11 @@ function renderSpatialIntake() {
                             <span class="text-slate-400">WHATSAPP</span>
                             <a href="https://wa.me/917303733735" target="_blank" rel="noopener noreferrer" class="font-bold text-slate-900 hover:text-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">+91 73037 33735</a>
                         </div>
-                        <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center justify-between">
-                            <span class="text-slate-400">DIRECT EMAIL</span>
-                            <a href="mailto:ravishnoob123@gmail.com" class="font-bold text-slate-900 hover:text-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">ravishnoob123@gmail.com</a>
-                        </div>
                     </div>
 
                     <div class="p-4 rounded-xl bg-blue-50/70 border border-blue-100 text-xs text-blue-900 leading-relaxed">
-                        <span class="font-bold block mb-1">PROPOSAL TURNAROUND</span>
-                        Briefs submitted before 17:00 IST receive a formal architectural proposal and milestone roadmap within 24 business hours.
+                        <span class="font-bold block mb-1">PROPOSAL CONSULTATION</span>
+                        Proposal timeline and structural roadmap discussed directly after initial brief review.
                     </div>
                 </div>
 
@@ -1007,6 +1029,11 @@ function renderModernExperience(currentPath) {
             .show-lens .design-lens-layer {
                 opacity: 1 !important;
                 pointer-events: auto !important;
+            }
+            @media (max-width: 639px) {
+                .show-lens .mobile-lens-callout {
+                    display: flex !important;
+                }
             }
 
             /* Specimen Native Interactive States (Trigger Interaction Transformations) */
@@ -1517,7 +1544,7 @@ function renderModernExperience(currentPath) {
 
                             if (res.ok && data.success) {
                                 feedback.className = 'p-4 rounded-xl text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200 block';
-                                feedback.textContent = data.message || 'Brief received. You will receive an architectural proposal within 24 hours.';
+                                feedback.textContent = 'Brief received. We will review your project details and follow up directly.';
                                 form.reset();
                             } else {
                                 feedback.className = 'p-4 rounded-xl text-xs font-semibold bg-rose-100 text-rose-800 border border-rose-200 block';
