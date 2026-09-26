@@ -104,23 +104,23 @@ function renderAuroraWorld() {
 
             <!-- 1. Aurora Clinic Masthead & Direct Appointment Trigger -->
             <div class="px-5 sm:px-10 py-4 sm:py-5 border-b border-[#D5DFD7] flex items-center justify-between bg-[#F8F5EE]/95 sticky top-0 z-20 backdrop-blur-md">
-                <div class="flex items-center gap-2 sm:gap-3">
+                <div class="flex items-center gap-2 sm:gap-3 shrink-0">
                     <span class="font-serif text-lg sm:text-2xl font-normal tracking-wide text-[#1A2E23]">AURORA</span>
                     <span class="text-[10px] uppercase tracking-widest text-[#2D5A46] font-semibold hidden sm:inline-block">· Clinic of Aesthetic Medicine</span>
                 </div>
-                <div class="flex items-center gap-3 sm:gap-6 text-xs text-[#456353] font-medium">
-                    <span class="hidden md:inline-block hover:text-[#1A2E23] transition-colors cursor-pointer">Treatments</span>
-                    <span class="hidden sm:inline-block hover:text-[#1A2E23] transition-colors cursor-pointer">Practitioners</span>
-                    <span class="hidden lg:inline-block hover:text-[#1A2E23] transition-colors cursor-pointer">Philosophy</span>
-                    <button type="button" id="aurora-nav-cta" class="tactile-control px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#2D5A46] text-[#F8F5EE] hover:bg-[#1B3B2B] transition-colors shadow-xs">
+                <div class="flex items-center gap-2.5 sm:gap-4 lg:gap-6 text-xs text-[#456353] font-medium">
+                    <a href="#aurora-philosophy" class="hidden md:inline-block hover:text-[#1A2E23] transition-colors">Philosophy</a>
+                    <a href="#aurora-protocols-section" class="hidden sm:inline-block hover:text-[#1A2E23] transition-colors">Care Areas</a>
+                    <a href="#aurora-intake-section" class="hidden lg:inline-block hover:text-[#1A2E23] transition-colors">Consultation</a>
+                    <a href="#aurora-intake-section" id="aurora-nav-cta" class="tactile-control px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#2D5A46] text-[#F8F5EE] hover:bg-[#1B3B2B] transition-colors shadow-xs">
                         Book Consultation
-                    </button>
+                    </a>
                     <span class="px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider font-semibold bg-[#2D5A46]/10 text-[#2D5A46] border border-[#2D5A46]/20">Concept</span>
                 </div>
             </div>
 
-            <!-- 2. Aurora Hero Stage: Organic Composition & High-Trust Statement -->
-            <div class="p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+            <!-- 2. Aurora Hero Stage: Organic Composition & Patient-Centered Statement -->
+            <div id="aurora-philosophy" class="p-6 sm:p-10 lg:p-12 relative overflow-hidden">
                 
                 <!-- Curatorial Design Lens Overlay Layer -->
                 <div class="design-lens-layer absolute inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-300">
@@ -132,12 +132,9 @@ function renderAuroraWorld() {
                             <span>[TYPOGRAPHIC HIERARCHY: High-Contrast Display Serif + Restrained Clinical Sans]</span>
                         </div>
                     </div>
-                    <div class="absolute bottom-3 sm:bottom-4 left-4 sm:left-8 border border-dashed border-emerald-700 p-1.5 sm:p-2 rounded-lg bg-[#F8F5EE]/95 backdrop-blur-sm text-[9px] sm:text-[10px] text-emerald-900 font-mono hidden lg:block">
-                        <span>[SPATIAL BREATHING: 60% Negative Space Builds Patient Confidence]</span>
-                    </div>
                 </div>
 
-                <!-- Substantial Bespoke Botanical SVG Artwork -->
+                <!-- Bespoke Facial Balance & Botanical Precision SVG Artwork -->
                 <div id="aurora-botanical-art" class="aurora-hero-visual absolute top-0 right-0 w-full sm:w-7/12 h-full opacity-45 sm:opacity-75 pointer-events-none overflow-hidden transition-all duration-700 ease-out" aria-hidden="true">
                     <svg viewBox="0 0 600 600" class="w-full h-full object-cover">
                         <defs>
@@ -151,11 +148,13 @@ function renderAuroraWorld() {
                                 <stop offset="100%" stop-color="#C88A75" stop-opacity="0"/>
                             </radialGradient>
                         </defs>
-                        <!-- Organic Petal Curvature Layers -->
+                        <!-- Organic Symmetry & Balance Geometry -->
                         <g id="aurora-svg-group" class="transition-transform duration-700 ease-out">
                             <path d="M 360,70 C 490,100 550,220 520,360 C 490,490 340,540 220,500 C 100,460 70,320 110,190 C 150,70 250,40 360,70 Z" fill="url(#aurora-grad-v8)"/>
                             <path id="aurora-contour-line" d="M 400,140 Q 500,260 410,400 T 240,430" fill="none" stroke="#2D5A46" stroke-width="1.75" stroke-dasharray="5 5" class="transition-all duration-700"/>
                             <path d="M 330,110 Q 420,200 370,320 T 200,340" fill="none" stroke="#C88A75" stroke-width="1" stroke-opacity="0.5"/>
+                            <!-- Facial Symmetry Reference Axis (Subtle, Clinical) -->
+                            <line x1="300" y1="50" x2="300" y2="520" stroke="#2D5A46" stroke-width="0.75" stroke-dasharray="4 6" stroke-opacity="0.35"/>
                             <circle cx="410" cy="260" r="18" fill="url(#aurora-node-glow)"/>
                             <circle id="aurora-pulse-node" cx="410" cy="260" r="5" fill="#C88A75" class="transition-all duration-500"/>
                             <circle cx="240" cy="430" r="4.5" fill="#2D5A46"/>
@@ -176,26 +175,26 @@ function renderAuroraWorld() {
                     </h3>
 
                     <p class="text-xs sm:text-base text-[#456353] font-normal leading-relaxed max-w-lg mb-6 sm:mb-8">
-                        Bespoke clinical protocols designed for subtle facial rejuvenation and restorative skin health. Doctor-led assessments, transparent treatment pricing, and unhurried consultation care.
+                        Doctor-led aesthetic assessments and restorative skin health protocols. Unhurried personal evaluations, transparent treatment guidance, and customized care designed for natural anatomical balance.
                     </p>
 
                     <!-- Dual Action CTAs -->
                     <div class="flex flex-wrap items-center gap-3 sm:gap-4 mb-6">
-                        <button type="button" id="aurora-primary-cta" class="tactile-control px-6 py-3 rounded-full bg-[#2D5A46] text-[#F8F5EE] text-xs font-semibold tracking-wider hover:bg-[#1B3B2B] transition-colors shadow-sm flex items-center gap-2">
-                            <span>Request Consultation</span>
+                        <a href="#aurora-intake-section" id="aurora-primary-cta" class="tactile-control px-6 py-3 rounded-full bg-[#2D5A46] text-[#F8F5EE] text-xs font-semibold tracking-wider hover:bg-[#1B3B2B] transition-colors shadow-sm flex items-center gap-2">
+                            <span>Request Consultation Intake</span>
                             <span>→</span>
-                        </button>
+                        </a>
                         <button type="button" id="aurora-interaction-trigger" class="tactile-control px-5 py-3 rounded-full bg-white border border-[#D5DFD7] text-[#2D5A46] text-xs font-semibold tracking-wider hover:bg-[#E4EDE6] transition-colors flex items-center gap-2">
-                            <span class="btn-label">Explore Clinical Protocols</span>
+                            <span class="btn-label">Explore Clinical Focus Areas</span>
                             <span class="interaction-arrow inline-block transition-transform duration-300">↓</span>
                         </button>
                     </div>
 
-                    <!-- Trust Strip -->
+                    <!-- Trust Strip (Patient-Focused) -->
                     <div class="flex items-center gap-4 sm:gap-6 pt-2 border-t border-[#D5DFD7]/80 text-[10px] sm:text-[11px] text-[#456353]">
                         <div class="flex items-center gap-1.5">
                             <span class="text-[#2D5A46]">✓</span>
-                            <span>Physician-Led Assessments</span>
+                            <span>Doctor-Led Assessments</span>
                         </div>
                         <div class="flex items-center gap-1.5">
                             <span class="text-[#2D5A46]">✓</span>
@@ -209,35 +208,40 @@ function renderAuroraWorld() {
                 </div>
             </div>
 
-            <!-- 3. Interactive Aesthetic Approach Selector -->
+            <!-- 3. Interactive Clinical Focus Explorer -->
             <div class="px-6 sm:px-10 py-6 bg-[#E4EDE6]/60 border-t border-[#D5DFD7] relative z-10">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                     <div>
-                        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-[#2D5A46] block">Interactive Assessment Explorer</span>
-                        <h4 class="font-serif text-lg sm:text-xl font-normal text-[#1A2E23]">Select an Aesthetic Principle to Inspect Clinical Protocol</h4>
+                        <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-[#2D5A46] block">Clinical Evaluation Explorer</span>
+                        <h4 class="font-serif text-lg sm:text-xl font-normal text-[#1A2E23]">Select an Area of Focus to Inspect Assessment Criteria</h4>
                     </div>
                     <span id="aurora-approach-status" class="text-[10px] font-mono text-[#2D5A46] bg-[#2D5A46]/10 px-2.5 py-1 rounded-full border border-[#2D5A46]/20 self-start sm:self-auto">
-                        [ACTIVE: HARMONIZATION]
+                        [CARE FOCUS: FACIAL HARMONY]
                     </span>
                 </div>
 
-                <!-- 3 Selectable Principle Tabs -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" role="tablist" aria-label="Aesthetic Approaches">
+                <!-- 3 Selectable Focus Tabs -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" role="tablist" aria-label="Clinical Areas of Focus">
                     <button type="button" id="aurora-tab-harmonization" class="aurora-approach-tab active tactile-control p-4 rounded-xl text-left transition-all duration-300 bg-white border border-[#2D5A46] shadow-xs">
-                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#2D5A46] block mb-1">01 / Harmonization</span>
-                        <span class="text-sm font-semibold text-[#1A2E23] block">Facial Proportions</span>
+                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#2D5A46] block mb-1">Focus 01</span>
+                        <span class="text-sm font-semibold text-[#1A2E23] block">Facial Architecture &amp; Symmetry</span>
                         <p class="text-[11px] text-[#456353] mt-1 leading-normal">Subtle volumetric balance restoring natural profile contours without exaggerated fullness.</p>
                     </button>
                     <button type="button" id="aurora-tab-restoration" class="aurora-approach-tab tactile-control p-4 rounded-xl text-left transition-all duration-300 bg-white/70 hover:bg-white border border-[#D5DFD7] hover:border-[#2D5A46]">
-                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#C88A75] block mb-1">02 / Restoration</span>
-                        <span class="text-sm font-semibold text-[#1A2E23] block">Cellular Barrier Renewal</span>
-                        <p class="text-[11px] text-[#456353] mt-1 leading-normal">Deep dermal hydration, collagen induction, and texture refining for resilient skin health.</p>
+                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#C88A75] block mb-1">Focus 02</span>
+                        <span class="text-sm font-semibold text-[#1A2E23] block">Dermal Health &amp; Barrier Renewal</span>
+                        <p class="text-[11px] text-[#456353] mt-1 leading-normal">Evidence-based hydration, collagen conditioning, and texture refining for resilient skin vitality.</p>
                     </button>
                     <button type="button" id="aurora-tab-preservation" class="aurora-approach-tab tactile-control p-4 rounded-xl text-left transition-all duration-300 bg-white/70 hover:bg-white border border-[#D5DFD7] hover:border-[#2D5A46]">
-                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#2D5A46] block mb-1">03 / Preservation</span>
-                        <span class="text-sm font-semibold text-[#1A2E23] block">Clinical Skin Longevity</span>
-                        <p class="text-[11px] text-[#456353] mt-1 leading-normal">Targeted medical peels, antioxidant infusions, and structured preventative maintenance.</p>
+                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#2D5A46] block mb-1">Focus 03</span>
+                        <span class="text-sm font-semibold text-[#1A2E23] block">Preventative Skin Maintenance</span>
+                        <p class="text-[11px] text-[#456353] mt-1 leading-normal">Physician-guided skin conditioning and structured preventative regimens for long-term health.</p>
                     </button>
+                </div>
+
+                <!-- Dynamic Clinical Guidance Note (Meaningful Interaction!) -->
+                <div id="aurora-focus-detail" class="mt-4 p-4 rounded-xl bg-white/90 border border-[#D5DFD7] text-xs text-[#2D5A46] leading-relaxed transition-all duration-500">
+                    <strong class="font-semibold text-[#1A2E23]">Doctor's Assessment Focus:</strong> Comprehensive evaluation of facial balance, natural tissue contours, and anatomical proportion during your consultation. Care plans emphasize conservative, subtle restoration.
                 </div>
             </div>
 
@@ -251,33 +255,33 @@ function renderAuroraWorld() {
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="p-5 rounded-2xl bg-white border border-[#D5DFD7] shadow-xs flex flex-col justify-between">
                         <div>
-                            <span class="text-xs font-mono font-bold text-[#2D5A46] block mb-2">[PATH 01]</span>
+                            <span class="text-xs font-mono font-bold text-[#2D5A46] block mb-2">[PATHWAY 01]</span>
                             <h5 class="font-serif text-lg font-normal text-[#1A2E23] mb-2">Facial Rejuvenation &amp; Balance</h5>
                             <p class="text-xs text-[#456353] leading-relaxed mb-4">Precision anatomical placement addressing subtle volume loss with natural tissue integration.</p>
                         </div>
-                        <div class="pt-3 border-t border-[#E4EDE6] flex items-center justify-between text-[11px]">
-                            <span class="text-[#456353]">Care: Physician-Led</span>
+                        <div class="pt-3 border-t border-[#E4EDE6] flex items-center justify-between gap-2 text-[11px]">
+                            <span class="text-[#456353]">Evaluation: Doctor-Led</span>
                             <span class="font-semibold text-[#2D5A46]">Physician Review</span>
                         </div>
                     </div>
                     <div class="p-5 rounded-2xl bg-white border border-[#D5DFD7] shadow-xs flex flex-col justify-between">
                         <div>
-                            <span class="text-xs font-mono font-bold text-[#C88A75] block mb-2">[PATH 02]</span>
+                            <span class="text-xs font-mono font-bold text-[#C88A75] block mb-2">[PATHWAY 02]</span>
                             <h5 class="font-serif text-lg font-normal text-[#1A2E23] mb-2">Restorative Skin Health</h5>
                             <p class="text-xs text-[#456353] leading-relaxed mb-4">Evidence-based clinical treatments designed to strengthen dermal resilience and skin barrier function.</p>
                         </div>
-                        <div class="pt-3 border-t border-[#E4EDE6] flex items-center justify-between text-[11px]">
+                        <div class="pt-3 border-t border-[#E4EDE6] flex items-center justify-between gap-2 text-[11px]">
                             <span class="text-[#456353]">Care: Tailored Regimen</span>
                             <span class="font-semibold text-[#C88A75]">Clinical Peels</span>
                         </div>
                     </div>
                     <div class="p-5 rounded-2xl bg-white border border-[#D5DFD7] shadow-xs flex flex-col justify-between">
                         <div>
-                            <span class="text-xs font-mono font-bold text-[#2D5A46] block mb-2">[PATH 03]</span>
+                            <span class="text-xs font-mono font-bold text-[#2D5A46] block mb-2">[PATHWAY 03]</span>
                             <h5 class="font-serif text-lg font-normal text-[#1A2E23] mb-2">Preventative Clinical Care</h5>
                             <p class="text-xs text-[#456353] leading-relaxed mb-4">Evidence-based skin conditioning and physician-guided maintenance formulated for sensitive complexions.</p>
                         </div>
-                        <div class="pt-3 border-t border-[#E4EDE6] flex items-center justify-between text-[11px]">
+                        <div class="pt-3 border-t border-[#E4EDE6] flex items-center justify-between gap-2 text-[11px]">
                             <span class="text-[#456353]">Care: Preventative</span>
                             <span class="font-semibold text-[#2D5A46]">Custom Regimen</span>
                         </div>
@@ -285,21 +289,31 @@ function renderAuroraWorld() {
                 </div>
             </div>
 
-            <!-- 5. Calming High-Trust Consultation Conversion Strip -->
-            <div class="px-6 sm:px-10 py-8 bg-[#1A2E23] text-[#F8F5EE] flex flex-col sm:flex-row items-center justify-between gap-6">
+            <!-- 5. Calming High-Trust Consultation Conversion Section -->
+            <div id="aurora-intake-section" class="px-6 sm:px-10 py-8 bg-[#1A2E23] text-[#F8F5EE] flex flex-col sm:flex-row items-center justify-between gap-6">
                 <div>
                     <h5 class="font-serif text-xl sm:text-2xl font-light text-white mb-1">Begin With an Unhurried Assessment</h5>
-                    <p class="text-xs text-[#E4EDE6] opacity-80 max-w-md">Meet directly with a qualified doctor to discuss your skin health, aesthetic goals, and transparent care options.</p>
+                    <p class="text-xs text-[#E4EDE6] opacity-80 max-w-md">Meet directly with a qualified doctor to discuss your skin health, aesthetic goals, and transparent care options in complete discretion.</p>
+                    <div class="flex items-center gap-4 mt-3 text-[10px] text-[#A3C4B2]">
+                        <span>✓ By Prior Appointment</span>
+                        <span>✓ Confidential Intake</span>
+                        <span>✓ Direct Physician Dialogue</span>
+                    </div>
                 </div>
-                <button type="button" class="tactile-control shrink-0 px-6 py-3 rounded-full bg-[#E4EDE6] text-[#1A2E23] text-xs font-semibold hover:bg-white transition-colors shadow-sm">
-                    Schedule Consultation →
-                </button>
+                <div class="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+                    <a href="mailto:ravishnoob123@gmail.com?subject=Aurora%20Clinic%20Consultation%20Enquiry&body=Hello%20Aurora%20Clinic%2C%20I%20would%20like%20to%20request%20a%20consultation." class="tactile-control px-6 py-3 rounded-full bg-[#E4EDE6] text-[#1A2E23] text-xs font-semibold hover:bg-white transition-colors shadow-sm text-center">
+                        Request Intake via Email →
+                    </a>
+                    <a href="tel:+917303733735" class="tactile-control px-4 py-3 rounded-full border border-[#456353] text-[#E4EDE6] text-xs font-medium hover:bg-[#2D5A46] transition-colors text-center">
+                        +91 73037 33735
+                    </a>
+                </div>
             </div>
 
-            <!-- 6. Aurora Colophon Bar -->
+            <!-- 6. Aurora Colophon Bar (Patient-Facing, Clean of Agency Meta-Language) -->
             <div class="px-5 sm:px-10 py-3 bg-[#E4EDE6] border-t border-[#D5DFD7] flex items-center justify-between text-[10px] sm:text-[11px] text-[#456353]">
-                <span>Medical Practice Architecture · WCAG 2.1 AA Accessible · MedicalBusiness Schema</span>
-                <span class="font-mono text-[9px] sm:text-[10px] font-bold text-[#2D5A46]">AURORA-CLINICAL-01</span>
+                <span>Aurora Clinic of Aesthetic Medicine · Physician-Led Consultations · Confidential Patient Care</span>
+                <span class="font-serif italic text-xs text-[#2D5A46]">Established Clinical Practice</span>
             </div>
         </div>
     </div>`;
@@ -330,12 +344,11 @@ function renderAaravWorld() {
                     <span class="text-[10px] font-mono uppercase tracking-widest text-[#8EADC4] hidden sm:inline-block">· RESIDENTIAL ADVISORY</span>
                 </div>
                 <div class="flex items-center gap-3 sm:gap-6 text-xs text-[#8EADC4] font-mono">
-                    <span class="hidden md:inline-block hover:text-white transition-colors cursor-pointer">[01] Inventory</span>
-                    <span class="hidden sm:inline-block hover:text-white transition-colors cursor-pointer">[02] Typologies</span>
-                    <span class="hidden lg:inline-block hover:text-white transition-colors cursor-pointer">[03] Floor Plans</span>
-                    <button type="button" id="aarav-nav-cta" class="tactile-control px-3.5 py-1.5 rounded-none text-xs font-bold font-mono bg-[#D4A853] text-[#0A1320] hover:bg-white transition-colors shadow-xs">
-                        Broker WhatsApp →
-                    </button>
+                    <a href="#aarav-typology-section" class="hidden md:inline-block hover:text-white transition-colors cursor-pointer">[01] Typologies</a>
+                    <a href="#aarav-studies-section" class="hidden sm:inline-block hover:text-white transition-colors cursor-pointer">[02] Spatial Studies</a>
+                    <a href="https://wa.me/917303733735?text=Hello%20Aarav%20Properties%2C%20I%20would%20like%20to%20request%20a%20private%20residential%20dossier." target="_blank" rel="noopener noreferrer" id="aarav-nav-cta" class="tactile-control px-3.5 py-1.5 rounded-none text-xs font-bold font-mono bg-[#D4A853] text-[#0A1320] hover:bg-white transition-colors shadow-xs inline-flex items-center gap-1.5">
+                        Broker WhatsApp &rarr;
+                    </a>
                     <span class="px-2 py-0.5 text-[9px] uppercase tracking-wider font-bold bg-[#D4A853]/20 text-[#D4A853] border border-[#D4A853]/40">Concept</span>
                 </div>
             </div>
@@ -368,34 +381,34 @@ function renderAaravWorld() {
                         </h3>
 
                         <p class="text-xs sm:text-base text-[#8EADC4] font-normal leading-relaxed max-w-lg mb-6 sm:mb-8">
-                            Direct developer representation for high-value residential acquisitions. Verified RERA documentation, high-resolution architectural floor plans, and direct broker WhatsApp routing without intermediary portal bloat.
+                            Direct developer representation for high-value residential acquisitions. Verified RERA documentation, volumetric architectural studies, and private broker advisory for distinguished properties.
                         </p>
 
                         <!-- Action Controls -->
                         <div class="flex flex-wrap items-center gap-3 sm:gap-4 mb-6">
-                            <button type="button" id="aarav-primary-cta" class="tactile-control px-6 py-3 rounded-none bg-[#D4A853] text-slate-950 text-xs font-bold font-mono tracking-wider hover:bg-white transition-colors flex items-center gap-2 shadow-sm">
+                            <a href="https://wa.me/917303733735?text=Hello%20Aarav%20Properties%2C%20I%20would%20like%20to%20request%20a%20private%20property%20dossier." target="_blank" rel="noopener noreferrer" id="aarav-primary-cta" class="tactile-control px-6 py-3 rounded-none bg-[#D4A853] text-slate-950 text-xs font-bold font-mono tracking-wider hover:bg-white transition-colors inline-flex items-center gap-2 shadow-sm">
                                 <span>REQUEST PROPERTY DOSSIER</span>
-                                <span>→</span>
-                            </button>
+                                <span>&rarr;</span>
+                            </a>
                             <button type="button" id="aarav-interaction-trigger" class="tactile-control px-5 py-3 rounded-none bg-[#142236] border border-[#223854] text-[#ECE7DF] text-xs font-bold font-mono tracking-wider hover:bg-[#1E3048] transition-colors flex items-center gap-2">
-                                <span class="btn-label">EXPLORE ELEVATION &amp; SPECS</span>
-                                <span class="interaction-arrow inline-block transition-transform duration-300">↓</span>
+                                <span class="btn-label">EXPLORE ARCHITECTURAL STUDIES</span>
+                                <span class="interaction-arrow inline-block transition-transform duration-300">&darr;</span>
                             </button>
                         </div>
 
                         <!-- Trust Fact Strip -->
                         <div class="flex items-center gap-4 sm:gap-6 pt-2 border-t border-[#1E3048] text-[10px] sm:text-[11px] font-mono text-[#8EADC4]">
-                            <span>[RERA COMPLIANCE STRUCTURE]</span>
-                            <span>[ZERO PORTAL BLOAT]</span>
-                            <span class="hidden sm:inline">[DIRECT DEVELOPER MANDATE]</span>
+                            <span>[VERIFIED RERA DOCUMENTATION]</span>
+                            <span>[DIRECT DEVELOPER MANDATE]</span>
+                            <span class="hidden sm:inline">[PRIVATE CLIENT ADVISORY]</span>
                         </div>
                     </div>
 
-                    <!-- Right: Large Bespoke Axonometric Blueprint Composition (SVG) -->
+                    <!-- Right: Large Bespoke Axonometric Structural Massing Composition (SVG) -->
                     <div class="lg:col-span-5 bg-[#142236] p-4 sm:p-6 border border-[#223854] relative overflow-hidden">
                         <div class="flex items-center justify-between text-[10px] font-mono text-[#8EADC4] mb-3 pb-2 border-b border-[#223854]">
                             <span>AXONOMETRIC STRUCTURAL ELEVATION</span>
-                            <span id="aarav-fig-label" class="text-[#D4A853] transition-colors duration-300 font-bold">[FIG. 04-A // ACTIVE]</span>
+                            <span id="aarav-fig-label" class="text-[#D4A853] transition-colors duration-300 font-bold">[STUDY 01 // VOLUMETRIC MASSING]</span>
                         </div>
                         <div class="h-48 sm:h-60 flex items-center justify-center">
                             <svg viewBox="0 0 280 220" class="w-full h-full max-h-56">
@@ -432,48 +445,64 @@ function renderAaravWorld() {
                 </div>
             </div>
 
-            <!-- 3. Interactive Architectural Property Explorer -->
-            <div class="px-6 sm:px-10 py-6 bg-[#0E1A2C] border-t border-[#1E3048] relative z-10">
+            <!-- 3. Interactive Architectural Spatial Studies Section -->
+            <div id="aarav-studies-section" class="px-6 sm:px-10 py-6 bg-[#0E1A2C] border-t border-[#1E3048] relative z-10">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
                     <div>
-                        <span class="text-[9px] font-mono uppercase tracking-widest text-[#D4A853] block">Spatial Configuration Explorer</span>
-                        <h4 class="font-sans text-base sm:text-lg font-bold text-white uppercase tracking-wider">Select Structural Perspective to Inspect Specifications</h4>
+                        <span class="text-[9px] font-mono uppercase tracking-widest text-[#D4A853] block">Architectural Spatial Studies</span>
+                        <h4 class="font-sans text-base sm:text-lg font-bold text-white uppercase tracking-wider">Select Study to Inspect Architectural Geometry &amp; Planning</h4>
                     </div>
                     <span id="aarav-mode-status" class="text-[10px] font-mono text-[#D4A853] bg-[#D4A853]/10 px-2.5 py-1 border border-[#D4A853]/30 self-start sm:self-auto">
-                        [MODE 01 // ELEVATION &amp; MASSING]
+                        [STUDY 01 // VOLUMETRIC MASSING]
                     </span>
                 </div>
 
                 <!-- 4 Interactive Mode Buttons -->
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 font-mono" role="tablist" aria-label="Property Explorer">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 font-mono" role="tablist" aria-label="Architectural Studies">
                     <button type="button" id="aarav-tab-elevation" class="aarav-explorer-tab active tactile-control p-3.5 bg-[#142236] border-2 border-[#D4A853] text-left">
-                        <span class="text-[9px] text-[#D4A853] block font-bold">MODE 01</span>
-                        <span class="text-xs font-bold text-white block mt-0.5">Elevation &amp; Massing</span>
-                        <span class="text-[10px] text-[#8EADC4] block mt-1">Volumetric spatial proportions</span>
+                        <span class="text-[9px] text-[#D4A853] block font-bold">STUDY 01</span>
+                        <span class="text-xs font-bold text-white block mt-0.5">Volumetric Massing</span>
+                        <span class="text-[10px] text-[#8EADC4] block mt-1">Spatial volume ratios &amp; envelope</span>
                     </button>
                     <button type="button" id="aarav-tab-plan" class="aarav-explorer-tab tactile-control p-3.5 bg-[#142236]/70 hover:bg-[#142236] border border-[#223854] text-left">
-                        <span class="text-[9px] text-[#8EADC4] block font-bold">MODE 02</span>
-                        <span class="text-xs font-bold text-white block mt-0.5">Spatial Floor Plan</span>
-                        <span class="text-[10px] text-[#8EADC4] block mt-1">Detailed floor plan architecture</span>
+                        <span class="text-[9px] text-[#8EADC4] block font-bold">STUDY 02</span>
+                        <span class="text-xs font-bold text-white block mt-0.5">Structural Elevation</span>
+                        <span class="text-[10px] text-[#8EADC4] block mt-1">Vertical datum &amp; structural axes</span>
                     </button>
                     <button type="button" id="aarav-tab-materials" class="aarav-explorer-tab tactile-control p-3.5 bg-[#142236]/70 hover:bg-[#142236] border border-[#223854] text-left">
-                        <span class="text-[9px] text-[#8EADC4] block font-bold">MODE 03</span>
-                        <span class="text-xs font-bold text-white block mt-0.5">Materials &amp; Facade</span>
-                        <span class="text-[10px] text-[#8EADC4] block mt-1">Material schedule &amp; finishes</span>
+                        <span class="text-[9px] text-[#8EADC4] block font-bold">STUDY 03</span>
+                        <span class="text-xs font-bold text-white block mt-0.5">Solar &amp; Orientation</span>
+                        <span class="text-[10px] text-[#8EADC4] block mt-1">Diurnal light paths &amp; setbacks</span>
                     </button>
                     <button type="button" id="aarav-tab-connectivity" class="aarav-explorer-tab tactile-control p-3.5 bg-[#142236]/70 hover:bg-[#142236] border border-[#223854] text-left">
-                        <span class="text-[9px] text-[#8EADC4] block font-bold">MODE 04</span>
-                        <span class="text-xs font-bold text-white block mt-0.5">Locality &amp; Access</span>
-                        <span class="text-[10px] text-[#8EADC4] block mt-1">Neighborhood connectivity map</span>
+                        <span class="text-[9px] text-[#8EADC4] block font-bold">STUDY 04</span>
+                        <span class="text-xs font-bold text-white block mt-0.5">Perimeter Grounds</span>
+                        <span class="text-[10px] text-[#8EADC4] block mt-1">Ingress paths &amp; privacy buffers</span>
                     </button>
+                </div>
+
+                <!-- Dynamic Architectural Study Detail Card -->
+                <div id="aarav-study-detail" class="mt-4 p-4 bg-[#142236] border border-[#223854] font-mono">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 mb-2 border-b border-[#223854]">
+                        <span class="text-[11px] text-[#D4A853] font-bold">ARCHITECTURAL RATIONALE: VOLUMETRIC MASSING</span>
+                        <span class="text-[10px] text-[#8EADC4]">PARAMETRIC RATIO: 1:1.618</span>
+                    </div>
+                    <p class="text-xs text-[#ECE7DF] leading-relaxed font-sans mb-3">
+                        The massing composition balances substantial volumetric density with open horizontal air pathways. Triple-height internal light cores draw ambient morning illumination into primary living quarters while mitigating solar thermal gain.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 text-[10px] text-[#8EADC4]">
+                        <span>· Verified RERA Title Verification</span>
+                        <span>· Engineered Acoustic Attenuation</span>
+                        <span>· Private Parking Footprint</span>
+                    </div>
                 </div>
             </div>
 
             <!-- 4. Architectural Typology Portfolio -->
             <div id="aarav-typology-section" class="px-6 sm:px-10 py-8 border-t border-[#1E3048] bg-[#0A1320] font-mono">
                 <div class="flex items-center justify-between mb-6 pb-2 border-b border-[#1E3048]">
-                    <span class="text-[10px] uppercase tracking-widest text-[#8EADC4]">Curated Residential Portfolio</span>
-                    <span class="text-[11px] text-[#D4A853]">Direct Developer Representation</span>
+                    <span class="text-[10px] uppercase tracking-widest text-[#8EADC4]">Curated Residential Typologies</span>
+                    <span class="text-[11px] text-[#D4A853]">Direct Developer Mandates</span>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -485,7 +514,7 @@ function renderAaravWorld() {
                         </div>
                         <div class="pt-3 border-t border-[#1E3048] flex items-center justify-between text-[10px] text-[#8EADC4]">
                             <span>STATUS: VETTED</span>
-                            <span class="text-[#D4A853]">DOSSIER AVAILABLE</span>
+                            <a href="https://wa.me/917303733735?text=Hello%20Aarav%20Properties%2C%20please%20send%20the%20dossier%20for%20Typology%2001%20Residential%20Enclaves." target="_blank" rel="noopener noreferrer" class="text-[#D4A853] hover:text-white transition-colors">REQUEST DOSSIER &rarr;</a>
                         </div>
                     </div>
                     <div class="p-5 bg-[#142236] border border-[#223854] flex flex-col justify-between">
@@ -496,7 +525,7 @@ function renderAaravWorld() {
                         </div>
                         <div class="pt-3 border-t border-[#1E3048] flex items-center justify-between text-[10px] text-[#8EADC4]">
                             <span>STATUS: VETTED</span>
-                            <span class="text-[#D4A853]">DOSSIER AVAILABLE</span>
+                            <a href="https://wa.me/917303733735?text=Hello%20Aarav%20Properties%2C%20please%20send%20the%20dossier%20for%20Typology%2002%20Terrace%20Residences." target="_blank" rel="noopener noreferrer" class="text-[#D4A853] hover:text-white transition-colors">REQUEST DOSSIER &rarr;</a>
                         </div>
                     </div>
                     <div class="p-5 bg-[#142236] border border-[#223854] flex flex-col justify-between">
@@ -507,7 +536,7 @@ function renderAaravWorld() {
                         </div>
                         <div class="pt-3 border-t border-[#1E3048] flex items-center justify-between text-[10px] text-[#8EADC4]">
                             <span>STATUS: VETTED</span>
-                            <span class="text-[#D4A853]">DOSSIER AVAILABLE</span>
+                            <a href="https://wa.me/917303733735?text=Hello%20Aarav%20Properties%2C%20please%20send%20the%20dossier%20for%20Typology%2003%20Perimeter%20Grounds." target="_blank" rel="noopener noreferrer" class="text-[#D4A853] hover:text-white transition-colors">REQUEST DOSSIER &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -516,18 +545,19 @@ function renderAaravWorld() {
             <!-- 5. Serious Acquisition Advisory Conversion Panel -->
             <div class="px-6 sm:px-10 py-8 bg-[#142236] border-t border-[#1E3048] flex flex-col sm:flex-row items-center justify-between gap-6">
                 <div>
-                    <h5 class="font-sans text-lg sm:text-xl font-black text-white uppercase tracking-wider mb-1">INITIATE PRIVATE ACQUISITION ENQUIRY</h5>
+                    <h5 class="font-sans text-lg sm:text-xl font-black text-white uppercase tracking-wider mb-1">INITIATE PRIVATE ACQUISITION CONSULTATION</h5>
                     <p class="text-xs text-[#8EADC4] font-mono max-w-lg">Direct broker consultation with verified architectural floor plans, developer pricing structures, and RERA title documentation.</p>
                 </div>
-                <button type="button" class="tactile-control shrink-0 px-6 py-3 rounded-none bg-[#D4A853] text-[#0A1320] text-xs font-bold font-mono tracking-wider hover:bg-white transition-colors shadow-sm">
-                    DIRECT BROKER ROUTING →
-                </button>
+                <a href="https://wa.me/917303733735?text=Hello%20Aarav%20Properties%2C%20I%20would%20like%20to%20initiate%20a%20private%20acquisition%20consultation." target="_blank" rel="noopener noreferrer" class="tactile-control shrink-0 px-6 py-3 rounded-none bg-[#D4A853] text-[#0A1320] text-xs font-bold font-mono tracking-wider hover:bg-white transition-colors shadow-sm inline-flex items-center gap-2">
+                    <span>DIRECT BROKER WHATSAPP</span>
+                    <span>&rarr;</span>
+                </a>
             </div>
 
             <!-- 6. Aarav Bottom Colophon -->
             <div class="px-5 sm:px-10 py-3 bg-[#070C14] border-t border-[#1E3048] flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-[#8EADC4]">
-                <span>REAL ESTATE ADVISORY ARCHITECTURE · REALESTATEAGENT SCHEMA</span>
-                <span class="text-[#D4A853] font-bold">AARAV-SPECIMEN-02</span>
+                <span>Aarav Properties · Prime Residential Advisory · Licensed Brokerage Mandate</span>
+                <span class="text-[#D4A853] font-bold">AARAV · PRIVATE CLIENTS</span>
             </div>
         </div>
     </div>`;
@@ -549,12 +579,11 @@ function renderSpiceWorld() {
                     <span class="text-[10px] uppercase tracking-widest text-[#E59124] font-semibold hidden sm:inline-block">· REGIONAL CULINARY ATELIER</span>
                 </div>
                 <div class="flex items-center gap-3 sm:gap-6 text-xs text-[#DFBEB4] font-medium">
-                    <span class="hidden md:inline-block hover:text-white transition-colors cursor-pointer">The Hearth</span>
-                    <span class="hidden sm:inline-block hover:text-white transition-colors cursor-pointer">Tasting Menu</span>
-                    <span class="hidden lg:inline-block hover:text-white transition-colors cursor-pointer">Private Dining</span>
-                    <button type="button" id="spice-nav-cta" class="tactile-control px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#C24628] text-white hover:bg-[#D95332] transition-colors shadow-xs">
-                        Reserve Table →
-                    </button>
+                    <a href="#spice-menu-section" class="hidden md:inline-block hover:text-white transition-colors cursor-pointer">The Hearth</a>
+                    <a href="#spice-tasting-section" class="hidden sm:inline-block hover:text-white transition-colors cursor-pointer">Tasting Sequences</a>
+                    <a href="https://wa.me/917303733735?text=Hello%20The%20Spice%20Room%2C%20I%20would%20like%20to%20request%20a%20table%20reservation." target="_blank" rel="noopener noreferrer" id="spice-nav-cta" class="tactile-control px-4 py-1.5 rounded-full text-xs font-semibold bg-[#C24628] text-white hover:bg-[#D95332] transition-colors shadow-xs inline-flex items-center gap-1">
+                        Reserve Table &rarr;
+                    </a>
                     <span class="px-2.5 py-0.5 rounded-full text-[9px] uppercase tracking-wider font-semibold bg-[#C24628]/25 text-[#E59124] border border-[#C24628]/40">Concept</span>
                 </div>
             </div>
@@ -588,26 +617,26 @@ function renderSpiceWorld() {
                         </h3>
 
                         <p class="text-xs sm:text-base text-[#DFBEB4] font-normal leading-relaxed max-w-lg mb-6 sm:mb-8">
-                            Elevating regional Indian recipes into an immersive sequenced culinary journey. Fast, native HTML tasting menus eliminate cumbersome PDF downloads, connecting diners directly to evening reservations and one-tap maps routing.
+                            Elevating regional Indian recipes into an immersive sequenced dining journey. Wood-fired small plates, slow-simmered heritage curries, and botanical confections crafted for intimate evening dinner seatings.
                         </p>
 
                         <!-- Dual CTAs -->
                         <div class="flex flex-wrap items-center gap-3 sm:gap-4 mb-6">
-                            <button type="button" id="spice-primary-cta" class="tactile-control px-6 py-3 rounded-full bg-[#C24628] text-[#FAF2EA] text-xs font-semibold tracking-wider hover:bg-[#D95332] transition-colors shadow-sm flex items-center gap-2">
+                            <a href="https://wa.me/917303733735?text=Hello%20The%20Spice%20Room%2C%20I%20would%20like%20to%20reserve%20an%20evening%20dinner%20seating." target="_blank" rel="noopener noreferrer" id="spice-primary-cta" class="tactile-control px-6 py-3 rounded-full bg-[#C24628] text-[#FAF2EA] text-xs font-semibold tracking-wider hover:bg-[#D95332] transition-colors shadow-sm inline-flex items-center gap-2">
                                 <span>Reserve Dinner Seating</span>
-                                <span>→</span>
-                            </button>
+                                <span>&rarr;</span>
+                            </a>
                             <button type="button" id="spice-interaction-trigger" class="tactile-control px-5 py-3 rounded-full bg-[#360C17] border border-[#521624] text-[#E59124] text-xs font-semibold tracking-wider hover:bg-[#521624] transition-colors flex items-center gap-2">
                                 <span class="btn-label">Explore Tasting Sequences</span>
-                                <span class="interaction-arrow inline-block transition-transform duration-300">↓</span>
+                                <span class="interaction-arrow inline-block transition-transform duration-300">&darr;</span>
                             </button>
                         </div>
 
                         <!-- Dining Details Strip -->
                         <div class="flex items-center gap-4 sm:gap-6 pt-2 border-t border-[#521624] text-[10px] sm:text-[11px] text-[#DFBEB4]">
                             <span>Evening Dinner Service</span>
-                            <span>Guest Parking Available</span>
-                            <span class="hidden sm:inline">Reservations Recommended</span>
+                            <span>Valet &amp; Guest Parking</span>
+                            <span class="hidden sm:inline">Advance Reservations Recommended</span>
                         </div>
                     </div>
 
@@ -615,7 +644,7 @@ function renderSpiceWorld() {
                     <div class="lg:col-span-5 bg-[#360C17]/80 p-6 rounded-2xl border border-[#521624] relative overflow-hidden flex flex-col items-center justify-center">
                         <div class="w-full flex items-center justify-between text-[10px] font-mono text-[#DFBEB4] mb-3 pb-2 border-b border-[#521624]">
                             <span>HEARTH ROTATION SPEC</span>
-                            <span id="spice-fig-label" class="text-[#E59124] font-bold">[SEQUENCE I ACTIVE]</span>
+                            <span id="spice-fig-label" class="text-[#E59124] font-bold">[ACT I // THE HEARTH]</span>
                         </div>
                         <div class="w-48 sm:w-56 h-48 sm:h-56 relative flex items-center justify-center">
                             <svg viewBox="0 0 200 200" class="w-full h-full">
@@ -645,11 +674,11 @@ function renderSpiceWorld() {
             </div>
 
             <!-- 3. Interactive Tasting Sequence Journey -->
-            <div class="px-6 sm:px-10 py-6 bg-[#1C060C] border-t border-[#521624] relative z-10">
+            <div id="spice-tasting-section" class="px-6 sm:px-10 py-6 bg-[#1C060C] border-t border-[#521624] relative z-10">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
                     <div>
                         <span class="text-[9px] uppercase tracking-widest text-[#E59124] font-semibold block">Sensory Tasting Sequence</span>
-                        <h4 class="font-serif text-lg sm:text-xl font-normal text-white">Select a Course to Reveal Regional Culinary Notes</h4>
+                        <h4 class="font-serif text-lg sm:text-xl font-normal text-white">Select a Course to Reveal Regional Culinary Notes &amp; Pairings</h4>
                     </div>
                     <span id="spice-course-status" class="text-[10px] font-mono text-[#E59124] bg-[#E59124]/10 px-2.5 py-1 rounded-full border border-[#E59124]/30 self-start sm:self-auto">
                         [COURSE 01 // HEARTH SMALL PLATES]
@@ -659,28 +688,44 @@ function renderSpiceWorld() {
                 <!-- 3 Sequence Tabs -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" role="tablist" aria-label="Tasting Sequences">
                     <button type="button" id="spice-tab-seq1" class="spice-sequence-tab active tactile-control p-4 rounded-xl text-left transition-all duration-300 bg-[#360C17] border-2 border-[#C24628]">
-                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#E59124] block mb-1">Sequence I</span>
+                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#E59124] block mb-1">Act I</span>
                         <span class="text-sm font-semibold text-[#FAF2EA] block">The Hearth &amp; Small Plates</span>
                         <p class="text-[11px] text-[#DFBEB4] mt-1 leading-normal">Fire-roasted heritage grains, seasonal tempered greens, and aromatic herbs.</p>
                     </button>
                     <button type="button" id="spice-tab-seq2" class="spice-sequence-tab tactile-control p-4 rounded-xl text-left transition-all duration-300 bg-[#260810] hover:bg-[#360C17] border border-[#521624]">
-                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#E59124] block mb-1">Sequence II</span>
+                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#E59124] block mb-1">Act II</span>
                         <span class="text-sm font-semibold text-[#FAF2EA] block">Slow-Braised Heritage</span>
                         <p class="text-[11px] text-[#DFBEB4] mt-1 leading-normal">Tempered simmering broths, stone-ground regional spice blends, and artisan breads.</p>
                     </button>
                     <button type="button" id="spice-tab-seq3" class="spice-sequence-tab tactile-control p-4 rounded-xl text-left transition-all duration-300 bg-[#260810] hover:bg-[#360C17] border border-[#521624]">
-                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#E59124] block mb-1">Sequence III</span>
+                        <span class="text-[9px] font-bold uppercase tracking-wider text-[#E59124] block mb-1">Act III</span>
                         <span class="text-sm font-semibold text-[#FAF2EA] block">Botanical Confections</span>
                         <p class="text-[11px] text-[#DFBEB4] mt-1 leading-normal">Chilled cardamom confections, roasted nuts, and delicate botanical infusions.</p>
                     </button>
                 </div>
+
+                <!-- Dynamic Gastronomic Detail Card -->
+                <div id="spice-tasting-detail" class="mt-4 p-4 rounded-xl bg-[#260810] border border-[#521624]">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 mb-2 border-b border-[#521624]">
+                        <span class="text-xs font-serif italic text-[#E59124]">CULINARY FOCUS: DIRECT CHARCOAL EMBERS</span>
+                        <span class="text-[10px] font-mono text-[#DFBEB4]">TEMPERING: WHOLE CUMIN &amp; ROCK SALT</span>
+                    </div>
+                    <p class="text-xs text-[#FAF2EA] leading-relaxed mb-3">
+                        Ingredients touch seasoned iron platters over slow embers. Smoky sweetness from caramelizing grains is balanced with crushed black mustard seed, hand-picked curry leaves, and a cool tamarind reduction.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 text-[10px] text-[#DFBEB4]">
+                        <span>· Pairing: Smoked Saffron Infusion</span>
+                        <span>· Seasoning: Stone-Pounded Dry Spices</span>
+                        <span>· Service: Immediate Fireside Plating</span>
+                    </div>
+                </div>
             </div>
 
-            <!-- 4. Native HTML Menu & Culinary Philosophy (Zero PDF!) -->
+            <!-- 4. Culinary Atelier Menu -->
             <div id="spice-menu-section" class="px-6 sm:px-10 py-8 border-t border-[#521624] bg-[#22070E]">
                 <div class="flex items-center justify-between mb-6 pb-2 border-b border-[#521624]">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#E59124]">Native HTML Tasting Menu</span>
-                    <span class="text-[11px] text-[#DFBEB4]">Fast 4G Delivery · Zero PDF Download Friction</span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#E59124]">Regional Culinary Highlights</span>
+                    <span class="text-[11px] text-[#DFBEB4]">Authentic Heritage Cooking</span>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -717,26 +762,28 @@ function renderSpiceWorld() {
                 </div>
             </div>
 
-            <!-- 5. Table Reservation Conversion & Tap-to-Route -->
+            <!-- 5. Table Reservation Conversion & Maps Route -->
             <div class="px-6 sm:px-10 py-8 bg-[#360C17] border-t border-[#521624] flex flex-col sm:flex-row items-center justify-between gap-6">
                 <div>
                     <h5 class="font-serif text-xl sm:text-2xl font-normal text-white mb-1">Reserve Your Evening at The Hearth</h5>
-                    <p class="text-xs text-[#DFBEB4] max-w-md">Intimate evening dinner seatings. Dedicated guest parking on arrival. Instant Google Maps tap-to-route directions.</p>
+                    <p class="text-xs text-[#DFBEB4] max-w-md">Intimate evening dinner seatings. Dedicated guest parking on arrival. Direct Google Maps navigation.</p>
                 </div>
                 <div class="flex items-center gap-3">
-                    <button type="button" class="tactile-control px-6 py-3 rounded-full bg-[#C24628] text-[#FAF2EA] text-xs font-semibold hover:bg-[#D95332] transition-colors shadow-sm">
-                        Reserve Dinner Seating →
-                    </button>
-                    <button type="button" class="tactile-control px-4 py-3 rounded-full bg-[#260810] border border-[#521624] text-[#E59124] text-xs font-semibold hover:bg-[#521624] transition-colors">
-                        Map Route ↗
-                    </button>
+                    <a href="https://wa.me/917303733735?text=Hello%20The%20Spice%20Room%2C%20I%20would%20like%20to%20reserve%20an%20evening%20dinner%20seating." target="_blank" rel="noopener noreferrer" class="tactile-control px-6 py-3 rounded-full bg-[#C24628] text-[#FAF2EA] text-xs font-semibold hover:bg-[#D95332] transition-colors shadow-sm inline-flex items-center gap-1.5">
+                        <span>Reserve Dinner Seating</span>
+                        <span>&rarr;</span>
+                    </a>
+                    <a href="https://maps.google.com/?q=Velora+Digital+Studio" target="_blank" rel="noopener noreferrer" class="tactile-control px-4 py-3 rounded-full bg-[#260810] border border-[#521624] text-[#E59124] text-xs font-semibold hover:bg-[#521624] transition-colors inline-flex items-center gap-1.5">
+                        <span>Map Route</span>
+                        <span>&#8599;</span>
+                    </a>
                 </div>
             </div>
 
             <!-- 6. Spice Bottom Colophon -->
             <div class="px-5 sm:px-10 py-3 bg-[#1C060C] border-t border-[#521624] flex items-center justify-between text-[10px] sm:text-[11px] text-[#A67E75]">
-                <span>HOSPITALITY DIGITAL ARCHITECTURE · RESTAURANT SCHEMA · TAP-TO-ROUTE</span>
-                <span class="text-[#E59124] font-bold">SPICE-SPECIMEN-03</span>
+                <span>The Spice Room · Regional Culinary Atelier · Wood-Fired Hearth &amp; Evening Dining</span>
+                <span class="text-[#E59124] font-bold">SPICE ROOM · EVENING SERVICE</span>
             </div>
         </div>
     </div>`;
@@ -1572,7 +1619,7 @@ function renderModernExperience(currentPath) {
                         if (btn) {
                             const lbl = btn.querySelector('.btn-label');
                             const arr = btn.querySelector('.interaction-arrow');
-                            if (lbl) lbl.textContent = 'Explore Clinical Protocols';
+                            if (lbl) lbl.textContent = 'Explore Clinical Focus Areas';
                             if (arr) arr.classList.remove('rotate-180');
                         }
                     } else if (worldKey === 'aarav') {
@@ -1580,11 +1627,11 @@ function renderModernExperience(currentPath) {
                         if (btn) {
                             const lbl = btn.querySelector('.btn-label');
                             const arr = btn.querySelector('.interaction-arrow');
-                            if (lbl) lbl.textContent = 'EXPLORE ELEVATION & SPECS';
+                            if (lbl) lbl.textContent = 'EXPLORE ARCHITECTURAL STUDIES';
                             if (arr) arr.classList.remove('rotate-180');
                         }
                         const figLbl = document.getElementById('aarav-fig-label');
-                        if (figLbl) figLbl.textContent = '[FIG. 04-A]';
+                        if (figLbl) figLbl.textContent = '[STUDY 01 // VOLUMETRIC MASSING]';
                     } else if (worldKey === 'spice') {
                         const btn = document.getElementById('spice-interaction-trigger');
                         if (btn) {
@@ -1681,10 +1728,10 @@ function renderModernExperience(currentPath) {
                         const isActive = aaravWorld.classList.toggle('specimen-interactive-active');
                         const lbl = aaravBtn.querySelector('.btn-label');
                         const arr = aaravBtn.querySelector('.interaction-arrow');
-                        if (lbl) lbl.textContent = isActive ? 'COLLAPSE ELEVATION' : 'EXPLORE ELEVATION & SPECS';
+                        if (lbl) lbl.textContent = isActive ? 'COLLAPSE STUDIES' : 'EXPLORE ARCHITECTURAL STUDIES';
                         if (arr) arr.classList.toggle('rotate-180', isActive);
                         const figLbl = document.getElementById('aarav-fig-label');
-                        if (figLbl) figLbl.textContent = isActive ? '[FIG. 04-A // EXPANDED]' : '[FIG. 04-A]';
+                        if (figLbl) figLbl.textContent = isActive ? '[STUDY 01 // EXPANDED]' : '[STUDY 01 // VOLUMETRIC MASSING]';
                     });
                 }
 
@@ -1712,14 +1759,53 @@ function renderModernExperience(currentPath) {
                 const auroraStatus = document.getElementById('aurora-approach-status');
                 const auroraGroup = document.getElementById('aurora-svg-group');
                 const auroraNode = document.getElementById('aurora-pulse-node');
+                const auroraFocusDetail = document.getElementById('aurora-focus-detail');
 
                 function setAuroraApproach(approachKey) {
                     Object.keys(auroraTabs).forEach(k => {
                         const tab = auroraTabs[k];
                         if (tab) tab.classList.toggle('active', k === approachKey);
                     });
+                    const statusMap = {
+                        harmonization: '[FOCUS 01 // FACIAL ARCHITECTURE & SYMMETRY]',
+                        restoration: '[FOCUS 02 // DERMAL HEALTH & BARRIER RENEWAL]',
+                        preservation: '[FOCUS 03 // PREVENTATIVE SKIN MAINTENANCE]'
+                    };
                     if (auroraStatus) {
-                        auroraStatus.textContent = '[ACTIVE: ' + approachKey.toUpperCase() + ']';
+                        auroraStatus.textContent = statusMap[approachKey] || ('[ACTIVE: ' + approachKey.toUpperCase() + ']');
+                    }
+                    if (auroraFocusDetail) {
+                        const detailData = {
+                            harmonization: {
+                                title: 'CLINICAL EVALUATION: FACIAL ARCHITECTURE & SYMMETRY',
+                                time: '45-MIN IN-PERSON ASSESSMENT',
+                                desc: 'Our physician evaluates anatomical landmarks, soft-tissue volume distribution, and natural expression dynamics. Treatment pathways prioritize balance over augmentation to preserve individual character.',
+                                points: ['· High-Resolution Multi-Angle Photography', '· Structural Volume Assessment', '· Non-Surgical Treatment Planning']
+                            },
+                            restoration: {
+                                title: 'CLINICAL EVALUATION: DERMAL HEALTH & BARRIER RENEWAL',
+                                time: '40-MIN DIAGNOSTIC PROTOCOL',
+                                desc: 'Assessment of skin barrier integrity, vascular reactivity, and tissue resilience. Targeted clinical formulations and micro-treatments formulated to restore lipid envelope stability.',
+                                points: ['· Epidermal Moisture & Lipid Analysis', '· Targeted Collagen Support Pathways', '· Gentle Low-Inflammation Formulations']
+                            },
+                            preservation: {
+                                title: 'CLINICAL EVALUATION: PREVENTATIVE SKIN MAINTENANCE',
+                                time: '30-MIN REVIEW & MAPPING',
+                                desc: 'Longitudinal skin preservation designed around environmental defense and cellular turnover cadence. Proactive regimens maintain vitality without disruptive downtime.',
+                                points: ['· Seasonal Regimen Adjustments', '· Photoprotective Defense Protocols', '· Unhurried Longitudinal Care']
+                            }
+                        };
+                        const d = detailData[approachKey];
+                        if (d) {
+                            auroraFocusDetail.innerHTML = '<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 mb-2 border-b border-[#E3D9CE]">' +
+                                '<span class="text-[11px] font-bold text-[#2D5A46] tracking-wide font-mono">' + d.title + '</span>' +
+                                '<span class="text-[10px] font-mono text-[#7D7571]">' + d.time + '</span>' +
+                                '</div>' +
+                                '<p class="text-xs text-[#524B48] leading-relaxed mb-3">' + d.desc + '</p>' +
+                                '<div class="flex flex-wrap items-center gap-4 text-[10px] font-mono text-[#7D7571]">' +
+                                d.points.map(function(p) { return '<span>' + p + '</span>'; }).join('') +
+                                '</div>';
+                        }
                     }
                     if (auroraGroup) {
                         if (approachKey === 'harmonization') {
@@ -1747,20 +1833,64 @@ function renderModernExperience(currentPath) {
                 };
                 const aaravStatus = document.getElementById('aarav-mode-status');
                 const aaravPoly = document.getElementById('aarav-elevation-poly');
+                const aaravFigLabel = document.getElementById('aarav-fig-label');
+                const aaravStudyDetail = document.getElementById('aarav-study-detail');
 
                 function setAaravMode(modeKey) {
                     Object.keys(aaravTabs).forEach(k => {
                         const tab = aaravTabs[k];
                         if (tab) tab.classList.toggle('active', k === modeKey);
                     });
+                    const labels = {
+                        elevation: '[STUDY 01 // VOLUMETRIC MASSING]',
+                        plan: '[STUDY 02 // STRUCTURAL ELEVATION]',
+                        materials: '[STUDY 03 // SOLAR & ORIENTATION]',
+                        connectivity: '[STUDY 04 // PERIMETER GROUNDS]'
+                    };
                     if (aaravStatus) {
-                        const labels = {
-                            elevation: '[MODE 01 // ELEVATION & MASSING]',
-                            plan: '[MODE 02 // SPATIAL FLOOR PLAN]',
-                            materials: '[MODE 03 // MATERIALS & FACADE]',
-                            connectivity: '[MODE 04 // LOCALITY & ACCESS]'
-                        };
                         aaravStatus.textContent = labels[modeKey] || modeKey;
+                    }
+                    if (aaravFigLabel) {
+                        aaravFigLabel.textContent = labels[modeKey] || modeKey;
+                    }
+                    if (aaravStudyDetail) {
+                        const studyData = {
+                            elevation: {
+                                title: 'ARCHITECTURAL RATIONALE: VOLUMETRIC MASSING',
+                                ratio: 'PARAMETRIC RATIO: 1:1.618',
+                                desc: 'The massing composition balances substantial volumetric density with open horizontal air pathways. Triple-height internal light cores draw ambient morning illumination into primary living quarters while mitigating solar thermal gain.',
+                                points: ['· Verified RERA Title Verification', '· Engineered Acoustic Attenuation', '· Private Parking Footprint']
+                            },
+                            plan: {
+                                title: 'ARCHITECTURAL RATIONALE: STRUCTURAL ELEVATION',
+                                ratio: 'VERTICAL CLEARANCE: 3.65M',
+                                desc: 'Structural floor-to-ceiling heights engineered for superior thermal buoyancy and sightline breadth. Reinforced structural spans eliminate internal column interruptions across primary entertainment salons.',
+                                points: ['· Uninterrupted Spatial Spans', '· Dual-Aspect Balcony Slabs', '· Integrated Service Shafts']
+                            },
+                            materials: {
+                                title: 'ARCHITECTURAL RATIONALE: SOLAR & SITE ORIENTATION',
+                                ratio: 'SOLAR EXPOSURE: DUAL-FACADE',
+                                desc: 'Carefully engineered deep window reveals and architectural overhangs shade glass expanses during peak summer sun angles while capturing lower winter rays for natural passive warmth.',
+                                points: ['· Low-E Insulated Glazing', '· Micro-Climate Air Cavities', '· Ambient Shading Fins']
+                            },
+                            connectivity: {
+                                title: 'ARCHITECTURAL RATIONALE: PERIMETER & ACCESS GROUNDS',
+                                ratio: 'BUFFER DEPTH: 14.5M',
+                                desc: 'Private resident security gatehouses and dedicated private subterranean ramps decouple residential circulation from perimeter roads, ensuring complete acoustic and visual privacy.',
+                                points: ['· Dedicated Private Gatehouse', '· Landscaped Acoustic Berms', '· Secure Private Deliveries']
+                            }
+                        };
+                        const s = studyData[modeKey];
+                        if (s) {
+                            aaravStudyDetail.innerHTML = '<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 mb-2 border-b border-[#223854]">' +
+                                '<span class="text-[11px] text-[#D4A853] font-bold">' + s.title + '</span>' +
+                                '<span class="text-[10px] text-[#8EADC4]">' + s.ratio + '</span>' +
+                                '</div>' +
+                                '<p class="text-xs text-[#ECE7DF] leading-relaxed font-sans mb-3">' + s.desc + '</p>' +
+                                '<div class="flex flex-wrap items-center gap-4 text-[10px] text-[#8EADC4]">' +
+                                s.points.map(function(p) { return '<span>' + p + '</span>'; }).join('') +
+                                '</div>';
+                        }
                     }
                     if (aaravPoly) {
                         if (modeKey === 'elevation') aaravPoly.style.transform = 'translateY(0) scale(1)';
@@ -1783,6 +1913,7 @@ function renderModernExperience(currentPath) {
                 const spiceCourseStatus = document.getElementById('spice-course-status');
                 const spiceRotatingEmber = document.getElementById('spice-rotating-ember');
                 const spiceFigLabel = document.getElementById('spice-fig-label');
+                const spiceTastingDetail = document.getElementById('spice-tasting-detail');
 
                 function setSpiceSequence(seqKey) {
                     Object.keys(spiceTabs).forEach(k => {
@@ -1790,17 +1921,50 @@ function renderModernExperience(currentPath) {
                         if (tab) tab.classList.toggle('active', k === seqKey);
                     });
                     const descriptions = {
-                        seq1: '[COURSE 01 // HEARTH SMALL PLATES]',
-                        seq2: '[COURSE 02 // SLOW-BRAISED MAINS]',
-                        seq3: '[COURSE 03 // BOTANICAL DESSERT]'
+                        seq1: '[ACT I // THE HEARTH & EMBERS]',
+                        seq2: '[ACT II // SLOW-BRAISED HERITAGE]',
+                        seq3: '[ACT III // BOTANICAL CONFECTIONS]'
                     };
                     const figLabels = {
-                        seq1: '[SEQUENCE I ACTIVE]',
-                        seq2: '[SEQUENCE II ACTIVE]',
-                        seq3: '[SEQUENCE III ACTIVE]'
+                        seq1: '[ACT I // THE HEARTH]',
+                        seq2: '[ACT II // SLOW BRAISE]',
+                        seq3: '[ACT III // BOTANICALS]'
                     };
                     if (spiceCourseStatus) spiceCourseStatus.textContent = descriptions[seqKey] || seqKey;
                     if (spiceFigLabel) spiceFigLabel.textContent = figLabels[seqKey] || seqKey;
+                    if (spiceTastingDetail) {
+                        const tastingData = {
+                            seq1: {
+                                focus: 'CULINARY FOCUS: DIRECT CHARCOAL EMBERS',
+                                temper: 'TEMPERING: WHOLE CUMIN & ROCK SALT',
+                                desc: 'Ingredients touch seasoned iron platters over slow embers. Smoky sweetness from caramelizing grains is balanced with crushed black mustard seed, hand-picked curry leaves, and a cool tamarind reduction.',
+                                points: ['· Pairing: Smoked Saffron Infusion', '· Seasoning: Stone-Pounded Dry Spices', '· Service: Immediate Fireside Plating']
+                            },
+                            seq2: {
+                                focus: 'CULINARY FOCUS: SLOW COPPER VESSEL BRAISE',
+                                temper: 'TEMPERING: CRACKED PEPPERCORN & STAR ANISE',
+                                desc: 'Rich, layered curry bases simmered for hours over low embers in heavy copper vessels. Stone-ground aromatic pastes release essential spice oils that penetrate tender proteins and root vegetables.',
+                                points: ['· Pairing: Spiced Berry Cordial', '· Bread: Clay-Tandoor Crisp Roti', '· Service: Tableside Pot Pouring']
+                            },
+                            seq3: {
+                                focus: 'CULINARY FOCUS: HAND-CHURNED ICE WELL',
+                                temper: 'TEMPERING: GREEN CARDAMOM VEIL',
+                                desc: 'Chilled cream infused with freshly crushed cardamom pods and wild wildflower honey. Lightly toasted pistachios and edible gold leaf create an elegant, cooling conclusion to fire and spice.',
+                                points: ['· Pairing: Kashmiri Kahwa Tea', '· Sweetness: Raw Unrefined Jaggery', '· Service: Chilled Stone Chalice']
+                            }
+                        };
+                        const t = tastingData[seqKey];
+                        if (t) {
+                            spiceTastingDetail.innerHTML = '<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 mb-2 border-b border-[#521624]">' +
+                                '<span class="text-xs font-serif italic text-[#E59124]">' + t.focus + '</span>' +
+                                '<span class="text-[10px] font-mono text-[#DFBEB4]">' + t.temper + '</span>' +
+                                '</div>' +
+                                '<p class="text-xs text-[#FAF2EA] leading-relaxed mb-3">' + t.desc + '</p>' +
+                                '<div class="flex flex-wrap items-center gap-4 text-[10px] text-[#DFBEB4]">' +
+                                t.points.map(function(p) { return '<span>' + p + '</span>'; }).join('') +
+                                '</div>';
+                        }
+                    }
                     if (spiceRotatingEmber) {
                         if (seqKey === 'seq1') spiceRotatingEmber.style.filter = 'brightness(1)';
                         else if (seqKey === 'seq2') spiceRotatingEmber.style.filter = 'brightness(1.35) contrast(1.2)';
