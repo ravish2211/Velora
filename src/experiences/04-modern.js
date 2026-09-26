@@ -176,7 +176,7 @@ function renderAuroraWorld() {
                     </h3>
 
                     <p class="text-xs sm:text-base text-[#456353] font-normal leading-relaxed max-w-lg mb-6 sm:mb-8">
-                        Bespoke clinical protocols designed for subtle facial rejuvenation and restorative skin health. Doctor-led assessments, transparent treatment pricing, and dedicated 45-minute consultation windows.
+                        Bespoke clinical protocols designed for subtle facial rejuvenation and restorative skin health. Doctor-led assessments, transparent treatment pricing, and unhurried consultation care.
                     </p>
 
                     <!-- Dual Action CTAs -->
@@ -199,7 +199,7 @@ function renderAuroraWorld() {
                         </div>
                         <div class="flex items-center gap-1.5">
                             <span class="text-[#2D5A46]">✓</span>
-                            <span>45-Min Dedicated Windows</span>
+                            <span>Dedicated Consultations</span>
                         </div>
                         <div class="hidden sm:flex items-center gap-1.5">
                             <span class="text-[#2D5A46]">✓</span>
@@ -244,7 +244,7 @@ function renderAuroraWorld() {
             <!-- 4. Clinical Offering: Asymmetric Editorial Index -->
             <div id="aurora-protocols-section" class="px-6 sm:px-10 py-8 border-t border-[#D5DFD7] bg-[#F8F5EE]">
                 <div class="flex items-center justify-between mb-6 pb-2 border-b border-[#D5DFD7]">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#456353]">Core Clinical Pathways</span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#456353]">Core Treatment Information</span>
                     <span class="text-[11px] text-[#2D5A46] font-medium">Transparent Procedures · Zero Hidden Add-ons</span>
                 </div>
 
@@ -252,33 +252,33 @@ function renderAuroraWorld() {
                     <div class="p-5 rounded-2xl bg-white border border-[#D5DFD7] shadow-xs flex flex-col justify-between">
                         <div>
                             <span class="text-xs font-mono font-bold text-[#2D5A46] block mb-2">[PATH 01]</span>
-                            <h5 class="font-serif text-lg font-normal text-[#1A2E23] mb-2">Micro-Volumetric Profiling</h5>
+                            <h5 class="font-serif text-lg font-normal text-[#1A2E23] mb-2">Facial Rejuvenation &amp; Balance</h5>
                             <p class="text-xs text-[#456353] leading-relaxed mb-4">Precision anatomical placement addressing subtle volume loss with natural tissue integration.</p>
                         </div>
                         <div class="pt-3 border-t border-[#E4EDE6] flex items-center justify-between text-[11px]">
-                            <span class="text-[#456353]">Recovery: Minimal (24-48h)</span>
+                            <span class="text-[#456353]">Care: Physician-Led</span>
                             <span class="font-semibold text-[#2D5A46]">Physician Review</span>
                         </div>
                     </div>
                     <div class="p-5 rounded-2xl bg-white border border-[#D5DFD7] shadow-xs flex flex-col justify-between">
                         <div>
                             <span class="text-xs font-mono font-bold text-[#C88A75] block mb-2">[PATH 02]</span>
-                            <h5 class="font-serif text-lg font-normal text-[#1A2E23] mb-2">Dermal Barrier Infusion</h5>
-                            <p class="text-xs text-[#456353] leading-relaxed mb-4">Cellular micro-needling and pure hyaluronic infusions designed to rebuild resilient dermal thickness.</p>
+                            <h5 class="font-serif text-lg font-normal text-[#1A2E23] mb-2">Restorative Skin Health</h5>
+                            <p class="text-xs text-[#456353] leading-relaxed mb-4">Evidence-based clinical treatments designed to strengthen dermal resilience and skin barrier function.</p>
                         </div>
                         <div class="pt-3 border-t border-[#E4EDE6] flex items-center justify-between text-[11px]">
-                            <span class="text-[#456353]">Recovery: Same-day glow</span>
+                            <span class="text-[#456353]">Care: Tailored Regimen</span>
                             <span class="font-semibold text-[#C88A75]">Clinical Peels</span>
                         </div>
                     </div>
                     <div class="p-5 rounded-2xl bg-white border border-[#D5DFD7] shadow-xs flex flex-col justify-between">
                         <div>
                             <span class="text-xs font-mono font-bold text-[#2D5A46] block mb-2">[PATH 03]</span>
-                            <h5 class="font-serif text-lg font-normal text-[#1A2E23] mb-2">Targeted Texture Renewal</h5>
-                            <p class="text-xs text-[#456353] leading-relaxed mb-4">Evidence-based enzyme exfoliation and medical light therapies formulated for sensitive complexions.</p>
+                            <h5 class="font-serif text-lg font-normal text-[#1A2E23] mb-2">Preventative Clinical Care</h5>
+                            <p class="text-xs text-[#456353] leading-relaxed mb-4">Evidence-based skin conditioning and physician-guided maintenance formulated for sensitive complexions.</p>
                         </div>
                         <div class="pt-3 border-t border-[#E4EDE6] flex items-center justify-between text-[11px]">
-                            <span class="text-[#456353]">Recovery: Zero downtime</span>
+                            <span class="text-[#456353]">Care: Preventative</span>
                             <span class="font-semibold text-[#2D5A46]">Custom Regimen</span>
                         </div>
                     </div>
@@ -289,10 +289,10 @@ function renderAuroraWorld() {
             <div class="px-6 sm:px-10 py-8 bg-[#1A2E23] text-[#F8F5EE] flex flex-col sm:flex-row items-center justify-between gap-6">
                 <div>
                     <h5 class="font-serif text-xl sm:text-2xl font-light text-white mb-1">Begin With an Unhurried Assessment</h5>
-                    <p class="text-xs text-[#E4EDE6] opacity-80 max-w-md">No pressure, no hurried 5-minute consultations. Meet directly with a doctor to discuss your skin and treatment goals.</p>
+                    <p class="text-xs text-[#E4EDE6] opacity-80 max-w-md">Meet directly with a qualified doctor to discuss your skin health, aesthetic goals, and transparent care options.</p>
                 </div>
                 <button type="button" class="tactile-control shrink-0 px-6 py-3 rounded-full bg-[#E4EDE6] text-[#1A2E23] text-xs font-semibold hover:bg-white transition-colors shadow-sm">
-                    Schedule 45-Min Intake →
+                    Schedule Consultation →
                 </button>
             </div>
 
@@ -385,7 +385,7 @@ function renderAaravWorld() {
 
                         <!-- Trust Fact Strip -->
                         <div class="flex items-center gap-4 sm:gap-6 pt-2 border-t border-[#1E3048] text-[10px] sm:text-[11px] font-mono text-[#8EADC4]">
-                            <span>[RERA TITLE-VETTED]</span>
+                            <span>[RERA COMPLIANCE STRUCTURE]</span>
                             <span>[ZERO PORTAL BLOAT]</span>
                             <span class="hidden sm:inline">[DIRECT DEVELOPER MANDATE]</span>
                         </div>
@@ -418,14 +418,14 @@ function renderAaravWorld() {
                                     <line x1="-65" y1="12" x2="0" y2="50" stroke="#D4A853" stroke-width="0.75"/>
                                     <line x1="0" y1="50" x2="65" y2="12" stroke="#D4A853" stroke-width="0.75"/>
                                     <!-- Coordinate Callout -->
-                                    <text x="70" y="-20" fill="#8EADC4" font-size="7" font-family="monospace">+48.5m DATUM</text>
-                                    <text x="-120" y="30" fill="#D4A853" font-size="7" font-family="monospace">AXIS Z-01</text>
+                                    <text x="70" y="-20" fill="#8EADC4" font-size="7" font-family="monospace">PRIMARY DATUM</text>
+                                    <text x="-120" y="30" fill="#D4A853" font-size="7" font-family="monospace">SPATIAL AXIS</text>
                                 </g>
                             </svg>
                         </div>
                         <div class="flex items-center justify-between text-[9px] font-mono text-[#8EADC4] mt-2 pt-2 border-t border-[#223854]">
-                            <span>GRID: 28.4595° N, 77.0266° E</span>
-                            <span class="text-[#D4A853]">MODULAR Z-AXIS DEPTH</span>
+                            <span>SPATIAL STUDY: RESIDENTIAL MASSING</span>
+                            <span class="text-[#D4A853]">MODULAR PERSPECTIVE VIEW</span>
                         </div>
                     </div>
 
@@ -449,22 +449,22 @@ function renderAaravWorld() {
                     <button type="button" id="aarav-tab-elevation" class="aarav-explorer-tab active tactile-control p-3.5 bg-[#142236] border-2 border-[#D4A853] text-left">
                         <span class="text-[9px] text-[#D4A853] block font-bold">MODE 01</span>
                         <span class="text-xs font-bold text-white block mt-0.5">Elevation &amp; Massing</span>
-                        <span class="text-[10px] text-[#8EADC4] block mt-1">3.4m floor-to-ceiling volume</span>
+                        <span class="text-[10px] text-[#8EADC4] block mt-1">Volumetric spatial proportions</span>
                     </button>
                     <button type="button" id="aarav-tab-plan" class="aarav-explorer-tab tactile-control p-3.5 bg-[#142236]/70 hover:bg-[#142236] border border-[#223854] text-left">
                         <span class="text-[9px] text-[#8EADC4] block font-bold">MODE 02</span>
                         <span class="text-xs font-bold text-white block mt-0.5">Spatial Floor Plan</span>
-                        <span class="text-[10px] text-[#8EADC4] block mt-1">Direct private elevator lobby</span>
+                        <span class="text-[10px] text-[#8EADC4] block mt-1">Detailed floor plan architecture</span>
                     </button>
                     <button type="button" id="aarav-tab-materials" class="aarav-explorer-tab tactile-control p-3.5 bg-[#142236]/70 hover:bg-[#142236] border border-[#223854] text-left">
                         <span class="text-[9px] text-[#8EADC4] block font-bold">MODE 03</span>
                         <span class="text-xs font-bold text-white block mt-0.5">Materials &amp; Facade</span>
-                        <span class="text-[10px] text-[#8EADC4] block mt-1">Natural quarry stone &amp; bronze</span>
+                        <span class="text-[10px] text-[#8EADC4] block mt-1">Material schedule &amp; finishes</span>
                     </button>
                     <button type="button" id="aarav-tab-connectivity" class="aarav-explorer-tab tactile-control p-3.5 bg-[#142236]/70 hover:bg-[#142236] border border-[#223854] text-left">
                         <span class="text-[9px] text-[#8EADC4] block font-bold">MODE 04</span>
                         <span class="text-xs font-bold text-white block mt-0.5">Locality &amp; Access</span>
-                        <span class="text-[10px] text-[#8EADC4] block mt-1">Direct arterial access buffers</span>
+                        <span class="text-[10px] text-[#8EADC4] block mt-1">Neighborhood connectivity map</span>
                     </button>
                 </div>
             </div>
@@ -472,7 +472,7 @@ function renderAaravWorld() {
             <!-- 4. Architectural Typology Portfolio -->
             <div id="aarav-typology-section" class="px-6 sm:px-10 py-8 border-t border-[#1E3048] bg-[#0A1320] font-mono">
                 <div class="flex items-center justify-between mb-6 pb-2 border-b border-[#1E3048]">
-                    <span class="text-[10px] uppercase tracking-widest text-[#8EADC4]">Curated Residential Inventory</span>
+                    <span class="text-[10px] uppercase tracking-widest text-[#8EADC4]">Curated Residential Portfolio</span>
                     <span class="text-[11px] text-[#D4A853]">Direct Developer Representation</span>
                 </div>
 
@@ -480,8 +480,8 @@ function renderAaravWorld() {
                     <div class="p-5 bg-[#142236] border border-[#223854] flex flex-col justify-between">
                         <div>
                             <span class="text-[10px] text-[#D4A853] block mb-1">TYPOLOGY 01</span>
-                            <h5 class="text-sm font-bold text-white uppercase mb-2">Architectural Villas</h5>
-                            <p class="text-xs text-[#8EADC4] leading-relaxed mb-4 font-sans">Private inner courtyards, triple-height atrium light-wells, and monolithic exterior masonry.</p>
+                            <h5 class="text-sm font-bold text-white uppercase mb-2">Residential Enclaves</h5>
+                            <p class="text-xs text-[#8EADC4] leading-relaxed mb-4 font-sans">Refined spatial planning, natural light wells, and monolithic exterior architectural geometry.</p>
                         </div>
                         <div class="pt-3 border-t border-[#1E3048] flex items-center justify-between text-[10px] text-[#8EADC4]">
                             <span>STATUS: VETTED</span>
@@ -491,8 +491,8 @@ function renderAaravWorld() {
                     <div class="p-5 bg-[#142236] border border-[#223854] flex flex-col justify-between">
                         <div>
                             <span class="text-[10px] text-[#D4A853] block mb-1">TYPOLOGY 02</span>
-                            <h5 class="text-sm font-bold text-white uppercase mb-2">Penthouse Enclaves</h5>
-                            <p class="text-xs text-[#8EADC4] leading-relaxed mb-4 font-sans">Full-floor panoramic terrace residences with cantilevered private pools and 360-degree skyline exposure.</p>
+                            <h5 class="text-sm font-bold text-white uppercase mb-2">Terrace Residences</h5>
+                            <p class="text-xs text-[#8EADC4] leading-relaxed mb-4 font-sans">Panoramic elevated residences with generous outdoor living spaces and expansive architectural views.</p>
                         </div>
                         <div class="pt-3 border-t border-[#1E3048] flex items-center justify-between text-[10px] text-[#8EADC4]">
                             <span>STATUS: VETTED</span>
@@ -502,8 +502,8 @@ function renderAaravWorld() {
                     <div class="p-5 bg-[#142236] border border-[#223854] flex flex-col justify-between">
                         <div>
                             <span class="text-[10px] text-[#D4A853] block mb-1">TYPOLOGY 03</span>
-                            <h5 class="text-sm font-bold text-white uppercase mb-2">Garden Estates</h5>
-                            <p class="text-xs text-[#8EADC4] leading-relaxed mb-4 font-sans">Substantial perimeter landscaping, acoustic privacy buffers, and multi-car underground gallery parking.</p>
+                            <h5 class="text-sm font-bold text-white uppercase mb-2">Perimeter Grounds</h5>
+                            <p class="text-xs text-[#8EADC4] leading-relaxed mb-4 font-sans">Substantial perimeter landscaping, acoustic privacy buffers, and dedicated private resident access.</p>
                         </div>
                         <div class="pt-3 border-t border-[#1E3048] flex items-center justify-between text-[10px] text-[#8EADC4]">
                             <span>STATUS: VETTED</span>
@@ -551,7 +551,7 @@ function renderSpiceWorld() {
                 <div class="flex items-center gap-3 sm:gap-6 text-xs text-[#DFBEB4] font-medium">
                     <span class="hidden md:inline-block hover:text-white transition-colors cursor-pointer">The Hearth</span>
                     <span class="hidden sm:inline-block hover:text-white transition-colors cursor-pointer">Tasting Menu</span>
-                    <span class="hidden lg:inline-block hover:text-white transition-colors cursor-pointer">Cellar</span>
+                    <span class="hidden lg:inline-block hover:text-white transition-colors cursor-pointer">Private Dining</span>
                     <button type="button" id="spice-nav-cta" class="tactile-control px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#C24628] text-white hover:bg-[#D95332] transition-colors shadow-xs">
                         Reserve Table →
                     </button>
@@ -605,9 +605,9 @@ function renderSpiceWorld() {
 
                         <!-- Dining Details Strip -->
                         <div class="flex items-center gap-4 sm:gap-6 pt-2 border-t border-[#521624] text-[10px] sm:text-[11px] text-[#DFBEB4]">
-                            <span>Dinner Wed–Sun 18:30–23:00</span>
-                            <span>Valet Parking</span>
-                            <span class="hidden sm:inline">Fire-Roasted Claypot</span>
+                            <span>Evening Dinner Service</span>
+                            <span>Guest Parking Available</span>
+                            <span class="hidden sm:inline">Reservations Recommended</span>
                         </div>
                     </div>
 
@@ -638,7 +638,7 @@ function renderSpiceWorld() {
                                 </g>
                             </svg>
                         </div>
-                        <span class="text-[10px] text-[#E59124] font-serif italic mt-3">Heritage Fire &amp; Claypot Steeping</span>
+                        <span class="text-[10px] text-[#E59124] font-serif italic mt-3">Wood-Fired Hearth &amp; Slow Embers</span>
                     </div>
 
                 </div>
@@ -652,7 +652,7 @@ function renderSpiceWorld() {
                         <h4 class="font-serif text-lg sm:text-xl font-normal text-white">Select a Course to Reveal Regional Culinary Notes</h4>
                     </div>
                     <span id="spice-course-status" class="text-[10px] font-mono text-[#E59124] bg-[#E59124]/10 px-2.5 py-1 rounded-full border border-[#E59124]/30 self-start sm:self-auto">
-                        [COURSE: CLAYPOT EMBER CRISPS]
+                        [COURSE 01 // HEARTH SMALL PLATES]
                     </span>
                 </div>
 
@@ -661,17 +661,17 @@ function renderSpiceWorld() {
                     <button type="button" id="spice-tab-seq1" class="spice-sequence-tab active tactile-control p-4 rounded-xl text-left transition-all duration-300 bg-[#360C17] border-2 border-[#C24628]">
                         <span class="text-[9px] font-bold uppercase tracking-wider text-[#E59124] block mb-1">Sequence I</span>
                         <span class="text-sm font-semibold text-[#FAF2EA] block">The Hearth &amp; Small Plates</span>
-                        <p class="text-[11px] text-[#DFBEB4] mt-1 leading-normal">Fire-roasted claypot crisps, smoked mustard tempered greens, and slow embers.</p>
+                        <p class="text-[11px] text-[#DFBEB4] mt-1 leading-normal">Fire-roasted heritage grains, seasonal tempered greens, and aromatic herbs.</p>
                     </button>
                     <button type="button" id="spice-tab-seq2" class="spice-sequence-tab tactile-control p-4 rounded-xl text-left transition-all duration-300 bg-[#260810] hover:bg-[#360C17] border border-[#521624]">
                         <span class="text-[9px] font-bold uppercase tracking-wider text-[#E59124] block mb-1">Sequence II</span>
                         <span class="text-sm font-semibold text-[#FAF2EA] block">Slow-Braised Heritage</span>
-                        <p class="text-[11px] text-[#DFBEB4] mt-1 leading-normal">Tempered simmering broths, hand-ground Kashmiri chilies, and clay oven breads.</p>
+                        <p class="text-[11px] text-[#DFBEB4] mt-1 leading-normal">Tempered simmering broths, stone-ground regional spice blends, and artisan breads.</p>
                     </button>
                     <button type="button" id="spice-tab-seq3" class="spice-sequence-tab tactile-control p-4 rounded-xl text-left transition-all duration-300 bg-[#260810] hover:bg-[#360C17] border border-[#521624]">
                         <span class="text-[9px] font-bold uppercase tracking-wider text-[#E59124] block mb-1">Sequence III</span>
-                        <span class="text-sm font-semibold text-[#FAF2EA] block">Botanical Sorbets</span>
-                        <p class="text-[11px] text-[#DFBEB4] mt-1 leading-normal">Green cardamom &amp; pistachio sweets infused with cold-pressed rose-water syrup.</p>
+                        <span class="text-sm font-semibold text-[#FAF2EA] block">Botanical Confections</span>
+                        <p class="text-[11px] text-[#DFBEB4] mt-1 leading-normal">Chilled cardamom confections, roasted nuts, and delicate botanical infusions.</p>
                     </button>
                 </div>
             </div>
@@ -687,8 +687,8 @@ function renderSpiceWorld() {
                     <div class="p-5 rounded-xl bg-[#360C17] border border-[#521624] flex flex-col justify-between">
                         <div>
                             <span class="text-[10px] font-serif italic text-[#E59124] block mb-1">Wood-Fired Hearth</span>
-                            <h5 class="font-serif text-base text-[#FAF2EA] mb-2">Claypot Roasted Crisps</h5>
-                            <p class="text-xs text-[#DFBEB4] leading-relaxed mb-4">Tempered with cumin seed and mountain rock salt, served with cold tamarind reduction.</p>
+                            <h5 class="font-serif text-base text-[#FAF2EA] mb-2">Hearth-Roasted Small Plates</h5>
+                            <p class="text-xs text-[#DFBEB4] leading-relaxed mb-4">Tempered with cumin seed and mineral salt, served with chilled tamarind reduction.</p>
                         </div>
                         <div class="pt-3 border-t border-[#521624] text-[11px] text-[#E59124]">
                             Technique: Direct Charcoal Embers
@@ -697,8 +697,8 @@ function renderSpiceWorld() {
                     <div class="p-5 rounded-xl bg-[#360C17] border border-[#521624] flex flex-col justify-between">
                         <div>
                             <span class="text-[10px] font-serif italic text-[#E59124] block mb-1">Copper Vessel Braise</span>
-                            <h5 class="font-serif text-base text-[#FAF2EA] mb-2">Simmered Heritage Broth</h5>
-                            <p class="text-xs text-[#DFBEB4] leading-relaxed mb-4">Eight-hour gentle simmer with cracked peppercorns, star anise, and fresh ginger slivers.</p>
+                            <h5 class="font-serif text-base text-[#FAF2EA] mb-2">Simmered Regional Gravy</h5>
+                            <p class="text-xs text-[#DFBEB4] leading-relaxed mb-4">Gentle low-flame simmer with cracked peppercorns, star anise, and fresh ginger slivers.</p>
                         </div>
                         <div class="pt-3 border-t border-[#521624] text-[11px] text-[#E59124]">
                             Technique: Slow Low-Flame Copper
@@ -707,8 +707,8 @@ function renderSpiceWorld() {
                     <div class="p-5 rounded-xl bg-[#360C17] border border-[#521624] flex flex-col justify-between">
                         <div>
                             <span class="text-[10px] font-serif italic text-[#E59124] block mb-1">Botanical Infusion</span>
-                            <h5 class="font-serif text-base text-[#FAF2EA] mb-2">Cardamom Pistachio Sorbet</h5>
-                            <p class="text-xs text-[#DFBEB4] leading-relaxed mb-4">Churned fresh daily with crushed green cardamom pods, toasted pistachios, and saffron veil.</p>
+                            <h5 class="font-serif text-base text-[#FAF2EA] mb-2">Cardamom Chilled Confection</h5>
+                            <p class="text-xs text-[#DFBEB4] leading-relaxed mb-4">Crafted fresh daily with crushed green cardamom pods, toasted pistachios, and saffron veil.</p>
                         </div>
                         <div class="pt-3 border-t border-[#521624] text-[11px] text-[#E59124]">
                             Technique: Hand-Churned Ice Well
@@ -721,7 +721,7 @@ function renderSpiceWorld() {
             <div class="px-6 sm:px-10 py-8 bg-[#360C17] border-t border-[#521624] flex flex-col sm:flex-row items-center justify-between gap-6">
                 <div>
                     <h5 class="font-serif text-xl sm:text-2xl font-normal text-white mb-1">Reserve Your Evening at The Hearth</h5>
-                    <p class="text-xs text-[#DFBEB4] max-w-md">Intimate dinner seatings Wednesday through Sunday. Valet parking on arrival. Instant Google Maps tap-to-route directions.</p>
+                    <p class="text-xs text-[#DFBEB4] max-w-md">Intimate evening dinner seatings. Dedicated guest parking on arrival. Instant Google Maps tap-to-route directions.</p>
                 </div>
                 <div class="flex items-center gap-3">
                     <button type="button" class="tactile-control px-6 py-3 rounded-full bg-[#C24628] text-[#FAF2EA] text-xs font-semibold hover:bg-[#D95332] transition-colors shadow-sm">
@@ -1790,9 +1790,9 @@ function renderModernExperience(currentPath) {
                         if (tab) tab.classList.toggle('active', k === seqKey);
                     });
                     const descriptions = {
-                        seq1: '[COURSE: CLAYPOT EMBER CRISPS]',
-                        seq2: '[COURSE: SLOW COPPER BRAISE]',
-                        seq3: '[COURSE: BOTANICAL PISTACHIO SORBET]'
+                        seq1: '[COURSE 01 // HEARTH SMALL PLATES]',
+                        seq2: '[COURSE 02 // SLOW-BRAISED MAINS]',
+                        seq3: '[COURSE 03 // BOTANICAL DESSERT]'
                     };
                     const figLabels = {
                         seq1: '[SEQUENCE I ACTIVE]',
