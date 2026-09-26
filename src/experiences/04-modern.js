@@ -988,8 +988,9 @@ function renderModernExperience(currentPath) {
                 transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
             }
             .website-world.active {
-                display: block;
-                opacity: 1;
+                display: block !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
                 transform: translateY(0) scale(1);
             }
 
@@ -1213,6 +1214,20 @@ function renderModernExperience(currentPath) {
                 let isSwitching = false;
                 let switchTimeout = null;
 
+                if (typeof window !== 'undefined' && window.location) {
+                    const params = new URLSearchParams(window.location.search);
+                    const requestedWorld = params.get('world');
+                    if (requestedWorld && worlds[requestedWorld]) {
+                        if (worlds.aurora) {
+                            worlds.aurora.classList.remove('active');
+                            worlds.aurora.classList.add('hidden');
+                        }
+                        worlds[requestedWorld].classList.remove('hidden');
+                        worlds[requestedWorld].classList.add('active');
+                        activeWorldKey = requestedWorld;
+                    }
+                }
+
                 function updateTabStyles(targetKey) {
                     Object.keys(worlds).forEach(key => {
                         const dTab = desktopTabs[key];
@@ -1241,6 +1256,12 @@ function renderModernExperience(currentPath) {
                             }
                         }
                     });
+                }
+
+                // Initialize initial tab state and background
+                updateTabStyles(activeWorldKey);
+                if (ambientBg && ambientColors[activeWorldKey]) {
+                    ambientBg.style.backgroundColor = ambientColors[activeWorldKey];
                 }
 
                 function resetWorldInteraction(worldKey) {
@@ -1319,13 +1340,11 @@ function renderModernExperience(currentPath) {
                             targetWorldEl.classList.remove('hidden');
                             targetWorldEl.classList.add('world-entering-' + targetKey);
 
-                            requestAnimationFrame(() => {
-                                requestAnimationFrame(() => {
-                                    targetWorldEl.classList.add('active');
-                                    targetWorldEl.classList.remove('world-entering-' + targetKey);
-                                    isSwitching = false;
-                                });
-                            });
+                            setTimeout(() => {
+                                targetWorldEl.classList.add('active');
+                                targetWorldEl.classList.remove('world-entering-' + targetKey);
+                                isSwitching = false;
+                            }, 50);
                         } else {
                             isSwitching = false;
                         }
