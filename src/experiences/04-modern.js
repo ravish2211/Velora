@@ -70,7 +70,7 @@ function ModernHeader(currentPath) {
         </div>
 
         <!-- Mobile Drawer Navigation -->
-        <div id="modern-mobile-drawer" class="hidden md:hidden fixed inset-x-4 top-16 z-50 p-5 rounded-2xl bg-white/98 backdrop-blur-xl border border-slate-200 shadow-2xl transition-all" role="dialog" aria-modal="true" aria-label="Mobile Exhibition Index">
+        <div id="modern-mobile-drawer" class="hidden md:hidden fixed inset-x-4 top-16 z-50 p-5 rounded-2xl bg-white border border-slate-200 shadow-2xl transition-all" role="dialog" aria-modal="true" aria-label="Mobile Exhibition Index">
             <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-200">
                 <span class="text-xs font-bold uppercase tracking-widest text-slate-500">Exhibition Index</span>
                 <button type="button" id="modern-mobile-close-btn" class="p-2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg text-slate-600 hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600" aria-label="Close navigation menu">
@@ -102,19 +102,21 @@ function renderAuroraWorld() {
     <div id="world-aurora" class="website-world active transition-all duration-700 w-full" data-world="aurora" aria-label="Aurora Clinic Signature Design Concept">
         <div class="relative bg-[#FAF7F2] text-[#1F2421] rounded-2xl sm:rounded-[2.5rem] border border-[#E8E2D8] shadow-2xl overflow-hidden transition-all duration-500">
             
-            <!-- Curatorial Design Lens Overlay Layer -->
+            <!-- Curatorial Design Lens Overlay Layer (Collision-Free Responsive Anchoring) -->
             <div class="design-lens-layer absolute inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-300">
-                <div class="absolute top-4 right-4 bg-[#1F2421]/90 text-white text-[11px] font-mono px-3 py-1.5 rounded-md backdrop-blur-sm shadow-md">
+                <div class="absolute top-3 right-3 sm:top-4 sm:right-4 bg-[#1F2421]/90 text-white text-[10px] sm:text-[11px] font-mono px-3 py-1.5 rounded-md backdrop-blur-sm shadow-md">
                     <span>LENS: ORGANIC EDITORIAL COMPOSITION</span>
                 </div>
-                <div class="absolute top-24 left-6 sm:left-10 border border-dashed border-[#4A6B5D] p-2 rounded-lg bg-[#4A6B5D]/10 text-[10px] text-[#4A6B5D] font-mono">
+                <!-- Non-colliding top-right annotation anchored over the negative botanical zone -->
+                <div class="absolute top-14 sm:top-16 right-4 sm:right-8 max-w-[240px] sm:max-w-xs text-right border border-dashed border-[#4A6B5D] p-1.5 sm:p-2 rounded-lg bg-[#FAF7F2]/90 backdrop-blur-sm text-[9px] sm:text-[10px] text-[#4A6B5D] font-mono hidden sm:block">
                     <span>[TYPOGRAPHIC HIERARCHY: High-Contrast Display Serif + Restrained Sans]</span>
                 </div>
-                <div class="absolute bottom-16 right-8 sm:right-12 border border-dashed border-[#C28D75] p-2 rounded-lg bg-[#C28D75]/10 text-[10px] text-[#C28D75] font-mono">
-                    <span>[CONVERSION PATHWAY: Frictionless Low-Anxiety Intake Trigger]</span>
-                </div>
-                <div class="absolute top-1/2 left-1/3 border border-dashed border-emerald-600 p-2 rounded-lg bg-emerald-500/10 text-[10px] text-emerald-800 font-mono hidden sm:block">
+                <!-- Lower annotations tucked into stable margins -->
+                <div class="absolute bottom-12 sm:bottom-14 left-4 sm:left-8 border border-dashed border-emerald-600 p-1.5 sm:p-2 rounded-lg bg-[#FAF7F2]/90 backdrop-blur-sm text-[9px] sm:text-[10px] text-emerald-800 font-mono hidden lg:block">
                     <span>[SPATIAL BREATHING: 60% Negative Space Builds Clinical Trust]</span>
+                </div>
+                <div class="absolute bottom-12 sm:bottom-14 right-4 sm:right-8 border border-dashed border-[#C28D75] p-1.5 sm:p-2 rounded-lg bg-[#FAF7F2]/90 backdrop-blur-sm text-[9px] sm:text-[10px] text-[#C28D75] font-mono hidden sm:block">
+                    <span>[CONVERSION PATHWAY: Frictionless Low-Anxiety Intake Trigger]</span>
                 </div>
             </div>
 
@@ -136,8 +138,8 @@ function renderAuroraWorld() {
             <!-- Aurora Hero Stage: Asymmetric Organic Flow -->
             <div class="p-5 sm:p-10 lg:p-12 relative">
                 
-                <!-- Background Botanical Flow Art (SVG) -->
-                <div class="absolute top-0 right-0 w-1/2 sm:w-7/12 h-full opacity-35 sm:opacity-50 pointer-events-none overflow-hidden" aria-hidden="true">
+                <!-- Background Botanical Flow Art (SVG) with Native Interaction Motion -->
+                <div id="aurora-botanical-art" class="absolute top-0 right-0 w-1/2 sm:w-7/12 h-full opacity-35 sm:opacity-50 pointer-events-none overflow-hidden transition-all duration-700 ease-out" aria-hidden="true">
                     <svg viewBox="0 0 500 500" class="w-full h-full object-cover">
                         <defs>
                             <linearGradient id="aurora-grad-v6" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -166,29 +168,36 @@ function renderAuroraWorld() {
                         A bespoke digital experience designed for understated elegance. Every user pathway is calibrated for frictionless routing, visual clarity, and unhurried interaction.
                     </p>
 
-                    <!-- Aurora Conceptual Service Pillars -->
+                    <!-- Aurora Interactive Status Notification (Expands on Trigger Interaction) -->
+                    <div id="aurora-interactive-status" class="overflow-hidden transition-all duration-500 max-h-0 opacity-0 mb-4 sm:mb-6 text-[10px] sm:text-[11px] font-mono text-[#4A6B5D] bg-[#4A6B5D]/10 border border-[#4A6B5D]/30 rounded-lg px-3 py-2 flex items-center justify-between">
+                        <span>[SPATIAL STATE: Organic Editorial Flow Re-articulated · Negative Space Shifted]</span>
+                        <span class="text-[9px] font-bold uppercase tracking-wider bg-[#4A6B5D] text-white px-1.5 py-0.5 rounded">Active</span>
+                    </div>
+
+                    <!-- Aurora Conceptual Service Pillars with Native Kinematics -->
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
-                        <div class="p-3.5 sm:p-4 rounded-xl bg-white/75 border border-[#E8E2D8] backdrop-blur-xs">
+                        <div id="aurora-pillar-1" class="aurora-pillar p-3.5 sm:p-4 rounded-xl bg-white/75 border border-[#E8E2D8] backdrop-blur-xs transition-all duration-500">
                             <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#4A6B5D] block mb-1">01 / Structure</span>
                             <span class="text-xs font-semibold text-[#1F2421] block">Visual Study 01</span>
                             <span class="text-[10px] sm:text-[11px] text-[#7A8780] block mt-0.5">Typography hierarchy</span>
                         </div>
-                        <div class="p-3.5 sm:p-4 rounded-xl bg-white/75 border border-[#E8E2D8] backdrop-blur-xs">
+                        <div id="aurora-pillar-2" class="aurora-pillar p-3.5 sm:p-4 rounded-xl bg-white/75 border border-[#E8E2D8] backdrop-blur-xs transition-all duration-500">
                             <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#4A6B5D] block mb-1">02 / Rhythm</span>
                             <span class="text-xs font-semibold text-[#1F2421] block">Composition 02</span>
                             <span class="text-[10px] sm:text-[11px] text-[#7A8780] block mt-0.5">Spatial relationships</span>
                         </div>
-                        <div class="p-3.5 sm:p-4 rounded-xl bg-white/75 border border-[#E8E2D8] backdrop-blur-xs">
+                        <div id="aurora-pillar-3" class="aurora-pillar p-3.5 sm:p-4 rounded-xl bg-white/75 border border-[#E8E2D8] backdrop-blur-xs transition-all duration-500">
                             <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#4A6B5D] block mb-1">03 / Balance</span>
                             <span class="text-xs font-semibold text-[#1F2421] block">Interface Study 03</span>
                             <span class="text-[10px] sm:text-[11px] text-[#7A8780] block mt-0.5">Fluid breakpoints</span>
                         </div>
                     </div>
 
-                    <!-- Aurora Action Row -->
+                    <!-- Aurora Action Row with Tactile Trigger Control -->
                     <div class="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
-                        <button type="button" class="px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#1F2421] text-[#FAF7F2] text-xs font-semibold tracking-wider hover:bg-[#4A6B5D] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1F2421]">
-                            Trigger Interaction →
+                        <button type="button" id="aurora-interaction-trigger" class="tactile-control px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#1F2421] text-[#FAF7F2] text-xs font-semibold tracking-wider hover:bg-[#4A6B5D] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1F2421] flex items-center gap-2">
+                            <span class="btn-label">Trigger Interaction</span>
+                            <span class="interaction-arrow inline-block transition-transform duration-300">→</span>
                         </button>
                         <span class="text-[11px] sm:text-xs text-[#7A8780] italic">Direct interaction vector without third-party frameworks.</span>
                     </div>
@@ -214,21 +223,26 @@ function renderAaravWorld() {
     <div id="world-aarav" class="website-world hidden transition-all duration-700 w-full" data-world="aarav" aria-label="Aarav Properties Signature Design Concept">
         <div class="relative bg-[#12161A] text-[#E5DECE] rounded-none border-2 border-[#2A323D] shadow-2xl overflow-hidden transition-all duration-500">
             
-            <!-- Curatorial Design Lens Overlay Layer -->
+            <!-- Curatorial Design Lens Overlay Layer (Collision-Free Responsive Anchoring) -->
             <div class="design-lens-layer absolute inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-300">
-                <div class="absolute top-4 right-4 bg-[#C5A059] text-slate-950 text-[11px] font-mono px-3 py-1.5 font-bold shadow-md">
+                <div class="absolute top-3 right-3 sm:top-4 sm:right-4 bg-[#C5A059] text-slate-950 text-[10px] sm:text-[11px] font-mono px-3 py-1.5 font-bold shadow-md">
                     <span>LENS: MONUMENTAL ARCHITECTURAL GRID</span>
                 </div>
-                <div class="absolute top-24 left-6 sm:left-10 border border-dashed border-[#C5A059] p-2 bg-[#C5A059]/10 text-[10px] text-[#C5A059] font-mono">
+                <!-- Non-colliding top-right annotation anchored over the right axonometric sector -->
+                <div class="absolute top-14 sm:top-16 right-4 sm:right-8 max-w-[260px] text-right border border-dashed border-[#C5A059] p-1.5 sm:p-2 bg-[#12161A]/95 text-[9px] sm:text-[10px] text-[#C5A059] font-mono hidden sm:block">
                     <span>[STRUCTURAL RATIO: Strict Modular Axes with Monospaced Coordinates]</span>
                 </div>
-                <div class="absolute bottom-20 left-10 border border-dashed border-[#E5DECE] p-2 bg-white/10 text-[10px] text-[#E5DECE] font-mono hidden sm:block">
+                <!-- Lower annotations tucked into stable margins -->
+                <div class="absolute bottom-12 sm:bottom-14 left-4 sm:left-8 border border-dashed border-[#E5DECE] p-1.5 sm:p-2 bg-[#12161A]/95 text-[9px] sm:text-[10px] text-[#E5DECE] font-mono hidden sm:block">
                     <span>[INFORMATION DENSITY: High Scannability for Ultra-High-Net-Worth Inquiries]</span>
+                </div>
+                <div class="absolute bottom-12 sm:bottom-14 right-4 sm:right-8 border border-dashed border-[#C5A059]/60 p-1.5 sm:p-2 bg-[#12161A]/95 text-[9px] sm:text-[10px] text-[#9EACB5] font-mono hidden lg:block">
+                    <span>[AXONOMETRIC SPEC: Modular Z-Axis Depth Mapping]</span>
                 </div>
             </div>
 
             <!-- Architectural Linework Background Grid (SVG) -->
-            <div class="absolute inset-0 opacity-15 pointer-events-none" aria-hidden="true">
+            <div id="aarav-grid-bg" class="absolute inset-0 opacity-15 pointer-events-none transition-all duration-700 ease-out" aria-hidden="true">
                 <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <pattern id="aarav-grid-v6" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -272,25 +286,32 @@ function renderAaravWorld() {
                             Curated spatial portfolios designed for visual clarity. Uncompromising structural elegance, direct conversion routing, and zero third-party framework bloat.
                         </p>
 
-                        <!-- Architectural Dimension Specs -->
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3 font-mono mb-6 sm:mb-8">
-                            <div class="p-2.5 sm:p-3 bg-[#181F26] border border-[#2A323D]">
+                        <!-- Aarav Interactive Status Notification (Expands on Trigger Interaction) -->
+                        <div id="aarav-interactive-status" class="overflow-hidden transition-all duration-500 max-h-0 opacity-0 mb-4 sm:mb-6 text-[10px] sm:text-[11px] font-mono text-[#C5A059] bg-[#C5A059]/10 border border-[#C5A059]/30 rounded px-3 py-2 flex items-center justify-between">
+                            <span>[STRUCTURAL RECONFIGURATION: Z-Axis Elevation Uncoupled · 120mm Pitch]</span>
+                            <span class="text-[9px] font-bold uppercase tracking-wider bg-[#C5A059] text-slate-950 px-1.5 py-0.5 rounded-none">Active</span>
+                        </div>
+
+                        <!-- Architectural Dimension Specs with Interactive Lighting -->
+                        <div id="aarav-spec-boxes" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3 font-mono mb-6 sm:mb-8">
+                            <div class="p-2.5 sm:p-3 bg-[#181F26] border border-[#2A323D] transition-all duration-300">
                                 <span class="text-[9px] text-[#71828D] block uppercase">Inventory Type</span>
                                 <span class="text-xs font-bold text-[#E5DECE] block mt-0.5">Property Study 01</span>
                             </div>
-                            <div class="p-2.5 sm:p-3 bg-[#181F26] border border-[#2A323D]">
+                            <div class="p-2.5 sm:p-3 bg-[#181F26] border border-[#2A323D] transition-all duration-300">
                                 <span class="text-[9px] text-[#71828D] block uppercase">Coordination</span>
                                 <span class="text-xs font-bold text-[#C5A059] block mt-0.5">Advisory Interface</span>
                             </div>
-                            <div class="p-2.5 sm:p-3 bg-[#181F26] border border-[#2A323D] col-span-2 sm:col-span-1">
+                            <div class="p-2.5 sm:p-3 bg-[#181F26] border border-[#2A323D] col-span-2 sm:col-span-1 transition-all duration-300">
                                 <span class="text-[9px] text-[#71828D] block uppercase">Architecture</span>
                                 <span class="text-xs font-bold text-[#E5DECE] block mt-0.5">Spatial Module 03</span>
                             </div>
                         </div>
 
                         <div class="flex flex-wrap items-center gap-3 sm:gap-4">
-                            <button type="button" class="px-5 sm:px-6 py-2.5 sm:py-3 rounded-none bg-[#C5A059] text-slate-950 text-xs font-bold font-mono tracking-wider hover:bg-[#E5DECE] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A059]">
-                                EXPLORE PORTFOLIO →
+                            <button type="button" id="aarav-interaction-trigger" class="tactile-control px-5 sm:px-6 py-2.5 sm:py-3 rounded-none bg-[#C5A059] text-slate-950 text-xs font-bold font-mono tracking-wider hover:bg-[#E5DECE] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A059] flex items-center gap-2">
+                                <span class="btn-label">EXPLORE PORTFOLIO</span>
+                                <span class="interaction-arrow inline-block transition-transform duration-300">→</span>
                             </button>
                             <span class="text-[11px] sm:text-xs font-mono text-[#71828D]">Direct Principal Consultation</span>
                         </div>
@@ -300,21 +321,23 @@ function renderAaravWorld() {
                     <div class="lg:col-span-5 bg-[#181F26] p-4 sm:p-6 border border-[#2A323D] relative overflow-hidden">
                         <div class="flex items-center justify-between text-[10px] font-mono text-[#71828D] mb-3 pb-2 border-b border-[#2A323D]">
                             <span>AXONOMETRIC SPECIFICATION</span>
-                            <span class="text-[#C5A059]">[FIG. 04-A]</span>
+                            <span id="aarav-fig-label" class="text-[#C5A059] transition-colors duration-300">[FIG. 04-A]</span>
                         </div>
                         <div class="h-44 sm:h-52 flex items-center justify-center">
                             <svg viewBox="0 0 240 180" class="w-full h-full max-h-48">
                                 <g transform="translate(120, 95)">
-                                    <polygon points="0,-55 55,-22 0,10 -55,-22" fill="#1E252D" stroke="#C5A059" stroke-width="1.5"/>
+                                    <g id="aarav-elevation-poly" class="transition-transform duration-500 ease-out">
+                                        <polygon points="0,-55 55,-22 0,10 -55,-22" fill="#1E252D" stroke="#C5A059" stroke-width="1.5"/>
+                                        <circle cx="0" cy="-55" r="3" fill="#C5A059"/>
+                                        <circle cx="55" cy="-22" r="3" fill="#E5DECE"/>
+                                        <circle cx="-55" cy="-22" r="3" fill="#E5DECE"/>
+                                    </g>
                                     <polygon points="-55,-22 0,10 0,55 -55,22" fill="#151A20" stroke="#2A323D" stroke-width="1"/>
                                     <polygon points="0,10 55,-22 55,22 0,55" fill="#1C232B" stroke="#2A323D" stroke-width="1"/>
                                     <line x1="-55" y1="-5" x2="0" y2="28" stroke="#C5A059" stroke-width="0.75" stroke-dasharray="2 2"/>
                                     <line x1="0" y1="28" x2="55" y2="-5" stroke="#C5A059" stroke-width="0.75" stroke-dasharray="2 2"/>
                                     <line x1="-55" y1="10" x2="0" y2="42" stroke="#C5A059" stroke-width="0.75"/>
                                     <line x1="0" y1="42" x2="55" y2="10" stroke="#C5A059" stroke-width="0.75"/>
-                                    <circle cx="0" cy="-55" r="3" fill="#C5A059"/>
-                                    <circle cx="55" cy="-22" r="3" fill="#E5DECE"/>
-                                    <circle cx="-55" cy="-22" r="3" fill="#E5DECE"/>
                                 </g>
                             </svg>
                         </div>
@@ -346,22 +369,27 @@ function renderSpiceWorld() {
     <div id="world-spice" class="website-world hidden transition-all duration-700 w-full" data-world="spice" aria-label="The Spice Room Signature Design Concept">
         <div class="relative bg-[#2B0E14] text-[#F7EBE1] rounded-2xl sm:rounded-t-[3rem] sm:rounded-b-xl border border-[#4A1D27] shadow-2xl overflow-hidden transition-all duration-500">
             
-            <!-- Curatorial Design Lens Overlay Layer -->
+            <!-- Curatorial Design Lens Overlay Layer (Collision-Free Responsive Anchoring) -->
             <div class="design-lens-layer absolute inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-300">
-                <div class="absolute top-4 right-4 bg-[#D9532F] text-white text-[11px] font-mono px-3 py-1.5 font-bold shadow-md">
+                <div class="absolute top-3 right-3 sm:top-4 sm:right-4 bg-[#D9532F] text-white text-[10px] sm:text-[11px] font-mono px-3 py-1.5 font-bold shadow-md">
                     <span>LENS: SENSORY HOSPITALITY TYPOGRAPHY</span>
                 </div>
-                <div class="absolute top-24 left-6 sm:left-10 border border-dashed border-[#D9532F] p-2 bg-[#D9532F]/10 text-[10px] text-[#F7EBE1] font-mono">
+                <!-- Non-colliding top-right annotation anchored over the right halo margin -->
+                <div class="absolute top-14 sm:top-16 right-4 sm:right-8 max-w-[260px] text-right border border-dashed border-[#D9532F] p-1.5 sm:p-2 bg-[#2B0E14]/95 text-[9px] sm:text-[10px] text-[#F7EBE1] font-mono hidden sm:block">
                     <span>[ATMOSPHERIC EMOTION: Radial Warm Ambient Halos Drive Dining Appetite]</span>
                 </div>
-                <div class="absolute bottom-16 right-8 sm:right-12 border border-dashed border-[#F7EBE1] p-2 bg-white/10 text-[10px] text-[#F7EBE1] font-mono hidden sm:block">
+                <!-- Lower annotations tucked into stable margins -->
+                <div class="absolute bottom-12 sm:bottom-14 left-4 sm:left-8 border border-dashed border-[#D9532F] p-1.5 sm:p-2 bg-[#2B0E14]/95 text-[9px] sm:text-[10px] text-[#D8B9B0] font-mono hidden lg:block">
+                    <span>[SENSORY TAXONOMY: Layered Terracotta Terroir System]</span>
+                </div>
+                <div class="absolute bottom-12 sm:bottom-14 right-4 sm:right-8 border border-dashed border-[#F7EBE1]/80 p-1.5 sm:p-2 bg-[#2B0E14]/95 text-[9px] sm:text-[10px] text-[#F7EBE1] font-mono hidden sm:block">
                     <span>[DIRECT RESERVATION VECTOR: One-Tap High-Intent Dining Booking]</span>
                 </div>
             </div>
 
             <!-- Warm Terracotta Radial Ambient Halo (SVG) -->
-            <div class="absolute top-0 right-0 w-80 sm:w-96 h-80 sm:h-96 bg-[#D9532F]/20 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
-            <div class="absolute bottom-0 left-0 w-64 sm:w-80 h-64 sm:h-80 bg-[#8C2D19]/30 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+            <div id="spice-halo-1" class="spice-ambient-halo absolute top-0 right-0 w-80 sm:w-96 h-80 sm:h-96 bg-[#D9532F]/20 rounded-full blur-3xl pointer-events-none transition-all duration-700 ease-out" aria-hidden="true"></div>
+            <div id="spice-halo-2" class="spice-ambient-halo absolute bottom-0 left-0 w-64 sm:w-80 h-64 sm:h-80 bg-[#8C2D19]/30 rounded-full blur-3xl pointer-events-none transition-all duration-700 ease-out" aria-hidden="true"></div>
 
             <!-- Spice Masthead: Classical Dining Balance -->
             <div class="px-5 sm:px-10 py-4 sm:py-5 border-b border-[#4A1D27] flex items-center justify-between bg-[#2B0E14]/90 relative z-10">
@@ -394,29 +422,36 @@ function renderSpiceWorld() {
                         Elevating regional hospitality into an immersive digital sequence. Fast, lightweight HTML presentations eliminate cumbersome loading times, allowing visual craftsmanship to shine.
                     </p>
 
-                    <!-- Culinary Sequences -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
-                        <div class="p-3.5 sm:p-4 rounded-xl bg-[#3D1820]/60 border border-[#4A1D27]">
+                    <!-- Spice Interactive Status Notification (Expands on Trigger Interaction) -->
+                    <div id="spice-interactive-status" class="overflow-hidden transition-all duration-500 max-h-0 opacity-0 mb-4 sm:mb-6 text-[10px] sm:text-[11px] font-mono text-[#D9532F] bg-[#3D1820] border border-[#D9532F]/40 rounded-xl px-3 py-2 flex items-center justify-between">
+                        <span>[SEQUENCE EXPANSION: Tactile Depth Unfolded · Sensorial Terroir Active]</span>
+                        <span class="text-[9px] font-bold uppercase tracking-wider bg-[#D9532F] text-white px-1.5 py-0.5 rounded-full">Active</span>
+                    </div>
+
+                    <!-- Culinary Sequences with Kinetic Depth Layers -->
+                    <div id="spice-layers" class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
+                        <div id="spice-layer-1" class="spice-layer p-3.5 sm:p-4 rounded-xl bg-[#3D1820]/60 border border-[#4A1D27] transition-all duration-500">
                             <span class="text-[9px] sm:text-[10px] font-serif italic text-[#D9532F] block mb-1">Layer I</span>
                             <span class="text-xs font-semibold text-[#F7EBE1] block">Composition 01</span>
                             <span class="text-[10px] sm:text-[11px] text-[#A67E75] block mt-0.5">Atmospheric emotion</span>
                         </div>
-                        <div class="p-3.5 sm:p-4 rounded-xl bg-[#3D1820]/60 border border-[#4A1D27]">
+                        <div id="spice-layer-2" class="spice-layer p-3.5 sm:p-4 rounded-xl bg-[#3D1820]/60 border border-[#4A1D27] transition-all duration-500">
                             <span class="text-[9px] sm:text-[10px] font-serif italic text-[#D9532F] block mb-1">Layer II</span>
                             <span class="text-xs font-semibold text-[#F7EBE1] block">Experience Layer 02</span>
                             <span class="text-[10px] sm:text-[11px] text-[#A67E75] block mt-0.5">Typographic warmth</span>
                         </div>
-                        <div class="p-3.5 sm:p-4 rounded-xl bg-[#3D1820]/60 border border-[#4A1D27]">
+                        <div id="spice-layer-3" class="spice-layer p-3.5 sm:p-4 rounded-xl bg-[#3D1820]/60 border border-[#4A1D27] transition-all duration-500">
                             <span class="text-[9px] sm:text-[10px] font-serif italic text-[#D9532F] block mb-1">Layer III</span>
                             <span class="text-xs font-semibold text-[#F7EBE1] block">Menu System 01</span>
                             <span class="text-[10px] sm:text-[11px] text-[#A67E75] block mt-0.5">Structured delivery</span>
                         </div>
                     </div>
 
-                    <!-- Action Row -->
+                    <!-- Action Row with Tactile Trigger Control -->
                     <div class="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
-                        <button type="button" class="px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#D9532F] text-white text-xs font-bold tracking-wider hover:bg-[#8C2D19] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9532F]">
-                            Initiate Sequence →
+                        <button type="button" id="spice-interaction-trigger" class="tactile-control px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#D9532F] text-white text-xs font-bold tracking-wider hover:bg-[#8C2D19] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D9532F] flex items-center gap-2">
+                            <span class="btn-label">Initiate Sequence</span>
+                            <span class="interaction-arrow inline-block transition-transform duration-300">→</span>
                         </button>
                         <span class="text-[11px] sm:text-xs text-[#A67E75] italic">Direct conversion vector without third-party commissions.</span>
                     </div>
@@ -450,19 +485,19 @@ function renderSpatialExhibition() {
             <div class="lg:hidden flex flex-col gap-2.5 mb-3 pt-1">
                 <div class="flex items-center justify-between">
                     <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500">EXHIBITION · 3 WORLDS</span>
-                    <button type="button" id="mobile-design-lens-toggle" class="text-[10px] font-mono px-2.5 py-1 rounded bg-white border border-slate-200 text-slate-700 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
+                    <button type="button" id="mobile-design-lens-toggle" class="tactile-control text-[10px] font-mono px-2.5 py-1 rounded bg-white border border-slate-200 text-slate-700 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
                         Lens: OFF
                     </button>
                 </div>
                 <!-- Horizontal Fast-Switch Rail -->
                 <div class="grid grid-cols-3 gap-1.5 p-1 bg-white/80 backdrop-blur-md rounded-xl border border-slate-200/90 shadow-2xs" role="tablist" aria-label="Mobile World Switcher">
-                    <button type="button" id="mobile-btn-world-aurora" class="mobile-tab-btn active py-2 px-1 rounded-lg text-center text-[11px] font-bold transition-all bg-slate-900 text-white shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600" role="tab" aria-selected="true">
+                    <button type="button" id="mobile-btn-world-aurora" class="tactile-control mobile-tab-btn active py-2 px-1 rounded-lg text-center text-[11px] font-bold transition-all bg-slate-900 text-white shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600" role="tab" aria-selected="true">
                         01 Aurora
                     </button>
-                    <button type="button" id="mobile-btn-world-aarav" class="mobile-tab-btn py-2 px-1 rounded-lg text-center text-[11px] font-bold transition-all text-slate-700 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600" role="tab" aria-selected="false">
+                    <button type="button" id="mobile-btn-world-aarav" class="tactile-control mobile-tab-btn py-2 px-1 rounded-lg text-center text-[11px] font-bold transition-all text-slate-700 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600" role="tab" aria-selected="false">
                         02 Aarav
                     </button>
-                    <button type="button" id="mobile-btn-world-spice" class="mobile-tab-btn py-2 px-1 rounded-lg text-center text-[11px] font-bold transition-all text-slate-700 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600" role="tab" aria-selected="false">
+                    <button type="button" id="mobile-btn-world-spice" class="tactile-control mobile-tab-btn py-2 px-1 rounded-lg text-center text-[11px] font-bold transition-all text-slate-700 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600" role="tab" aria-selected="false">
                         03 Spice
                     </button>
                 </div>
@@ -490,7 +525,7 @@ function renderSpatialExhibition() {
                         <!-- World Selector Controls: Immediate, Tactile, High-Contrast -->
                         <div class="bg-white/80 backdrop-blur-md p-2 rounded-2xl border border-slate-200 shadow-sm flex flex-col gap-1.5 mb-6" role="tablist" aria-label="Select Website World">
                             
-                            <button type="button" id="btn-world-aurora" class="world-tab-btn active w-full flex items-center justify-between p-3 rounded-xl text-left transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 bg-slate-900 text-white shadow-sm" role="tab" aria-selected="true" aria-controls="world-aurora">
+                            <button type="button" id="btn-world-aurora" class="tactile-control world-tab-btn active w-full flex items-center justify-between p-3 rounded-xl text-left transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 bg-slate-900 text-white shadow-sm" role="tab" aria-selected="true" aria-controls="world-aurora">
                                 <div class="flex items-center gap-3">
                                     <span class="w-2.5 h-2.5 rounded-full bg-[#4A6B5D] border border-white/40"></span>
                                     <div>
@@ -501,7 +536,7 @@ function renderSpatialExhibition() {
                                 <span class="text-xs font-mono text-blue-400">View ↗</span>
                             </button>
 
-                            <button type="button" id="btn-world-aarav" class="world-tab-btn w-full flex items-center justify-between p-3 rounded-xl text-left transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 hover:bg-slate-100 text-slate-800" role="tab" aria-selected="false" aria-controls="world-aarav">
+                            <button type="button" id="btn-world-aarav" class="tactile-control world-tab-btn w-full flex items-center justify-between p-3 rounded-xl text-left transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 hover:bg-slate-100 text-slate-800" role="tab" aria-selected="false" aria-controls="world-aarav">
                                 <div class="flex items-center gap-3">
                                     <span class="w-2.5 h-2.5 rounded-full bg-[#C5A059] border border-slate-400"></span>
                                     <div>
@@ -512,7 +547,7 @@ function renderSpatialExhibition() {
                                 <span class="text-xs font-mono text-slate-400">View ↗</span>
                             </button>
 
-                            <button type="button" id="btn-world-spice" class="world-tab-btn w-full flex items-center justify-between p-3 rounded-xl text-left transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 hover:bg-slate-100 text-slate-800" role="tab" aria-selected="false" aria-controls="world-spice">
+                            <button type="button" id="btn-world-spice" class="tactile-control world-tab-btn w-full flex items-center justify-between p-3 rounded-xl text-left transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 hover:bg-slate-100 text-slate-800" role="tab" aria-selected="false" aria-controls="world-spice">
                                 <div class="flex items-center gap-3">
                                     <span class="w-2.5 h-2.5 rounded-full bg-[#D9532F] border border-slate-400"></span>
                                     <div>
@@ -531,7 +566,7 @@ function renderSpatialExhibition() {
                                 <span class="text-xs font-bold text-slate-900">Curatorial Design Lens</span>
                                 <span class="text-[10px] text-slate-500">Inspect typography, spacing &amp; hierarchy</span>
                             </div>
-                            <button type="button" id="design-lens-toggle" class="px-3 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase border border-slate-300 bg-slate-50 text-slate-700 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 transition-colors" aria-pressed="false">
+                            <button type="button" id="design-lens-toggle" class="tactile-control px-3 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase border border-slate-300 bg-slate-50 text-slate-700 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 transition-colors" aria-pressed="false">
                                 <span>Lens: OFF</span>
                             </button>
                         </div>
@@ -600,7 +635,7 @@ function renderTypographicPricing() {
             <div class="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-slate-800 border-y border-slate-800 mb-16">
                 
                 <!-- Tier 1: Essential -->
-                <div class="py-8 lg:py-10 lg:pr-8 flex flex-col justify-between">
+                <div class="spatial-reveal-item pricing-tier-card py-8 lg:py-10 lg:pr-8 flex flex-col justify-between rounded-xl px-4 lg:px-6">
                     <div>
                         <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-6">
                             <span>TIER // 01</span>
@@ -632,13 +667,13 @@ function renderTypographicPricing() {
                             </li>
                         </ul>
                     </div>
-                    <a href="#spatial-intake" class="w-full py-3.5 rounded-xl bg-slate-800 text-white text-xs font-bold text-center uppercase tracking-wider hover:bg-white hover:text-slate-950 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 border border-slate-700">
+                    <a href="#spatial-intake" class="tactile-control w-full py-3.5 rounded-xl bg-slate-800 text-white text-xs font-bold text-center uppercase tracking-wider hover:bg-white hover:text-slate-950 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 border border-slate-700">
                         Commission Essential →
                     </a>
                 </div>
 
                 <!-- Tier 2: Professional (Elevated Center Column) -->
-                <div class="py-8 lg:py-10 lg:px-8 flex flex-col justify-between">
+                <div class="spatial-reveal-item pricing-tier-card py-8 lg:py-10 lg:px-8 flex flex-col justify-between rounded-xl px-4 lg:px-6">
                     <div>
                         <div class="flex items-center justify-between text-xs font-mono text-blue-400 mb-6">
                             <span>TIER // 02</span>
@@ -670,13 +705,13 @@ function renderTypographicPricing() {
                             </li>
                         </ul>
                     </div>
-                    <a href="#spatial-intake" class="w-full py-3.5 rounded-xl bg-blue-600 text-white text-xs font-bold text-center uppercase tracking-wider hover:bg-blue-500 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
+                    <a href="#spatial-intake" class="tactile-control w-full py-3.5 rounded-xl bg-blue-600 text-white text-xs font-bold text-center uppercase tracking-wider hover:bg-blue-500 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
                         Commission Professional →
                     </a>
                 </div>
 
                 <!-- Tier 3: Custom Architecture -->
-                <div class="py-8 lg:py-10 lg:pl-8 flex flex-col justify-between">
+                <div class="spatial-reveal-item pricing-tier-card py-8 lg:py-10 lg:pl-8 flex flex-col justify-between rounded-xl px-4 lg:px-6">
                     <div>
                         <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-6">
                             <span>TIER // 03</span>
@@ -708,7 +743,7 @@ function renderTypographicPricing() {
                             </li>
                         </ul>
                     </div>
-                    <a href="#spatial-intake" class="w-full py-3.5 rounded-xl bg-slate-800 text-white text-xs font-bold text-center uppercase tracking-wider hover:bg-white hover:text-slate-950 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 border border-slate-700">
+                    <a href="#spatial-intake" class="tactile-control w-full py-3.5 rounded-xl bg-slate-800 text-white text-xs font-bold text-center uppercase tracking-wider hover:bg-white hover:text-slate-950 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 border border-slate-700">
                         Commission Custom Flagship →
                     </a>
                 </div>
@@ -716,7 +751,7 @@ function renderTypographicPricing() {
             </div>
 
             <!-- Add-On Modular Extensions (Strict Canonical Truth) -->
-            <div class="pt-8 border-t border-slate-800">
+            <div class="spatial-reveal-item pt-8 border-t border-slate-800">
                 <span class="text-xs font-mono uppercase tracking-widest text-slate-400 block mb-6">MODULAR ADDITIONS &amp; CARE SERVICES</span>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
                     <div class="flex items-center justify-between pb-3 md:pb-0 border-b md:border-b-0 border-slate-800">
@@ -750,7 +785,7 @@ function renderSpatialIntake() {
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                 
                 <!-- Left: Studio Manifesto & Direct Contacts -->
-                <div class="lg:col-span-5">
+                <div class="spatial-reveal-item lg:col-span-5">
                     <span class="text-xs font-mono uppercase tracking-widest text-blue-600 block mb-2">[03] STUDIO COMMISSION INTAKE</span>
                     <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 leading-tight mb-6">
                         Commission an Architectural Digital Flagship.
@@ -782,7 +817,7 @@ function renderSpatialIntake() {
                 </div>
 
                 <!-- Right: High-Contrast Architectural Commission Form (Seamless integration) -->
-                <div class="lg:col-span-7 bg-white p-6 sm:p-10 rounded-2xl sm:rounded-3xl border border-slate-200 shadow-sm">
+                <div class="spatial-reveal-item lg:col-span-7 bg-white p-6 sm:p-10 rounded-2xl sm:rounded-3xl border border-slate-200 shadow-sm">
                     <form id="modern-commission-form" method="POST" action="/api/contact" class="flex flex-col gap-5" novalidate>
                         
                         <!-- Honeypot anti-spam -->
@@ -842,7 +877,7 @@ function renderSpatialIntake() {
                         <!-- Feedback area -->
                         <div id="modern-form-feedback" class="hidden p-4 rounded-xl text-xs font-semibold" role="alert"></div>
 
-                        <button type="submit" id="modern-submit-btn" class="w-full py-4 rounded-xl bg-slate-900 text-white text-xs font-bold uppercase tracking-widest hover:bg-blue-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 shadow-md">
+                        <button type="submit" id="modern-submit-btn" class="tactile-control w-full py-4 rounded-xl bg-slate-900 text-white text-xs font-bold uppercase tracking-widest hover:bg-blue-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 shadow-md">
                             <span>Transmitting Studio Commission Brief →</span>
                         </button>
 
@@ -906,13 +941,24 @@ function renderModernExperience(currentPath) {
     const footerContent = renderModernFooter();
 
     const styles = `
-        <style id="modern-v6-styles">
-            /* V6 Spatial Canvas Transitions */
+        <style id="modern-v7-styles">
+            /* V7 Tactile Physical Controls */
+            .tactile-control {
+                transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.18s, border-color 0.18s, box-shadow 0.18s;
+            }
+            .tactile-control:hover {
+                transform: translateY(-1.5px);
+            }
+            .tactile-control:active {
+                transform: scale(0.97) translateY(0);
+            }
+
+            /* V7 Spatial Canvas Transitions */
             .website-world {
                 display: none;
                 opacity: 0;
-                transform: translateY(12px) scale(0.98);
-                transition: opacity 0.4s ease, transform 0.4s ease;
+                transform: translateY(16px) scale(0.98);
+                transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
             }
             .website-world.active {
                 display: block;
@@ -920,10 +966,134 @@ function renderModernExperience(currentPath) {
                 transform: translateY(0) scale(1);
             }
 
-            /* Design Lens Overlay Mode */
+            /* World-Specific Spatial Exit Transitions */
+            .website-world.world-exiting-aurora {
+                display: block !important;
+                transform: scale(0.96) translateY(-10px);
+                opacity: 0;
+                transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+            }
+            .website-world.world-exiting-aarav {
+                display: block !important;
+                transform: translateX(-24px) scale(0.97);
+                opacity: 0;
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            }
+            .website-world.world-exiting-spice {
+                display: block !important;
+                transform: translateY(14px) scale(0.96);
+                opacity: 0;
+                transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+            }
+
+            /* World-Specific Spatial Arrival Orientations */
+            .website-world.world-entering-aurora {
+                display: block !important;
+                opacity: 0;
+                transform: scale(1.02) translateY(16px);
+            }
+            .website-world.world-entering-aarav {
+                display: block !important;
+                opacity: 0;
+                transform: translateX(24px) scale(0.98);
+            }
+            .website-world.world-entering-spice {
+                display: block !important;
+                opacity: 0;
+                transform: translateY(-16px) scale(0.98);
+            }
+
+            /* Curatorial Design Lens Overlay Mode */
             .show-lens .design-lens-layer {
                 opacity: 1 !important;
                 pointer-events: auto !important;
+            }
+
+            /* Specimen Native Interactive States (Trigger Interaction Transformations) */
+            /* 1. Aurora Organic Editorial Transformation */
+            #world-aurora.specimen-interactive-active #aurora-botanical-art {
+                transform: scale(1.15) rotate(8deg) translate(3%, -2%);
+                opacity: 0.72;
+            }
+            #world-aurora.specimen-interactive-active #aurora-pillar-1 {
+                transform: translateY(-6px);
+                border-color: #4A6B5D;
+                box-shadow: 0 12px 24px -6px rgba(74, 107, 93, 0.18);
+            }
+            #world-aurora.specimen-interactive-active #aurora-pillar-2 {
+                transform: translateY(-2px);
+                border-color: #C28D75;
+                box-shadow: 0 12px 24px -6px rgba(194, 141, 117, 0.18);
+            }
+            #world-aurora.specimen-interactive-active #aurora-pillar-3 {
+                transform: translateY(2px);
+                border-color: #4A6B5D;
+                box-shadow: 0 12px 24px -6px rgba(74, 107, 93, 0.18);
+            }
+            #world-aurora.specimen-interactive-active #aurora-interactive-status {
+                max-height: 48px;
+                opacity: 1;
+            }
+
+            /* 2. Aarav Monumental Architectural Transformation */
+            #world-aarav.specimen-interactive-active #aarav-elevation-poly {
+                transform: translateY(-16px);
+            }
+            #world-aarav.specimen-interactive-active #aarav-spec-boxes > div {
+                border-color: #C5A059;
+                background-color: #1E252D;
+                transform: translateY(-3px);
+            }
+            #world-aarav.specimen-interactive-active #aarav-grid-bg {
+                opacity: 0.32;
+                transform: scale(1.03);
+            }
+            #world-aarav.specimen-interactive-active #aarav-interactive-status {
+                max-height: 48px;
+                opacity: 1;
+            }
+
+            /* 3. Spice Sensory Layered Transformation */
+            #world-spice.specimen-interactive-active #spice-layer-1 {
+                transform: translateY(-8px) scale(1.02);
+                border-color: #D9532F;
+                background-color: #4A1D27;
+            }
+            #world-spice.specimen-interactive-active #spice-layer-2 {
+                transform: translateY(-2px);
+                border-color: #D9532F;
+                background-color: #3D1820;
+            }
+            #world-spice.specimen-interactive-active #spice-layer-3 {
+                transform: translateY(4px) scale(0.99);
+                border-color: #8C2D19;
+            }
+            #world-spice.specimen-interactive-active .spice-ambient-halo {
+                transform: scale(1.25);
+                opacity: 0.42;
+            }
+            #world-spice.specimen-interactive-active #spice-interactive-status {
+                max-height: 48px;
+                opacity: 1;
+            }
+
+            /* Lower Sections Spatial Reveals */
+            .spatial-reveal-item {
+                opacity: 0;
+                transform: translateY(18px);
+                transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .spatial-reveal-item.revealed {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .pricing-tier-card {
+                transition: background-color 0.25s ease, transform 0.25s ease;
+            }
+            .pricing-tier-card:hover {
+                background-color: rgba(255, 255, 255, 0.025);
+                transform: translateY(-2px);
             }
 
             /* High-legibility Tabular Numerics */
@@ -931,14 +1101,32 @@ function renderModernExperience(currentPath) {
                 font-variant-numeric: tabular-nums;
             }
 
-            /* Reduced Motion Respect */
+            /* Reduced Motion Accessibility Respect */
             @media (prefers-reduced-motion: reduce) {
                 .website-world,
                 .transition-all,
                 .transition-colors,
-                .transition-opacity {
+                .transition-opacity,
+                .tactile-control,
+                .spatial-reveal-item,
+                .pricing-tier-card,
+                .aurora-pillar,
+                .spice-layer {
                     transition-duration: 0.01ms !important;
                     animation-duration: 0.01ms !important;
+                    transform: none !important;
+                }
+                #world-aurora.specimen-interactive-active #aurora-botanical-art,
+                #world-aurora.specimen-interactive-active #aurora-pillar-1,
+                #world-aurora.specimen-interactive-active #aurora-pillar-2,
+                #world-aurora.specimen-interactive-active #aurora-pillar-3,
+                #world-aarav.specimen-interactive-active #aarav-elevation-poly,
+                #world-aarav.specimen-interactive-active #aarav-spec-boxes > div,
+                #world-aarav.specimen-interactive-active #aarav-grid-bg,
+                #world-spice.specimen-interactive-active #spice-layer-1,
+                #world-spice.specimen-interactive-active #spice-layer-2,
+                #world-spice.specimen-interactive-active #spice-layer-3,
+                #world-spice.specimen-interactive-active .spice-ambient-halo {
                     transform: none !important;
                 }
             }
@@ -949,16 +1137,16 @@ function renderModernExperience(currentPath) {
         (function() {
             window.__veloraModernCleanups = window.__veloraModernCleanups || [];
 
-            function addListener(target, event, handler) {
+            function addListener(target, event, handler, options) {
                 if (!target) return;
-                target.addEventListener(event, handler);
+                target.addEventListener(event, handler, options);
                 window.__veloraModernCleanups.push(() => {
-                    target.removeEventListener(event, handler);
+                    target.removeEventListener(event, handler, options);
                 });
             }
 
             window.initModernInteractions = function() {
-                // 1. Project Switching Logic (Aurora -> Aarav -> Spice)
+                // 1. Spatial World Switching Sequence (Aurora -> Aarav -> Spice)
                 const desktopTabs = {
                     aurora: document.getElementById('btn-world-aurora'),
                     aarav: document.getElementById('btn-world-aarav'),
@@ -985,52 +1173,127 @@ function renderModernExperience(currentPath) {
                     spice: '#2B0E14'
                 };
 
-                function switchWorld(targetKey) {
+                let activeWorldKey = 'aurora';
+                let isSwitching = false;
+                let switchTimeout = null;
+
+                function updateTabStyles(targetKey) {
                     Object.keys(worlds).forEach(key => {
-                        const worldEl = worlds[key];
                         const dTab = desktopTabs[key];
                         const mTab = mobileTabs[key];
                         const isActive = (key === targetKey);
 
-                        if (worldEl) {
-                            if (isActive) {
-                                worldEl.classList.remove('hidden');
-                                setTimeout(() => worldEl.classList.add('active'), 20);
-                            } else {
-                                worldEl.classList.remove('active');
-                                setTimeout(() => worldEl.classList.add('hidden'), 400);
-                            }
-                        }
-
-                        // Desktop Tabs UI update
                         if (dTab) {
                             dTab.setAttribute('aria-selected', String(isActive));
                             if (isActive) {
-                                dTab.className = 'world-tab-btn active w-full flex items-center justify-between p-3 rounded-xl text-left transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 bg-slate-900 text-white shadow-sm';
+                                dTab.className = 'tactile-control world-tab-btn active w-full flex items-center justify-between p-3 rounded-xl text-left transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 bg-slate-900 text-white shadow-sm';
                                 const arrow = dTab.querySelector('.font-mono');
                                 if (arrow) arrow.className = 'text-xs font-mono text-blue-400';
                             } else {
-                                dTab.className = 'world-tab-btn w-full flex items-center justify-between p-3 rounded-xl text-left transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 hover:bg-slate-100 text-slate-800';
+                                dTab.className = 'tactile-control world-tab-btn w-full flex items-center justify-between p-3 rounded-xl text-left transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 hover:bg-slate-100 text-slate-800';
                                 const arrow = dTab.querySelector('.font-mono');
                                 if (arrow) arrow.className = 'text-xs font-mono text-slate-400';
                             }
                         }
 
-                        // Mobile Tabs UI update
                         if (mTab) {
                             mTab.setAttribute('aria-selected', String(isActive));
                             if (isActive) {
-                                mTab.className = 'mobile-tab-btn active py-2 px-1 rounded-lg text-center text-[11px] font-bold transition-all bg-slate-900 text-white shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600';
+                                mTab.className = 'tactile-control mobile-tab-btn active py-2 px-1 rounded-lg text-center text-[11px] font-bold transition-all bg-slate-900 text-white shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600';
                             } else {
-                                mTab.className = 'mobile-tab-btn py-2 px-1 rounded-lg text-center text-[11px] font-bold transition-all text-slate-700 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600';
+                                mTab.className = 'tactile-control mobile-tab-btn py-2 px-1 rounded-lg text-center text-[11px] font-bold transition-all text-slate-700 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600';
                             }
                         }
                     });
+                }
 
-                    // Ambient Background Shift
+                function resetWorldInteraction(worldKey) {
+                    const worldEl = worlds[worldKey];
+                    if (!worldEl) return;
+                    worldEl.classList.remove('specimen-interactive-active');
+
+                    if (worldKey === 'aurora') {
+                        const btn = document.getElementById('aurora-interaction-trigger');
+                        if (btn) {
+                            const lbl = btn.querySelector('.btn-label');
+                            const arr = btn.querySelector('.interaction-arrow');
+                            if (lbl) lbl.textContent = 'Trigger Interaction';
+                            if (arr) arr.classList.remove('rotate-180');
+                        }
+                    } else if (worldKey === 'aarav') {
+                        const btn = document.getElementById('aarav-interaction-trigger');
+                        if (btn) {
+                            const lbl = btn.querySelector('.btn-label');
+                            const arr = btn.querySelector('.interaction-arrow');
+                            if (lbl) lbl.textContent = 'EXPLORE PORTFOLIO';
+                            if (arr) arr.classList.remove('rotate-180');
+                        }
+                        const figLbl = document.getElementById('aarav-fig-label');
+                        if (figLbl) figLbl.textContent = '[FIG. 04-A]';
+                    } else if (worldKey === 'spice') {
+                        const btn = document.getElementById('spice-interaction-trigger');
+                        if (btn) {
+                            const lbl = btn.querySelector('.btn-label');
+                            const arr = btn.querySelector('.interaction-arrow');
+                            if (lbl) lbl.textContent = 'Initiate Sequence';
+                            if (arr) arr.classList.remove('rotate-180');
+                        }
+                    }
+                }
+
+                function switchWorld(targetKey) {
+                    if (targetKey === activeWorldKey || isSwitching) return;
+                    isSwitching = true;
+
+                    if (switchTimeout) {
+                        clearTimeout(switchTimeout);
+                        switchTimeout = null;
+                    }
+
+                    const prevKey = activeWorldKey;
+                    const currentWorldEl = worlds[prevKey];
+                    const targetWorldEl = worlds[targetKey];
+                    activeWorldKey = targetKey;
+
+                    // Clean previous world interaction
+                    resetWorldInteraction(prevKey);
+
+                    // Immediate tactile tab synchronization
+                    updateTabStyles(targetKey);
+
+                    // Phase 1: Spatial Exit of outgoing world
+                    if (currentWorldEl) {
+                        currentWorldEl.classList.remove('active');
+                        currentWorldEl.classList.add('world-exiting-' + prevKey);
+                    }
+
+                    // Phase 2: Ambient Background Bridge
                     if (ambientBg && ambientColors[targetKey]) {
                         ambientBg.style.backgroundColor = ambientColors[targetKey];
                     }
+
+                    // Phase 3: Spatial Entrance of incoming world
+                    switchTimeout = setTimeout(() => {
+                        if (currentWorldEl) {
+                            currentWorldEl.classList.remove('world-exiting-' + prevKey);
+                            currentWorldEl.classList.add('hidden');
+                        }
+
+                        if (targetWorldEl) {
+                            targetWorldEl.classList.remove('hidden');
+                            targetWorldEl.classList.add('world-entering-' + targetKey);
+
+                            requestAnimationFrame(() => {
+                                requestAnimationFrame(() => {
+                                    targetWorldEl.classList.add('active');
+                                    targetWorldEl.classList.remove('world-entering-' + targetKey);
+                                    isSwitching = false;
+                                });
+                            });
+                        } else {
+                            isSwitching = false;
+                        }
+                    }, 300);
                 }
 
                 if (desktopTabs.aurora) addListener(desktopTabs.aurora, 'click', () => switchWorld('aurora'));
@@ -1041,7 +1304,52 @@ function renderModernExperience(currentPath) {
                 if (mobileTabs.aarav) addListener(mobileTabs.aarav, 'click', () => switchWorld('aarav'));
                 if (mobileTabs.spice) addListener(mobileTabs.spice, 'click', () => switchWorld('spice'));
 
-                // 2. Curatorial Design Lens Toggle
+                // 2. Specimen Native Interaction Triggers
+                // Aurora Trigger
+                const auroraBtn = document.getElementById('aurora-interaction-trigger');
+                if (auroraBtn) {
+                    addListener(auroraBtn, 'click', () => {
+                        const auroraWorld = worlds.aurora;
+                        if (!auroraWorld) return;
+                        const isActive = auroraWorld.classList.toggle('specimen-interactive-active');
+                        const lbl = auroraBtn.querySelector('.btn-label');
+                        const arr = auroraBtn.querySelector('.interaction-arrow');
+                        if (lbl) lbl.textContent = isActive ? 'Restore Composition' : 'Trigger Interaction';
+                        if (arr) arr.classList.toggle('rotate-180', isActive);
+                    });
+                }
+
+                // Aarav Trigger
+                const aaravBtn = document.getElementById('aarav-interaction-trigger');
+                if (aaravBtn) {
+                    addListener(aaravBtn, 'click', () => {
+                        const aaravWorld = worlds.aarav;
+                        if (!aaravWorld) return;
+                        const isActive = aaravWorld.classList.toggle('specimen-interactive-active');
+                        const lbl = aaravBtn.querySelector('.btn-label');
+                        const arr = aaravBtn.querySelector('.interaction-arrow');
+                        if (lbl) lbl.textContent = isActive ? 'RESET ELEVATION' : 'EXPLORE PORTFOLIO';
+                        if (arr) arr.classList.toggle('rotate-180', isActive);
+                        const figLbl = document.getElementById('aarav-fig-label');
+                        if (figLbl) figLbl.textContent = isActive ? '[FIG. 04-A // EXPANDED]' : '[FIG. 04-A]';
+                    });
+                }
+
+                // Spice Trigger
+                const spiceBtn = document.getElementById('spice-interaction-trigger');
+                if (spiceBtn) {
+                    addListener(spiceBtn, 'click', () => {
+                        const spiceWorld = worlds.spice;
+                        if (!spiceWorld) return;
+                        const isActive = spiceWorld.classList.toggle('specimen-interactive-active');
+                        const lbl = spiceBtn.querySelector('.btn-label');
+                        const arr = spiceBtn.querySelector('.interaction-arrow');
+                        if (lbl) lbl.textContent = isActive ? 'Collapse Sequence' : 'Initiate Sequence';
+                        if (arr) arr.classList.toggle('rotate-180', isActive);
+                    });
+                }
+
+                // 3. Curatorial Design Lens Toggle
                 const lensBtn = document.getElementById('design-lens-toggle');
                 const mobileLensBtn = document.getElementById('mobile-design-lens-toggle');
                 const stageContainer = document.getElementById('artwork-stage-container');
@@ -1057,21 +1365,21 @@ function renderModernExperience(currentPath) {
                             stageContainer.classList.add('show-lens');
                             if (lensBtn) {
                                 lensBtn.innerHTML = '<span>Lens: ON</span>';
-                                lensBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase border border-blue-600 bg-blue-600 text-white shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 transition-colors';
+                                lensBtn.className = 'tactile-control px-3 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase border border-blue-600 bg-blue-600 text-white shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 transition-colors';
                             }
                             if (mobileLensBtn) {
                                 mobileLensBtn.textContent = 'Lens: ON';
-                                mobileLensBtn.className = 'text-[10px] font-mono px-2.5 py-1 rounded bg-blue-600 text-white font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600';
+                                mobileLensBtn.className = 'tactile-control text-[10px] font-mono px-2.5 py-1 rounded bg-blue-600 text-white font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600';
                             }
                         } else {
                             stageContainer.classList.remove('show-lens');
                             if (lensBtn) {
                                 lensBtn.innerHTML = '<span>Lens: OFF</span>';
-                                lensBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase border border-slate-300 bg-slate-50 text-slate-700 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 transition-colors';
+                                lensBtn.className = 'tactile-control px-3 py-1.5 rounded-lg text-xs font-bold tracking-wider uppercase border border-slate-300 bg-slate-50 text-slate-700 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 transition-colors';
                             }
                             if (mobileLensBtn) {
                                 mobileLensBtn.textContent = 'Lens: OFF';
-                                mobileLensBtn.className = 'text-[10px] font-mono px-2.5 py-1 rounded bg-white border border-slate-200 text-slate-700 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600';
+                                mobileLensBtn.className = 'tactile-control text-[10px] font-mono px-2.5 py-1 rounded bg-white border border-slate-200 text-slate-700 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600';
                             }
                         }
                     };
@@ -1080,7 +1388,58 @@ function renderModernExperience(currentPath) {
                     if (mobileLensBtn) addListener(mobileLensBtn, 'click', toggleLens);
                 }
 
-                // 3. Mobile Navigation Drawer
+                // 4. Lower Sections Staggered Spatial Reveals (IntersectionObserver)
+                if ('IntersectionObserver' in window) {
+                    const revealItems = document.querySelectorAll('.spatial-reveal-item');
+                    if (revealItems.length > 0) {
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach((entry) => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add('revealed');
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, { threshold: 0.12 });
+
+                        revealItems.forEach((el, index) => {
+                            el.style.transitionDelay = ((index % 3) * 90) + 'ms';
+                            observer.observe(el);
+                        });
+
+                        window.__veloraModernCleanups.push(() => observer.disconnect());
+                    }
+                } else {
+                    document.querySelectorAll('.spatial-reveal-item').forEach(el => el.classList.add('revealed'));
+                }
+
+                // 5. Restrained Native Scroll Parallax (Desktop Only & Reduced Motion Safe)
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (!prefersReducedMotion && window.innerWidth >= 1024 && stageContainer) {
+                    const exhibitionStage = document.getElementById('exhibition-stage');
+                    let rafPending = false;
+
+                    const handleScroll = () => {
+                        if (!rafPending && exhibitionStage) {
+                            rafPending = true;
+                            requestAnimationFrame(() => {
+                                const rect = exhibitionStage.getBoundingClientRect();
+                                if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                                    const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+                                    const offset = Math.min(Math.max((progress - 0.5) * 28, -14), 14);
+                                    stageContainer.style.transform = 'translateY(' + offset.toFixed(1) + 'px)';
+                                }
+                                rafPending = false;
+                            });
+                        }
+                    };
+
+                    addListener(window, 'scroll', handleScroll, { passive: true });
+                    window.__veloraModernCleanups.push(() => {
+                        if (stageContainer) stageContainer.style.transform = '';
+                    });
+                }
+
+                // 6. Mobile Navigation Drawer
                 const mobileMenuBtn = document.getElementById('modern-mobile-menu-btn');
                 const mobileCloseBtn = document.getElementById('modern-mobile-close-btn');
                 const mobileDrawer = document.getElementById('modern-mobile-drawer');
@@ -1111,7 +1470,7 @@ function renderModernExperience(currentPath) {
                     });
                 }
 
-                // 4. Commission Contact Form Async Submission
+                // 7. Commission Contact Form Async Submission
                 const form = document.getElementById('modern-commission-form');
                 const submitBtn = document.getElementById('modern-submit-btn');
                 const feedback = document.getElementById('modern-form-feedback');
